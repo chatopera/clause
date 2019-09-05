@@ -301,32 +301,36 @@ void Trainer::train(const string payload) {
                                      predefined_dicts,
                                      dicts,
                                      augmented);
-  VLOG(3) << "done with generateTemplates";
+  VLOG(3) << __func__ << "done with generateTemplates";
 
   // NER
-  SampleGenerator::generateCrfSuiteTraingData(augmented, nertrainfile);
-  chatopera::bot::crfsuite::Trainer ner;
-  // init
-  ner.select("lbfgs", "crf1d");
-  ner.init();
-  // hyper params
-  ner.set("feature.minfreq", "0.000000");
-  ner.set("feature.possible_states", "0");
-  ner.set("feature.possible_transitions", "0");
-  ner.set("c1", "0.000000");
-  ner.set("c2", "1.000000");
-  ner.set("max_iterations", "2147483647");
-  ner.set("num_memories", "6");
-  ner.set("epsilon", "0.000010");
-  ner.set("period", "10");
-  ner.set("delta", "0.000010");
-  ner.set("linesearch", "MoreThuente");
-  ner.set("max_linesearch", "20");
-  // input training samples
-  ner.read_data(nertrainfile);
-  // training
-  ner.train(nermodelfile, -1);
-  VLOG(3) << __func__ << " crfsuite model is generated at " << nermodelfile;
+  if(SampleGenerator::generateCrfSuiteTraingData(augmented, nertrainfile)) {
+    chatopera::bot::crfsuite::Trainer ner;
+    // init
+    ner.select("lbfgs", "crf1d");
+    ner.init();
+    // hyper params
+    ner.set("feature.minfreq", "0.000000");
+    ner.set("feature.possible_states", "0");
+    ner.set("feature.possible_transitions", "0");
+    ner.set("c1", "0.000000");
+    ner.set("c2", "1.000000");
+    ner.set("max_iterations", "2147483647");
+    ner.set("num_memories", "6");
+    ner.set("epsilon", "0.000010");
+    ner.set("period", "10");
+    ner.set("delta", "0.000010");
+    ner.set("linesearch", "MoreThuente");
+    ner.set("max_linesearch", "20");
+    // input training samples
+    ner.read_data(nertrainfile);
+    // training
+    ner.train(nermodelfile, -1);
+    VLOG(3) << __func__ << " crfsuite model is generated at " << nermodelfile;
+  } else {
+    // TODO 返回报错信息
+    // 训练失败
+  }
 
   /**
    * 分类

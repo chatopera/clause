@@ -49,7 +49,7 @@ class SampleGenerator {
                                 const std::map<std::string, std::vector<string> >& dicts,
                                 Augmented& augmented);
 
-  static void generateCrfSuiteTraingData(const Augmented& augmented,
+  static bool generateCrfSuiteTraingData(const Augmented& augmented,
                                          const string& filepath);
  private: // variables
 

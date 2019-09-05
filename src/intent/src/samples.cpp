@@ -195,6 +195,46 @@ inline void parseTemplateTokens(const TIntentUtter& utter,
   VLOG(3) << __func__ << " template: " << FromProtobufToUtf8DebugString(*tpl);
 }
 
+
+/**
+ * 获取一个token的长度: 每个中文算一个长度，连着的英文、标签符号算一个。
+ */
+inline size_t get_token_length(const string& token, const string& tag) {
+  size_t len = 0;
+
+  if(tag == "@eng") {
+    len = 1;
+  } else if(boost::starts_with(token, "@w") || boost::starts_with(token, "@x") ) {
+    len = 1;
+  } else {
+    // 处理中英文混杂的情况
+    vector<string> ss;
+    CharSegment(token, ss);
+
+    if(ss.size() != 0) {
+      bool eng = false;
+
+      for(vector<string>::iterator it = ss.begin(); it != ss.end(); it++ ) {
+        if(isChinese(*it)) {
+          len++;
+        } else {
+          // 查看下一个是不是英文
+          eng = true;
+
+          if((it + 1) == ss.end()) { // 到达末尾
+            len++;
+          } else if(isChinese(*(it + 1))) { // 下一个是中文
+            len++;
+          }
+        }
+      }
+    }
+  }
+
+  VLOG(3) << __func__ << " token: " << token << ", len: " << len;
+  return len;
+}
+
 /**
  * 生成Utterance
  */
@@ -210,9 +250,6 @@ inline bool addUtteranceWithVariant(const SampleTemplate& tpl,
     VLOG(4) << __func__ << " token processed " << processed;
 
     if(token.isslot()) {  // 槽位
-      vector<string> vs;
-      CharSegment(variant[i], vs);
-
       ss << variant[i];
       // 增加命名实体标注
       Augmented::Entity* entity = ts.add_entities();
@@ -220,7 +257,7 @@ inline bool addUtteranceWithVariant(const SampleTemplate& tpl,
       entity->set_slotname(token.slotname());
       entity->set_dictname(token.dictname());
       entity->set_start(processed);
-      processed += vs.size();
+      processed += get_token_length(variant[i], "");
       entity->set_end(processed);
       i++;
     } else {
@@ -265,7 +302,7 @@ inline void patch_builtin_pos_labels(Augmented::Sample& ts, const string pos) {
 inline void patch_tokens_n_poss(const cppjieba::Jieba& tokenizer,
                                 Augmented::Sample& ts) {
   if(!ts.utterance().empty()) {
-    VLOG(3) << "[patch_tokens_n_poss] input sample: \n" << FromProtobufToUtf8DebugString(ts);
+    VLOG(3) << __func__ << " input sample: \n" << FromProtobufToUtf8DebugString(ts);
 
     // 增加分词
     std::vector<pair<string, string> > tokens;
@@ -291,8 +328,8 @@ inline void patch_tokens_n_poss(const cppjieba::Jieba& tokenizer,
       ts.add_terms()->assign(it->first);
       ts.add_poss()->assign(pos);
 
-      // 处理分词labels，该标记用于生成特征
-      size_t length = CharLength(it->first);
+      // 处理分词labels，该标记用于生成特征，英文单词或标点符号算一个长度
+      size_t length = get_token_length(it->first, it->second);
       VLOG(3) << "processed: " << processed
               << ", term: " <<  it->first
               << ", pos: " << pos
@@ -467,18 +504,19 @@ inline bool mv_feature_window(const signed int& length,
 /**
  * 追加训练数据
  */
-inline void appendNerTrainingData(const Augmented::Sample& sample, ofstream& f) {
-  VLOG(3) << "[appendNerTrainingData] sample: \n" << FromProtobufToUtf8DebugString(sample);
+inline bool appendNerTrainingData(const Augmented::Sample& sample, ofstream& f) {
+  VLOG(3) << __func__ << " sample: \n" << FromProtobufToUtf8DebugString(sample);
+  bool result = true;
 
   if(sample.terms_size() == 0) {
-    VLOG(3) << "[appendNerTrainingData] invalid terms size, ignore this sample: \n" << FromProtobufToUtf8DebugString(sample);
-    return;
+    VLOG(3) << __func__ << " invalid terms size, ignore this sample: \n" << FromProtobufToUtf8DebugString(sample);
+    return false;
   }
 
   if(sample.poss_size() != sample.terms_size() ||
       sample.labels_size() != sample.terms_size()) {
-    VLOG(3) << "[appendNerTrainingData] invalid pos and label data, ignore this sample: \n" << FromProtobufToUtf8DebugString(sample);
-    return;
+    VLOG(3) << __func__ << " invalid pos and label data, ignore this sample: \n" << FromProtobufToUtf8DebugString(sample);
+    return false;
   }
 
   const signed int length = (sample.terms_size() - 1);
@@ -575,27 +613,37 @@ inline void appendNerTrainingData(const Augmented::Sample& sample, ofstream& f) 
     f << endl;
     curr++;
   };
+
+  return true;
 }
 
 /**
  * 生成crfsuite训练文件
  */
-void  SampleGenerator::generateCrfSuiteTraingData(const Augmented& augmented,
+bool SampleGenerator::generateCrfSuiteTraingData(const Augmented& augmented,
     const string& filepath) {
-  VLOG(3) << "[generateCrfSuiteTraingData] filepath: " << filepath;
+  VLOG(3) << __func__ << " filepath: " << filepath;
   // open file
   ofstream f(filepath, ios::app);
 
-  CHECK(f.is_open()) << "[generateCrfSuiteTraingData] ERROR: can not create training file path: " << filepath;
+  CHECK(f.is_open()) << __func__ << " ERROR: can not create training file path: " << filepath;
+  size_t allSamplesCount = 0;
 
   for(const Augmented::IntentTrainingSample& its : augmented.itss()) {
     for(const Augmented::Sample& sample : its.tss()) {
-      appendNerTrainingData(sample, f);
+      if(appendNerTrainingData(sample, f)) {
+        allSamplesCount++;
+      };
+
       f << "\n";
     }
   }
 
   f.close();
+  // 如果 allSamplesCount 为 0，
+  // 代表这个机器人的所有意图都没有一个合法的说法
+  // 则训练无法执行，返回失败
+  return allSamplesCount > 0;
 }
 
 

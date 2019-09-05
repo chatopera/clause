@@ -79,6 +79,7 @@ bool Bot::init(const string& chatbotID,
     _tagger = new chatopera::bot::crfsuite::Tagger();
 
     if(!_tagger->open(verdir + "/crfsuite.ner.model")) {
+      // TODO 可能因训练失败而导致没有NER model的情况：原因比如机器人没有一个合理的说法
       VLOG(2) << __func__ << " fail to open crfsuite model for chatbotID: " << chatbotID << ", branch: " << branch << ", version: " << buildver;
       result = false;
     }
@@ -816,6 +817,7 @@ bool Bot::chat(const ChatMessage& payload,
      */
     crfsuite::ItemSequence xseq;
     setupNerItemSequence(payload.terms, payload.tags, xseq);
+    VLOG(3) << __func__ << " labeling entities with ner model ...";
     vector<string> labels = _tagger->tag(xseq);
 
     VLOG(3) << __func__ << " labels: " << join(labels, "\t");
