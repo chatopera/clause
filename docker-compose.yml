@@ -25,7 +25,7 @@ services:
       - FLAGS_sysdicts_host=sysdicts
       - FLAGS_sysdicts_port=8066
     volumes:
-      - ./clause/var/local:/var/local
+      - ./var/local:/var/local
     depends_on:
       - sysdicts
       - redis
@@ -38,7 +38,7 @@ services:
     ports:
       - "${INTENT_PORT:-8063}:8063"
     volumes:
-      - ./clause/var/local:/var/local
+      - ./var/local:/var/local
     environment:
       - GLOG_logtostderr=1
       - GLOG_v=3
@@ -76,7 +76,7 @@ services:
       - "${MYSQL_PORT:-8055}:3306"
     volumes:
       - ./var/mysql/data:/var/lib/mysql
-      - ./clause/src/clause/config/sql:/docker-entrypoint-initdb.d
+      - ./src/clause/config/sql:/docker-entrypoint-initdb.d
     command: --max_allowed_packet=32505856
 
   activemq:
