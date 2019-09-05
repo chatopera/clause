@@ -34,6 +34,7 @@ cp /usr/lib/libevent-2.1.so.6 $releaselib
 echo "2. delete useless libs ..."
 rm -rf $releaselib/*.{la,a}
 rm -rf $releaselib/cmake
+rm -rf $releaselib/paddle
 # TODO turn off for production
 # for debugging usage
 # rm -rf $releaselib/libtcmalloc*
