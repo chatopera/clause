@@ -4,8 +4,8 @@
 --mysql_uri=tcp://127.0.0.1:8055/clause
 --mysql_user=root
 --mysql_pass=123456
---workarea=../../../../var/trainer/workarea
---data=../../../../var/trainer/data
+--workarea=../../../../var/local/workarea
+--data=../../../../var/local/data
 --redis_host=redis
 --redis_port=6379
 --redis_db=5

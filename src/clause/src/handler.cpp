@@ -2451,7 +2451,7 @@ int ServingHandler::resolveBotByChatbotIDAndBranch(const Redis& redis,
     version = redis.get(rkey_chatbot_prover(session.chatbotid()));
   } else {
     VLOG(3) << __func__ << " Error: invalid branch";
-    return 3;
+    throw std::runtime_error("Can not find chatbot " + session.chatbotid() + "'s version, maybe it is not trained yet." );
   }
 
   VLOG(3) << __func__ << " get version in redis: " << version;

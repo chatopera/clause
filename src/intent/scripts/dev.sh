@@ -19,6 +19,7 @@ COMPILE_CMD=$baseDir/compile.sh
 $COMPILE_CMD
 if [ $? -eq 0 ]; then
     cd $rootDir/admin/dev
+    set -x
     ./start.sh $PROJECT_DIR $TARGET_NAME $FLAG_FILE
 else
     echo "Compiling failure."

@@ -3,5 +3,5 @@
 --server_threads=20
 --activemq_broker_uri=failover:(tcp://localhost:8058)
 --activemq_client_ack=false
---workarea=../../../../var/trainer/workarea
---data=../../../../var/trainer/data
+--workarea=../../../../var/local/workarea
+--data=../../../../var/local/data
