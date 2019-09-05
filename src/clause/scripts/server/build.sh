@@ -97,6 +97,7 @@ cd $baseDir/../..
 
 echo "5. build docker image ..."
 docker build \
+    --build-arg VCS_REF=`git rev-parse --short HEAD` \
     --no-cache=true \
     --force-rm=true --tag $imagename:$imageversion .
 docker tag $imagename:$imageversion $imagename:develop

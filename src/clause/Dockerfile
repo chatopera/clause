@@ -1,6 +1,11 @@
 FROM ubuntu:16.04
 MAINTAINER Hai Liang Wang <hain@chatopera.com>
 
+ARG VCS_REF
+
+LABEL org.label-schema.vcs-ref=$VCS_REF \
+          org.label-schema.vcs-url="https://github.com/chatopera/clause"
+
 # BUILD WITH CN MACHINE
 COPY ./config/aliyun.source.list /etc/apt/sources.list
 
