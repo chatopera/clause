@@ -2451,12 +2451,11 @@ int ServingHandler::resolveBotByChatbotIDAndBranch(const Redis& redis,
     version = redis.get(rkey_chatbot_prover(session.chatbotid()));
   } else {
     VLOG(3) << __func__ << " Error: invalid branch";
-    throw std::runtime_error("Can not find chatbot " + session.chatbotid() + "'s version, maybe it is not trained yet." );
+    throw std::runtime_error("Error: invalid branch, should not happen." );
   }
 
-  VLOG(3) << __func__ << " get version in redis: " << version;
-
   if(!version.empty()) {  // 取得最新版本
+    VLOG(3) << __func__ << " get version in redis: " << version;
     bool reload = false;  // 是否重新加载BOT
     bool freepre = false; // 是否释放前版本
 
@@ -2495,7 +2494,7 @@ int ServingHandler::resolveBotByChatbotIDAndBranch(const Redis& redis,
 
   } else {
     VLOG(3) << __func__ << " Error: bot version not available.";
-    return 2;
+    throw std::runtime_error("CL:INVALID_BOT_VERSION_INFO" );
   }
 
   return result;
@@ -2688,9 +2687,19 @@ void ServingHandler::chat(Data& _return, const Data& request) {
     } catch (sql::SQLException &e) {
       mysql_error(_return, e);
     } catch (std::runtime_error &e) {
+      string reason(e.what());
       VLOG(3) << __func__ << " # ERR: runtime_error in " << __FILE__;
-      VLOG(3) << __func__ << " # ERR: " << e.what() << endl;
-      rc_and_error(_return, 3, "Internal Error.");
+      VLOG(3) << __func__ << " # ERR: " << reason << endl;
+
+      if(!reason.empty()) {
+        if(reason == "CL:INVALID_BOT_VERSION_INFO") {
+          rc_and_error(_return, 25, "Invalid version info, maybe bot is not trained.");
+        } else {
+          rc_and_error(_return, 26, reason);
+        }
+      } else {
+        rc_and_error(_return, 3, "Internal Error.");
+      }
     }
   } else {
     rc_and_error(_return, 10, "Invalid params, message and session info are required.");
