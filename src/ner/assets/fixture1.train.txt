@@ -1,0 +1,94 @@
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+O	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@x	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想| 	pos[t-1]|pos[t]=@v|@x	w[t]= 	pos[t]=@x	
+B-@v	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@x	pos[t-2]|pos[t-1]|pos[t]=@v|@x@v	w[t-1]= 	pos[t-1]=@x	w[t-1]|w[t]= |打车	pos[t-1]|pos[t]=@x|@v	w[t]=打车	pos[t]=@v		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@v	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@v	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|叫	pos[t-1]|pos[t]=@v|@v	w[t]=叫	pos[t]=@v	
+B-@g	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@v	pos[t-2]|pos[t-1]|pos[t]=@v|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|计程车	pos[t-1]|pos[t]=@v|@g	w[t]=计程车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|北京	pos[t-1]|pos[t]=@p|@g	w[t]=北京	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=北京	pos[t-1]=@g	w[t-1]|w[t]=北京|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=北京	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|计程车	pos[t-1]|pos[t]=@v|@g	w[t]=计程车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|北京	pos[t-1]|pos[t]=@p|@g	w[t]=北京	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=北京	pos[t-1]=@g	w[t-1]|w[t]=北京|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=北京	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|出租车	pos[t-1]|pos[t]=@v|@g	w[t]=出租车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|北京	pos[t-1]|pos[t]=@p|@g	w[t]=北京	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=北京	pos[t-1]=@g	w[t-1]|w[t]=北京|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=北京	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|taxi	pos[t-1]|pos[t]=@v|@g	w[t]=taxi	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|北平	pos[t-1]|pos[t]=@p|@g	w[t]=北平	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=北平	pos[t-1]=@g	w[t-1]|w[t]=北平|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=北平	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|计程车	pos[t-1]|pos[t]=@v|@g	w[t]=计程车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|北平	pos[t-1]|pos[t]=@p|@g	w[t]=北平	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=北平	pos[t-1]=@g	w[t-1]|w[t]=北平|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=北平	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|出租车	pos[t-1]|pos[t]=@v|@g	w[t]=出租车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|北平	pos[t-1]|pos[t]=@p|@g	w[t]=北平	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=北平	pos[t-1]=@g	w[t-1]|w[t]=北平|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=北平	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|taxi	pos[t-1]|pos[t]=@v|@g	w[t]=taxi	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|燕京	pos[t-1]|pos[t]=@p|@g	w[t]=燕京	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=燕京	pos[t-1]=@g	w[t-1]|w[t]=燕京|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=燕京	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|计程车	pos[t-1]|pos[t]=@v|@g	w[t]=计程车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|燕京	pos[t-1]|pos[t]=@p|@g	w[t]=燕京	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=燕京	pos[t-1]=@g	w[t-1]|w[t]=燕京|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=燕京	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|出租车	pos[t-1]|pos[t]=@v|@g	w[t]=出租车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|燕京	pos[t-1]|pos[t]=@p|@g	w[t]=燕京	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=燕京	pos[t-1]=@g	w[t-1]|w[t]=燕京|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=燕京	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|taxi	pos[t-1]|pos[t]=@v|@g	w[t]=taxi	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|中国首都	pos[t-1]|pos[t]=@p|@g	w[t]=中国首都	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=中国首都	pos[t-1]=@g	w[t-1]|w[t]=中国首都|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=中国首都	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|计程车	pos[t-1]|pos[t]=@v|@g	w[t]=计程车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|中国首都	pos[t-1]|pos[t]=@p|@g	w[t]=中国首都	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=中国首都	pos[t-1]=@g	w[t-1]|w[t]=中国首都|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=中国首都	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|出租车	pos[t-1]|pos[t]=@v|@g	w[t]=出租车	pos[t]=@g		__EOS__
+
+B-@r	w[t]=我	pos[t]=@r		__BOS__
+B-@v	w[t-1]=我	pos[t-1]=@r	w[t-1]|w[t]=我|想	pos[t-1]|pos[t]=@r|@v	w[t]=想	pos[t]=@v	
+B-@p	w[t-2]=我	pos[t-2]=@r	pos[t-2]|pos[t-1]=@r|@v	pos[t-2]|pos[t-1]|pos[t]=@r|@v@p	w[t-1]=想	pos[t-1]=@v	w[t-1]|w[t]=想|从	pos[t-1]|pos[t]=@v|@p	w[t]=从	pos[t]=@p	
+B-cityName	w[t-2]=想	pos[t-2]=@v	pos[t-2]|pos[t-1]=@v|@p	pos[t-2]|pos[t-1]|pos[t]=@v|@p@g	w[t-1]=从	pos[t-1]=@p	w[t-1]|w[t]=从|中国首都	pos[t-1]|pos[t]=@p|@g	w[t]=中国首都	pos[t]=@g	
+B-@v	w[t-2]=从	pos[t-2]=@p	pos[t-2]|pos[t-1]=@p|@g	pos[t-2]|pos[t-1]|pos[t]=@p|@g@v	w[t-1]=中国首都	pos[t-1]=@g	w[t-1]|w[t]=中国首都|叫	pos[t-1]|pos[t]=@g|@v	w[t]=叫	pos[t]=@v	
+B-taxi	w[t-2]=中国首都	pos[t-2]=@g	pos[t-2]|pos[t-1]=@g|@v	pos[t-2]|pos[t-1]|pos[t]=@g|@v@g	w[t-1]=叫	pos[t-1]=@v	w[t-1]|w[t]=叫|taxi	pos[t-1]|pos[t]=@v|@g	w[t]=taxi	pos[t]=@g		__EOS__
+

@@ -1,0 +1,73 @@
+.vscode
+*.swp
+*.swo
+*.sublime-*
+*.pyc
+.tags
+jmeter.log
+__pycache__
+tmp/
+node_modules/
+sftp-config.json
+.DS_Store
+*.iml
+*.ipr
+*.iws
+*.idea
+~/Users/hain/chatopera/chatopera.io/clause/src/hat-trie/.gitignore.xls*
+~/Users/hain/chatopera/chatopera.io/clause/src/hat-trie/.gitignore.ppt*
+~/Users/hain/chatopera/chatopera.io/clause/src/hat-trie/.gitignore.doc*
+nohup.out
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+**/cmake-build-debug
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/install_manifest.txt
+**/CMakeFiles/
+**/CTestTestfile.cmake
+**/Makefile
+**/*.cbp
+**/CMakeScripts
+**/compile_commands.json
+tests/build/

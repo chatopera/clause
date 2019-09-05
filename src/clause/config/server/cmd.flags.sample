@@ -1,0 +1,14 @@
+--tryfromenv=server_port,server_threads,mysql_uri,mysql_user,mysql_pass,activemq_broker_uri,activemq_client_ack,workarea,data,redis_host,redis_port,redis_db,redis_pass,sysdicts_host,sysdicts_port
+--server_port=8056
+--server_threads=20
+--mysql_uri=tcp://127.0.0.1:8055/clause
+--mysql_user=root
+--mysql_pass=123456
+--workarea=../../../../var/trainer/workarea
+--data=../../../../var/trainer/data
+--redis_host=redis
+--redis_port=6379
+--redis_db=5
+--redis_pass=pass
+--sysdicts_host=127.0.0.1
+--sysdicts_port=8066

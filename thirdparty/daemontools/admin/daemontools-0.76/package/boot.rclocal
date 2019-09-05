@@ -1,0 +1,2 @@
+
+csh -cf '/command/svscanboot &'

@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacetsl.html">tsl</a></li><li class="navelem"><b>detail_array_hash</b></li><li class="navelem"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="classtsl_1_1detail__array__hash_1_1array__hash-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="array__hash_8h_source.html">array_hash.h</a>&gt;</code></p>
+<div class="dynheader">
+类 tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt; 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1detail__array__hash_1_1array__hash__inherit__graph.png" border="0" usemap="#tsl_1_1detail__array__hash_1_1array__hash_3_01CharT_00_01T_00_01Hash_00_01KeyEqual_00_01StoreNullTerminator_00_01KeySizeT_00_01IndexSizeT_00_01GrowthPolicy_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="tsl_1_1detail__array__hash_1_1array__hash_3_01CharT_00_01T_00_01Hash_00_01KeyEqual_00_01StoreNullTerminator_00_01KeySizeT_00_01IndexSizeT_00_01GrowthPolicy_01_4_inherit__map" id="tsl_1_1detail__array__hash_1_1array__hash_3_01CharT_00_01T_00_01Hash_00_01KeyEqual_00_01StoreNullTerminator_00_01KeySizeT_00_01IndexSizeT_00_01GrowthPolicy_01_4_inherit__map">
+<area shape="rect" id="node2" href="classtsl_1_1detail__array__hash_1_1value__container.html" title="tsl::detail_array_hash\l::value_container\&lt; T \&gt;" alt="" coords="5,5,159,44"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1detail__array__hash_1_1array__hash__coll__graph.png" border="0" usemap="#tsl_1_1detail__array__hash_1_1array__hash_3_01CharT_00_01T_00_01Hash_00_01KeyEqual_00_01StoreNullTerminator_00_01KeySizeT_00_01IndexSizeT_00_01GrowthPolicy_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="tsl_1_1detail__array__hash_1_1array__hash_3_01CharT_00_01T_00_01Hash_00_01KeyEqual_00_01StoreNullTerminator_00_01KeySizeT_00_01IndexSizeT_00_01GrowthPolicy_01_4_coll__map" id="tsl_1_1detail__array__hash_1_1array__hash_3_01CharT_00_01T_00_01Hash_00_01KeyEqual_00_01StoreNullTerminator_00_01KeySizeT_00_01IndexSizeT_00_01GrowthPolicy_01_4_coll__map">
+<area shape="rect" id="node2" href="classtsl_1_1detail__array__hash_1_1value__container.html" title="tsl::detail_array_hash\l::value_container\&lt; T \&gt;" alt="" coords="5,5,159,44"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ade86885ea16dcd95b4d71edeb3505fc1"><td class="memItemLeft" align="right" valign="top"><a id="ade86885ea16dcd95b4d71edeb3505fc1"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>char_type</b> = CharT</td></tr>
+<tr class="separator:ade86885ea16dcd95b4d71edeb3505fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa89e6e1eb47d6d90b96fd15c92c119a7"><td class="memItemLeft" align="right" valign="top"><a id="aa89e6e1eb47d6d90b96fd15c92c119a7"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>key_size_type</b> = KeySizeT</td></tr>
+<tr class="separator:aa89e6e1eb47d6d90b96fd15c92c119a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ac07d2fa7fc5da8b788a9351e0e5df9"><td class="memItemLeft" align="right" valign="top"><a id="a3ac07d2fa7fc5da8b788a9351e0e5df9"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>index_size_type</b> = IndexSizeT</td></tr>
+<tr class="separator:a3ac07d2fa7fc5da8b788a9351e0e5df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1a86b05c810e23894cffa30750ff68"><td class="memItemLeft" align="right" valign="top"><a id="a3b1a86b05c810e23894cffa30750ff68"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b> = std::size_t</td></tr>
+<tr class="separator:a3b1a86b05c810e23894cffa30750ff68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80cb01da896ef7bb11fa82ea0303f3f2"><td class="memItemLeft" align="right" valign="top"><a id="a80cb01da896ef7bb11fa82ea0303f3f2"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>hasher</b> = Hash</td></tr>
+<tr class="separator:a80cb01da896ef7bb11fa82ea0303f3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8563f0e2de312609f1f9587e755d3b0"><td class="memItemLeft" align="right" valign="top"><a id="ab8563f0e2de312609f1f9587e755d3b0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>key_equal</b> = KeyEqual</td></tr>
+<tr class="separator:ab8563f0e2de312609f1f9587e755d3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a032b6f7cd7f7f9da7806c9f61dc22345"><td class="memItemLeft" align="right" valign="top"><a id="a032b6f7cd7f7f9da7806c9f61dc22345"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> = <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a>&lt; false &gt;</td></tr>
+<tr class="separator:a032b6f7cd7f7f9da7806c9f61dc22345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ebbb92be408b4776a7eee21f473e768"><td class="memItemLeft" align="right" valign="top"><a id="a1ebbb92be408b4776a7eee21f473e768"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> = <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a>&lt; true &gt;</td></tr>
+<tr class="separator:a1ebbb92be408b4776a7eee21f473e768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aba35961f5207cb351549fa0d2d5683e1"><td class="memItemLeft" align="right" valign="top"><a id="aba35961f5207cb351549fa0d2d5683e1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_hash</b> (size_type bucket_count, const Hash &amp;hash, float max_load_factor)</td></tr>
+<tr class="separator:aba35961f5207cb351549fa0d2d5683e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede4894472d82d0e44d578b712a549ae"><td class="memItemLeft" align="right" valign="top"><a id="aede4894472d82d0e44d578b712a549ae"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_hash</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;other)</td></tr>
+<tr class="separator:aede4894472d82d0e44d578b712a549ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b02a4e95694a06526747c8f67f068bc"><td class="memItemLeft" align="right" valign="top"><a id="a2b02a4e95694a06526747c8f67f068bc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_hash</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;&amp;other) noexcept(std::is_nothrow_move_constructible&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1value__container.html">value_container</a>&lt; T &gt;&gt;::value &amp;&amp;std::is_nothrow_move_constructible&lt; Hash &gt;::value &amp;&amp;std::is_nothrow_move_constructible&lt; GrowthPolicy &gt;::value &amp;&amp;std::is_nothrow_move_constructible&lt; std::vector&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__bucket.html">array_bucket</a> &gt;&gt;::value)</td></tr>
+<tr class="separator:a2b02a4e95694a06526747c8f67f068bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac78f14158f549eafc47d84b42e1624b7"><td class="memItemLeft" align="right" valign="top"><a id="ac78f14158f549eafc47d84b42e1624b7"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;other)</td></tr>
+<tr class="separator:ac78f14158f549eafc47d84b42e1624b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4128818856b97385372bba3406c302e5"><td class="memItemLeft" align="right" valign="top"><a id="a4128818856b97385372bba3406c302e5"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;&amp;other)</td></tr>
+<tr class="separator:a4128818856b97385372bba3406c302e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f048989bc9b0565cab06b08a464d2ec"><td class="memItemLeft" align="right" valign="top"><a id="a5f048989bc9b0565cab06b08a464d2ec"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () noexcept</td></tr>
+<tr class="separator:a5f048989bc9b0565cab06b08a464d2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeabaa55de92c4e3595885248c4bdb1cf"><td class="memItemLeft" align="right" valign="top"><a id="aeabaa55de92c4e3595885248c4bdb1cf"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const noexcept</td></tr>
+<tr class="separator:aeabaa55de92c4e3595885248c4bdb1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9698e0f289b6de11c9f5e66db9ede1d"><td class="memItemLeft" align="right" valign="top"><a id="ab9698e0f289b6de11c9f5e66db9ede1d"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cbegin</b> () const noexcept</td></tr>
+<tr class="separator:ab9698e0f289b6de11c9f5e66db9ede1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b48893dac47f0071f057f2cef80c4a0"><td class="memItemLeft" align="right" valign="top"><a id="a7b48893dac47f0071f057f2cef80c4a0"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () noexcept</td></tr>
+<tr class="separator:a7b48893dac47f0071f057f2cef80c4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a164258745172c9dcf15bbadbafb3524f"><td class="memItemLeft" align="right" valign="top"><a id="a164258745172c9dcf15bbadbafb3524f"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const noexcept</td></tr>
+<tr class="separator:a164258745172c9dcf15bbadbafb3524f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368137ab7e008dd93fcd95cb55af7723"><td class="memItemLeft" align="right" valign="top"><a id="a368137ab7e008dd93fcd95cb55af7723"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cend</b> () const noexcept</td></tr>
+<tr class="separator:a368137ab7e008dd93fcd95cb55af7723"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af26083eb59f68a36913c0af46ca13a1b"><td class="memItemLeft" align="right" valign="top"><a id="af26083eb59f68a36913c0af46ca13a1b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> () const noexcept</td></tr>
+<tr class="separator:af26083eb59f68a36913c0af46ca13a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79444b3b3e1599a472184bb352b5e8d"><td class="memItemLeft" align="right" valign="top"><a id="aa79444b3b3e1599a472184bb352b5e8d"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const noexcept</td></tr>
+<tr class="separator:aa79444b3b3e1599a472184bb352b5e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09820e8d6f3769b170a7ca71b2e1dcdd"><td class="memItemLeft" align="right" valign="top"><a id="a09820e8d6f3769b170a7ca71b2e1dcdd"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_size</b> () const noexcept</td></tr>
+<tr class="separator:a09820e8d6f3769b170a7ca71b2e1dcdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8fa97f044de843a9350e22e5ed7fbd"><td class="memItemLeft" align="right" valign="top"><a id="a0d8fa97f044de843a9350e22e5ed7fbd"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_key_size</b> () const noexcept</td></tr>
+<tr class="separator:a0d8fa97f044de843a9350e22e5ed7fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76edbb919d6b80f9ba21ef8d4f354597"><td class="memItemLeft" align="right" valign="top"><a id="a76edbb919d6b80f9ba21ef8d4f354597"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>shrink_to_fit</b> ()</td></tr>
+<tr class="separator:a76edbb919d6b80f9ba21ef8d4f354597"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0405b201fcd73dadf9368036b3f74b2e"><td class="memItemLeft" align="right" valign="top"><a id="a0405b201fcd73dadf9368036b3f74b2e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
+<tr class="separator:a0405b201fcd73dadf9368036b3f74b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af997d38c4f5fdac03a33b0abb06eb25e"><td class="memTemplParams" colspan="2"><a id="af997d38c4f5fdac03a33b0abb06eb25e"></a>
+template&lt;class... ValueArgs&gt; </td></tr>
+<tr class="memitem:af997d38c4f5fdac03a33b0abb06eb25e"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (const CharT *key, size_type key_size, ValueArgs &amp;&amp;... value_args)</td></tr>
+<tr class="separator:af997d38c4f5fdac03a33b0abb06eb25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c75d5dac4b8e19481040ae49a03c259"><td class="memTemplParams" colspan="2"><a id="a9c75d5dac4b8e19481040ae49a03c259"></a>
+template&lt;class M &gt; </td></tr>
+<tr class="memitem:a9c75d5dac4b8e19481040ae49a03c259"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert_or_assign</b> (const CharT *key, size_type key_size, M &amp;&amp;obj)</td></tr>
+<tr class="separator:a9c75d5dac4b8e19481040ae49a03c259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bfa244297db5823c806815cc9f0bef4"><td class="memItemLeft" align="right" valign="top"><a id="a6bfa244297db5823c806815cc9f0bef4"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a> pos)</td></tr>
+<tr class="separator:a6bfa244297db5823c806815cc9f0bef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38c0aaa4e4ec5ec5a210057ee9329e68"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html#a38c0aaa4e4ec5ec5a210057ee9329e68">erase</a> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a> first, <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a> last)</td></tr>
+<tr class="separator:a38c0aaa4e4ec5ec5a210057ee9329e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a8db41ac289e8bf7686aa84564568eb"><td class="memItemLeft" align="right" valign="top"><a id="a1a8db41ac289e8bf7686aa84564568eb"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a1a8db41ac289e8bf7686aa84564568eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e1cbeefcac814fb24eb5bdf9f892a4"><td class="memItemLeft" align="right" valign="top"><a id="ad0e1cbeefcac814fb24eb5bdf9f892a4"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (const CharT *key, size_type key_size, std::size_t hash)</td></tr>
+<tr class="separator:ad0e1cbeefcac814fb24eb5bdf9f892a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41df5cf523ec4beb2185c3ffdf8dad6d"><td class="memItemLeft" align="right" valign="top"><a id="a41df5cf523ec4beb2185c3ffdf8dad6d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> &amp;other)</td></tr>
+<tr class="separator:a41df5cf523ec4beb2185c3ffdf8dad6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19ff24185ce23f09c90055851016a547"><td class="memTemplParams" colspan="2"><a id="a19ff24185ce23f09c90055851016a547"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a19ff24185ce23f09c90055851016a547"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>at</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a19ff24185ce23f09c90055851016a547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad03817a91eb9abb4eb4d34b6893d164f"><td class="memTemplParams" colspan="2"><a id="ad03817a91eb9abb4eb4d34b6893d164f"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:ad03817a91eb9abb4eb4d34b6893d164f"><td class="memTemplItemLeft" align="right" valign="top">const U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>at</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:ad03817a91eb9abb4eb4d34b6893d164f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6398ff20a73764b07e162a4d2065c1df"><td class="memTemplParams" colspan="2"><a id="a6398ff20a73764b07e162a4d2065c1df"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a6398ff20a73764b07e162a4d2065c1df"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>at</b> (const CharT *key, size_type key_size, std::size_t hash)</td></tr>
+<tr class="separator:a6398ff20a73764b07e162a4d2065c1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd961314a032eef9c08048bf02e62818"><td class="memTemplParams" colspan="2"><a id="acd961314a032eef9c08048bf02e62818"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:acd961314a032eef9c08048bf02e62818"><td class="memTemplItemLeft" align="right" valign="top">const U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>at</b> (const CharT *key, size_type key_size, std::size_t hash) const</td></tr>
+<tr class="separator:acd961314a032eef9c08048bf02e62818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd18c7c8e9c199dab64b7784207a8c41"><td class="memTemplParams" colspan="2"><a id="afd18c7c8e9c199dab64b7784207a8c41"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:afd18c7c8e9c199dab64b7784207a8c41"><td class="memTemplItemLeft" align="right" valign="top">U &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>access_operator</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:afd18c7c8e9c199dab64b7784207a8c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab657288a09ee0b355d70560fc8480b6b"><td class="memItemLeft" align="right" valign="top"><a id="ab657288a09ee0b355d70560fc8480b6b"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:ab657288a09ee0b355d70560fc8480b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627cdd1b8e8ad819251f144a40013d90"><td class="memItemLeft" align="right" valign="top"><a id="a627cdd1b8e8ad819251f144a40013d90"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const CharT *key, size_type key_size, std::size_t hash) const</td></tr>
+<tr class="separator:a627cdd1b8e8ad819251f144a40013d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0ce34f6c90c9edb4c32d493b01a5793"><td class="memItemLeft" align="right" valign="top"><a id="ac0ce34f6c90c9edb4c32d493b01a5793"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:ac0ce34f6c90c9edb4c32d493b01a5793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5e81d9542abd3c2da2bbab6503c290"><td class="memItemLeft" align="right" valign="top"><a id="ade5e81d9542abd3c2da2bbab6503c290"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:ade5e81d9542abd3c2da2bbab6503c290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32845c48b3f53ee9af395135d7978ef0"><td class="memItemLeft" align="right" valign="top"><a id="a32845c48b3f53ee9af395135d7978ef0"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key, size_type key_size, std::size_t hash)</td></tr>
+<tr class="separator:a32845c48b3f53ee9af395135d7978ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358488e64ce728185093b90bcf9a677e"><td class="memItemLeft" align="right" valign="top"><a id="a358488e64ce728185093b90bcf9a677e"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key, size_type key_size, std::size_t hash) const</td></tr>
+<tr class="separator:a358488e64ce728185093b90bcf9a677e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ebcb2ef3d23f894e4e95a61927fa524"><td class="memItemLeft" align="right" valign="top"><a id="a6ebcb2ef3d23f894e4e95a61927fa524"></a>
+std::pair&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>, <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a6ebcb2ef3d23f894e4e95a61927fa524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5720f180729384a261001bbf6146304"><td class="memItemLeft" align="right" valign="top"><a id="ac5720f180729384a261001bbf6146304"></a>
+std::pair&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>, <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:ac5720f180729384a261001bbf6146304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6585a59e481fac56f8c664f2a98c5dfb"><td class="memItemLeft" align="right" valign="top"><a id="a6585a59e481fac56f8c664f2a98c5dfb"></a>
+std::pair&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>, <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key, size_type key_size, std::size_t hash)</td></tr>
+<tr class="separator:a6585a59e481fac56f8c664f2a98c5dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7569efcc6070aceb0594664087b29780"><td class="memItemLeft" align="right" valign="top"><a id="a7569efcc6070aceb0594664087b29780"></a>
+std::pair&lt; <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>, <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key, size_type key_size, std::size_t hash) const</td></tr>
+<tr class="separator:a7569efcc6070aceb0594664087b29780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad775908162e31095eb16f347d9540c41"><td class="memItemLeft" align="right" valign="top"><a id="ad775908162e31095eb16f347d9540c41"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>bucket_count</b> () const</td></tr>
+<tr class="separator:ad775908162e31095eb16f347d9540c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacafcac928000f078e2eaa422b8fabe"><td class="memItemLeft" align="right" valign="top"><a id="acacafcac928000f078e2eaa422b8fabe"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_bucket_count</b> () const</td></tr>
+<tr class="separator:acacafcac928000f078e2eaa422b8fabe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2edb18df0bf7881d2f5dbcfa92cea419"><td class="memItemLeft" align="right" valign="top"><a id="a2edb18df0bf7881d2f5dbcfa92cea419"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>load_factor</b> () const</td></tr>
+<tr class="separator:a2edb18df0bf7881d2f5dbcfa92cea419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4781edcd65166f26daee4b6c590a508"><td class="memItemLeft" align="right" valign="top"><a id="ab4781edcd65166f26daee4b6c590a508"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>max_load_factor</b> () const</td></tr>
+<tr class="separator:ab4781edcd65166f26daee4b6c590a508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a222f63f9dfd2b4b1be7bedd6df7160d0"><td class="memItemLeft" align="right" valign="top"><a id="a222f63f9dfd2b4b1be7bedd6df7160d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>max_load_factor</b> (float ml)</td></tr>
+<tr class="separator:a222f63f9dfd2b4b1be7bedd6df7160d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59f550f2996effcde37bc5bdc0b8db5"><td class="memItemLeft" align="right" valign="top"><a id="ae59f550f2996effcde37bc5bdc0b8db5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rehash</b> (size_type count)</td></tr>
+<tr class="separator:ae59f550f2996effcde37bc5bdc0b8db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a220e0c558993e68193d2a1edf93dfaa7"><td class="memItemLeft" align="right" valign="top"><a id="a220e0c558993e68193d2a1edf93dfaa7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reserve</b> (size_type count)</td></tr>
+<tr class="separator:a220e0c558993e68193d2a1edf93dfaa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13ac46af36bcb400245148bbf3037497"><td class="memItemLeft" align="right" valign="top"><a id="a13ac46af36bcb400245148bbf3037497"></a>
+hasher&#160;</td><td class="memItemRight" valign="bottom"><b>hash_function</b> () const</td></tr>
+<tr class="separator:a13ac46af36bcb400245148bbf3037497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc888c62b23103099cc69e7ff6529a67"><td class="memItemLeft" align="right" valign="top"><a id="afc888c62b23103099cc69e7ff6529a67"></a>
+key_equal&#160;</td><td class="memItemRight" valign="bottom"><b>key_eq</b> () const</td></tr>
+<tr class="separator:afc888c62b23103099cc69e7ff6529a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8939d41f970743ef9198fb4462be83bd"><td class="memItemLeft" align="right" valign="top"><a id="a8939d41f970743ef9198fb4462be83bd"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>mutable_iterator</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a> it) noexcept</td></tr>
+<tr class="separator:a8939d41f970743ef9198fb4462be83bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae343b377a760d11522a6b002652e52d7"><td class="memTemplParams" colspan="2"><a id="ae343b377a760d11522a6b002652e52d7"></a>
+template&lt;class Serializer &gt; </td></tr>
+<tr class="memitem:ae343b377a760d11522a6b002652e52d7"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>serialize</b> (Serializer &amp;serializer) const</td></tr>
+<tr class="separator:ae343b377a760d11522a6b002652e52d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5123143099c6c26b7dcae8dea47770d2"><td class="memTemplParams" colspan="2"><a id="a5123143099c6c26b7dcae8dea47770d2"></a>
+template&lt;class Deserializer &gt; </td></tr>
+<tr class="memitem:a5123143099c6c26b7dcae8dea47770d2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>deserialize</b> (Deserializer &amp;deserializer, bool hash_compatible)</td></tr>
+<tr class="separator:a5123143099c6c26b7dcae8dea47770d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:ae22200e3f987ec4d9c430e5bd06f720a"><td class="memItemLeft" align="right" valign="top"><a id="ae22200e3f987ec4d9c430e5bd06f720a"></a>
+static const size_type&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_INIT_BUCKET_COUNT</b> = 0</td></tr>
+<tr class="separator:ae22200e3f987ec4d9c430e5bd06f720a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d5870d711fafac7777a6a012704c7e4"><td class="memItemLeft" align="right" valign="top"><a id="a6d5870d711fafac7777a6a012704c7e4"></a>
+static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>DEFAULT_MAX_LOAD_FACTOR</b> = 2.0f</td></tr>
+<tr class="separator:a6d5870d711fafac7777a6a012704c7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad445fe99b1a5d9e8bf688fdf4480eb63"><td class="memItemLeft" align="right" valign="top"><a id="ad445fe99b1a5d9e8bf688fdf4480eb63"></a>
+static const size_type&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_KEY_SIZE</b> = array_bucket::MAX_KEY_SIZE</td></tr>
+<tr class="separator:ad445fe99b1a5d9e8bf688fdf4480eb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;class CharT, class T, class Hash, class KeyEqual, bool StoreNullTerminator, class KeySizeT, class IndexSizeT, class GrowthPolicy&gt;<br />
+class tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;</h3>
+
+<p>If there is no value in the <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a> (in the case of a set for example), T should be void.</p>
+<p>The size of a key string is limited to std::numeric_limits&lt;KeySizeT&gt;::max() - 1.</p>
+<p>The number of elements in the map is limited to std::numeric_limits&lt;IndexSizeT&gt;::max(). </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a38c0aaa4e4ec5ec5a210057ee9329e68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38c0aaa4e4ec5ec5a210057ee9329e68">&#9670;&nbsp;</a></span>erase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash, class KeyEqual, bool StoreNullTerminator, class KeySizeT, class IndexSizeT, class GrowthPolicy&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">iterator</a> <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">tsl::detail_array_hash::array_hash</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">const_iterator</a>&#160;</td>
+          <td class="paramname"><em>last</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>When erasing an element from a bucket with erase_from_bucket, it invalidates all the iterators in the array bucket of the element (m_array_bucket_iterator) but not the iterators of the buckets itself (m_buckets_iterator).</p>
+<p>So first erase all the values between first and last which are not part of the bucket of last, and then erase carefully the values in last's bucket.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/hat-trie/include/tsl/array-hash/<a class="el" href="array__hash_8h_source.html">array_hash.h</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

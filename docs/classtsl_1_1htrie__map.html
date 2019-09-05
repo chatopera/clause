@@ -1,0 +1,1067 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: tsl::htrie_map&lt; CharT, T, Hash, KeySizeT &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacetsl.html">tsl</a></li><li class="navelem"><a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="classtsl_1_1htrie__map-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">tsl::htrie_map&lt; CharT, T, Hash, KeySizeT &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="htrie__map_8h_source.html">htrie_map.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a1521d97cadf0d6ee63d633d718199136"><td class="memItemLeft" align="right" valign="top"><a id="a1521d97cadf0d6ee63d633d718199136"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>char_type</b> = typename ht::char_type</td></tr>
+<tr class="separator:a1521d97cadf0d6ee63d633d718199136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f588f3d440293aa4910b0e2db0e76f"><td class="memItemLeft" align="right" valign="top"><a id="a75f588f3d440293aa4910b0e2db0e76f"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>mapped_type</b> = T</td></tr>
+<tr class="separator:a75f588f3d440293aa4910b0e2db0e76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7588950486708f5c717c04dd988e317"><td class="memItemLeft" align="right" valign="top"><a id="af7588950486708f5c717c04dd988e317"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>key_size_type</b> = typename ht::key_size_type</td></tr>
+<tr class="separator:af7588950486708f5c717c04dd988e317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7b64d3cfd5795e1d1cea424f50e4f1"><td class="memItemLeft" align="right" valign="top"><a id="a7f7b64d3cfd5795e1d1cea424f50e4f1"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b> = typename ht::size_type</td></tr>
+<tr class="separator:a7f7b64d3cfd5795e1d1cea424f50e4f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84aaf2ab36fec5ede504ee93b07cb6d0"><td class="memItemLeft" align="right" valign="top"><a id="a84aaf2ab36fec5ede504ee93b07cb6d0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>hasher</b> = typename ht::hasher</td></tr>
+<tr class="separator:a84aaf2ab36fec5ede504ee93b07cb6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe5d944bc6faaf568e86a05f93a96783"><td class="memItemLeft" align="right" valign="top"><a id="afe5d944bc6faaf568e86a05f93a96783"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> = typename <a class="el" href="classtsl_1_1detail__htrie__hash_1_1htrie__hash_1_1htrie__hash__iterator.html">ht::iterator</a></td></tr>
+<tr class="separator:afe5d944bc6faaf568e86a05f93a96783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab92dc60520529bf06109c5f28aa94344"><td class="memItemLeft" align="right" valign="top"><a id="ab92dc60520529bf06109c5f28aa94344"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> = typename <a class="el" href="classtsl_1_1detail__htrie__hash_1_1htrie__hash_1_1htrie__hash__iterator.html">ht::const_iterator</a></td></tr>
+<tr class="separator:ab92dc60520529bf06109c5f28aa94344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a84925300843c84ccde3706998db33"><td class="memItemLeft" align="right" valign="top"><a id="a26a84925300843c84ccde3706998db33"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>prefix_iterator</b> = typename <a class="el" href="classtsl_1_1detail__htrie__hash_1_1htrie__hash_1_1htrie__hash__iterator.html">ht::prefix_iterator</a></td></tr>
+<tr class="separator:a26a84925300843c84ccde3706998db33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867beb61fa89bda7ed12c7b6af6e1b0b"><td class="memItemLeft" align="right" valign="top"><a id="a867beb61fa89bda7ed12c7b6af6e1b0b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_prefix_iterator</b> = typename <a class="el" href="classtsl_1_1detail__htrie__hash_1_1htrie__hash_1_1htrie__hash__iterator.html">ht::const_prefix_iterator</a></td></tr>
+<tr class="separator:a867beb61fa89bda7ed12c7b6af6e1b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a09040d4d4481c5b53dbd6bedc78ebce1"><td class="memItemLeft" align="right" valign="top"><a id="a09040d4d4481c5b53dbd6bedc78ebce1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>htrie_map</b> (const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:a09040d4d4481c5b53dbd6bedc78ebce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f1d77879976ddd617da163d5f8786e"><td class="memItemLeft" align="right" valign="top"><a id="a29f1d77879976ddd617da163d5f8786e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>htrie_map</b> (size_type burst_threshold, const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:a29f1d77879976ddd617da163d5f8786e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65c471d282bedd3c92e16e45f584cce5"><td class="memTemplParams" colspan="2"><a id="a65c471d282bedd3c92e16e45f584cce5"></a>
+template&lt;class InputIt , typename std::enable_if&lt; is_iterator&lt; InputIt &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a65c471d282bedd3c92e16e45f584cce5"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>htrie_map</b> (InputIt first, InputIt last, const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:a65c471d282bedd3c92e16e45f584cce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aeceefa0978b656e62799e2a17821f9"><td class="memItemLeft" align="right" valign="top"><a id="a4aeceefa0978b656e62799e2a17821f9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>htrie_map</b> (std::initializer_list&lt; std::pair&lt; const CharT *, T &gt;&gt; init, const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:a4aeceefa0978b656e62799e2a17821f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c34e3eb596615d921bb2eb827566d39"><td class="memItemLeft" align="right" valign="top"><a id="a3c34e3eb596615d921bb2eb827566d39"></a>
+<a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (std::initializer_list&lt; std::pair&lt; const CharT *, T &gt;&gt; ilist)</td></tr>
+<tr class="separator:a3c34e3eb596615d921bb2eb827566d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36867626081632d719e5957151ec719"><td class="memItemLeft" align="right" valign="top"><a id="aa36867626081632d719e5957151ec719"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () noexcept</td></tr>
+<tr class="separator:aa36867626081632d719e5957151ec719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec07d36b7beaa7c452edb41bb24e7c83"><td class="memItemLeft" align="right" valign="top"><a id="aec07d36b7beaa7c452edb41bb24e7c83"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const noexcept</td></tr>
+<tr class="separator:aec07d36b7beaa7c452edb41bb24e7c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c17c77dd6745eda5c6460619a60525"><td class="memItemLeft" align="right" valign="top"><a id="aa1c17c77dd6745eda5c6460619a60525"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cbegin</b> () const noexcept</td></tr>
+<tr class="separator:aa1c17c77dd6745eda5c6460619a60525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5602c6a6657281f2aa525e40768f9b40"><td class="memItemLeft" align="right" valign="top"><a id="a5602c6a6657281f2aa525e40768f9b40"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () noexcept</td></tr>
+<tr class="separator:a5602c6a6657281f2aa525e40768f9b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8d66612610c92a960a1cf921cc736b6"><td class="memItemLeft" align="right" valign="top"><a id="ad8d66612610c92a960a1cf921cc736b6"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const noexcept</td></tr>
+<tr class="separator:ad8d66612610c92a960a1cf921cc736b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa030c230aa963c1f4880355be8b91912"><td class="memItemLeft" align="right" valign="top"><a id="aa030c230aa963c1f4880355be8b91912"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cend</b> () const noexcept</td></tr>
+<tr class="separator:aa030c230aa963c1f4880355be8b91912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf05a29f2f6cecb2d16f50c097edb7a3"><td class="memItemLeft" align="right" valign="top"><a id="adf05a29f2f6cecb2d16f50c097edb7a3"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> () const noexcept</td></tr>
+<tr class="separator:adf05a29f2f6cecb2d16f50c097edb7a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ae5cd3c094ce0f2e69a17ebe7bc5fba"><td class="memItemLeft" align="right" valign="top"><a id="a1ae5cd3c094ce0f2e69a17ebe7bc5fba"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const noexcept</td></tr>
+<tr class="separator:a1ae5cd3c094ce0f2e69a17ebe7bc5fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f177265deab35635b1bab69a0ab7f85"><td class="memItemLeft" align="right" valign="top"><a id="a1f177265deab35635b1bab69a0ab7f85"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_size</b> () const noexcept</td></tr>
+<tr class="separator:a1f177265deab35635b1bab69a0ab7f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3a8d2b443a723d2e35c352e17b11b3"><td class="memItemLeft" align="right" valign="top"><a id="a2e3a8d2b443a723d2e35c352e17b11b3"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_key_size</b> () const noexcept</td></tr>
+<tr class="separator:a2e3a8d2b443a723d2e35c352e17b11b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b34cf266ea22c21673dc4126ae07a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#ad7b34cf266ea22c21673dc4126ae07a2">shrink_to_fit</a> ()</td></tr>
+<tr class="separator:ad7b34cf266ea22c21673dc4126ae07a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d5b314c61de671d36fd6fed389972ae"><td class="memItemLeft" align="right" valign="top"><a id="a7d5b314c61de671d36fd6fed389972ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
+<tr class="separator:a7d5b314c61de671d36fd6fed389972ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade45bfe67730bffd5896998733b9b64d"><td class="memItemLeft" align="right" valign="top"><a id="ade45bfe67730bffd5896998733b9b64d"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert_ks</b> (const CharT *key, size_type key_size, const T &amp;value)</td></tr>
+<tr class="separator:ade45bfe67730bffd5896998733b9b64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f5b86eb07afac814ba11e1e2cab1174"><td class="memItemLeft" align="right" valign="top"><a id="a9f5b86eb07afac814ba11e1e2cab1174"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const CharT *key, const T &amp;value)</td></tr>
+<tr class="separator:a9f5b86eb07afac814ba11e1e2cab1174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8176b54c36ee830b5dbd2f35d4feb48a"><td class="memItemLeft" align="right" valign="top"><a id="a8176b54c36ee830b5dbd2f35d4feb48a"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std::basic_string&lt; CharT &gt; &amp;key, const T &amp;value)</td></tr>
+<tr class="separator:a8176b54c36ee830b5dbd2f35d4feb48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd933a958b8607559f57c9ccb96f5ef0"><td class="memItemLeft" align="right" valign="top"><a id="afd933a958b8607559f57c9ccb96f5ef0"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert_ks</b> (const CharT *key, size_type key_size, T &amp;&amp;value)</td></tr>
+<tr class="separator:afd933a958b8607559f57c9ccb96f5ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f2a311bbff6c0c744df9f32bbb44d0"><td class="memItemLeft" align="right" valign="top"><a id="aa0f2a311bbff6c0c744df9f32bbb44d0"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const CharT *key, T &amp;&amp;value)</td></tr>
+<tr class="separator:aa0f2a311bbff6c0c744df9f32bbb44d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad933ac7d5c7f1dbb7749b6ace4e29e00"><td class="memItemLeft" align="right" valign="top"><a id="ad933ac7d5c7f1dbb7749b6ace4e29e00"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std::basic_string&lt; CharT &gt; &amp;key, T &amp;&amp;value)</td></tr>
+<tr class="separator:ad933ac7d5c7f1dbb7749b6ace4e29e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae609c40e4ae7135fe07e03bffff43c68"><td class="memTemplParams" colspan="2"><a id="ae609c40e4ae7135fe07e03bffff43c68"></a>
+template&lt;class InputIt , typename std::enable_if&lt; is_iterator&lt; InputIt &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:ae609c40e4ae7135fe07e03bffff43c68"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert</b> (InputIt first, InputIt last)</td></tr>
+<tr class="separator:ae609c40e4ae7135fe07e03bffff43c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abebca535bd7823c709855d719aef7098"><td class="memItemLeft" align="right" valign="top"><a id="abebca535bd7823c709855d719aef7098"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (std::initializer_list&lt; std::pair&lt; const CharT *, T &gt;&gt; ilist)</td></tr>
+<tr class="separator:abebca535bd7823c709855d719aef7098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af63462cae5a9d5f0cd08f2169f27ab1d"><td class="memTemplParams" colspan="2"><a id="af63462cae5a9d5f0cd08f2169f27ab1d"></a>
+template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:af63462cae5a9d5f0cd08f2169f27ab1d"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace_ks</b> (const CharT *key, size_type key_size, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:af63462cae5a9d5f0cd08f2169f27ab1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7e4ec63b34ac2a13ab9d7082ab9442a"><td class="memTemplParams" colspan="2"><a id="ac7e4ec63b34ac2a13ab9d7082ab9442a"></a>
+template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:ac7e4ec63b34ac2a13ab9d7082ab9442a"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (const CharT *key, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:ac7e4ec63b34ac2a13ab9d7082ab9442a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecfcbf61f4d4c62f7405bd28422b01c9"><td class="memTemplParams" colspan="2"><a id="aecfcbf61f4d4c62f7405bd28422b01c9"></a>
+template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:aecfcbf61f4d4c62f7405bd28422b01c9"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (const std::basic_string&lt; CharT &gt; &amp;key, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:aecfcbf61f4d4c62f7405bd28422b01c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17509192dbc453cc4ce4cf2a6ee0c016"><td class="memItemLeft" align="right" valign="top"><a id="a17509192dbc453cc4ce4cf2a6ee0c016"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (const_iterator pos)</td></tr>
+<tr class="separator:a17509192dbc453cc4ce4cf2a6ee0c016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8564150d19e9013ad3c761bada89799"><td class="memItemLeft" align="right" valign="top"><a id="ac8564150d19e9013ad3c761bada89799"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (const_iterator first, const_iterator last)</td></tr>
+<tr class="separator:ac8564150d19e9013ad3c761bada89799"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eac8a6728a04aa7d73b868a37cfac0a"><td class="memItemLeft" align="right" valign="top"><a id="a3eac8a6728a04aa7d73b868a37cfac0a"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>erase_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a3eac8a6728a04aa7d73b868a37cfac0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a750c11636d95e8dc73619c13c778c"><td class="memItemLeft" align="right" valign="top"><a id="ac7a750c11636d95e8dc73619c13c778c"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (const CharT *key)</td></tr>
+<tr class="separator:ac7a750c11636d95e8dc73619c13c778c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3edbcd3e86c8bc9c7f2abb3549b8186b"><td class="memItemLeft" align="right" valign="top"><a id="a3edbcd3e86c8bc9c7f2abb3549b8186b"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>erase</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:a3edbcd3e86c8bc9c7f2abb3549b8186b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3e6af6e817a9de1cae296c4c67b811d"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#ad3e6af6e817a9de1cae296c4c67b811d">erase_prefix_ks</a> (const CharT *prefix, size_type prefix_size)</td></tr>
+<tr class="separator:ad3e6af6e817a9de1cae296c4c67b811d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd84597fad9026f344e63d03bc9ca36"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a3bd84597fad9026f344e63d03bc9ca36">erase_prefix</a> (const CharT *prefix)</td></tr>
+<tr class="separator:a3bd84597fad9026f344e63d03bc9ca36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72f36ec10291da9f79bb62c261d721df"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a72f36ec10291da9f79bb62c261d721df">erase_prefix</a> (const std::basic_string&lt; CharT &gt; &amp;prefix)</td></tr>
+<tr class="separator:a72f36ec10291da9f79bb62c261d721df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0094de434c1dd72568c77f0867543e92"><td class="memItemLeft" align="right" valign="top"><a id="a0094de434c1dd72568c77f0867543e92"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;other)</td></tr>
+<tr class="separator:a0094de434c1dd72568c77f0867543e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2db929a1fc1f9bd2c540b37794930a63"><td class="memItemLeft" align="right" valign="top"><a id="a2db929a1fc1f9bd2c540b37794930a63"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a2db929a1fc1f9bd2c540b37794930a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb9f8528dfe9ddf153cb900c029986f5"><td class="memItemLeft" align="right" valign="top"><a id="afb9f8528dfe9ddf153cb900c029986f5"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:afb9f8528dfe9ddf153cb900c029986f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54074f2da80e0c2825597612567db72"><td class="memItemLeft" align="right" valign="top"><a id="ac54074f2da80e0c2825597612567db72"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const CharT *key)</td></tr>
+<tr class="separator:ac54074f2da80e0c2825597612567db72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a490e744b396c0d404619f08196d8554c"><td class="memItemLeft" align="right" valign="top"><a id="a490e744b396c0d404619f08196d8554c"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const CharT *key) const</td></tr>
+<tr class="separator:a490e744b396c0d404619f08196d8554c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7247aa20c811f8426f19f58795f8569"><td class="memItemLeft" align="right" valign="top"><a id="ac7247aa20c811f8426f19f58795f8569"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:ac7247aa20c811f8426f19f58795f8569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac794efba652f7ea2b40353da01c61ca8"><td class="memItemLeft" align="right" valign="top"><a id="ac794efba652f7ea2b40353da01c61ca8"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:ac794efba652f7ea2b40353da01c61ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61b2f48349dbd3039987fd2a50a8dbf9"><td class="memItemLeft" align="right" valign="top"><a id="a61b2f48349dbd3039987fd2a50a8dbf9"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const CharT *key)</td></tr>
+<tr class="separator:a61b2f48349dbd3039987fd2a50a8dbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ae2b21ce9c882570017a5bf56a7f2b4"><td class="memItemLeft" align="right" valign="top"><a id="a2ae2b21ce9c882570017a5bf56a7f2b4"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:a2ae2b21ce9c882570017a5bf56a7f2b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96dd9712b461cda20736a107864df556"><td class="memItemLeft" align="right" valign="top"><a id="a96dd9712b461cda20736a107864df556"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:a96dd9712b461cda20736a107864df556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd93826701b8bb570e99c05aa81a0ee"><td class="memItemLeft" align="right" valign="top"><a id="a3cd93826701b8bb570e99c05aa81a0ee"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const CharT *key) const</td></tr>
+<tr class="separator:a3cd93826701b8bb570e99c05aa81a0ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf0ba47bfe9bbf6f6c0c1f1d1cfc7721"><td class="memItemLeft" align="right" valign="top"><a id="acf0ba47bfe9bbf6f6c0c1f1d1cfc7721"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:acf0ba47bfe9bbf6f6c0c1f1d1cfc7721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd9c4cab5ac60a551a20f4a95e2946bb"><td class="memItemLeft" align="right" valign="top"><a id="abd9c4cab5ac60a551a20f4a95e2946bb"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:abd9c4cab5ac60a551a20f4a95e2946bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bbc728bd214e7056cb1aab3bfce904e"><td class="memItemLeft" align="right" valign="top"><a id="a4bbc728bd214e7056cb1aab3bfce904e"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:a4bbc728bd214e7056cb1aab3bfce904e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc3e976f5c89b48c024718f3709ff214"><td class="memItemLeft" align="right" valign="top"><a id="afc3e976f5c89b48c024718f3709ff214"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key)</td></tr>
+<tr class="separator:afc3e976f5c89b48c024718f3709ff214"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8baf30ae388820819e1b857bced48a00"><td class="memItemLeft" align="right" valign="top"><a id="a8baf30ae388820819e1b857bced48a00"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key) const</td></tr>
+<tr class="separator:a8baf30ae388820819e1b857bced48a00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54a5ce0decf90380a549a170f44fc4a"><td class="memItemLeft" align="right" valign="top"><a id="ac54a5ce0decf90380a549a170f44fc4a"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:ac54a5ce0decf90380a549a170f44fc4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accf38a3a9318bc47dd2c8a44bca91d02"><td class="memItemLeft" align="right" valign="top"><a id="accf38a3a9318bc47dd2c8a44bca91d02"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:accf38a3a9318bc47dd2c8a44bca91d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e0f435f0d86cf318ebf5945ddaf727"><td class="memItemLeft" align="right" valign="top"><a id="a37e0f435f0d86cf318ebf5945ddaf727"></a>
+std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a37e0f435f0d86cf318ebf5945ddaf727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f6e575d2aaf81163e95cf70d258e055"><td class="memItemLeft" align="right" valign="top"><a id="a5f6e575d2aaf81163e95cf70d258e055"></a>
+std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:a5f6e575d2aaf81163e95cf70d258e055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac76349aaf72c43cc95c1351ee3fac7e8"><td class="memItemLeft" align="right" valign="top"><a id="ac76349aaf72c43cc95c1351ee3fac7e8"></a>
+std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key)</td></tr>
+<tr class="separator:ac76349aaf72c43cc95c1351ee3fac7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e42e9061b793781d333de4a37dafe7"><td class="memItemLeft" align="right" valign="top"><a id="a21e42e9061b793781d333de4a37dafe7"></a>
+std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key) const</td></tr>
+<tr class="separator:a21e42e9061b793781d333de4a37dafe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6003636d5d2b4425bf4fe806692c9d9"><td class="memItemLeft" align="right" valign="top"><a id="aa6003636d5d2b4425bf4fe806692c9d9"></a>
+std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:aa6003636d5d2b4425bf4fe806692c9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1da66df48dee8c0bd651215f6e2bc83"><td class="memItemLeft" align="right" valign="top"><a id="af1da66df48dee8c0bd651215f6e2bc83"></a>
+std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:af1da66df48dee8c0bd651215f6e2bc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52f055e962a40c63ae1df9dcd129313d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; prefix_iterator, prefix_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a52f055e962a40c63ae1df9dcd129313d">equal_prefix_range_ks</a> (const CharT *prefix, size_type prefix_size)</td></tr>
+<tr class="separator:a52f055e962a40c63ae1df9dcd129313d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a535979d38160e3982905c85f114d9424"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const_prefix_iterator, const_prefix_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a535979d38160e3982905c85f114d9424">equal_prefix_range_ks</a> (const CharT *prefix, size_type prefix_size) const</td></tr>
+<tr class="separator:a535979d38160e3982905c85f114d9424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa8d9ed1b9edc2c47432014798a1848"><td class="memItemLeft" align="right" valign="top">std::pair&lt; prefix_iterator, prefix_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a7aa8d9ed1b9edc2c47432014798a1848">equal_prefix_range</a> (const CharT *prefix)</td></tr>
+<tr class="separator:a7aa8d9ed1b9edc2c47432014798a1848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a863c5dc8cdeb930640cf1c852ef54477"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const_prefix_iterator, const_prefix_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a863c5dc8cdeb930640cf1c852ef54477">equal_prefix_range</a> (const CharT *prefix) const</td></tr>
+<tr class="separator:a863c5dc8cdeb930640cf1c852ef54477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db8b03cad1cb4dd81bf1e94895356c0"><td class="memItemLeft" align="right" valign="top">std::pair&lt; prefix_iterator, prefix_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a4db8b03cad1cb4dd81bf1e94895356c0">equal_prefix_range</a> (const std::basic_string&lt; CharT &gt; &amp;prefix)</td></tr>
+<tr class="separator:a4db8b03cad1cb4dd81bf1e94895356c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38c3173d6cd7a5f352d7f38595d61d5"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const_prefix_iterator, const_prefix_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#af38c3173d6cd7a5f352d7f38595d61d5">equal_prefix_range</a> (const std::basic_string&lt; CharT &gt; &amp;prefix) const</td></tr>
+<tr class="separator:af38c3173d6cd7a5f352d7f38595d61d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaef9b4a15e2dc3552ad486c1a6a6838b"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#aaef9b4a15e2dc3552ad486c1a6a6838b">longest_prefix_ks</a> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:aaef9b4a15e2dc3552ad486c1a6a6838b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94efc12b0c8acbfa677fc3ac9b8d85d0"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a94efc12b0c8acbfa677fc3ac9b8d85d0">longest_prefix_ks</a> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:a94efc12b0c8acbfa677fc3ac9b8d85d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7b42ce9e54fcbd0bff739bb052fda3"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a8a7b42ce9e54fcbd0bff739bb052fda3">longest_prefix</a> (const CharT *key)</td></tr>
+<tr class="separator:a8a7b42ce9e54fcbd0bff739bb052fda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fb473a5a24cf09039ff4e11a9c5a4dd"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a9fb473a5a24cf09039ff4e11a9c5a4dd">longest_prefix</a> (const CharT *key) const</td></tr>
+<tr class="separator:a9fb473a5a24cf09039ff4e11a9c5a4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9631d3874a3f068412028d09ea43734"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#ac9631d3874a3f068412028d09ea43734">longest_prefix</a> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:ac9631d3874a3f068412028d09ea43734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a348d3f30b6421ed8e8493e29a3270e"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a5a348d3f30b6421ed8e8493e29a3270e">longest_prefix</a> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:a5a348d3f30b6421ed8e8493e29a3270e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a316a9095c265496cf38dd60936c8580c"><td class="memItemLeft" align="right" valign="top"><a id="a316a9095c265496cf38dd60936c8580c"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>max_load_factor</b> () const</td></tr>
+<tr class="separator:a316a9095c265496cf38dd60936c8580c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa39a152cfad652ac716352c3d3814bfe"><td class="memItemLeft" align="right" valign="top"><a id="aa39a152cfad652ac716352c3d3814bfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>max_load_factor</b> (float ml)</td></tr>
+<tr class="separator:aa39a152cfad652ac716352c3d3814bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58cdcc90e7c6b80573900de9a9fe8a6"><td class="memItemLeft" align="right" valign="top"><a id="ad58cdcc90e7c6b80573900de9a9fe8a6"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>burst_threshold</b> () const</td></tr>
+<tr class="separator:ad58cdcc90e7c6b80573900de9a9fe8a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967538fa13e84fdb15fca45a774f3dc6"><td class="memItemLeft" align="right" valign="top"><a id="a967538fa13e84fdb15fca45a774f3dc6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>burst_threshold</b> (size_type threshold)</td></tr>
+<tr class="separator:a967538fa13e84fdb15fca45a774f3dc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53f544019bb0020b7d8aacb10448a462"><td class="memItemLeft" align="right" valign="top"><a id="a53f544019bb0020b7d8aacb10448a462"></a>
+hasher&#160;</td><td class="memItemRight" valign="bottom"><b>hash_function</b> () const</td></tr>
+<tr class="separator:a53f544019bb0020b7d8aacb10448a462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dda7bf75bd991a7c515e8e160109c50"><td class="memTemplParams" colspan="2">template&lt;class Serializer &gt; </td></tr>
+<tr class="memitem:a6dda7bf75bd991a7c515e8e160109c50"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a6dda7bf75bd991a7c515e8e160109c50">serialize</a> (Serializer &amp;serializer) const</td></tr>
+<tr class="separator:a6dda7bf75bd991a7c515e8e160109c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a9ebc57b3df08ecad0a8b411488e611a1"><td class="memTemplParams" colspan="2">template&lt;class Deserializer &gt; </td></tr>
+<tr class="memitem:a9ebc57b3df08ecad0a8b411488e611a1"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtsl_1_1htrie__map.html#a9ebc57b3df08ecad0a8b411488e611a1">deserialize</a> (Deserializer &amp;deserializer, bool hash_compatible=false)</td></tr>
+<tr class="separator:a9ebc57b3df08ecad0a8b411488e611a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a7dfe07ecb8734a9322c7ba8f7767a326"><td class="memItemLeft" align="right" valign="top"><a id="a7dfe07ecb8734a9322c7ba8f7767a326"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;lhs, const <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;rhs)</td></tr>
+<tr class="separator:a7dfe07ecb8734a9322c7ba8f7767a326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30397a03ee89094e480de081203f1f36"><td class="memItemLeft" align="right" valign="top"><a id="a30397a03ee89094e480de081203f1f36"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;lhs, const <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;rhs)</td></tr>
+<tr class="separator:a30397a03ee89094e480de081203f1f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad39a924eb57412097561b09a1615340b"><td class="memItemLeft" align="right" valign="top"><a id="ad39a924eb57412097561b09a1615340b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;lhs, <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> &amp;rhs)</td></tr>
+<tr class="separator:ad39a924eb57412097561b09a1615340b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt;<br />
+class tsl::htrie_map&lt; CharT, T, Hash, KeySizeT &gt;</h3>
+
+<p>Implementation of a hat-trie map.</p>
+<p>The value T must be either nothrow move-constructible/assignable, copy-constuctible or both.</p>
+<p>The size of a key string is limited to std::numeric_limits&lt;KeySizeT&gt;::max() - 1. That is 65 535 characters by default, but can be raised with the KeySizeT template parameter. See max_key_size() for an easy access to this limit.</p>
+<p>Iterators invalidation:</p><ul>
+<li>clear, operator=: always invalidate the iterators.</li>
+<li>insert, emplace, operator[]: always invalidate the iterators.</li>
+<li>erase: always invalidate the iterators. </li>
+</ul>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a9ebc57b3df08ecad0a8b411488e611a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ebc57b3df08ecad0a8b411488e611a1">&#9670;&nbsp;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<div class="memtemplate">
+template&lt;class Deserializer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a> <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">Deserializer &amp;&#160;</td>
+          <td class="paramname"><em>deserializer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hash_compatible</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Deserialize a previouly serialized map through the <code>deserializer</code> parameter.</p>
+<p>The <code>deserializer</code> parameter must be a function object that supports the following calls:</p><ul>
+<li><code>template&lt;typename U&gt; U operator()();</code> where the types <code>std::uint64_t</code>, <code>float</code> and <code>T</code> must be supported for U.</li>
+<li><code>void operator()(CharT* value_out, std::size_t value_size);</code></li>
+</ul>
+<p>If the deserialized hash map part of the hat-trie is hash compatible with the serialized map, the deserialization process can be sped up by setting <code>hash_compatible</code> to true. To be hash compatible, the Hash (take care of the 32-bits vs 64 bits), and KeySizeT must behave the same than the ones used in the serialized map. Otherwise the behaviour is undefined with <code>hash_compatible</code> sets to true.</p>
+<p>The behaviour is undefined if the type <code>CharT</code> and <code>T</code> of the <code><a class="el" href="classtsl_1_1htrie__map.html">htrie_map</a></code> are not the same as the types used during serialization.</p>
+<p>The implementation leaves binary compatibilty (endianness, IEEE 754 for floats, size of int, ...) of the types it deserializes in the hands of the <code>Deserializer</code> function object if compatibilty is required. </p>
+
+</div>
+</div>
+<a id="a7aa8d9ed1b9edc2c47432014798a1848"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa8d9ed1b9edc2c47432014798a1848">&#9670;&nbsp;</a></span>equal_prefix_range() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;prefix_iterator, prefix_iterator&gt; <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::equal_prefix_range </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return a range containing all the elements which have 'prefix' as prefix. The range is defined by a pair of iterator, the first being the begin iterator and the second being the end iterator. </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1htrie__map_a7aa8d9ed1b9edc2c47432014798a1848_icgraph.png" border="0" usemap="#classtsl_1_1htrie__map_a7aa8d9ed1b9edc2c47432014798a1848_icgraph" alt=""/></div>
+<map name="classtsl_1_1htrie__map_a7aa8d9ed1b9edc2c47432014798a1848_icgraph" id="classtsl_1_1htrie__map_a7aa8d9ed1b9edc2c47432014798a1848_icgraph">
+<area shape="rect" id="node2" href="classtsl_1_1htrie__map.html#a535979d38160e3982905c85f114d9424" title="tsl::htrie_map\&lt; char,\l string \&gt;::equal_prefix\l_range_ks" alt="" coords="195,5,344,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a863c5dc8cdeb930640cf1c852ef54477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a863c5dc8cdeb930640cf1c852ef54477">&#9670;&nbsp;</a></span>equal_prefix_range() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;const_prefix_iterator, const_prefix_iterator&gt; <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::equal_prefix_range </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return a range containing all the elements which have 'prefix' as prefix. The range is defined by a pair of iterator, the first being the begin iterator and the second being the end iterator. </p>
+
+</div>
+</div>
+<a id="a4db8b03cad1cb4dd81bf1e94895356c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4db8b03cad1cb4dd81bf1e94895356c0">&#9670;&nbsp;</a></span>equal_prefix_range() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;prefix_iterator, prefix_iterator&gt; <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::equal_prefix_range </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return a range containing all the elements which have 'prefix' as prefix. The range is defined by a pair of iterator, the first being the begin iterator and the second being the end iterator. </p>
+
+</div>
+</div>
+<a id="af38c3173d6cd7a5f352d7f38595d61d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38c3173d6cd7a5f352d7f38595d61d5">&#9670;&nbsp;</a></span>equal_prefix_range() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;const_prefix_iterator, const_prefix_iterator&gt; <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::equal_prefix_range </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return a range containing all the elements which have 'prefix' as prefix. The range is defined by a pair of iterator, the first being the begin iterator and the second being the end iterator. </p>
+
+</div>
+</div>
+<a id="a52f055e962a40c63ae1df9dcd129313d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f055e962a40c63ae1df9dcd129313d">&#9670;&nbsp;</a></span>equal_prefix_range_ks() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;prefix_iterator, prefix_iterator&gt; <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::equal_prefix_range_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>prefix_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return a range containing all the elements which have 'prefix' as prefix. The range is defined by a pair of iterator, the first being the begin iterator and the second being the end iterator. </p>
+
+</div>
+</div>
+<a id="a535979d38160e3982905c85f114d9424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a535979d38160e3982905c85f114d9424">&#9670;&nbsp;</a></span>equal_prefix_range_ks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;const_prefix_iterator, const_prefix_iterator&gt; <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::equal_prefix_range_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>prefix_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return a range containing all the elements which have 'prefix' as prefix. The range is defined by a pair of iterator, the first being the begin iterator and the second being the end iterator. </p>
+
+</div>
+</div>
+<a id="a3bd84597fad9026f344e63d03bc9ca36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd84597fad9026f344e63d03bc9ca36">&#9670;&nbsp;</a></span>erase_prefix() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::erase_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase all the elements which have 'prefix' as prefix. Return the number of erase elements. </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1htrie__map_a3bd84597fad9026f344e63d03bc9ca36_icgraph.png" border="0" usemap="#classtsl_1_1htrie__map_a3bd84597fad9026f344e63d03bc9ca36_icgraph" alt=""/></div>
+<map name="classtsl_1_1htrie__map_a3bd84597fad9026f344e63d03bc9ca36_icgraph" id="classtsl_1_1htrie__map_a3bd84597fad9026f344e63d03bc9ca36_icgraph">
+<area shape="rect" id="node2" href="classtsl_1_1htrie__map.html#ad3e6af6e817a9de1cae296c4c67b811d" title="tsl::htrie_map\&lt; char,\l string \&gt;::erase_prefix_ks" alt="" coords="195,5,366,44"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a72f36ec10291da9f79bb62c261d721df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72f36ec10291da9f79bb62c261d721df">&#9670;&nbsp;</a></span>erase_prefix() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::erase_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>prefix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase all the elements which have 'prefix' as prefix. Return the number of erase elements. </p>
+
+</div>
+</div>
+<a id="ad3e6af6e817a9de1cae296c4c67b811d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3e6af6e817a9de1cae296c4c67b811d">&#9670;&nbsp;</a></span>erase_prefix_ks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::erase_prefix_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>prefix_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Erase all the elements which have 'prefix' as prefix. Return the number of erase elements. </p>
+
+</div>
+</div>
+<a id="a8a7b42ce9e54fcbd0bff739bb052fda3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a7b42ce9e54fcbd0bff739bb052fda3">&#9670;&nbsp;</a></span>longest_prefix() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::longest_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return the element in the trie which is the longest prefix of <code>key</code>. If no element in the trie is a prefix of <code>key</code>, the end iterator is returned.</p>
+<p>Example: </p><pre class="fragment">tsl::htrie_map&lt;char, int&gt; map = {{"/foo", 1}, {"/foo/bar", 1}};
+
+map.longest_prefix("/foo"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/baz"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/bar/baz"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/foo/bar/"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/bar"); // returns end() 
+map.longest_prefix(""); // returns end() </pre> <div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1htrie__map_a8a7b42ce9e54fcbd0bff739bb052fda3_icgraph.png" border="0" usemap="#classtsl_1_1htrie__map_a8a7b42ce9e54fcbd0bff739bb052fda3_icgraph" alt=""/></div>
+<map name="classtsl_1_1htrie__map_a8a7b42ce9e54fcbd0bff739bb052fda3_icgraph" id="classtsl_1_1htrie__map_a8a7b42ce9e54fcbd0bff739bb052fda3_icgraph">
+<area shape="rect" id="node2" href="classchatopera_1_1bot_1_1clause_1_1Bot.html#afbd479b4e3bfcd7d7dbb3c57e70efaa8" title="chatopera::bot::clause\l::Bot::classify" alt="" coords="219,5,372,44"/>
+<area shape="rect" id="node4" href="classtsl_1_1htrie__map.html#a94efc12b0c8acbfa677fc3ac9b8d85d0" title="tsl::htrie_map\&lt; char,\l string \&gt;::longest_prefix_ks" alt="" coords="205,68,385,107"/>
+<area shape="rect" id="node3" href="classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#aca48387fd1fa595d22c84916fe6a289d" title="chatopera::bot::clause\l::ServingHandler::chat" alt="" coords="433,5,587,44"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9fb473a5a24cf09039ff4e11a9c5a4dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fb473a5a24cf09039ff4e11a9c5a4dd">&#9670;&nbsp;</a></span>longest_prefix() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::longest_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return the element in the trie which is the longest prefix of <code>key</code>. If no element in the trie is a prefix of <code>key</code>, the end iterator is returned.</p>
+<p>Example: </p><pre class="fragment">tsl::htrie_map&lt;char, int&gt; map = {{"/foo", 1}, {"/foo/bar", 1}};
+
+map.longest_prefix("/foo"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/baz"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/bar/baz"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/foo/bar/"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/bar"); // returns end() 
+map.longest_prefix(""); // returns end() </pre> 
+</div>
+</div>
+<a id="ac9631d3874a3f068412028d09ea43734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9631d3874a3f068412028d09ea43734">&#9670;&nbsp;</a></span>longest_prefix() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::longest_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return the element in the trie which is the longest prefix of <code>key</code>. If no element in the trie is a prefix of <code>key</code>, the end iterator is returned.</p>
+<p>Example: </p><pre class="fragment">tsl::htrie_map&lt;char, int&gt; map = {{"/foo", 1}, {"/foo/bar", 1}};
+
+map.longest_prefix("/foo"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/baz"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/bar/baz"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/foo/bar/"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/bar"); // returns end() 
+map.longest_prefix(""); // returns end() </pre> 
+</div>
+</div>
+<a id="a5a348d3f30b6421ed8e8493e29a3270e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a348d3f30b6421ed8e8493e29a3270e">&#9670;&nbsp;</a></span>longest_prefix() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::longest_prefix </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return the element in the trie which is the longest prefix of <code>key</code>. If no element in the trie is a prefix of <code>key</code>, the end iterator is returned.</p>
+<p>Example: </p><pre class="fragment">tsl::htrie_map&lt;char, int&gt; map = {{"/foo", 1}, {"/foo/bar", 1}};
+
+map.longest_prefix("/foo"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/baz"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/bar/baz"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/foo/bar/"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/bar"); // returns end() 
+map.longest_prefix(""); // returns end() </pre> 
+</div>
+</div>
+<a id="aaef9b4a15e2dc3552ad486c1a6a6838b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaef9b4a15e2dc3552ad486c1a6a6838b">&#9670;&nbsp;</a></span>longest_prefix_ks() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::longest_prefix_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the element in the trie which is the longest prefix of <code>key</code>. If no element in the trie is a prefix of <code>key</code>, the end iterator is returned.</p>
+<p>Example: </p><pre class="fragment">tsl::htrie_map&lt;char, int&gt; map = {{"/foo", 1}, {"/foo/bar", 1}};
+
+map.longest_prefix("/foo"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/baz"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/bar/baz"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/foo/bar/"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/bar"); // returns end() 
+map.longest_prefix(""); // returns end() </pre> 
+</div>
+</div>
+<a id="a94efc12b0c8acbfa677fc3ac9b8d85d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94efc12b0c8acbfa677fc3ac9b8d85d0">&#9670;&nbsp;</a></span>longest_prefix_ks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::longest_prefix_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Return the element in the trie which is the longest prefix of <code>key</code>. If no element in the trie is a prefix of <code>key</code>, the end iterator is returned.</p>
+<p>Example: </p><pre class="fragment">tsl::htrie_map&lt;char, int&gt; map = {{"/foo", 1}, {"/foo/bar", 1}};
+
+map.longest_prefix("/foo"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/baz"); // returns {"/foo", 1} 
+map.longest_prefix("/foo/bar/baz"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/foo/bar/"); // returns {"/foo/bar", 1} 
+map.longest_prefix("/bar"); // returns end() 
+map.longest_prefix(""); // returns end() </pre> 
+</div>
+</div>
+<a id="a6dda7bf75bd991a7c515e8e160109c50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dda7bf75bd991a7c515e8e160109c50">&#9670;&nbsp;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<div class="memtemplate">
+template&lt;class Serializer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::serialize </td>
+          <td>(</td>
+          <td class="paramtype">Serializer &amp;&#160;</td>
+          <td class="paramname"><em>serializer</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Serialize the map through the <code>serializer</code> parameter.</p>
+<p>The <code>serializer</code> parameter must be a function object that supports the following calls:</p><ul>
+<li><code>void operator()(const U&amp; value);</code> where the types <code>std::uint64_t</code>, <code>float</code> and <code>T</code> must be supported for U.</li>
+<li><code>void operator()(const CharT* value, std::size_t value_size);</code></li>
+</ul>
+<p>The implementation leaves binary compatibilty (endianness, IEEE 754 for floats, ...) of the types it serializes in the hands of the <code>Serializer</code> function object if compatibilty is required. </p>
+
+</div>
+</div>
+<a id="ad7b34cf266ea22c21673dc4126ae07a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b34cf266ea22c21673dc4126ae07a2">&#9670;&nbsp;</a></span>shrink_to_fit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeySizeT = std::uint16_t&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classtsl_1_1htrie__map.html">tsl::htrie_map</a>&lt; CharT, T, Hash, KeySizeT &gt;::shrink_to_fit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Call <a class="el" href="classtsl_1_1htrie__map.html#ad7b34cf266ea22c21673dc4126ae07a2">shrink_to_fit()</a> on each hash node of the hat-trie to reduce its size. </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/hat-trie/include/tsl/<a class="el" href="htrie__map_8h_source.html">htrie_map.h</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

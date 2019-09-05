@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: src/lac/src/lac.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_0f04f17721863983be2c4c47e10bbe80.html">lac</a></li><li class="navelem"><a class="el" href="dir_3c91eac2528a0aaa955bdc0159b05dec.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">lac.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2018 Baidu, Inc. All Rights Reserved.</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">you may not use this file except in compliance with the License.</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">You may obtain a copy of the License at</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">http://www.apache.org/licenses/LICENSE-2.0</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">Unless required by applicable law or agreed to in writing, software</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">See the License for the specific language governing permissions and</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">limitations under the License. */</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#ifndef BAIDU_LAC_LAC_H</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define BAIDU_LAC_LAC_H</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;main_tagger.h&quot;</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;customization_tagger.h&quot;</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">class </span>MainTagger;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacelac.html">lac</a> {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classlac_1_1Lac.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classlac_1_1Lac.html">Lac</a> {</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; <span class="keyword">private</span>:</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classlac_1_1Lac.html">Lac</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; <span class="keyword">public</span>:</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  ~<a class="code" href="classlac_1_1Lac.html">Lac</a>();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">static</span> <a class="code" href="classlac_1_1Lac.html">Lac</a>* <a class="code" href="classlac_1_1Lac.html#a38c7c25ac64ca2e995bd2b92fd582cb4">create</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* conf_dir);</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span>* <a class="code" href="classlac_1_1Lac.html#a8580a02b3eee102de8f4d289eda7411d">create_buff</a>() <span class="keyword">const</span>;</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  RVAL <a class="code" href="classlac_1_1Lac.html#ac28d5b02787134f3b531bd4f5dbb231a">reset_buff</a>(<span class="keywordtype">void</span>* buff) <span class="keyword">const</span>;</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classlac_1_1Lac.html#a2064190d6847363a998b3944bbf597b0">destroy_buff</a>(<span class="keywordtype">void</span>* buff) <span class="keyword">const</span>;</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classlac_1_1Lac.html#aeab3ca807b28a815a5e54cf565c56441">tagging</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* query, <span class="keywordtype">void</span>* buff, <a class="code" href="structlac_1_1TAG.html">tag_t</a>* results, <span class="keywordtype">int</span> max_result_num);</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; <span class="keyword">private</span>:</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classlac_1_1MainTagger.html">MainTagger</a> *_main_tagger; <span class="comment">/* model tagger */</span></div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classlac_1_1CustomizationTagger.html">CustomizationTagger</a> *_customization_tagger; <span class="comment">/* customization tagger */</span></div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  std::set&lt;std::string&gt; _strong_punc; <span class="comment">/* strong punctuations that cut</span></div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">                                    query into sentences, like period */</span></div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  std::map&lt;std::string, std::string&gt; _q2b_dic; <span class="comment">/* full-width characters</span></div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">                    to half-width characters, uppercase to lower case */</span></div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  RVAL load_q2b_dic(<span class="keyword">const</span> std::string &amp;q2b_dic_path);</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  RVAL load_strong_punc(<span class="keyword">const</span> std::string &amp;strong_punc_path);</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  RVAL string_normal(<span class="keyword">const</span> <span class="keywordtype">char</span>* query,</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                     std::vector&lt;std::string&gt; &amp;norm_char_vector,</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                     std::vector&lt;int&gt; &amp;origin_char_offsets) <span class="keyword">const</span>;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">int</span> seg_sent_iter(std::vector&lt;std::string&gt; &amp;norm_char_vector, <span class="keywordtype">int</span> start) <span class="keyword">const</span>;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordtype">int</span> merge_result(<a class="code" href="structlac_1_1lac__buff__t.html">lac_buff_t</a> *buff, <a class="code" href="structlac_1_1TAG.html">tag_t</a> *results, <span class="keywordtype">int</span> results_num,</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                   <span class="keywordtype">int</span> max_result_num) <span class="keyword">const</span>;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="classlac_1_1Lac_html_aeab3ca807b28a815a5e54cf565c56441"><div class="ttname"><a href="classlac_1_1Lac.html#aeab3ca807b28a815a5e54cf565c56441">lac::Lac::tagging</a></div><div class="ttdeci">int tagging(const char *query, void *buff, tag_t *results, int max_result_num)</div><div class="ttdoc">tagging, tag lac tags using the taggers </div><div class="ttdef"><b>Definition:</b> lac.cpp:189</div></div>
+<div class="ttc" id="namespacelac_html"><div class="ttname"><a href="namespacelac.html">lac</a></div><div class="ttdef"><b>Definition:</b> customization_tagger.cpp:21</div></div>
+<div class="ttc" id="classlac_1_1Lac_html_ac28d5b02787134f3b531bd4f5dbb231a"><div class="ttname"><a href="classlac_1_1Lac.html#ac28d5b02787134f3b531bd4f5dbb231a">lac::Lac::reset_buff</a></div><div class="ttdeci">RVAL reset_buff(void *buff) const</div><div class="ttdoc">reset_buff, reset therad variables </div><div class="ttdef"><b>Definition:</b> lac.cpp:157</div></div>
+<div class="ttc" id="structlac_1_1TAG_html"><div class="ttname"><a href="structlac_1_1TAG.html">lac::TAG</a></div><div class="ttdoc">tag_t, the struct of lac result </div><div class="ttdef"><b>Definition:</b> lac_glb.h:43</div></div>
+<div class="ttc" id="classlac_1_1Lac_html"><div class="ttname"><a href="classlac_1_1Lac.html">lac::Lac</a></div><div class="ttdoc">The Lac class, the main controller and entry of the lac </div><div class="ttdef"><b>Definition:</b> lac.h:27</div></div>
+<div class="ttc" id="classlac_1_1Lac_html_a2064190d6847363a998b3944bbf597b0"><div class="ttname"><a href="classlac_1_1Lac.html#a2064190d6847363a998b3944bbf597b0">lac::Lac::destroy_buff</a></div><div class="ttdeci">void destroy_buff(void *buff) const</div><div class="ttdoc">destroy_buff, destroy therad variables </div><div class="ttdef"><b>Definition:</b> lac.cpp:133</div></div>
+<div class="ttc" id="classlac_1_1MainTagger_html"><div class="ttname"><a href="classlac_1_1MainTagger.html">lac::MainTagger</a></div><div class="ttdoc">The MainTagger class, the tagger of model </div><div class="ttdef"><b>Definition:</b> main_tagger.h:29</div></div>
+<div class="ttc" id="classlac_1_1Lac_html_a8580a02b3eee102de8f4d289eda7411d"><div class="ttname"><a href="classlac_1_1Lac.html#a8580a02b3eee102de8f4d289eda7411d">lac::Lac::create_buff</a></div><div class="ttdeci">void * create_buff() const</div><div class="ttdoc">create_buff, initialize therad variables </div><div class="ttdef"><b>Definition:</b> lac.cpp:84</div></div>
+<div class="ttc" id="classlac_1_1CustomizationTagger_html"><div class="ttname"><a href="classlac_1_1CustomizationTagger.html">lac::CustomizationTagger</a></div><div class="ttdoc">The CustomizationTagger class, supports customization </div><div class="ttdef"><b>Definition:</b> customization_tagger.h:27</div></div>
+<div class="ttc" id="classlac_1_1Lac_html_a38c7c25ac64ca2e995bd2b92fd582cb4"><div class="ttname"><a href="classlac_1_1Lac.html#a38c7c25ac64ca2e995bd2b92fd582cb4">lac::Lac::create</a></div><div class="ttdeci">static Lac * create(const char *conf_dir)</div><div class="ttdoc">create, the factory function </div><div class="ttdef"><b>Definition:</b> lac.cpp:35</div></div>
+<div class="ttc" id="structlac_1_1lac__buff__t_html"><div class="ttname"><a href="structlac_1_1lac__buff__t.html">lac::lac_buff_t</a></div><div class="ttdoc">lac_buff_t, thread variables </div><div class="ttdef"><b>Definition:</b> lac_glb.h:57</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

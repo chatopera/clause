@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::array_hash_iterator&lt; IsConst &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacetsl.html">tsl</a></li><li class="navelem"><b>detail_array_hash</b></li><li class="navelem"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash.html">array_hash</a></li><li class="navelem"><a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">tsl::detail_array_hash::array_hash&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::array_hash_iterator&lt; IsConst &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:aa20c256f0bcba4fb04341a4bdd78324e"><td class="memItemLeft" align="right" valign="top"><a id="aa20c256f0bcba4fb04341a4bdd78324e"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator_category</b> = std::forward_iterator_tag</td></tr>
+<tr class="separator:aa20c256f0bcba4fb04341a4bdd78324e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d5e043fcdd0f0c6129f42762bf884a"><td class="memItemLeft" align="right" valign="top"><a id="ae3d5e043fcdd0f0c6129f42762bf884a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = typename std::conditional&lt; has_mapped_type&lt; T &gt;::value, T, void &gt;::type</td></tr>
+<tr class="separator:ae3d5e043fcdd0f0c6129f42762bf884a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7295bceaa18e7fd5beb3b21d6804b340"><td class="memItemLeft" align="right" valign="top"><a id="a7295bceaa18e7fd5beb3b21d6804b340"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = std::ptrdiff_t</td></tr>
+<tr class="separator:a7295bceaa18e7fd5beb3b21d6804b340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e7156fec3b0a82a39fc5f229debf43"><td class="memItemLeft" align="right" valign="top"><a id="a64e7156fec3b0a82a39fc5f229debf43"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = typename std::conditional&lt; has_mapped_type&lt; T &gt;::value, typename std::conditional&lt; IsConst, typename std::add_lvalue_reference&lt; const T &gt;::type, typename std::add_lvalue_reference&lt; T &gt;::type &gt;::type, void &gt;::type</td></tr>
+<tr class="separator:a64e7156fec3b0a82a39fc5f229debf43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cdaff23af47416036eb52fd14ab3320"><td class="memItemLeft" align="right" valign="top"><a id="a1cdaff23af47416036eb52fd14ab3320"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = typename std::conditional&lt; has_mapped_type&lt; T &gt;::value, typename std::conditional&lt; IsConst, const T *, T * &gt;::type, void &gt;::type</td></tr>
+<tr class="separator:a1cdaff23af47416036eb52fd14ab3320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a33962249121a1b9542a334829b022c99"><td class="memTemplParams" colspan="2"><a id="a33962249121a1b9542a334829b022c99"></a>
+template&lt;bool TIsConst = IsConst, typename std::enable_if&lt; TIsConst &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a33962249121a1b9542a334829b022c99"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>array_hash_iterator</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a>&lt;!TIsConst &gt; &amp;other) noexcept</td></tr>
+<tr class="separator:a33962249121a1b9542a334829b022c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add442b7cfdec54d8c282dbecc38829e5"><td class="memItemLeft" align="right" valign="top"><a id="add442b7cfdec54d8c282dbecc38829e5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_hash_iterator</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;other)=default</td></tr>
+<tr class="separator:add442b7cfdec54d8c282dbecc38829e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae61a660d5ff513d5f5af98d88387b607"><td class="memItemLeft" align="right" valign="top"><a id="ae61a660d5ff513d5f5af98d88387b607"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_hash_iterator</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;&amp;other)=default</td></tr>
+<tr class="separator:ae61a660d5ff513d5f5af98d88387b607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f36178296373af951d11416702bc8bc"><td class="memItemLeft" align="right" valign="top"><a id="a4f36178296373af951d11416702bc8bc"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;other)=default</td></tr>
+<tr class="separator:a4f36178296373af951d11416702bc8bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa4082a1fec0bde40afeb821ae81067"><td class="memItemLeft" align="right" valign="top"><a id="a8fa4082a1fec0bde40afeb821ae81067"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;&amp;other)=default</td></tr>
+<tr class="separator:a8fa4082a1fec0bde40afeb821ae81067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a94e68d07b064e576dfe054f04c1601"><td class="memItemLeft" align="right" valign="top"><a id="a9a94e68d07b064e576dfe054f04c1601"></a>
+const CharT *&#160;</td><td class="memItemRight" valign="bottom"><b>key</b> () const</td></tr>
+<tr class="separator:a9a94e68d07b064e576dfe054f04c1601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a66e107a4a18600b5248a8b0c3eb91f"><td class="memItemLeft" align="right" valign="top"><a id="a2a66e107a4a18600b5248a8b0c3eb91f"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>key_size</b> () const</td></tr>
+<tr class="separator:a2a66e107a4a18600b5248a8b0c3eb91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9303c6a82f01cb19b2595e215fcc4d47"><td class="memTemplParams" colspan="2"><a id="a9303c6a82f01cb19b2595e215fcc4d47"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a9303c6a82f01cb19b2595e215fcc4d47"><td class="memTemplItemLeft" align="right" valign="top">reference&#160;</td><td class="memTemplItemRight" valign="bottom"><b>value</b> () const</td></tr>
+<tr class="separator:a9303c6a82f01cb19b2595e215fcc4d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26dda0b3ff8d6a9d8ae6f84e09b92c9"><td class="memTemplParams" colspan="2"><a id="ae26dda0b3ff8d6a9d8ae6f84e09b92c9"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:ae26dda0b3ff8d6a9d8ae6f84e09b92c9"><td class="memTemplItemLeft" align="right" valign="top">reference&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator*</b> () const</td></tr>
+<tr class="separator:ae26dda0b3ff8d6a9d8ae6f84e09b92c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0d983afe597187dc4e17629c7c885c"><td class="memTemplParams" colspan="2"><a id="a3d0d983afe597187dc4e17629c7c885c"></a>
+template&lt;class U  = T, typename std::enable_if&lt; has_mapped_type&lt; U &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a3d0d983afe597187dc4e17629c7c885c"><td class="memTemplItemLeft" align="right" valign="top">pointer&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator-&gt;</b> () const</td></tr>
+<tr class="separator:a3d0d983afe597187dc4e17629c7c885c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede0b0bd576af81f0c8f1e06b9ad21e7"><td class="memItemLeft" align="right" valign="top"><a id="aede0b0bd576af81f0c8f1e06b9ad21e7"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> ()</td></tr>
+<tr class="separator:aede0b0bd576af81f0c8f1e06b9ad21e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba0c574da2b2e6710acb0439b95de2c"><td class="memItemLeft" align="right" valign="top"><a id="aaba0c574da2b2e6710acb0439b95de2c"></a>
+<a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator++</b> (int)</td></tr>
+<tr class="separator:aaba0c574da2b2e6710acb0439b95de2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a9b3568d76fb67876e54c2da6791d93c3"><td class="memItemLeft" align="right" valign="top"><a id="a9b3568d76fb67876e54c2da6791d93c3"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>array_hash</b></td></tr>
+<tr class="separator:a9b3568d76fb67876e54c2da6791d93c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a850d4fe13cc868e01f30cb80cace7ae7"><td class="memItemLeft" align="right" valign="top"><a id="a850d4fe13cc868e01f30cb80cace7ae7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;lhs, const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;rhs)</td></tr>
+<tr class="separator:a850d4fe13cc868e01f30cb80cace7ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca289f51dfdc79d8bf94d6f01ab48e0"><td class="memItemLeft" align="right" valign="top"><a id="a8ca289f51dfdc79d8bf94d6f01ab48e0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;lhs, const <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">array_hash_iterator</a> &amp;rhs)</td></tr>
+<tr class="separator:a8ca289f51dfdc79d8bf94d6f01ab48e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/hat-trie/include/tsl/array-hash/<a class="el" href="array__hash_8h_source.html">array_hash.h</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

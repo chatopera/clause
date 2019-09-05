@@ -1,0 +1,11 @@
+# Find more options
+# http://astyle.sourceforge.net/astyle.html#_Usage
+--style=google
+--indent=spaces=2
+--indent-switches
+--indent-preprocessor
+--break-blocks
+--pad-oper
+--recursive
+--formatted
+--suffix=none

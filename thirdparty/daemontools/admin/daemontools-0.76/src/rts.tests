@@ -1,0 +1,302 @@
+# not tested:
+
+# multilog handles TERM
+# multilog handles ALRM
+# multilog handles out-of-memory
+# multilog handles log directories
+# multilog matches only first 1000 characters of long lines
+# multilog t produces the right time
+# multilog closes descriptors properly
+# tai64n produces the right time
+# tai64nlocal converts times correctly
+
+# supervise closes descriptors properly
+# svc -d
+# svc -p
+# svc -c
+# svc -a
+# svc -i
+# svc -t
+# svc -k
+# svscan
+# svscanboot
+
+# envuidgid sets GID
+# setuidgid
+
+# pgrphack works properly
+
+# readproctitle works properly
+
+# softlimit -m
+# softlimit -d
+# softlimit -s
+# softlimit -l
+# softlimit -a
+# softlimit -p0 preventing fork; need to run this as non-root
+# softlimit -o; shared libraries make tests difficult here
+# softlimit -c
+# softlimit -f
+# softlimit -r
+# softlimit -t
+
+
+PATH=`pwd`:/command:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin
+export PATH
+
+umask 022
+
+rm -rf rts-tmp
+mkdir rts-tmp
+cd rts-tmp
+mkdir test.sv
+
+
+echo '--- svstat handles new and nonexistent directories'
+( echo '#!/bin/sh'; echo echo hi ) > test.sv/run
+chmod 755 test.sv/run
+touch test.sv/down
+svstat test.sv nonexistent; echo $?
+
+echo '--- svc handles new and nonexistent directories'
+svc test.sv nonexistent; echo $?
+
+echo '--- svok handles new and nonexistent directories'
+svok test.sv; echo $?
+svok nonexistent; echo $?
+
+echo '--- supervise handles nonexistent directories'
+supervise nonexistent; echo $?
+
+echo '--- supervise starts, svok works, svstat works, svc -x works'
+supervise test.sv &
+until svok test.sv
+do
+  sleep 1
+done
+svstat test.sv | sed 's/[0-9]* seconds/x seconds/'; echo $?
+svc -x test.sv; echo $?
+wait
+svstat test.sv; echo $?
+
+echo '--- svc -ox works'
+supervise test.sv &
+until svok test.sv
+do
+  sleep 1
+done
+svc -ox test.sv
+wait
+
+echo '--- svstat works for up services'
+( echo '#!/bin/sh'; echo sleep 1; echo svstat . ) > test.sv/run
+chmod 755 test.sv/run
+supervise test.sv \
+| sed -e 's/[0-9]* seconds/x seconds/' -e 's/pid [0-9]*/pid x/' &
+until svok test.sv
+do
+  sleep 1
+done
+svc -ox test.sv
+wait
+
+echo '--- svc -u works'
+( echo '#!/bin/sh'; echo echo first; echo mv run2 run ) > test.sv/run
+chmod 755 test.sv/run
+( echo '#!/bin/sh'; echo echo second; echo svc -x . ) > test.sv/run2
+chmod 755 test.sv/run2
+supervise test.sv &
+until svok test.sv
+do
+  sleep 1
+done
+svc -u test.sv
+wait
+
+
+echo '--- tai64n has the right format'
+( echo ONE; echo TWO ) | tai64n | sed 's/[0-9a-f]/x/g'
+
+echo '--- tai64nlocal handles non-@ lines correctly'
+( echo one; echo two ) | tai64nlocal; echo $?
+
+
+echo '--- softlimit insists on an argument'
+softlimit; echo $?
+
+echo '--- softlimit complains if it cannot run program'
+softlimit ./nonexistent; echo $?
+
+echo '--- softlimit -p0 still allows exec'
+softlimit -p0 echo ./nonexistent; echo $?
+
+
+echo '--- fghack insists on an argument'
+fghack; echo $?
+
+echo '--- fghack complains if it cannot run program'
+fghack ./nonexistent; echo $?
+
+echo '--- fghack runs a program'
+fghack sh -c 'echo hi &'; echo $?
+
+
+echo '--- pgrphack insists on an argument'
+pgrphack; echo $?
+
+echo '--- pgrphack complains if it cannot run program'
+pgrphack ./nonexistent; echo $?
+
+echo '--- pgrphack runs a program'
+pgrphack echo ok; echo $?
+
+
+echo '--- readproctitle insists on an argument'
+readproctitle < /dev/null; echo $?
+
+echo '--- readproctitle insists on last argument being at least five bytes'
+readproctitle .......... four < /dev/null; echo $?
+
+
+echo '--- multilog prints nothing with no actions'
+( echo one; echo two ) | multilog; echo $?
+
+echo '--- multilog e prints to stderr'
+( echo one; echo two ) | multilog e 2>&1; echo $?
+
+echo '--- multilog inserts newline after partial final line'
+( echo one; echo two | tr -d '\012' ) | multilog e 2>&1; echo $?
+
+echo '--- multilog handles multiple actions'
+( echo one; echo two ) | multilog e e 2>&1; echo $?
+
+echo '--- multilog handles wildcard -'
+( echo one; echo two ) | multilog '-*' e 2>&1; echo $?
+
+echo '--- multilog handles literal +'
+( echo one; echo two ) | multilog '-*' '+one' e 2>&1; echo $?
+
+echo '--- multilog handles long lines for stderr'
+echo 0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678 \
+| multilog e 2>&1; echo $?
+echo 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789 \
+| multilog e 2>&1; echo $?
+echo 012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890 \
+| multilog e 2>&1; echo $?
+
+echo '--- multilog handles status files'
+rm -f test.status
+( echo one; echo two ) | multilog =test.status; echo $?
+uniq -c < test.status | sed 's/[ 	]*[ 	]/_/g'
+
+echo '--- multilog t has the right format'
+( echo ONE; echo TWO ) | multilog t e 2>&1 | sed 's/[0-9a-f]/x/g'
+
+
+echo '--- match handles literal string'
+matchtest one one
+matchtest one ''
+matchtest one on
+matchtest one onf
+matchtest one 'one*'
+matchtest one onetwo
+
+echo '--- match handles empty string'
+matchtest '' ''
+matchtest '' x
+
+echo '--- match handles full-line wildcard'
+matchtest '*' ''
+matchtest '*' x
+matchtest '*' '*'
+matchtest '*' one
+
+echo '--- match handles ending wildcard'
+matchtest 'one*' one
+matchtest 'one*' 'one*'
+matchtest 'one*' onetwo
+matchtest 'one*' ''
+matchtest 'one*' x
+matchtest 'one*' on
+matchtest 'one*' onf
+
+echo '--- match handles wildcard termination'
+matchtest '* one' ' one'
+matchtest '* one' 'x one'
+matchtest '* one' '* one'
+matchtest '* one' 'xy one'
+matchtest '* one' 'one'
+matchtest '* one' ' two'
+matchtest '* one' '  one'
+matchtest '* one' 'xy one '
+
+echo '--- match handles multiple wildcards'
+matchtest '* * one' '  one'
+matchtest '* * one' 'x  one'
+matchtest '* * one' ' y one'
+matchtest '* * one' 'x y one'
+matchtest '* * one' 'one'
+matchtest '* * one' ' one'
+matchtest '* * one' '   one'
+
+
+echo '--- envuidgid insists on two arguments'
+envuidgid; echo $?
+envuidgid root; echo $?
+
+echo '--- envuidgid sets UID=0 for root'
+envuidgid root printenv UID; echo $?
+
+echo '--- envuidgid complains if it cannot run program'
+envuidgid root ./nonexistent; echo $?
+
+
+echo '--- envdir requires arguments'
+envdir whatever; echo $?
+
+echo '--- envdir complains if it cannot read directory'
+ln -s env1 env1
+envdir env1 echo yes; echo $?
+
+echo '--- envdir complains if it cannot read file'
+rm env1
+mkdir env1
+ln -s Message env1/Message
+envdir env1 echo yes; echo $?
+
+echo '--- envdir adds variables'
+rm env1/Message
+echo This is a test. This is only a test. > env1/Message
+envdir env1 sh -c 'echo $Message'; echo $?
+
+echo '--- envdir removes variables'
+mkdir env2
+touch env2/Message
+envdir env1 envdir env2 sh -c 'echo $Message'; echo $?
+
+
+echo '--- setlock requires arguments'
+setlock whatever; echo $?
+
+echo '--- setlock complains if it cannot create lock file'
+setlock nonexistent/lock echo wrong; echo $?
+
+echo '--- setlock -x exits quietly if it cannot create lock file'
+setlock -x nonexistent/lock echo wrong; echo $?
+
+echo '--- setlock creates lock file'
+setlock lock echo ok; echo $?
+
+echo '--- setlock does not truncate lock file'
+echo ok > lock
+setlock lock cat lock; echo $?
+rm -f lock
+
+echo '--- setlock -n complains if file is already locked'
+setlock lock sh -c 'setlock -n lock echo one && echo two'; echo $?
+
+echo '--- setlock -nx exits quietly if file is already locked'
+setlock lock sh -c 'setlock -nx lock echo one && echo two'; echo $?
+
+
+exit 0

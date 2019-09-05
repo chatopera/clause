@@ -1,0 +1,106 @@
+version: "3"
+services:
+  ## Computing Nodes
+  clause:
+    image: "chatopera/clause:develop"
+    restart: always
+    ports:
+      - "${CLAUSE_PORT:-8056}:8056"
+    environment:
+      - GLOG_logtostderr=1
+      - GLOG_v=3
+      - FLAGS_server_port=8056
+      - FLAGS_server_threads=20
+      - FLAGS_mysql_uri=tcp://mysql:3306/clause
+      - FLAGS_mysql_user=root
+      - FLAGS_mysql_pass=${CLAUSE_DB_PASSWD:-cl12345}
+      - FLAGS_redis_host=redis
+      - FLAGS_redis_port=6379
+      - FLAGS_redis_db=5
+      - FLAGS_redis_pass=${CLAUSE_DB_PASSWD:-cl12345}
+      - FLAGS_activemq_broker_uri=failover:(tcp://activemq:61616)
+      - FLAGS_activemq_client_ack=false
+      - FLAGS_workarea=/var/local/workarea
+      - FLAGS_data=/var/local/data
+      - FLAGS_sysdicts_host=sysdicts
+      - FLAGS_sysdicts_port=8066
+    volumes:
+      - ./clause/var/local:/var/local
+    depends_on:
+      - sysdicts
+      - redis
+      - mysql
+      - activemq
+
+  intent:
+    image: "chatopera/intent:develop"
+    restart: always
+    ports:
+      - "${INTENT_PORT:-8063}:8063"
+    volumes:
+      - ./clause/var/local:/var/local
+    environment:
+      - GLOG_logtostderr=1
+      - GLOG_v=3
+      - FLAGS_server_port=8063
+      - FLAGS_server_threads=20
+      - FLAGS_activemq_broker_uri=failover:(tcp://activemq:61616)
+      - FLAGS_activemq_client_ack=false
+      - FLAGS_workarea=/var/local/workarea
+      - FLAGS_data=/var/local/data
+    depends_on:
+      - activemq
+
+  sysdicts:
+    image: "chatopera/sysdicts:develop"
+    restart: always
+    ports:
+      - "${SYSDICTS_PORT:-8066}:8066"
+    environment:
+      - GLOG_logtostderr=1
+      - GLOG_v=3
+      - FLAGS_server_port=8066
+      - FLAGS_server_threads=20
+      - FLAGS_lac_conf_dir=/app/data/lac/conf
+
+  ## Storage Nodes
+  mysql:
+    image: "chatopera/mysql:5.7"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${CLAUSE_DB_PASSWD:-cl12345}
+      - MYSQL_DATABASE=clause
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=${CLAUSE_DB_PASSWD:-cl12345}
+    ports:
+      - "${MYSQL_PORT:-8055}:3306"
+    volumes:
+      - ./var/mysql/data:/var/lib/mysql
+      - ./clause/src/clause/config/sql:/docker-entrypoint-initdb.d
+    command: --max_allowed_packet=32505856
+
+  activemq:
+    image: "chatopera/activemq:5.14.3"
+    restart: always
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=admin
+      - ACTIVEMQ_ADMIN_PASSWORD=${CLAUSE_DB_PASSWD:-cl12345}
+      - ACTIVEMQ_CONFIG_MINMEMORY=1024
+      - ACTIVEMQ_CONFIG_MAXMEMORY=8192
+    volumes:
+      - ./var/activemq/data:/data/activemq
+      - ./var/activemq/logs:/var/log/activemq
+    ports:
+      - "${ACTIVEMQ_PORT:-8057}:8161"
+      - "${ACTIVEMQ_PORT2:-8058}:61616"
+      - "${ACTIVEMQ_PORT3:-8059}:61613"
+
+  redis:
+    image: chatopera/redis:5.0.5
+    restart: always
+    environment:
+      - REDIS_PASSWORD=${CLAUSE_DB_PASSWD:-cl12345}
+    volumes:
+      - ./var/redis/data:/data
+    ports:
+      - "${REDIS_PORT:-8050}:6379"

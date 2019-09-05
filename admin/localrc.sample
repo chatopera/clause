@@ -1,0 +1,10 @@
+# local environment variables
+
+####################
+## Glog
+## http://www.yeolar.com/note/2014/12/20/glog/
+## https://blog.csdn.net/junmuzi/article/details/79670351
+####################
+export GLOG_logtostderr=1
+# export GLOG_minloglevel=2
+export GLOG_v=3

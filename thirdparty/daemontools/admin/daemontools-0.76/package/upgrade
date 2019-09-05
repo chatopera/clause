@@ -1,0 +1,30 @@
+#!/bin/sh -e
+
+umask 022
+test -d package || ( echo 'Wrong working directory.'; exit 1 )
+test -d src || ( echo 'Wrong working directory.'; exit 1 )
+
+here=`env - PATH=$PATH pwd`
+parent=`dirname $here`
+
+echo 'Creating symlink daemontools -> daemontools-0.76...'
+rm -f daemontools
+ln -s daemontools-0.76 daemontools
+mv -f daemontools ..
+
+echo 'Making command links in /command...'
+mkdir -p /command
+for i in `cat package/commands`
+do
+  rm -f /command/$i'{new}'
+  ln -s $parent/daemontools/command/$i /command/$i'{new}'
+  mv -f /command/$i'{new}' /command/$i
+done
+echo 'Making compatibility links in /usr/local/bin...'
+mkdir -p /usr/local/bin
+for i in `cat package/commands`
+do
+  rm -f /usr/local/bin/$i'{new}'
+  ln -s /command/$i /usr/local/bin/$i'{new}'
+  mv -f /usr/local/bin/$i'{new}' /usr/local/bin/$i
+done

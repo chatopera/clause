@@ -1,0 +1,235 @@
+// https://developers.google.com/protocol-buffers/docs/cpptutorial
+syntax = "proto3";
+
+package chatopera.bot.intent;
+
+/**
+ * 系统词典关联信息
+ */
+message TBotSysdict {
+    string chatbotID = 1;
+    string dict_id = 2;
+    string id = 3;
+    string createdate = 4;
+}
+
+/**
+ * 聊天信息
+ */
+message TChatMessage {
+    string id = 1;
+    string session_id = 2;
+    string chatbotID = 3;
+    string type = 4;
+    string sender = 5;
+    int32 direction = 6;
+    string receiver = 7;
+    string createdate = 8;
+    string textMessage = 9;
+    string audioMessage = 10;
+    string videoMessage = 11;
+    string imageMessage = 12;
+}
+
+/**
+ * 聊天会话
+ */
+message TChatSession {
+
+    message Entity {
+        string name = 1;     // slotname
+        string val = 2;      // value
+        bool requires = 3;   // 是否必填
+        string dictname = 4; // 词典名称
+        bool builtin = 5;    // 是否是系统词典
+    }
+
+    string id = 1;
+    string chatbotID = 2;
+    string intent_name = 3;
+    string uid = 4;
+    string channel = 5;
+    string branch = 6;
+    bool resolved = 7;
+    string states = 8;
+    bool is_fallback = 9;
+    bool is_proactive = 10;
+    string proactive_slotname = 11;
+    string proactive_dictname = 12;
+    repeated Entity entities = 13;
+    string createdate = 14;
+    string updatedate = 15;
+}
+
+/**
+ * 词条
+ */
+message TDictWord {
+    string word = 1;
+    string dict_id = 2;
+    string synonyms = 3;
+    string tag = 4;
+    string lang = 5;
+    string createdate = 6;
+    string updatedate = 7;
+}
+
+/**
+ * 词典
+ */
+message TDict {
+    string id = 1;
+    string name = 2;
+    string chatbotID = 4;
+    bool builtin = 5;           // 是否是系统词典
+    bool active = 6;            // 是否活跃，和系统词典相关
+    bool referred = 7;          // 是否被引用，和系统词典相关
+    repeated TDictWord dictwords = 8 ; // 词汇表
+    string description = 9;
+    string samples = 10;        
+    string createdate = 11;
+    string updatedate = 12;
+}
+
+/**
+ * 意图
+ */
+message TIntent {
+    string id = 1;
+    string chatbotID = 2;
+    string name = 3;
+    repeated TIntentSlot slots = 4;   // 槽位
+    repeated TIntentUtter utters = 5; // 说法
+    string description = 6;
+    string createdate = 7;
+    string updatedate = 8;
+}
+
+/**
+ * 意图槽位
+ */
+message TIntentSlot {
+    string id = 1;
+    string intent_id = 2;
+    string name = 3;
+    string dictname = 4;
+    bool requires = 5;
+    // 其他信息，关联关系表
+    TDict dict = 6;
+    string question = 7;
+    string createdate = 8;
+    string updatedate = 9;
+}
+
+/**
+ * 意图说法
+ */
+message TIntentUtter {
+    string id = 1;
+    string intent_id = 2;
+    string utterance = 3;
+    string createdate = 4;
+    string updatedate = 5;
+}
+
+/**
+ * 上线版本
+ */
+message TProdVersion {
+    string id = 1;
+    string chatbotID = 2;
+    string version = 3;
+    bool active = 4;
+    bool latest = 6;
+    string operated = 8;
+    string notes = 9;
+    string createdate = 10;
+}
+
+/**
+ * 调试版本
+ */
+message TDevelopVersion {
+    string id = 1;
+    string chatbotID = 2;
+    string version = 3;
+    bool published = 4;
+    string createdate = 5;
+    string operated = 7;
+}
+
+/**
+ * Intent Data Bundle
+ */
+message Profile {
+    string id = 1;                         // 对象的ID
+    string chatbotID = 2;                  // 机器人ID
+    repeated TDict dicts = 3;              // 词典信息
+    repeated TIntent intents = 4;          // 意图信息
+
+    // 版本
+    repeated TDevelopVersion devvers = 5;
+    repeated TProdVersion provers = 6;
+    TDevelopVersion devver = 7;            // 调试版本
+    TProdVersion prover = 8;               // 上线版本
+
+    // 聊天管理
+    repeated TChatSession sessions = 9;
+    repeated TChatMessage messages = 10;
+    TChatSession session = 11;             // 会话
+    TChatMessage message = 12;             // 聊天消息
+}
+
+
+
+/**
+ * Template to generate training samples
+ */
+message SampleTemplate {
+
+    // 训练中的Token
+    message Token {
+        string val = 1;
+        int32 start = 2;
+        int32 end = 3;
+        bool isslot = 4;    // 是否是槽位
+        string slotname = 5;  // 槽位名称 
+        string dictname = 6;  // 槽位对应的词典
+    }
+
+    string intentname = 1;
+    string utterance = 2;
+    repeated Token tokens = 3;
+    bool hasslot = 4;
+}
+
+/**
+ * Generated data after extend with dicts
+ */
+message Augmented {
+    message Entity {
+        string val = 1;
+        int32 start = 2;
+        int32 end = 3;
+        string slotname = 4;        // 槽位名称
+        string tag = 5;             // 词性
+        string dictname = 6;          // 词典标识
+    }
+
+    message Sample {
+        string intent_id = 1;
+        string intent_name = 2;
+        string utterance = 3;
+        repeated Entity entities = 4;
+        repeated string terms = 5;     // 分词结果
+        repeated string poss = 6;      // 分词词性
+        repeated string labels = 7;    // 分词lable，词性和实体名称的混合
+    }
+
+    message IntentTrainingSample {
+        string intent = 1;
+        repeated Sample tss = 2;
+    }
+
+    repeated IntentTrainingSample itss = 1;
+}

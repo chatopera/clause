@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: cppjieba::KeywordExtractor类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>cppjieba</b></li><li class="navelem"><a class="el" href="classcppjieba_1_1KeywordExtractor.html">KeywordExtractor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classcppjieba_1_1KeywordExtractor-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">cppjieba::KeywordExtractor类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcppjieba_1_1KeywordExtractor_1_1Word.html">Word</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:afedea30a7a510f8ea2950074333d1be5"><td class="memItemLeft" align="right" valign="top"><a id="afedea30a7a510f8ea2950074333d1be5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KeywordExtractor</b> (const string &amp;dictPath, const string &amp;hmmFilePath, const string &amp;idfPath, const string &amp;stopWordPath, const string &amp;userDict=&quot;&quot;)</td></tr>
+<tr class="separator:afedea30a7a510f8ea2950074333d1be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acac20c1f1e406aa0e40c1c7e68137151"><td class="memItemLeft" align="right" valign="top"><a id="acac20c1f1e406aa0e40c1c7e68137151"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>KeywordExtractor</b> (const <a class="el" href="classcppjieba_1_1DictTrie.html">DictTrie</a> *dictTrie, const <a class="el" href="structcppjieba_1_1HMMModel.html">HMMModel</a> *model, const string &amp;idfPath, const string &amp;stopWordPath)</td></tr>
+<tr class="separator:acac20c1f1e406aa0e40c1c7e68137151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39db474aafaa75006796a6c1f152cbd8"><td class="memItemLeft" align="right" valign="top"><a id="a39db474aafaa75006796a6c1f152cbd8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Extract</b> (const string &amp;sentence, vector&lt; string &gt; &amp;keywords, size_t topN) const</td></tr>
+<tr class="separator:a39db474aafaa75006796a6c1f152cbd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cd5a073ae5b73298a75e582034a12bc"><td class="memItemLeft" align="right" valign="top"><a id="a1cd5a073ae5b73298a75e582034a12bc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Extract</b> (const string &amp;sentence, vector&lt; pair&lt; string, double &gt; &gt; &amp;keywords, size_t topN) const</td></tr>
+<tr class="separator:a1cd5a073ae5b73298a75e582034a12bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d01fc5ab7a4fe1ec206fb480ed9288b"><td class="memItemLeft" align="right" valign="top"><a id="a1d01fc5ab7a4fe1ec206fb480ed9288b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Extract</b> (const string &amp;sentence, vector&lt; <a class="el" href="structcppjieba_1_1KeywordExtractor_1_1Word.html">Word</a> &gt; &amp;keywords, size_t topN) const</td></tr>
+<tr class="separator:a1d01fc5ab7a4fe1ec206fb480ed9288b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/jieba/include/cppjieba/<a class="el" href="KeywordExtractor_8hpp_source.html">KeywordExtractor.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

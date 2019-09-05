@@ -1,0 +1,2 @@
+<map id="tsl::detail_htrie_hash::is_iterator&lt; T, typename std::enable_if&lt;!std::is_same&lt; typename std::iterator_traits&lt; T &gt;::iterator_category, void &gt;::value &gt;::type &gt;" name="tsl::detail_htrie_hash::is_iterator&lt; T, typename std::enable_if&lt;!std::is_same&lt; typename std::iterator_traits&lt; T &gt;::iterator_category, void &gt;::value &gt;::type &gt;">
+</map>

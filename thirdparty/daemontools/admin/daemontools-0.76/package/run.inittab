@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+if grep svscanboot /etc/inittab >/dev/null
+then
+  echo 'inittab contains an svscanboot line. I assume that svscan is already running.'
+else
+  echo 'Adding svscanboot to inittab...'
+  rm -f /etc/inittab'{new}'
+  cat /etc/inittab package/boot.inittab > /etc/inittab'{new}'
+  mv -f /etc/inittab'{new}' /etc/inittab
+  kill -HUP 1
+  echo 'init should start svscan now.'
+fi

@@ -1,0 +1,4 @@
+#!/bin/sh -e
+package/compile
+package/upgrade
+package/run

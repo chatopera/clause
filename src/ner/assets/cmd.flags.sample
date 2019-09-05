@@ -1,0 +1,2 @@
+--trainfile=../../../../src/ner/assets/fixture1.train.txt
+--modelfile=../../../../tmp/fixture1.model

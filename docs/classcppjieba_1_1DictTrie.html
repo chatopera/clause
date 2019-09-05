@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: cppjieba::DictTrie类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>cppjieba</b></li><li class="navelem"><a class="el" href="classcppjieba_1_1DictTrie.html">DictTrie</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classcppjieba_1_1DictTrie-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">cppjieba::DictTrie类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a0ce0cb6b6f152cee1f4d00619471feea"><td class="memItemLeft" align="right" valign="top"><a id="a0ce0cb6b6f152cee1f4d00619471feea"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>UserWordWeightOption</b> { <b>WordWeightMin</b>, 
+<b>WordWeightMedian</b>, 
+<b>WordWeightMax</b>
+ }</td></tr>
+<tr class="separator:a0ce0cb6b6f152cee1f4d00619471feea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a6029cb8cbca94985081fd985ede555eb"><td class="memItemLeft" align="right" valign="top"><a id="a6029cb8cbca94985081fd985ede555eb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>DictTrie</b> (const string &amp;dict_path, const string &amp;user_dict_paths=&quot;&quot;, UserWordWeightOption user_word_weight_opt=WordWeightMedian)</td></tr>
+<tr class="separator:a6029cb8cbca94985081fd985ede555eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3683f2dde3c207e68376ef9b1b1cc5f"><td class="memItemLeft" align="right" valign="top"><a id="ae3683f2dde3c207e68376ef9b1b1cc5f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>InsertUserWord</b> (const string &amp;word, const string &amp;tag=UNKNOWN_TAG)</td></tr>
+<tr class="separator:ae3683f2dde3c207e68376ef9b1b1cc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bca8eaeded0e645714e53ba0d3d65eb"><td class="memItemLeft" align="right" valign="top"><a id="a8bca8eaeded0e645714e53ba0d3d65eb"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>InsertUserWord</b> (const string &amp;word, int freq, const string &amp;tag=UNKNOWN_TAG)</td></tr>
+<tr class="separator:a8bca8eaeded0e645714e53ba0d3d65eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7441ca7ca89b615ca51f24ec750d6100"><td class="memItemLeft" align="right" valign="top"><a id="a7441ca7ca89b615ca51f24ec750d6100"></a>
+const <a class="el" href="structcppjieba_1_1DictUnit.html">DictUnit</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (RuneStrArray::const_iterator begin, RuneStrArray::const_iterator end) const</td></tr>
+<tr class="separator:a7441ca7ca89b615ca51f24ec750d6100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2021bab35f3c280ec75478eb44d71246"><td class="memItemLeft" align="right" valign="top"><a id="a2021bab35f3c280ec75478eb44d71246"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (RuneStrArray::const_iterator begin, RuneStrArray::const_iterator end, vector&lt; struct <a class="el" href="structcppjieba_1_1Dag.html">Dag</a> &gt; &amp;res, size_t max_word_len=MAX_WORD_LENGTH) const</td></tr>
+<tr class="separator:a2021bab35f3c280ec75478eb44d71246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f92533f7cb86b084fa4aaadad18b50"><td class="memItemLeft" align="right" valign="top"><a id="aa7f92533f7cb86b084fa4aaadad18b50"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (const string &amp;word)</td></tr>
+<tr class="separator:aa7f92533f7cb86b084fa4aaadad18b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec350beeac2213a989fdb058414278f"><td class="memItemLeft" align="right" valign="top"><a id="acec350beeac2213a989fdb058414278f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsUserDictSingleChineseWord</b> (const Rune &amp;word) const</td></tr>
+<tr class="separator:acec350beeac2213a989fdb058414278f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa15960b27913ab77e293cb0ab446a85e"><td class="memItemLeft" align="right" valign="top"><a id="aa15960b27913ab77e293cb0ab446a85e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMinWeight</b> () const</td></tr>
+<tr class="separator:aa15960b27913ab77e293cb0ab446a85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c113583ca5578fbcfaea2ce26aa6b87"><td class="memItemLeft" align="right" valign="top"><a id="a0c113583ca5578fbcfaea2ce26aa6b87"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>InserUserDictNode</b> (const string &amp;line)</td></tr>
+<tr class="separator:a0c113583ca5578fbcfaea2ce26aa6b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8aa508b6b3c89c5e0ed26f88bf9f27f"><td class="memItemLeft" align="right" valign="top"><a id="ac8aa508b6b3c89c5e0ed26f88bf9f27f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (const vector&lt; string &gt; &amp;buf)</td></tr>
+<tr class="separator:ac8aa508b6b3c89c5e0ed26f88bf9f27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24ddbdb4cb83751075bba220b63d9044"><td class="memItemLeft" align="right" valign="top"><a id="a24ddbdb4cb83751075bba220b63d9044"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (const set&lt; string &gt; &amp;buf)</td></tr>
+<tr class="separator:a24ddbdb4cb83751075bba220b63d9044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56abc311af81c4d24c193b06397c23ab"><td class="memItemLeft" align="right" valign="top"><a id="a56abc311af81c4d24c193b06397c23ab"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (const string &amp;filePaths)</td></tr>
+<tr class="separator:a56abc311af81c4d24c193b06397c23ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/jieba/include/cppjieba/<a class="el" href="DictTrie_8hpp_source.html">DictTrie.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

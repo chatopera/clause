@@ -1,0 +1,28 @@
+#!/bin/sh -e
+
+umask 022
+test -d package || ( echo 'Wrong working directory.'; exit 1 )
+test -d src || ( echo 'Wrong working directory.'; exit 1 )
+
+here=`env - PATH=$PATH pwd`
+
+mkdir -p compile command
+test -r compile/home || echo $here > compile/home
+test -h compile/src || ln -s $here/src compile/src
+
+echo 'Linking ./src/* into ./compile...'
+for i in `ls src`
+do
+  test -h compile/$i || ln -s src/$i compile/$i
+done
+
+echo 'Compiling everything in ./compile...'
+( cd compile; exec make )
+
+echo 'Copying commands into ./command...'
+for i in `cat package/commands`
+do
+  rm -f command/$i'{new}'
+  cp -p compile/$i command/$i'{new}'
+  mv -f command/$i'{new}' command/$i
+done

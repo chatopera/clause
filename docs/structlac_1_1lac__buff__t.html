@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: lac::lac_buff_t结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>lac</b></li><li class="navelem"><a class="el" href="structlac_1_1lac__buff__t.html">lac_buff_t</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="structlac_1_1lac__buff__t-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">lac::lac_buff_t结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="structlac_1_1lac__buff__t.html" title="lac_buff_t, thread variables ">lac_buff_t</a>, thread variables  
+ <a href="structlac_1_1lac__buff__t.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="lac__glb_8h_source.html">lac_glb.h</a>&gt;</code></p>
+<div class="dynheader">
+lac::lac_buff_t 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="structlac_1_1lac__buff__t__coll__graph.png" border="0" usemap="#lac_1_1lac__buff__t_coll__map" alt="Collaboration graph"/></div>
+<map name="lac_1_1lac__buff__t_coll__map" id="lac_1_1lac__buff__t_coll__map">
+<area shape="rect" id="node3" href="structlac_1_1TAG.html" title="tag_t, the struct of lac result " alt="" coords="142,5,214,31"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:ac23a304f3b81914bb87c977c3b7f22ad"><td class="memItemLeft" align="right" valign="top"><a id="ac23a304f3b81914bb87c977c3b7f22ad"></a>
+std::unique_ptr&lt; paddle::framework::ProgramDesc &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlac_1_1lac__buff__t.html#ac23a304f3b81914bb87c977c3b7f22ad">copy_program</a></td></tr>
+<tr class="memdesc:ac23a304f3b81914bb87c977c3b7f22ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">fluid variables <br /></td></tr>
+<tr class="separator:ac23a304f3b81914bb87c977c3b7f22ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34497c37b265b8cd0ddc615a957bcd53"><td class="memItemLeft" align="right" valign="top"><a id="a34497c37b265b8cd0ddc615a957bcd53"></a>
+std::unique_ptr&lt; paddle::framework::ExecutorPrepareContext &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ctx</b></td></tr>
+<tr class="separator:a34497c37b265b8cd0ddc615a957bcd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5fdc0ad414bc362faeae9fee73d0d8b"><td class="memItemLeft" align="right" valign="top"><a id="ad5fdc0ad414bc362faeae9fee73d0d8b"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>feed_holder_name</b></td></tr>
+<tr class="separator:ad5fdc0ad414bc362faeae9fee73d0d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5979e95b865ff651264f0b5cf35c8c5"><td class="memItemLeft" align="right" valign="top"><a id="ae5979e95b865ff651264f0b5cf35c8c5"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>fetch_holder_name</b></td></tr>
+<tr class="separator:ae5979e95b865ff651264f0b5cf35c8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ca187777e888c4d6b5909892c5eb42"><td class="memItemLeft" align="right" valign="top"><a id="ac5ca187777e888c4d6b5909892c5eb42"></a>
+std::map&lt; std::string, const paddle::framework::LoDTensor * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>feed_targets</b></td></tr>
+<tr class="separator:ac5ca187777e888c4d6b5909892c5eb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5a2d8e7520d0641dc2e871f2bc7c778"><td class="memItemLeft" align="right" valign="top"><a id="ab5a2d8e7520d0641dc2e871f2bc7c778"></a>
+std::map&lt; std::string, paddle::framework::LoDTensor * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fetch_targets</b></td></tr>
+<tr class="separator:ab5a2d8e7520d0641dc2e871f2bc7c778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f6145678f97c870b30710b5053d202c"><td class="memItemLeft" align="right" valign="top"><a id="a0f6145678f97c870b30710b5053d202c"></a>
+std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sent_char_vector</b></td></tr>
+<tr class="separator:a0f6145678f97c870b30710b5053d202c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a292f06bb89c911bfb5000e37cd25ded8"><td class="memItemLeft" align="right" valign="top"><a id="a292f06bb89c911bfb5000e37cd25ded8"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sent_offset_vector</b></td></tr>
+<tr class="separator:a292f06bb89c911bfb5000e37cd25ded8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd3291bd421479d121c5f615f8e56d3"><td class="memItemLeft" align="right" valign="top"><a id="a4cd3291bd421479d121c5f615f8e56d3"></a>
+<a class="el" href="structlac_1_1TAG.html">tag_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>main_tagger_results</b></td></tr>
+<tr class="separator:a4cd3291bd421479d121c5f615f8e56d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae64a1578c0b3ac3699ba1cb66e974486"><td class="memItemLeft" align="right" valign="top"><a id="ae64a1578c0b3ac3699ba1cb66e974486"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>main_tagger_result_num</b></td></tr>
+<tr class="separator:ae64a1578c0b3ac3699ba1cb66e974486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bfdb21cfb5d9e15f86825c31a5e2845"><td class="memItemLeft" align="right" valign="top"><a id="a3bfdb21cfb5d9e15f86825c31a5e2845"></a>
+<a class="el" href="structlac_1_1TAG.html">tag_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>customization_tagger_results</b></td></tr>
+<tr class="separator:a3bfdb21cfb5d9e15f86825c31a5e2845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ede80760a1493ff9962ce3b7558adf9"><td class="memItemLeft" align="right" valign="top"><a id="a9ede80760a1493ff9962ce3b7558adf9"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>customization_tagger_result_num</b></td></tr>
+<tr class="separator:a9ede80760a1493ff9962ce3b7558adf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afca7ffb0471bf23e597167483819c0d5"><td class="memItemLeft" align="right" valign="top"><a id="afca7ffb0471bf23e597167483819c0d5"></a>
+std::set&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>main_border_set</b></td></tr>
+<tr class="separator:afca7ffb0471bf23e597167483819c0d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5df0d7b88b6a8c1778fc383ea8c9ac0"><td class="memItemLeft" align="right" valign="top"><a id="aa5df0d7b88b6a8c1778fc383ea8c9ac0"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>word_model_input_vector</b></td></tr>
+<tr class="separator:aa5df0d7b88b6a8c1778fc383ea8c9ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24e4d9ab0aa7885c8917486451ce9da"><td class="memItemLeft" align="right" valign="top"><a id="af24e4d9ab0aa7885c8917486451ce9da"></a>
+std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>model_output_vector</b></td></tr>
+<tr class="separator:af24e4d9ab0aa7885c8917486451ce9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p><a class="el" href="structlac_1_1lac__buff__t.html" title="lac_buff_t, thread variables ">lac_buff_t</a>, thread variables </p>
+</div><hr/>该结构体的文档由以下文件生成:<ul>
+<li>src/lac/src/<a class="el" href="lac__glb_8h_source.html">lac_glb.h</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

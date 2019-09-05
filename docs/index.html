@@ -1,0 +1,236 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="generator" content="Doxygen 1.8.13" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clause: 首页</title>
+    <link href="tabs.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="dynsections.js"></script>
+    <link href="search/search.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="search/searchdata.js"></script>
+    <script type="text/javascript" src="search/search.js"></script>
+    <script type="text/javascript" src="js/markdownit.js"></script>
+    <link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="top">
+        <!-- do not remove this div, it is closed by doxygen! -->
+        <div id="titlearea">
+            <table cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr style="height: 56px;">
+                        <td id="projectalign" style="padding-left: 0.5em;">
+                            <div id="projectname">Clause
+                                &#160;<span id="projectnumber">1.0</span>
+                            </div>
+                            <div id="projectbrief">Chatopera Language Understanding Service.</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- end header part -->
+        <!-- 制作者 Doxygen 1.8.13 -->
+        <script type="text/javascript">
+            var searchBox = new SearchBox("searchBox", "search", false, '搜索');
+        </script>
+        <script type="text/javascript" src="menudata.js"></script>
+        <script type="text/javascript" src="menu.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                initMenu('', true, false, 'search.php', '搜索');
+                $(document).ready(function () { init_search(); });
+            });
+        </script>
+        <div id="main-nav"></div>
+    </div><!-- top -->
+    <!-- window showing the filter options -->
+    <div id="MSearchSelectWindow" onmouseover="return searchBox.OnSearchSelectShow()"
+        onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)">
+    </div>
+
+    <!-- iframe showing the search results (closed by default) -->
+    <div id="MSearchResultsWindow">
+        <iframe src="javascript:void(0)" frameborder="0" name="MSearchResults" id="MSearchResults">
+        </iframe>
+    </div>
+
+    <div class="header">
+        <div class="headertitle">
+            <div class="title">Clause 文档</div>
+        </div>
+    </div>
+    <!--header-->
+    <div class="contents">
+        <div id="markdown-content">
+# Clause
+
+Chatopera Language Understanding Service
+
+https://github.com/chatopera/clause
+
+![](https://user-images.githubusercontent.com/3538629/63484912-ecb5ed00-c4d3-11e9-8a66-7bc32fee6fe7.png)
+
+## Featured
+
+- JDK, Node.js, gcc, Maven3
+- thrift
+- jsoncpp
+- libevent
+- Eigen3
+- Alibaba ASR [Documentation](https://help.aliyun.com/document_detail/84569.html?spm=a2c4g.11186623.6.576.37c24efed2clkq)
+- gflags
+- protobuf
+- gtest
+- glog
+- gperftools
+- thrift
+- rocketmq
+
+Check out `thirdparty` for more.
+
+## Prerequisites
+
+You will need:
+
+- Ubuntu 16.04 (\*required)
+- CMake 3.1+ installed
+- If you prefer to code in a great IDE, I highly recommend [VSCode](https://code.visualstudio.com/). It is fully compatible with this project.
+
+## Bootstrap
+
+Take some efforts to install dependencies, these dependencies are split into two level: System level and User level.
+
+- System Level softwares are installed with `apt-get install` or installed to `/usr/local`, these softwares are shared between users. You should be very careful when dealing with system level softwares, it may block other people.
+
+- User Level softwares are installed inside the project source directory which is `YOUR_GIT_REPO/include`, `YOUR_GIT_REPO/lib` and `YOUR_GIT_REPO/share` usually.
+
+**So, when bringing up a new development environment with a bare machine, it should better install System Level Softwares by one person just once. Following developers just install User Level Softwares.**
+
+Note, to install the softwares successfully, you need `sudo` authority without password, or you are using `root`.
+
+Enable `sudo` without password in Ubuntu.
+
+```javascript
+sudo visudo
+## Add this line
+YOUR_ACCOUNT ALL=NOPASSWD: ALL
+```
+
+### System Level Softwares
+
+```
+./admin/install-3rd/system.sh
+```
+
+It would take ~3 hrs, this script would execute every command in `cmake/system` in order.
+
+| script              | description                                                                     | dependencies |
+| ------------------- | ------------------------------------------------------------------------------- | ------------ |
+| 001.corretto-jdk.sh | install amazon jdk, Default `JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto` | None         |
+| 001.nodejs.sh       | install nodejs                                                                  | None         |
+| 002.maven.sh        | install maven3                                                                  | jdk          |
+
+### User Level Softwares
+
+```
+./admin/install-3rd/user.sh
+```
+
+It would take ~3 hrs, this script would execute every command in `cmake/user` in order.
+
+### Install specific software
+
+You can install each components manually, find the scrips in `cmake/install`, the software has dependencies with others, consider you would want to install `openpose` which depends on `opencv` and `caffe`, first, execute `./005.opencv.sh`, then execute `006.caffe.sh`, at last run `007.opencv.sh`, the priority is defined in the prefix of script name.
+
+## Development
+
+```
+# build
+mkdir -p build/debug
+cd build/debug
+cmake ../..
+make
+```
+
+## Project Structure
+
+There are three empty folders: `lib`, `bin`, and `include`. Those are populated by `make install`.
+
+The rest should be obvious: `src` is the sources.
+
+Now we can build this project, and below we show three separate ways to do so.
+
+## File Locations
+
+- `src/MODULE` — C++ code that ultimately compiles into a library or binary
+- `src/MODULE/**_test.cpp` - C++ code to test each component.
+- `bin/`, `lib`, `include` are all empty directories, until the `make install` install the project artifacts there.
+
+## Format Code
+
+Currently, we use [Astyle](http://astyle.sourceforge.net/astyle.html) as code formatter to keep algin code, the style guide is set in `.astylerc`.
+
+Run code formatter.
+
+```
+./admin/formatter.sh
+cat ./.astylerc # check out settings.
+# Find more options
+# http://astyle.sourceforge.net/astyle.html#_Usage
+--style=google
+--indent=spaces=2
+--indent-switches
+--indent-preprocessor
+--break-blocks
+--pad-oper
+--recursive
+--formatted
+--suffix=none
+```
+
+It is a great habit to keep code style following the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) standard.
+
+## Try to create new module?
+
+Check out [src/sample](src/sample) as a template or skeleton.
+
+## Help
+
+- [Get started with CMake](https://github.com/chatopera/cmake-get-started)
+
+## License
+
+Copyright 2019 [北京华夏春松科技有限公司](https://www.chatopera.com) . All rights reserved.
+This software and related documentation are provided under a license agreement containing
+restrictions on use and disclosure and are protected by intellectual property laws.
+Except as expressly permitted in your license agreement or allowed by law, you may not use,
+copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform,
+publish, or display any part, in any form, or by any means. Reverse engineering, disassembly,
+or decompilation of this software, unless required by law for interoperability, is prohibited.
+
+        </div>
+    </div><!-- contents -->
+    <address class="footer">
+        <small>
+            &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+                北京华夏春松科技有限公司
+            </a>. All Rights Reserved
+            &nbsp;
+        </small>
+    </address>
+
+    <script>
+         var md = window.markdownit();
+         var markdown = $('#markdown-content').html();
+         var html = md.render(markdown);
+         $('#markdown-content').html(html);
+    </script>
+
+</body>

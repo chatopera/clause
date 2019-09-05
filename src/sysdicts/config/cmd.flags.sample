@@ -1,0 +1,4 @@
+--tryfromenv=server_port,server_threads,lac_conf_dir
+--server_port=8066
+--server_threads=20
+--lac_conf_dir=../../../../var/test/lac/conf

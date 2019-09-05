@@ -1,0 +1,3 @@
+expand rts
+document disk state diagram for a cyclic log in multilog
+use libtai local-time routines in tai64nlocal

@@ -1,0 +1,1 @@
+--tryfromenv=server_port,server_threads,mysql_uri,mysql_user,mysql_pass,activemq_broker_uri,activemq_client_ack,data,workarea,redis_host,redis_port,redis_db,redis_pass,sysdicts_host,sysdicts_port

@@ -1,0 +1,5 @@
+<map id="lac::Lac::create" name="lac::Lac::create">
+<area shape="rect" id="node2" href="$classlac_1_1MainTagger.html#a83426a37f8ca3e1a90b41d7db340597d" title="create, the factory function " alt="" coords="171,5,331,31"/>
+<area shape="rect" id="node3" href="$classlac_1_1CustomizationTagger.html#a19f8dd0e3d0aa61ae9c041ddfe2f3cf2" title="create, the factory function " alt="" coords="165,55,336,93"/>
+<area shape="rect" id="node4" href="$classlac_1_1CustomizationTagger.html#afd40736413933d03ff707a6f555361eb" title="load_customization_dic, load the customization dictionary " alt="" coords="384,55,555,93"/>
+</map>

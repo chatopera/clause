@@ -1,0 +1,1779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: tsl::array_map&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacetsl.html">tsl</a></li><li class="navelem"><a class="el" href="classtsl_1_1array__map.html">array_map</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="classtsl_1_1array__map-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">tsl::array_map&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="array__map_8h_source.html">array_map.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ab9417f408e43c3079d810a402f07e59d"><td class="memItemLeft" align="right" valign="top"><a id="ab9417f408e43c3079d810a402f07e59d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>char_type</b> = typename ht::char_type</td></tr>
+<tr class="separator:ab9417f408e43c3079d810a402f07e59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c42cb32e621165eea9155c8547a93f6"><td class="memItemLeft" align="right" valign="top"><a id="a8c42cb32e621165eea9155c8547a93f6"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>mapped_type</b> = T</td></tr>
+<tr class="separator:a8c42cb32e621165eea9155c8547a93f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fda350b742b173cd6f7341efc14647d"><td class="memItemLeft" align="right" valign="top"><a id="a9fda350b742b173cd6f7341efc14647d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>key_size_type</b> = typename ht::key_size_type</td></tr>
+<tr class="separator:a9fda350b742b173cd6f7341efc14647d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40aeebefb15dc01448b24e3b8abc8f53"><td class="memItemLeft" align="right" valign="top"><a id="a40aeebefb15dc01448b24e3b8abc8f53"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>index_size_type</b> = typename ht::index_size_type</td></tr>
+<tr class="separator:a40aeebefb15dc01448b24e3b8abc8f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa37db5d65cdf6b6d5460be7fef93b065"><td class="memItemLeft" align="right" valign="top"><a id="aa37db5d65cdf6b6d5460be7fef93b065"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b> = typename ht::size_type</td></tr>
+<tr class="separator:aa37db5d65cdf6b6d5460be7fef93b065"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb8b48ad7bedc6b0c749947f390aac75"><td class="memItemLeft" align="right" valign="top"><a id="acb8b48ad7bedc6b0c749947f390aac75"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>hasher</b> = typename ht::hasher</td></tr>
+<tr class="separator:acb8b48ad7bedc6b0c749947f390aac75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37227740c3492d225b38b61cec9ad19d"><td class="memItemLeft" align="right" valign="top"><a id="a37227740c3492d225b38b61cec9ad19d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>key_equal</b> = typename ht::key_equal</td></tr>
+<tr class="separator:a37227740c3492d225b38b61cec9ad19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7bc056d39f4d3c701662782521382dc"><td class="memItemLeft" align="right" valign="top"><a id="ab7bc056d39f4d3c701662782521382dc"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> = typename <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">ht::iterator</a></td></tr>
+<tr class="separator:ab7bc056d39f4d3c701662782521382dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb286fe786e3f9dfc00d2f390f9fe3b"><td class="memItemLeft" align="right" valign="top"><a id="a2eb286fe786e3f9dfc00d2f390f9fe3b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> = typename <a class="el" href="classtsl_1_1detail__array__hash_1_1array__hash_1_1array__hash__iterator.html">ht::const_iterator</a></td></tr>
+<tr class="separator:a2eb286fe786e3f9dfc00d2f390f9fe3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a4a5b89c7bbc306c267880bf436326dbd"><td class="memItemLeft" align="right" valign="top"><a id="a4a5b89c7bbc306c267880bf436326dbd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_map</b> (size_type bucket_count, const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:a4a5b89c7bbc306c267880bf436326dbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace611bb89b35143ad09fcf2554ac787e"><td class="memTemplParams" colspan="2"><a id="ace611bb89b35143ad09fcf2554ac787e"></a>
+template&lt;class InputIt , typename std::enable_if&lt; is_iterator&lt; InputIt &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:ace611bb89b35143ad09fcf2554ac787e"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>array_map</b> (InputIt first, InputIt last, size_type bucket_count=ht::DEFAULT_INIT_BUCKET_COUNT, const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:ace611bb89b35143ad09fcf2554ac787e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f8065b086ce514bcbca16b32efc7369"><td class="memItemLeft" align="right" valign="top"><a id="a4f8065b086ce514bcbca16b32efc7369"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>array_map</b> (std::initializer_list&lt; std::pair&lt; const CharT *, T &gt;&gt; init, size_type bucket_count=ht::DEFAULT_INIT_BUCKET_COUNT, const Hash &amp;hash=Hash())</td></tr>
+<tr class="separator:a4f8065b086ce514bcbca16b32efc7369"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a759987d26ee32dfda4107abafd7f9de4"><td class="memItemLeft" align="right" valign="top"><a id="a759987d26ee32dfda4107abafd7f9de4"></a>
+<a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (std::initializer_list&lt; std::pair&lt; const CharT *, T &gt;&gt; ilist)</td></tr>
+<tr class="separator:a759987d26ee32dfda4107abafd7f9de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ba1b88694551ba3934e381d46eeac8"><td class="memItemLeft" align="right" valign="top"><a id="ab6ba1b88694551ba3934e381d46eeac8"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () noexcept</td></tr>
+<tr class="separator:ab6ba1b88694551ba3934e381d46eeac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3775ce910d4da5ab5225ee317f63eaec"><td class="memItemLeft" align="right" valign="top"><a id="a3775ce910d4da5ab5225ee317f63eaec"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const noexcept</td></tr>
+<tr class="separator:a3775ce910d4da5ab5225ee317f63eaec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06dcd2cff34504dd6138747734f71dce"><td class="memItemLeft" align="right" valign="top"><a id="a06dcd2cff34504dd6138747734f71dce"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cbegin</b> () const noexcept</td></tr>
+<tr class="separator:a06dcd2cff34504dd6138747734f71dce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e1f2d2072d1fe3ddb39886ba6fafea"><td class="memItemLeft" align="right" valign="top"><a id="a95e1f2d2072d1fe3ddb39886ba6fafea"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () noexcept</td></tr>
+<tr class="separator:a95e1f2d2072d1fe3ddb39886ba6fafea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df4550b11cd36df37ed046ce6da1de7"><td class="memItemLeft" align="right" valign="top"><a id="a6df4550b11cd36df37ed046ce6da1de7"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const noexcept</td></tr>
+<tr class="separator:a6df4550b11cd36df37ed046ce6da1de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f80cdf06794074a64288eb3a3ccc2be"><td class="memItemLeft" align="right" valign="top"><a id="a5f80cdf06794074a64288eb3a3ccc2be"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>cend</b> () const noexcept</td></tr>
+<tr class="separator:a5f80cdf06794074a64288eb3a3ccc2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad995756cc44545246756c75be4ff7bf2"><td class="memItemLeft" align="right" valign="top"><a id="ad995756cc44545246756c75be4ff7bf2"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>empty</b> () const noexcept</td></tr>
+<tr class="separator:ad995756cc44545246756c75be4ff7bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d267bcde0cecf81185f3ddd39225df"><td class="memItemLeft" align="right" valign="top"><a id="a86d267bcde0cecf81185f3ddd39225df"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const noexcept</td></tr>
+<tr class="separator:a86d267bcde0cecf81185f3ddd39225df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8dbb34df32fb6e4c94edf0dfe820b8b"><td class="memItemLeft" align="right" valign="top"><a id="ab8dbb34df32fb6e4c94edf0dfe820b8b"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_size</b> () const noexcept</td></tr>
+<tr class="separator:ab8dbb34df32fb6e4c94edf0dfe820b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51e1e4fb42a3e2742636ca24f71a414"><td class="memItemLeft" align="right" valign="top"><a id="ae51e1e4fb42a3e2742636ca24f71a414"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_key_size</b> () const noexcept</td></tr>
+<tr class="separator:ae51e1e4fb42a3e2742636ca24f71a414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add64ef6d0a8a480c17522718d6d44949"><td class="memItemLeft" align="right" valign="top"><a id="add64ef6d0a8a480c17522718d6d44949"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>shrink_to_fit</b> ()</td></tr>
+<tr class="separator:add64ef6d0a8a480c17522718d6d44949"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09cc066b1bcbfbbdd90fe3af2474216b"><td class="memItemLeft" align="right" valign="top"><a id="a09cc066b1bcbfbbdd90fe3af2474216b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> () noexcept</td></tr>
+<tr class="separator:a09cc066b1bcbfbbdd90fe3af2474216b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20c208b0623339cd3ae5791e06ccc59a"><td class="memItemLeft" align="right" valign="top"><a id="a20c208b0623339cd3ae5791e06ccc59a"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const CharT *key, const T &amp;value)</td></tr>
+<tr class="separator:a20c208b0623339cd3ae5791e06ccc59a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55f1abdab9c688fae75c673e433a6e9f"><td class="memItemLeft" align="right" valign="top"><a id="a55f1abdab9c688fae75c673e433a6e9f"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std::basic_string&lt; CharT &gt; &amp;key, const T &amp;value)</td></tr>
+<tr class="separator:a55f1abdab9c688fae75c673e433a6e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae047e544a476f1571b4b6192bbd4f4bc"><td class="memItemLeft" align="right" valign="top"><a id="ae047e544a476f1571b4b6192bbd4f4bc"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert_ks</b> (const CharT *key, size_type key_size, const T &amp;value)</td></tr>
+<tr class="separator:ae047e544a476f1571b4b6192bbd4f4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7142968e21de3460c9ef88ac263f58e3"><td class="memItemLeft" align="right" valign="top"><a id="a7142968e21de3460c9ef88ac263f58e3"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const CharT *key, T &amp;&amp;value)</td></tr>
+<tr class="separator:a7142968e21de3460c9ef88ac263f58e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c45722036cf903978e69871699fe905"><td class="memItemLeft" align="right" valign="top"><a id="a8c45722036cf903978e69871699fe905"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (const std::basic_string&lt; CharT &gt; &amp;key, T &amp;&amp;value)</td></tr>
+<tr class="separator:a8c45722036cf903978e69871699fe905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98583ad56e8bc1a0a856c84a320355eb"><td class="memItemLeft" align="right" valign="top"><a id="a98583ad56e8bc1a0a856c84a320355eb"></a>
+std::pair&lt; iterator, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>insert_ks</b> (const CharT *key, size_type key_size, T &amp;&amp;value)</td></tr>
+<tr class="separator:a98583ad56e8bc1a0a856c84a320355eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e1721ce6dd70d22ec73178f69f12dad"><td class="memTemplParams" colspan="2"><a id="a1e1721ce6dd70d22ec73178f69f12dad"></a>
+template&lt;class InputIt , typename std::enable_if&lt; is_iterator&lt; InputIt &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a1e1721ce6dd70d22ec73178f69f12dad"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert</b> (InputIt first, InputIt last)</td></tr>
+<tr class="separator:a1e1721ce6dd70d22ec73178f69f12dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd18d8c6fffd6425eac5fb56c62ab95"><td class="memItemLeft" align="right" valign="top"><a id="a3bd18d8c6fffd6425eac5fb56c62ab95"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (std::initializer_list&lt; std::pair&lt; const CharT *, T &gt;&gt; ilist)</td></tr>
+<tr class="separator:a3bd18d8c6fffd6425eac5fb56c62ab95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed014f54893bdd59ab982639d7012eff"><td class="memTemplParams" colspan="2"><a id="aed014f54893bdd59ab982639d7012eff"></a>
+template&lt;class M &gt; </td></tr>
+<tr class="memitem:aed014f54893bdd59ab982639d7012eff"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert_or_assign</b> (const CharT *key, M &amp;&amp;obj)</td></tr>
+<tr class="separator:aed014f54893bdd59ab982639d7012eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fc28ef1d110e69fbe732a2e8ac53c50"><td class="memTemplParams" colspan="2"><a id="a1fc28ef1d110e69fbe732a2e8ac53c50"></a>
+template&lt;class M &gt; </td></tr>
+<tr class="memitem:a1fc28ef1d110e69fbe732a2e8ac53c50"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert_or_assign</b> (const std::basic_string&lt; CharT &gt; &amp;key, M &amp;&amp;obj)</td></tr>
+<tr class="separator:a1fc28ef1d110e69fbe732a2e8ac53c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1091bae42dca83ff8bf50793c4da1188"><td class="memTemplParams" colspan="2"><a id="a1091bae42dca83ff8bf50793c4da1188"></a>
+template&lt;class M &gt; </td></tr>
+<tr class="memitem:a1091bae42dca83ff8bf50793c4da1188"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>insert_or_assign_ks</b> (const CharT *key, size_type key_size, M &amp;&amp;obj)</td></tr>
+<tr class="separator:a1091bae42dca83ff8bf50793c4da1188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc6e5606329ff4e80de49409c6787e1"><td class="memTemplParams" colspan="2"><a id="a9dc6e5606329ff4e80de49409c6787e1"></a>
+template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:a9dc6e5606329ff4e80de49409c6787e1"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (const CharT *key, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:a9dc6e5606329ff4e80de49409c6787e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b3732339837e34342bf4fd053350bd"><td class="memTemplParams" colspan="2"><a id="a02b3732339837e34342bf4fd053350bd"></a>
+template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:a02b3732339837e34342bf4fd053350bd"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace</b> (const std::basic_string&lt; CharT &gt; &amp;key, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:a02b3732339837e34342bf4fd053350bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ceca5cc2904d49895d58d9171dfdddb"><td class="memTemplParams" colspan="2"><a id="a2ceca5cc2904d49895d58d9171dfdddb"></a>
+template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:a2ceca5cc2904d49895d58d9171dfdddb"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; iterator, bool &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>emplace_ks</b> (const CharT *key, size_type key_size, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:a2ceca5cc2904d49895d58d9171dfdddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f9758711593f5f49685919bbf26575"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#ad4f9758711593f5f49685919bbf26575">erase</a> (const_iterator pos)</td></tr>
+<tr class="separator:ad4f9758711593f5f49685919bbf26575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ce4fbd976067a80b1cd6236989fc2b"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a44ce4fbd976067a80b1cd6236989fc2b">erase</a> (const_iterator first, const_iterator last)</td></tr>
+<tr class="separator:a44ce4fbd976067a80b1cd6236989fc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d23fb3bd126bc54314f3aea31cbc76a"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a5d23fb3bd126bc54314f3aea31cbc76a">erase</a> (const CharT *key)</td></tr>
+<tr class="separator:a5d23fb3bd126bc54314f3aea31cbc76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eb75c5420f0bc3b860602a516f166d3"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a9eb75c5420f0bc3b860602a516f166d3">erase</a> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:a9eb75c5420f0bc3b860602a516f166d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d4631f17fcb949a468780cef923f487"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a5d4631f17fcb949a468780cef923f487">erase_ks</a> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a5d4631f17fcb949a468780cef923f487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4214ca2fe61119c4d8fdc2dc1eb8eecc"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a4214ca2fe61119c4d8fdc2dc1eb8eecc">erase</a> (const CharT *key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a4214ca2fe61119c4d8fdc2dc1eb8eecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff3c6772ae6d9896b02aaa875cc579db"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#aff3c6772ae6d9896b02aaa875cc579db">erase</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:aff3c6772ae6d9896b02aaa875cc579db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bebcebf3f32861c8a27cfecffa00739"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a4bebcebf3f32861c8a27cfecffa00739">erase_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a4bebcebf3f32861c8a27cfecffa00739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2350af4ca6a73faae79f77de439e1ad5"><td class="memItemLeft" align="right" valign="top"><a id="a2350af4ca6a73faae79f77de439e1ad5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;other)</td></tr>
+<tr class="separator:a2350af4ca6a73faae79f77de439e1ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1e78fb8204816e7e8bb84f17b51d43"><td class="memItemLeft" align="right" valign="top"><a id="a8e1e78fb8204816e7e8bb84f17b51d43"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const CharT *key)</td></tr>
+<tr class="separator:a8e1e78fb8204816e7e8bb84f17b51d43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a735a33b26e17bd1dfc290c5a53520f67"><td class="memItemLeft" align="right" valign="top"><a id="a735a33b26e17bd1dfc290c5a53520f67"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const CharT *key) const</td></tr>
+<tr class="separator:a735a33b26e17bd1dfc290c5a53520f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad73456467a7c65ac0d0ffd6a7ac5d13d"><td class="memItemLeft" align="right" valign="top"><a id="ad73456467a7c65ac0d0ffd6a7ac5d13d"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:ad73456467a7c65ac0d0ffd6a7ac5d13d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982ffeca2df23d53258e5b752ce6e478"><td class="memItemLeft" align="right" valign="top"><a id="a982ffeca2df23d53258e5b752ce6e478"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:a982ffeca2df23d53258e5b752ce6e478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02c21691e318b626ec49315216659b6a"><td class="memItemLeft" align="right" valign="top"><a id="a02c21691e318b626ec49315216659b6a"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a02c21691e318b626ec49315216659b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae511fd8c6733ea35c6088d0a0814f4d3"><td class="memItemLeft" align="right" valign="top"><a id="ae511fd8c6733ea35c6088d0a0814f4d3"></a>
+const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:ae511fd8c6733ea35c6088d0a0814f4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e22138ae6aaf4a052beb2ba5a6cafc"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a01e22138ae6aaf4a052beb2ba5a6cafc">at</a> (const CharT *key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a01e22138ae6aaf4a052beb2ba5a6cafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12343d9a4235028bc50cc0204bab61d1"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a12343d9a4235028bc50cc0204bab61d1">at</a> (const CharT *key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a12343d9a4235028bc50cc0204bab61d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a635915fe36616505f5859bb0cc1cce3b"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a635915fe36616505f5859bb0cc1cce3b">at</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a635915fe36616505f5859bb0cc1cce3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7712eb464ebf01c14615d7a2a683ec0"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#af7712eb464ebf01c14615d7a2a683ec0">at</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:af7712eb464ebf01c14615d7a2a683ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dd26f0c103babb71fc6af158ee6ad9f"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a7dd26f0c103babb71fc6af158ee6ad9f">at_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a7dd26f0c103babb71fc6af158ee6ad9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44a72573e03e9ea2f13a70e1751721b3"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a44a72573e03e9ea2f13a70e1751721b3">at_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a44a72573e03e9ea2f13a70e1751721b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a2e8c4b7d71de777d8f5f9b5236a9d"><td class="memItemLeft" align="right" valign="top"><a id="ad2a2e8c4b7d71de777d8f5f9b5236a9d"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const CharT *key)</td></tr>
+<tr class="separator:ad2a2e8c4b7d71de777d8f5f9b5236a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5224bc2c20f97aac8285a3815a80f5b7"><td class="memItemLeft" align="right" valign="top"><a id="a5224bc2c20f97aac8285a3815a80f5b7"></a>
+T &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:a5224bc2c20f97aac8285a3815a80f5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c0484440332bc1d6411b83e2cb536e3"><td class="memItemLeft" align="right" valign="top"><a id="a6c0484440332bc1d6411b83e2cb536e3"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const CharT *key) const</td></tr>
+<tr class="separator:a6c0484440332bc1d6411b83e2cb536e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1677d5003de4812ec0bd379e07c1d11"><td class="memItemLeft" align="right" valign="top"><a id="aa1677d5003de4812ec0bd379e07c1d11"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:aa1677d5003de4812ec0bd379e07c1d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9838da254100917afe50c5d25b718993"><td class="memItemLeft" align="right" valign="top"><a id="a9838da254100917afe50c5d25b718993"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>count_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:a9838da254100917afe50c5d25b718993"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25af2b485ef4d7b4a15d83d719e70f58"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a25af2b485ef4d7b4a15d83d719e70f58">count</a> (const CharT *key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a25af2b485ef4d7b4a15d83d719e70f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c6518a8ce18e74d5f17d3c9478f4af"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a67c6518a8ce18e74d5f17d3c9478f4af">count</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a67c6518a8ce18e74d5f17d3c9478f4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23fee627b072b2b36a1ee69b1af5ce13"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a23fee627b072b2b36a1ee69b1af5ce13">count_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a23fee627b072b2b36a1ee69b1af5ce13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7dc74775f5f9c9ad818ddd63e6d5318"><td class="memItemLeft" align="right" valign="top"><a id="af7dc74775f5f9c9ad818ddd63e6d5318"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key)</td></tr>
+<tr class="separator:af7dc74775f5f9c9ad818ddd63e6d5318"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe58053a4c32e9c2a25833cdb66fa284"><td class="memItemLeft" align="right" valign="top"><a id="afe58053a4c32e9c2a25833cdb66fa284"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const CharT *key) const</td></tr>
+<tr class="separator:afe58053a4c32e9c2a25833cdb66fa284"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e2c346944dbd102f37c11fac127e2df"><td class="memItemLeft" align="right" valign="top"><a id="a6e2c346944dbd102f37c11fac127e2df"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:a6e2c346944dbd102f37c11fac127e2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b5c4714023ad214be04c746cb61b55"><td class="memItemLeft" align="right" valign="top"><a id="ae6b5c4714023ad214be04c746cb61b55"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:ae6b5c4714023ad214be04c746cb61b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0afae3ae80f3624e5c0a65e22eb39a10"><td class="memItemLeft" align="right" valign="top"><a id="a0afae3ae80f3624e5c0a65e22eb39a10"></a>
+iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:a0afae3ae80f3624e5c0a65e22eb39a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fd938f572d87889cb69b08e74ba5c98"><td class="memItemLeft" align="right" valign="top"><a id="a3fd938f572d87889cb69b08e74ba5c98"></a>
+const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>find_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:a3fd938f572d87889cb69b08e74ba5c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86f5611d14969373271b047399fce58c"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a86f5611d14969373271b047399fce58c">find</a> (const CharT *key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a86f5611d14969373271b047399fce58c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac478cdf8e164d551dab0d07abcd9d610"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#ac478cdf8e164d551dab0d07abcd9d610">find</a> (const CharT *key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:ac478cdf8e164d551dab0d07abcd9d610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1fdbcfe54a87ea56601b3f4e71455a8"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#ac1fdbcfe54a87ea56601b3f4e71455a8">find</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:ac1fdbcfe54a87ea56601b3f4e71455a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea0a50e84c9a6fa9c08b75c0ca447d8"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a2ea0a50e84c9a6fa9c08b75c0ca447d8">find</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a2ea0a50e84c9a6fa9c08b75c0ca447d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c58f74e781bfd18d8810748b57b761d"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a9c58f74e781bfd18d8810748b57b761d">find_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a9c58f74e781bfd18d8810748b57b761d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af05378c99bfc6c0dabfd56c59f2f4552"><td class="memItemLeft" align="right" valign="top">const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#af05378c99bfc6c0dabfd56c59f2f4552">find_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:af05378c99bfc6c0dabfd56c59f2f4552"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eafe45ba2feaa414d7775b756215021"><td class="memItemLeft" align="right" valign="top"><a id="a8eafe45ba2feaa414d7775b756215021"></a>
+std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key)</td></tr>
+<tr class="separator:a8eafe45ba2feaa414d7775b756215021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e2d4b32ed663c2f6d017afbaca9642"><td class="memItemLeft" align="right" valign="top"><a id="a13e2d4b32ed663c2f6d017afbaca9642"></a>
+std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const CharT *key) const</td></tr>
+<tr class="separator:a13e2d4b32ed663c2f6d017afbaca9642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0de7a40cc1e14083ae307bdd7a444197"><td class="memItemLeft" align="right" valign="top"><a id="a0de7a40cc1e14083ae307bdd7a444197"></a>
+std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const std::basic_string&lt; CharT &gt; &amp;key)</td></tr>
+<tr class="separator:a0de7a40cc1e14083ae307bdd7a444197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c09c06eddd1a98a0430690d42845da"><td class="memItemLeft" align="right" valign="top"><a id="a30c09c06eddd1a98a0430690d42845da"></a>
+std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range</b> (const std::basic_string&lt; CharT &gt; &amp;key) const</td></tr>
+<tr class="separator:a30c09c06eddd1a98a0430690d42845da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2123b3b4e30512c10fac99c65a5d151"><td class="memItemLeft" align="right" valign="top"><a id="ad2123b3b4e30512c10fac99c65a5d151"></a>
+std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range_ks</b> (const CharT *key, size_type key_size)</td></tr>
+<tr class="separator:ad2123b3b4e30512c10fac99c65a5d151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47d576f8e03116a47941806c60bb4d0"><td class="memItemLeft" align="right" valign="top"><a id="ae47d576f8e03116a47941806c60bb4d0"></a>
+std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>equal_range_ks</b> (const CharT *key, size_type key_size) const</td></tr>
+<tr class="separator:ae47d576f8e03116a47941806c60bb4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a25b4f552a63761fb759659e8b0c15"><td class="memItemLeft" align="right" valign="top">std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a39a25b4f552a63761fb759659e8b0c15">equal_range</a> (const CharT *key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a39a25b4f552a63761fb759659e8b0c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9177fffd13f46531ca65a809df3fb4f"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#aa9177fffd13f46531ca65a809df3fb4f">equal_range</a> (const CharT *key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:aa9177fffd13f46531ca65a809df3fb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacb762946a4cc578cb59e73a24b8ef0d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#aacb762946a4cc578cb59e73a24b8ef0d">equal_range</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:aacb762946a4cc578cb59e73a24b8ef0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78d22bf9a46394432bb6930191f28b43"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a78d22bf9a46394432bb6930191f28b43">equal_range</a> (const std::basic_string&lt; CharT &gt; &amp;key, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a78d22bf9a46394432bb6930191f28b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a334c678a506ca957764348577e71da83"><td class="memItemLeft" align="right" valign="top">std::pair&lt; iterator, iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a334c678a506ca957764348577e71da83">equal_range_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash)</td></tr>
+<tr class="separator:a334c678a506ca957764348577e71da83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be8f0320f2701a5c75b2e03b17adbeb"><td class="memItemLeft" align="right" valign="top">std::pair&lt; const_iterator, const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a6be8f0320f2701a5c75b2e03b17adbeb">equal_range_ks</a> (const CharT *key, size_type key_size, std::size_t precalculated_hash) const</td></tr>
+<tr class="separator:a6be8f0320f2701a5c75b2e03b17adbeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eab9e56e8d43ce071fb38d8970634b7"><td class="memItemLeft" align="right" valign="top"><a id="a3eab9e56e8d43ce071fb38d8970634b7"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>bucket_count</b> () const</td></tr>
+<tr class="separator:a3eab9e56e8d43ce071fb38d8970634b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a972d86d52381cf13a9685e39ac907197"><td class="memItemLeft" align="right" valign="top"><a id="a972d86d52381cf13a9685e39ac907197"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>max_bucket_count</b> () const</td></tr>
+<tr class="separator:a972d86d52381cf13a9685e39ac907197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2101e0f514825b5fddbd8e1b76f3f2e"><td class="memItemLeft" align="right" valign="top"><a id="ac2101e0f514825b5fddbd8e1b76f3f2e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>load_factor</b> () const</td></tr>
+<tr class="separator:ac2101e0f514825b5fddbd8e1b76f3f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20846e931aac6dab3e44ec70f6cd4c5b"><td class="memItemLeft" align="right" valign="top"><a id="a20846e931aac6dab3e44ec70f6cd4c5b"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>max_load_factor</b> () const</td></tr>
+<tr class="separator:a20846e931aac6dab3e44ec70f6cd4c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd078431bcef022c11912fbce3019521"><td class="memItemLeft" align="right" valign="top"><a id="abd078431bcef022c11912fbce3019521"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>max_load_factor</b> (float ml)</td></tr>
+<tr class="separator:abd078431bcef022c11912fbce3019521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e5839dffbb17721cc0df764507c709"><td class="memItemLeft" align="right" valign="top"><a id="a25e5839dffbb17721cc0df764507c709"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rehash</b> (size_type count)</td></tr>
+<tr class="separator:a25e5839dffbb17721cc0df764507c709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35ec9dfb169d7b55308c0aa0a2dde568"><td class="memItemLeft" align="right" valign="top"><a id="a35ec9dfb169d7b55308c0aa0a2dde568"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reserve</b> (size_type count)</td></tr>
+<tr class="separator:a35ec9dfb169d7b55308c0aa0a2dde568"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaaf998b0dd996eccfe4096eb320713f"><td class="memItemLeft" align="right" valign="top"><a id="afaaf998b0dd996eccfe4096eb320713f"></a>
+hasher&#160;</td><td class="memItemRight" valign="bottom"><b>hash_function</b> () const</td></tr>
+<tr class="separator:afaaf998b0dd996eccfe4096eb320713f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaecedcd42edbdc3c27df70c778f1eed6"><td class="memItemLeft" align="right" valign="top"><a id="aaecedcd42edbdc3c27df70c778f1eed6"></a>
+key_equal&#160;</td><td class="memItemRight" valign="bottom"><b>key_eq</b> () const</td></tr>
+<tr class="separator:aaecedcd42edbdc3c27df70c778f1eed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af90f943d794338955d94678be509cfc3"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#af90f943d794338955d94678be509cfc3">mutable_iterator</a> (const_iterator it) noexcept</td></tr>
+<tr class="separator:af90f943d794338955d94678be509cfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0610dcb77b7679c064f2e4035231a1af"><td class="memTemplParams" colspan="2">template&lt;class Serializer &gt; </td></tr>
+<tr class="memitem:a0610dcb77b7679c064f2e4035231a1af"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a0610dcb77b7679c064f2e4035231a1af">serialize</a> (Serializer &amp;serializer) const</td></tr>
+<tr class="separator:a0610dcb77b7679c064f2e4035231a1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a9c91ecf896f6e444856bae9c15ad641b"><td class="memTemplParams" colspan="2">template&lt;class Deserializer &gt; </td></tr>
+<tr class="memitem:a9c91ecf896f6e444856bae9c15ad641b"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classtsl_1_1array__map.html">array_map</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classtsl_1_1array__map.html#a9c91ecf896f6e444856bae9c15ad641b">deserialize</a> (Deserializer &amp;deserializer, bool hash_compatible=false)</td></tr>
+<tr class="separator:a9c91ecf896f6e444856bae9c15ad641b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:ae5ff9a3ea9891f28aaa619d9217220da"><td class="memItemLeft" align="right" valign="top"><a id="ae5ff9a3ea9891f28aaa619d9217220da"></a>
+static const size_type&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_KEY_SIZE</b> = ht::MAX_KEY_SIZE</td></tr>
+<tr class="separator:ae5ff9a3ea9891f28aaa619d9217220da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:ad1c3dff914db66e1ff7b1564b48c314a"><td class="memItemLeft" align="right" valign="top"><a id="ad1c3dff914db66e1ff7b1564b48c314a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;lhs, const <a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;rhs)</td></tr>
+<tr class="separator:ad1c3dff914db66e1ff7b1564b48c314a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a812d88ef8afa0c05dfe26dcb2cfd98fe"><td class="memItemLeft" align="right" valign="top"><a id="a812d88ef8afa0c05dfe26dcb2cfd98fe"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;lhs, const <a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;rhs)</td></tr>
+<tr class="separator:a812d88ef8afa0c05dfe26dcb2cfd98fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669256840331fe8dca08bc971bf9956e"><td class="memItemLeft" align="right" valign="top"><a id="a669256840331fe8dca08bc971bf9956e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (<a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;lhs, <a class="el" href="classtsl_1_1array__map.html">array_map</a> &amp;rhs)</td></tr>
+<tr class="separator:a669256840331fe8dca08bc971bf9956e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;class CharT, class T, class Hash = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT = std::uint16_t, class IndexSizeT = std::uint32_t, class GrowthPolicy = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt;<br />
+class tsl::array_map&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;</h3>
+
+<p>Implementation of a cache-conscious string hash map.</p>
+<p>The map stores the strings as <code>const CharT*</code>. If <code>StoreNullTerminator</code> is true, the strings are stored with the a null-terminator (the <code>key()</code> method of the iterators will return a pointer to this null-terminated string). Otherwise the null character is not stored (which allow an economy of 1 byte per string).</p>
+<p>The value <code>T</code> must be either nothrow move-constructible, copy-constuctible or both.</p>
+<p>The size of a key string is limited to <code>std::numeric_limits&lt;KeySizeT&gt;::max() - 1</code>. That is 65 535 characters by default, but can be raised with the <code>KeySizeT</code> template parameter. See <code>max_key_size()</code> for an easy access to this limit.</p>
+<p>The number of elements in the map is limited to <code>std::numeric_limits&lt;IndexSizeT&gt;::max()</code>. That is 4 294 967 296 elements, but can be raised with the <code>IndexSizeT</code> template parameter. See <code>max_size()</code> for an easy access to this limit.</p>
+<p>Iterators invalidation:</p><ul>
+<li>clear, operator=: always invalidate the iterators.</li>
+<li>insert, emplace, operator[]: always invalidate the iterators.</li>
+<li>erase: always invalidate the iterators.</li>
+<li>shrink_to_fit: always invalidate the iterators. </li>
+</ul>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a01e22138ae6aaf4a052beb2ba5a6cafc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e22138ae6aaf4a052beb2ba5a6cafc">&#9670;&nbsp;</a></span>at() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T&amp; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a12343d9a4235028bc50cc0204bab61d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12343d9a4235028bc50cc0204bab61d1">&#9670;&nbsp;</a></span>at() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T&amp; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a635915fe36616505f5859bb0cc1cce3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a635915fe36616505f5859bb0cc1cce3b">&#9670;&nbsp;</a></span>at() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T&amp; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="af7712eb464ebf01c14615d7a2a683ec0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7712eb464ebf01c14615d7a2a683ec0">&#9670;&nbsp;</a></span>at() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T&amp; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::at </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a7dd26f0c103babb71fc6af158ee6ad9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dd26f0c103babb71fc6af158ee6ad9f">&#9670;&nbsp;</a></span>at_ks() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T&amp; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::at_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a44a72573e03e9ea2f13a70e1751721b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44a72573e03e9ea2f13a70e1751721b3">&#9670;&nbsp;</a></span>at_ks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T&amp; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::at_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a25af2b485ef4d7b4a15d83d719e70f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25af2b485ef4d7b4a15d83d719e70f58">&#9670;&nbsp;</a></span>count() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::count </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a67c6518a8ce18e74d5f17d3c9478f4af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67c6518a8ce18e74d5f17d3c9478f4af">&#9670;&nbsp;</a></span>count() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::count </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a23fee627b072b2b36a1ee69b1af5ce13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23fee627b072b2b36a1ee69b1af5ce13">&#9670;&nbsp;</a></span>count_ks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::count_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a9c91ecf896f6e444856bae9c15ad641b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c91ecf896f6e444856bae9c15ad641b">&#9670;&nbsp;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<div class="memtemplate">
+template&lt;class Deserializer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classtsl_1_1array__map.html">array_map</a> <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">Deserializer &amp;&#160;</td>
+          <td class="paramname"><em>deserializer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>hash_compatible</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Deserialize a previouly serialized map through the <code>deserializer</code> parameter.</p>
+<p>The <code>deserializer</code> parameter must be a function object that supports the following calls:</p><ul>
+<li><code>template&lt;typename U&gt; U operator()();</code> where the types <code>std::uint64_t</code>, <code>float</code> and <code>T</code> must be supported for U.</li>
+<li><code>void operator()(CharT* value_out, std::size_t value_size);</code></li>
+</ul>
+<p>If the deserialized hash map type is hash compatible with the serialized map, the deserialization process can be sped up by setting <code>hash_compatible</code> to true. To be hash compatible, the Hash (take care of the 32-bits vs 64 bits), KeyEqual, GrowthPolicy, StoreNullTerminator, KeySizeT and IndexSizeT must behave the same than the ones used on the serialized map. Otherwise the behaviour is undefined with <code>hash_compatible</code> sets to true.</p>
+<p>The behaviour is undefined if the type <code>CharT</code> and <code>T</code> of the <code><a class="el" href="classtsl_1_1array__map.html">array_map</a></code> are not the same as the types used during serialization.</p>
+<p>The implementation leaves binary compatibilty (endianness, IEEE 754 for floats, size of int, ...) of the types it deserializes in the hands of the <code>Deserializer</code> function object if compatibilty is required. </p>
+
+</div>
+</div>
+<a id="a39a25b4f552a63761fb759659e8b0c15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39a25b4f552a63761fb759659e8b0c15">&#9670;&nbsp;</a></span>equal_range() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;iterator, iterator&gt; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::equal_range </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="aa9177fffd13f46531ca65a809df3fb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9177fffd13f46531ca65a809df3fb4f">&#9670;&nbsp;</a></span>equal_range() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;const_iterator, const_iterator&gt; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::equal_range </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="aacb762946a4cc578cb59e73a24b8ef0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacb762946a4cc578cb59e73a24b8ef0d">&#9670;&nbsp;</a></span>equal_range() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;iterator, iterator&gt; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::equal_range </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a78d22bf9a46394432bb6930191f28b43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78d22bf9a46394432bb6930191f28b43">&#9670;&nbsp;</a></span>equal_range() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;const_iterator, const_iterator&gt; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::equal_range </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a334c678a506ca957764348577e71da83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a334c678a506ca957764348577e71da83">&#9670;&nbsp;</a></span>equal_range_ks() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;iterator, iterator&gt; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::equal_range_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a6be8f0320f2701a5c75b2e03b17adbeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6be8f0320f2701a5c75b2e03b17adbeb">&#9670;&nbsp;</a></span>equal_range_ks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt;const_iterator, const_iterator&gt; <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::equal_range_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="ad4f9758711593f5f49685919bbf26575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f9758711593f5f49685919bbf26575">&#9670;&nbsp;</a></span>erase() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype">const_iterator&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit. </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1array__map_ad4f9758711593f5f49685919bbf26575_icgraph.png" border="0" usemap="#classtsl_1_1array__map_ad4f9758711593f5f49685919bbf26575_icgraph" alt=""/></div>
+<map name="classtsl_1_1array__map_ad4f9758711593f5f49685919bbf26575_icgraph" id="classtsl_1_1array__map_ad4f9758711593f5f49685919bbf26575_icgraph">
+<area shape="rect" id="node2" href="classtsl_1_1array__map.html#a44ce4fbd976067a80b1cd6236989fc2b" title="tsl::array_map::erase" alt="" coords="210,5,357,31"/>
+<area shape="rect" id="node3" href="classtsl_1_1array__map.html#a5d4631f17fcb949a468780cef923f487" title="tsl::array_map::erase_ks" alt="" coords="200,55,367,80"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a44ce4fbd976067a80b1cd6236989fc2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ce4fbd976067a80b1cd6236989fc2b">&#9670;&nbsp;</a></span>erase() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype">const_iterator&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const_iterator&#160;</td>
+          <td class="paramname"><em>last</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit. </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1array__map_a44ce4fbd976067a80b1cd6236989fc2b_cgraph.png" border="0" usemap="#classtsl_1_1array__map_a44ce4fbd976067a80b1cd6236989fc2b_cgraph" alt=""/></div>
+<map name="classtsl_1_1array__map_a44ce4fbd976067a80b1cd6236989fc2b_cgraph" id="classtsl_1_1array__map_a44ce4fbd976067a80b1cd6236989fc2b_cgraph">
+<area shape="rect" id="node2" href="classtsl_1_1array__map.html#ad4f9758711593f5f49685919bbf26575" title="tsl::array_map::erase" alt="" coords="200,5,346,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5d23fb3bd126bc54314f3aea31cbc76a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d23fb3bd126bc54314f3aea31cbc76a">&#9670;&nbsp;</a></span>erase() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit. </p>
+
+</div>
+</div>
+<a id="a9eb75c5420f0bc3b860602a516f166d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eb75c5420f0bc3b860602a516f166d3">&#9670;&nbsp;</a></span>erase() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit. </p>
+
+</div>
+</div>
+<a id="a4214ca2fe61119c4d8fdc2dc1eb8eecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4214ca2fe61119c4d8fdc2dc1eb8eecc">&#9670;&nbsp;</a></span>erase() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit.</p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="aff3c6772ae6d9896b02aaa875cc579db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff3c6772ae6d9896b02aaa875cc579db">&#9670;&nbsp;</a></span>erase() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit.</p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a5d4631f17fcb949a468780cef923f487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d4631f17fcb949a468780cef923f487">&#9670;&nbsp;</a></span>erase_ks() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit. </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classtsl_1_1array__map_a5d4631f17fcb949a468780cef923f487_cgraph.png" border="0" usemap="#classtsl_1_1array__map_a5d4631f17fcb949a468780cef923f487_cgraph" alt=""/></div>
+<map name="classtsl_1_1array__map_a5d4631f17fcb949a468780cef923f487_cgraph" id="classtsl_1_1array__map_a5d4631f17fcb949a468780cef923f487_cgraph">
+<area shape="rect" id="node2" href="classtsl_1_1array__map.html#ad4f9758711593f5f49685919bbf26575" title="tsl::array_map::erase" alt="" coords="221,5,367,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4bebcebf3f32861c8a27cfecffa00739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bebcebf3f32861c8a27cfecffa00739">&#9670;&nbsp;</a></span>erase_ks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::erase_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Erase has an amortized O(1) runtime complexity, but even if it removes the key immediatly, it doesn't do the same for the associated value T.</p>
+<p>T will only be removed when the ratio between the size of the map and the size of the map + the number of deleted values still stored is low enough.</p>
+<p>To force the deletion you can call shrink_to_fit.</p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a86f5611d14969373271b047399fce58c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86f5611d14969373271b047399fce58c">&#9670;&nbsp;</a></span>find() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::find </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="ac478cdf8e164d551dab0d07abcd9d610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac478cdf8e164d551dab0d07abcd9d610">&#9670;&nbsp;</a></span>find() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::find </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="ac1fdbcfe54a87ea56601b3f4e71455a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1fdbcfe54a87ea56601b3f4e71455a8">&#9670;&nbsp;</a></span>find() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::find </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a2ea0a50e84c9a6fa9c08b75c0ca447d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea0a50e84c9a6fa9c08b75c0ca447d8">&#9670;&nbsp;</a></span>find() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::find </td>
+          <td>(</td>
+          <td class="paramtype">const std::basic_string&lt; CharT &gt; &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="a9c58f74e781bfd18d8810748b57b761d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c58f74e781bfd18d8810748b57b761d">&#9670;&nbsp;</a></span>find_ks() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::find_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="af05378c99bfc6c0dabfd56c59f2f4552"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af05378c99bfc6c0dabfd56c59f2f4552">&#9670;&nbsp;</a></span>find_ks() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::find_ks </td>
+          <td>(</td>
+          <td class="paramtype">const CharT *&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_type&#160;</td>
+          <td class="paramname"><em>key_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>precalculated_hash</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Use the hash value 'precalculated_hash' instead of hashing the key. The hash value should be the same as hash_function()(key). Usefull to speed-up the lookup to the value if you already have the hash. </p>
+
+</div>
+</div>
+<a id="af90f943d794338955d94678be509cfc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af90f943d794338955d94678be509cfc3">&#9670;&nbsp;</a></span>mutable_iterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">iterator <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::mutable_iterator </td>
+          <td>(</td>
+          <td class="paramtype">const_iterator&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the <code>const_iterator it</code> as an <code>iterator</code>. </p>
+
+</div>
+</div>
+<a id="a0610dcb77b7679c064f2e4035231a1af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0610dcb77b7679c064f2e4035231a1af">&#9670;&nbsp;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class CharT , class T , class Hash  = tsl::ah::str_hash&lt;CharT&gt;, class KeyEqual  = tsl::ah::str_equal&lt;CharT&gt;, bool StoreNullTerminator = true, class KeySizeT  = std::uint16_t, class IndexSizeT  = std::uint32_t, class GrowthPolicy  = tsl::ah::power_of_two_growth_policy&lt;2&gt;&gt; </div>
+<div class="memtemplate">
+template&lt;class Serializer &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classtsl_1_1array__map.html">tsl::array_map</a>&lt; CharT, T, Hash, KeyEqual, StoreNullTerminator, KeySizeT, IndexSizeT, GrowthPolicy &gt;::serialize </td>
+          <td>(</td>
+          <td class="paramtype">Serializer &amp;&#160;</td>
+          <td class="paramname"><em>serializer</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Serialize the map through the <code>serializer</code> parameter.</p>
+<p>The <code>serializer</code> parameter must be a function object that supports the following calls:</p><ul>
+<li><code>template&lt;typename U&gt; void operator()(const U&amp; value);</code> where the types <code>std::uint64_t</code>, <code>float</code> and <code>T</code> must be supported for U.</li>
+<li><code>void operator()(const CharT* value, std::size_t value_size);</code></li>
+</ul>
+<p>The implementation leaves binary compatibilty (endianness, IEEE 754 for floats, ...) of the types it serializes in the hands of the <code>Serializer</code> function object if compatibilty is required. </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/hat-trie/include/tsl/array-hash/<a class="el" href="array__map_8h_source.html">array_map.h</a></li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>

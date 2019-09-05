@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Clause: 图例</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Clause
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Chatopera Language Understanding Service.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">图例</div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>本页将向您解释如何理解由 doxygen 生成的图.</p>
+<p>考虑如下例子: </p><div class="fragment"><div class="line">/*! 由于截断而使 Invisible 不可见 */</div><div class="line">class Invisible { };</div><div class="line"></div><div class="line">/*! Truncated 的继承关系将被隐藏 */</div><div class="line">class Truncated : public Invisible { };</div><div class="line"></div><div class="line">/* 没有被doxygen文档化的类 */</div><div class="line">class Undocumented { };</div><div class="line"></div><div class="line">/*! public 继承关系的类 */</div><div class="line">class PublicBase : public Truncated { };</div><div class="line"></div><div class="line">/*! 一个模板类 */</div><div class="line">template&lt;class T&gt; class Templ { };</div><div class="line"></div><div class="line">/*! protected 继承关系的类 */</div><div class="line">class ProtectedBase { };</div><div class="line"></div><div class="line">/*! private 继承关系的类 */</div><div class="line">class PrivateBase { };</div><div class="line"></div><div class="line">/*! 被 Inherited 使用的类 */</div><div class="line">class Used { };</div><div class="line"></div><div class="line">/*! 继承自其它若干类的超级类 */</div><div class="line">class Inherited : public PublicBase,</div><div class="line">                  protected ProtectedBase,</div><div class="line">                  private PrivateBase,</div><div class="line">                  public Undocumented,</div><div class="line">                  public Templ&lt;int&gt;</div><div class="line">{</div><div class="line">  private:</div><div class="line">    Used *m_usedClass;</div><div class="line">};</div></div><!-- fragment --><p> 结果将会生成以下图:</p>
+<center><div class="image">
+<img src="graph_legend.png"/>
+</div>
+</center><p>上图中的矩形有如下意义: </p>
+<ul>
+<li>
+灰色填充的矩形 表示上图是由该结构体或类生成. </li>
+<li>
+黑色边框的矩形 表示已经被文档化的结构体或类. </li>
+<li>
+灰色边框的矩形 表示未被文档化的结构体或类. </li>
+<li>
+红色边框的矩形 表示该结构体或类的关系没有被完全显示.如果生成的图不能调整到制定的尺寸，有一些关系就会被截断而不显示出来. </li>
+</ul>
+<p>箭头有如下意义: </p>
+<ul>
+<li>
+深蓝色的箭头被用于展示 public 的继承关系. </li>
+<li>
+深绿色的箭头表示 protected 的继承关系. </li>
+<li>
+深红色的箭头说明了是 privated 的继承关系. </li>
+<li>
+紫色虚线箭头用来表示两个类之间的聚合关系. 被箭头指向的类的类型的变量,可以通过箭头旁标明的变量去访问. </li>
+<li>
+黄色虚线箭头表示模板类实例和模板类之间的关系. 箭头旁边标明了模板类实例化的参数. </li>
+</ul>
+</div><!-- contents -->
+<address class="footer">
+    <small>
+        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+            北京华夏春松科技有限公司
+        </a>. All Rights Reserved
+        &nbsp;
+    </small>
+</address>
