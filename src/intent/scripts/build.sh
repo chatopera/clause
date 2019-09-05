@@ -91,13 +91,6 @@ docker build \
     --no-cache=true \
     --force-rm=true --tag $imagename:$imageversion .
 
-if [ $? -eq 0 ]; then
-    docker tag $imagename:$imageversion $imagename:develop
-
-    #echo "6. push docker image ..."
-    #set -x
-    #docker push $imagename:$imageversion
-    #docker push $imagename:develop
-else
-    exit 1
-fi
+#echo "6. push docker image ..."
+#set -x
+#docker push $imagename:$imageversion

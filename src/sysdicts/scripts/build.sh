@@ -102,9 +102,7 @@ cd $baseDir/..
 docker build \
     --no-cache=true \
     --force-rm=true --tag $imagename:$imageversion .
-docker tag $imagename:$imageversion $imagename:develop
 
 #echo "6. push docker image ..."
 #set -x
 #docker push $imagename:$imageversion
-#docker push $imagename:develop
