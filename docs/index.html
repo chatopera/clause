@@ -68,152 +68,53 @@
     </div>
     <!--header-->
     <div class="contents">
-        <div id="markdown-content">
+
+Chatopera Language Understanding Service，Chatopera 语义理解服务
+
+<p align="center">
+  <b>Clause项目QQ交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
+  <img src="https://user-images.githubusercontent.com/3538629/64315364-6a095380-cfe4-11e9-8bf6-f15ce6e26e0a.png" width="200">
+</p>
+
+ <div id="markdown-content">
+
+[![Docker Layers](https://images.microbadger.com/badges/image/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image layers") [![Docker Version](https://images.microbadger.com/badges/version/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image version") [![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Commit](https://images.microbadger.com/badges/commit/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image CommitID")
+
 # Clause
 
-Chatopera Language Understanding Service
+![](https://user-images.githubusercontent.com/3538629/64316956-e4d46d80-cfe8-11e9-8342-ec8a250074bf.png)
 
-https://github.com/chatopera/clause
+Clause 是帮助中小型企业快速而低成本的获得好用的语义理解服务的系统。
 
-![](https://user-images.githubusercontent.com/3538629/63484912-ecb5ed00-c4d3-11e9-8a66-7bc32fee6fe7.png)
+Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现企业聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
 
-## Featured
+## 欢迎使用
 
-- JDK, Node.js, gcc, Maven3
-- thrift
-- jsoncpp
-- libevent
-- Eigen3
-- Alibaba ASR [Documentation](https://help.aliyun.com/document_detail/84569.html?spm=a2c4g.11186623.6.576.37c24efed2clkq)
-- gflags
-- protobuf
-- gtest
-- glog
-- gperftools
-- thrift
-- rocketmq
+- [概述](https://github.com/chatopera/clause/wiki/%E6%A6%82%E8%BF%B0)
+- [服务部署](https://github.com/chatopera/clause/wiki/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2)
+- [快速开始](https://github.com/chatopera/clause/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
+- [API 文档](https://chatopera.github.io/clause)
+- [开发环境搭建](https://github.com/chatopera/clause/wiki/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
+- [系统集成](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90)
+- [FAQ](https://github.com/chatopera/clause/wiki/FAQ)
 
-Check out `thirdparty` for more.
+## 特别鸣谢
 
-## Prerequisites
+- [Lexical Analysis of Chinese](https://github.com/baidu/lac): Baidu's open-source lexical analysis tool for Chinese, including word segmentation, part-of-speech tagging & named entity recognition.
+- [CRFsuite](https://github.com/chokkan/crfsuite): a fast implementation of Conditional Random Fields (CRFs)
+- [Xapian](https://xapian.org/): an Open Source Search Engine Library
 
-You will need:
+## 开源许可协议
 
-- Ubuntu 16.04 (\*required)
-- CMake 3.1+ installed
-- If you prefer to code in a great IDE, I highly recommend [VSCode](https://code.visualstudio.com/). It is fully compatible with this project.
+Copyright (2019) [北京华夏春松科技有限公司](https://www.chatopera.com/)
 
-## Bootstrap
+[Apache License Version 2.0](https://github.com/chatopera/clause/blob/master/LICENSE)
 
-Take some efforts to install dependencies, these dependencies are split into two level: System level and User level.
+[![chatoper banner][co-banner-image]][co-url]
 
-- System Level softwares are installed with `apt-get install` or installed to `/usr/local`, these softwares are shared between users. You should be very careful when dealing with system level softwares, it may block other people.
+[co-banner-image]: https://user-images.githubusercontent.com/3538629/42383104-da925942-8168-11e8-8195-868d5fcec170.png
+[co-url]: https://www.chatopera.com
 
-- User Level softwares are installed inside the project source directory which is `YOUR_GIT_REPO/include`, `YOUR_GIT_REPO/lib` and `YOUR_GIT_REPO/share` usually.
-
-**So, when bringing up a new development environment with a bare machine, it should better install System Level Softwares by one person just once. Following developers just install User Level Softwares.**
-
-Note, to install the softwares successfully, you need `sudo` authority without password, or you are using `root`.
-
-Enable `sudo` without password in Ubuntu.
-
-```javascript
-sudo visudo
-## Add this line
-YOUR_ACCOUNT ALL=NOPASSWD: ALL
-```
-
-### System Level Softwares
-
-```
-./admin/install-3rd/system.sh
-```
-
-It would take ~3 hrs, this script would execute every command in `cmake/system` in order.
-
-| script              | description                                                                     | dependencies |
-| ------------------- | ------------------------------------------------------------------------------- | ------------ |
-| 001.corretto-jdk.sh | install amazon jdk, Default `JAVA_HOME=/usr/lib/jvm/java-1.8.0-amazon-corretto` | None         |
-| 001.nodejs.sh       | install nodejs                                                                  | None         |
-| 002.maven.sh        | install maven3                                                                  | jdk          |
-
-### User Level Softwares
-
-```
-./admin/install-3rd/user.sh
-```
-
-It would take ~3 hrs, this script would execute every command in `cmake/user` in order.
-
-### Install specific software
-
-You can install each components manually, find the scrips in `cmake/install`, the software has dependencies with others, consider you would want to install `openpose` which depends on `opencv` and `caffe`, first, execute `./005.opencv.sh`, then execute `006.caffe.sh`, at last run `007.opencv.sh`, the priority is defined in the prefix of script name.
-
-## Development
-
-```
-# build
-mkdir -p build/debug
-cd build/debug
-cmake ../..
-make
-```
-
-## Project Structure
-
-There are three empty folders: `lib`, `bin`, and `include`. Those are populated by `make install`.
-
-The rest should be obvious: `src` is the sources.
-
-Now we can build this project, and below we show three separate ways to do so.
-
-## File Locations
-
-- `src/MODULE` — C++ code that ultimately compiles into a library or binary
-- `src/MODULE/**_test.cpp` - C++ code to test each component.
-- `bin/`, `lib`, `include` are all empty directories, until the `make install` install the project artifacts there.
-
-## Format Code
-
-Currently, we use [Astyle](http://astyle.sourceforge.net/astyle.html) as code formatter to keep algin code, the style guide is set in `.astylerc`.
-
-Run code formatter.
-
-```
-./admin/formatter.sh
-cat ./.astylerc # check out settings.
-# Find more options
-# http://astyle.sourceforge.net/astyle.html#_Usage
---style=google
---indent=spaces=2
---indent-switches
---indent-preprocessor
---break-blocks
---pad-oper
---recursive
---formatted
---suffix=none
-```
-
-It is a great habit to keep code style following the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) standard.
-
-## Try to create new module?
-
-Check out [src/sample](src/sample) as a template or skeleton.
-
-## Help
-
-- [Get started with CMake](https://github.com/chatopera/cmake-get-started)
-
-## License
-
-Copyright 2019 [北京华夏春松科技有限公司](https://www.chatopera.com) . All rights reserved.
-This software and related documentation are provided under a license agreement containing
-restrictions on use and disclosure and are protected by intellectual property laws.
-Except as expressly permitted in your license agreement or allowed by law, you may not use,
-copy, reproduce, translate, broadcast, modify, license, transmit, distribute, exhibit, perform,
-publish, or display any part, in any form, or by any means. Reverse engineering, disassembly,
-or decompilation of this software, unless required by law for interoperability, is prohibited.
 
         </div>
     </div><!-- contents -->
