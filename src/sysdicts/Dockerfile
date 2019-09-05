@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Hai Liang Wang <hain@chatopera.com>
 
 # BUILD WITH CN MACHINE
-# COPY ./docs/aliyun.source.list /etc/apt/sources.list
+COPY ./config/aliyun.source.list /etc/apt/sources.list
 
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/lib:/app/lib/x86_64-linux-gnu:/app/lib/paddle/paddle/fluid/inference
 
