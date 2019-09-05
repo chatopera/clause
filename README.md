@@ -29,6 +29,17 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 - [系统集成](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90)
 - [FAQ](https://github.com/chatopera/clause/wiki/FAQ)
 
+## Chatopera 云服务
+
+Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。[Chatopera 云服务](https://bot.chatopera.com/)提供基于搜索、规则和机器学习的对话解决方案，可用于企业定制满足自身业务需求的聊天机器人，同时 [Chatopera 云服务](https://bot.chatopera.com/)通过计费、支付和发票等方法降低了企业获取这样一个解决方案的成本，是企业更快的专注于设计对话、调试聊天机器人，更快的投入使用。
+
+<p align="center">
+  <b>https://bot.chatopera.com/</b>
+  <a href="https://github.com/chatopera/clause" target="_blank">
+      <img src="https://user-images.githubusercontent.com/3538629/64320073-549a2680-cff0-11e9-903a-15f02d6c54b6.png" width="800">
+  </a>
+</p>
+
 ## 特别鸣谢
 
 - [Lexical Analysis of Chinese](https://github.com/baidu/lac): Baidu's open-source lexical analysis tool for Chinese, including word segmentation, part-of-speech tagging & named entity recognition.
