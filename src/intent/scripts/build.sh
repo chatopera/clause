@@ -15,7 +15,7 @@ releasebinary=$rootDir/build/debug/src/intent/intent_server
 
 # main 
 [ -z "${BASH_SOURCE[0]}" -o "${BASH_SOURCE[0]}" = "$0" ] || return
-cd $rootDir/..
+cd $rootDir
 imageversion=`git rev-parse --short HEAD`
 
 if [ ! -d $baseDir/../tmp ]; then

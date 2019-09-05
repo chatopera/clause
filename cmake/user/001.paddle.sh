@@ -30,4 +30,4 @@ tar xzf $SRCDIR/paddle.0.14.0.tgz
 tar xzf $SRCDIR/lac.conf.tgz
 
 cp -rf paddle $ROOT_INSTALL_DIR/lib/paddle
-cp -rf conf $ROOT_INSTALL_DIR/var/data/lac
+cp -rf conf $ROOT_INSTALL_DIR/var/test/lac
