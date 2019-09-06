@@ -763,6 +763,7 @@ bool Bot::chat(const ChatMessage& payload,
             se.__isset.val) {
           VLOG(3) << __func__ << " set entities with sysdicts: " << ie.name() << ", dictname: " << se.dictname << ", value: " << se.val;
           ie.set_val(se.val);
+          break;
         }
       }
     }
