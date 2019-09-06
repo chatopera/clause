@@ -92,6 +92,23 @@ inline void build_simple_profile(Profile& profile) {
   dictword2->set_word("北京");
   dictword2->set_synonyms("北平;燕京;中国首都");
 
+  // 创建dict3
+  TDict* customdict3 =  profile.add_dicts();
+  customdict3->set_id("dict3");
+  customdict3->set_name("直辖市");
+  customdict3->set_chatbotid(chatbotID);
+  customdict3->set_builtin(false);
+  customdict3->set_active(false);
+  customdict3->set_description("dict3 description");
+  customdict3->set_samples("word1,word2");
+  customdict3->set_createdate("2019-08-10 12:00:00");
+  customdict3->set_updatedate("2019-08-10 12:00:00");
+
+  // 创建词条
+  TDictWord* dictword3 = customdict3->add_dictwords();
+  dictword3->set_word("北京");
+  dictword3->set_synonyms("北平;燕京;中国首都");
+
   //   测试自定义词典
   //   TDictWord* dictword3 = customdict2->add_dictwords();
   //   dictword3->set_word("女干事");
@@ -135,8 +152,6 @@ inline void build_simple_profile(Profile& profile) {
   //   utter4->set_id("utter4_id");
   //   utter4->set_utterance("女干事每月经过机房时都会检查二十四口交换机。");
 };
-
-
 
 TEST(IntentTest, TRAIN_SAMPLE) {
   LOG(INFO) << "TRAIN_SAMPLE";

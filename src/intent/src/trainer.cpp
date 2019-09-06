@@ -390,7 +390,7 @@ void Trainer::train(const string payload) {
    * trie: 用于前缀查找
    * leveldb: 用于验证一个词是否属于某词典
    */
-  const tsl::htrie_map<char, std::string> dictwords;
+  const tsl::htrie_map<char, set<string> > dictwords;
 
   leveldb::DB* db;
   leveldb::Options options;
@@ -403,8 +403,9 @@ void Trainer::train(const string payload) {
   for(const TDict& tdict : profile.dicts()) {
     for(const TDictWord& dictword : tdict.dictwords()) {
       if(!dictword.word().empty()) {
-        VLOG(3) << __func__ << " dictwords dump: " << dictword.word() << " | " << tdict.name();
-        dictwords[dictword.word().c_str()] =  tdict.name();
+        dictwords[dictword.word().c_str()].insert(tdict.name());
+        VLOG(3) << __func__ << " dictwords dump: " << dictword.word() << " | " << dictwords[dictword.word().c_str()];
+
         stringstream ss;
         ss << tdict.name() << '\001' << dictword.word();
         batch.Put(ss.str(), dictword.word());
@@ -416,8 +417,9 @@ void Trainer::train(const string payload) {
 
         for(const string& word : words) {
           if(!word.empty()) {
-            VLOG(3) << __func__ << " dictwords dump: " << word << " | " << tdict.name();
-            dictwords[word.c_str()] =  tdict.name();
+            dictwords[word.c_str()].insert(tdict.name());
+            VLOG(3) << __func__ << " dictwords dump: " << word << " | " << dictwords[word.c_str()];
+
             stringstream ss;
             ss << tdict.name() << '\001' << word;
             batch.Put(ss.str(), dictword.word());

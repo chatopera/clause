@@ -16,6 +16,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <set>
 #include <stdlib.h>
 #include <iostream>
 #include <sstream>
@@ -28,7 +29,6 @@
 
 #include "cppjieba/Jieba.hpp"
 #include "tsl/htrie_map.h"
-#include "tsl/htrie_set.h"
 #include "xapian.h"
 #include "glog/logging.h"
 #include "intent.pb.h"

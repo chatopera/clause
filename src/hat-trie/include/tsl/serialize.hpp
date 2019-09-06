@@ -23,6 +23,8 @@
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/serialization/split_free.hpp>
 #include <boost/serialization/utility.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/set.hpp>
 #include <cassert>
 #include <cstdint>
 #include <fstream>

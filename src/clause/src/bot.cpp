@@ -89,7 +89,7 @@ bool Bot::init(const string& chatbotID,
     // 初始化 dictwords
     VLOG(3) << __func__ << " dictwords hat-trie ...";
     string dictwordsfile(verdir + "/dictwords.trie.bin");
-    _dictwords_triedb = new tsl::htrie_map<char, string>();
+    _dictwords_triedb = new tsl::htrie_map<char, set<string> >();
 
     {
       std::ifstream ifs;
@@ -566,7 +566,7 @@ inline bool lookup_word_by_dictname_in_leveldb(const leveldb::DB& db,
  * 检索执行词典的命名实体
  * 当前指定匹配到词典名称，即便在实体词典中查找到其他选项也忽略
  */
-inline bool extract_slotvalue_from_utterence_with_triedata(const tsl::htrie_map<char, string>& dictwords,
+inline bool extract_slotvalue_from_utterence_with_triedata(const tsl::htrie_map<char, set<string> >& dictwords,
     const string& query,
     const string& dictname,
     string& slotvalue) {
@@ -580,7 +580,7 @@ inline bool extract_slotvalue_from_utterence_with_triedata(const tsl::htrie_map<
     VLOG(3) << __func__ << " word " << match.key() << ", dictname "
             << *match;
 
-    if((*match) == dictname) {
+    if((*match).find(dictname) != (*match).end() ) {
       slotvalue = key;
       return true;
     }
@@ -616,7 +616,7 @@ inline bool extract_slotvalue_from_utterence_with_triedata(const tsl::htrie_map<
       VLOG(3) << __func__ << " word " << match.key() << ", dictname "
               << *match;
 
-      if((*match) == dictname) {
+      if((*match).find(dictname) !=  (*match).end()) {
         slotvalue = key;
         return true;
       }

@@ -18,13 +18,13 @@
 
 #include <string>
 #include <vector>
+#include <set>
 #include <sstream>
 #include <algorithm>
 #include <gflags/gflags.h>
 #include <glog/logging.h>
 #include <xapian.h>
 #include <tsl/htrie_map.h>
-#include <tsl/htrie_set.h>
 #include "leveldb/db.h"
 
 #include <boost/filesystem/string_file.hpp>
@@ -101,7 +101,7 @@ class Bot {
   Xapian::Database* _recall;                           // BoW检索
   chatopera::bot::intent::Profile* _profile;           // 意图描述文件
   chatopera::bot::distance::Similarity* _similarity;   // 相似度比较
-  tsl::htrie_map<char, string>* _dictwords_triedb;     // 自定义词典词条的前缀树
+  tsl::htrie_map<char, set<string> >* _dictwords_triedb;     // 自定义词典词条的前缀树
   leveldb::DB* _dictwords_leveldb;                     // 自定义词典词条的leveldb
   std::vector<string>* _referred_sysdicts;             // 引用的系统词典
 };
