@@ -56,9 +56,10 @@ message TChatSession {
     bool is_proactive = 10;
     string proactive_slotname = 11;
     string proactive_dictname = 12;
-    repeated Entity entities = 13;
-    string createdate = 14;
-    string updatedate = 15;
+    string proactive_question = 13;
+    repeated Entity entities = 14;
+    string createdate = 15;
+    string updatedate = 16;
 }
 
 /**

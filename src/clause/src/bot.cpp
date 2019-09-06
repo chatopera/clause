@@ -629,22 +629,32 @@ inline bool extract_slotvalue_from_utterence_with_triedata(const tsl::htrie_map<
  * 根据intent定义和session信息确定是否被解决
  */
 inline bool is_resolved_intent_by_session(const intent::TChatSession& session,
-    const intent::TIntent& intent) {
+    const intent::TIntent& intent,
+    ChatMessage& reply) {
   for(const intent::TIntentSlot& slot : intent.slots()) {
     if(!slot.requires()) continue;
 
-    bool resolved = false;
+    bool settledown = false; // 作为必填的槽位，该槽位的值是否确定
 
     for(const intent::TChatSession::Entity& entity : session.entities()) {
       if(entity.name() == slot.name() &&
           (!entity.val().empty())) {
-        resolved = true;
+        settledown = true;
         break;
       }
     }
 
-    if(!resolved)
+    if(!settledown) {
+      // 设置 reply 为追问
+      reply.textMessage = session.proactive_question();
+      reply.__isset.textMessage = true;
+      reply.is_proactive = true;
+      reply.is_fallback = false;
+      reply.__isset.is_proactive = true;
+      reply.__isset.is_fallback = true;
       return false;
+    }
+
   }
 
   return true;
@@ -729,6 +739,19 @@ bool Bot::patchSysdictsRequestEntities(sysdicts::Data& request) {
 };
 
 /**
+ * 实体的调试信息
+ */
+inline string debugstr_for_entities_candidates(const vector<pair<string, string> >& candidates) {
+  stringstream ss;
+
+  for(vector<pair<string, string> >::const_iterator it = candidates.begin(); it != candidates.end(); it++ ) {
+    ss << '\t' << it->first << '\t' << it->second << '\n';
+  }
+
+  return ss.str();
+}
+
+/**
  * 对话接口
  * @return bool 功设置textMessage或resolve情况下，返回true
  */
@@ -749,143 +772,156 @@ bool Bot::chat(const ChatMessage& payload,
     }
   }
 
-  if(intent != nullptr) {
+  if(intent != 0) {
     VLOG(3) << __func__ << " query: " << payload.textMessage << ", rewrite query: " << query << "\nintent: \n" << FromProtobufToUtf8DebugString(*intent);
 
     /**
-     * Step 1: 处理系统词典识别到的命名实体信息
-     */
-    for(const sysdicts::Entity& se : builtins) {
-      for(intent::TChatSession::Entity& ie : *session.mutable_entities()) {
-        if(ie.val().empty() &&
-            ie.builtin() &&
-            ie.dictname() == se.dictname &&
-            se.__isset.val) {
-          VLOG(3) << __func__ << " set entities with sysdicts: " << ie.name() << ", dictname: " << se.dictname << ", value: " << se.val;
-          ie.set_val(se.val);
-          break;
-        }
-      }
-    }
-
-    /**
-     * Step 2: 处理追问
+     * Step 1: 处理槽位
      */
     if(session.is_proactive()) { // 上一轮是否是追问
       // 确定该槽位还不包含在session.entity中
       bool settledown = false;
 
-      for(const intent::TChatSession::Entity& entity : session.entities()) {
-        if(entity.name() == session.proactive_slotname() &&
-            (!entity.val().empty())) {
-          settledown = true; // 已经含有该槽位的值
-          break;
+      // 在追问的情况下，首先从trie中查找
+      if(session.proactive_slotname().empty()) {
+        // 追问条件不合法
+        VLOG(3) << __func__ << " Internal Error. Can not find proactive_slotname in session \n" << FromProtobufToUtf8DebugString(session);
+        return false;
+      } else {
+        string slotvalue;
+
+        if(boost::starts_with(session.proactive_dictname(), "@")) { // 处理系统词典
+          for(const sysdicts::Entity& se : builtins) {
+            if(se.dictname == session.proactive_dictname()) {
+              // 查找到
+              VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
+              settledown = true;
+              slotvalue = se.val;
+              break;
+            }
+          }
+        } else if(extract_slotvalue_from_utterence_with_triedata(*_dictwords_triedb,
+                  payload.textMessage,
+                  session.proactive_dictname(),
+                  slotvalue)) {
+          // 查找到
+          VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
+          settledown = true;
+        } else {
+          // 未查找到，继续追问, session信息不变
+          VLOG(3) << __func__ << " not found value for proactive slot " <<  session.proactive_slotname();
+          reply.textMessage = session.proactive_question();
+          reply.is_proactive = true;
+          reply.is_fallback = false;
+          reply.__isset.textMessage = true;
+          reply.__isset.is_proactive = true;
+          reply.__isset.is_fallback = true;
+          return true;
+        }
+
+        if(settledown) {
+          // set session entity
+          setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
+          session.set_is_proactive(false);           // 停止追问
+          session.clear_proactive_slotname();        // 停止追问
+          session.clear_proactive_dictname();        // 停止追问
+          session.clear_proactive_question();        // 停止追问
+
+          // TODO 在本次对话中，用户也说的了其他的槽位的值，在NER中能识别出来
+          // 但是这也加入了判断错误的风险，所以忽略对反问时，其他槽位的识别。
         }
       }
+    } else { // 不是追问，是在意图识别中带有槽位信息
+      /**
+       * 进行NER识别
+       * 未识别到的槽位并且为必填项: 设置回复为追问。
+       */
+      crfsuite::ItemSequence xseq;
+      setupNerItemSequence(payload.terms, payload.tags, xseq);
+      VLOG(3) << __func__ << " labeling entities with ner model ...";
+      vector<string> labels = _tagger->tag(xseq);
 
-      if(!settledown) {
-        // 在追问的情况下，首先从trie中查找
-        if(!session.proactive_slotname().empty()) {
-          string slotvalue;
+      VLOG(3) << __func__ << " labels: " << join(labels, "\t");
+      VLOG(3) << __func__ << " tokens: " << join(payload.terms, "\t");
 
-          if(extract_slotvalue_from_utterence_with_triedata(*_dictwords_triedb,
-              payload.textMessage,
-              session.proactive_dictname(),
-              slotvalue)) {
-            // 查找到
-            VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
+      vector<pair<string, string> > candidates; // candidates for entities.
+      extract_slot_candidates_with_yseq(payload.terms, labels, candidates);
+      VLOG(3) << __func__ << debugstr_for_entities_candidates(candidates);
 
-            // set session entity
-            setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
+      // 系统词典
+      vector<sysdicts::Entity>::const_iterator ise = builtins.begin();
+      bool hasSysdicts = ise != builtins.end();
 
-            session.set_is_proactive(false);           // 停止追问
-            session.clear_proactive_slotname();        // 停止追问
-          } else {
-            // 未查找到
-            VLOG(3) << __func__ << " not found value for proactive slot " <<  session.proactive_slotname();
+      for(vector<pair<string, string> >::iterator it = candidates.begin(); it != candidates.end(); it++) {
+        bool settledown = false; // 是否解决了一个槽位的值
+        string slotvalue;
+        const intent::TChatSession::Entity* entity;
+
+        // 检查该槽位是否有值
+        for(const intent::TChatSession::Entity& ie : session.entities()) {
+          if(ie.name() == it->first) {
+            if(!ie.val().empty()) { // 该槽位值已经确定
+              settledown = true;
+              break;
+            } else {
+              entity = &ie;
+              break;
+            }
           }
+        }
+
+        if(settledown)
+          continue; // 处理下一个槽位候选
+
+        VLOG(3) << __func__ << " analysis slotname: " << it->first << ", value: " << it->second << " as entity: " << FromProtobufToUtf8DebugString(*entity);
+
+        // 该槽位没有值并且查找到关联的实体
+        if((!settledown) && (entity != 0)) {
+          if(entity->builtin()) { // 是系统词典
+            if(hasSysdicts) {
+              if(ise->dictname == it->second) {
+                slotvalue = ise->val;
+                settledown = true;
+                ise++;
+
+                if(ise == builtins.end())
+                  hasSysdicts = false;
+              }
+            }
+          } else { // 自定义词典
+            if(lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, entity->dictname(), it->second)) {
+              settledown = true;
+              slotvalue = it->second;
+            } else {
+              // NER识别到的自定义词典的值并不在自定义词典中，此处可以看成是机器学习到的新词
+              // TODO 视为不准确，放弃该新词，此处可以进一步校验，识别该词的置信度，从而提升智能水平
+              //   continue; // 处理下一个槽位候选
+              VLOG(2) << __func__ << " probably new word learns by machine, slotname: \t" << it->first << "\t" << it->second;
+            }
+          }
+        }
+
+        // 确定该槽位候选
+        if(settledown) {
+          setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
         } else {
-          // 追问条件不合法
-          VLOG(3) << __func__ << " can not find proactive_slotname in session \n" << FromProtobufToUtf8DebugString(session);
-          return false;
+          // TODO 没有确定该槽位候选
+          VLOG(3) << __func__ << " discard entity candidate, slotname: " << it->first << ", value " << it->second;
         }
       }
     }
 
     /**
-     * Step 3: 进行NER识别
-     * 未识别到的槽位并且为必填项: 设置回复为追问。
+     * Step 2: 处理回复
      */
-    crfsuite::ItemSequence xseq;
-    setupNerItemSequence(payload.terms, payload.tags, xseq);
-    VLOG(3) << __func__ << " labeling entities with ner model ...";
-    vector<string> labels = _tagger->tag(xseq);
-
-    VLOG(3) << __func__ << " labels: " << join(labels, "\t");
-    VLOG(3) << __func__ << " tokens: " << join(payload.terms, "\t");
-
-    vector<pair<string, string> > candidates; // candidates for entities.
-    extract_slot_candidates_with_yseq(payload.terms, labels, candidates);
-
-    size_t slots_total = intent->slots().size();             // 所有槽位数
-    size_t slots_resolved = session.entities_size();         // 已经具备值的槽位
-
-    for(const intent::TIntentSlot& slot : intent->slots()) {
-      bool settledown = false;
-
-      for(const intent::TChatSession::Entity& entity : session.entities()) {
-        if(entity.name() == slot.name() && (!entity.val().empty())) {
-          settledown = true;
-          break;
-        }
-      }
-
-      if(!settledown) { // 该槽位未被赋值
-        // 从NER数据中获得命名实体
-        for(const pair<string, string>& candidate : candidates) {
-
-          if(candidate.first != slot.name()) {
-            continue;
-          }
-
-          VLOG(3) << __func__ << " slotname: " << candidate.first << ", value: " << candidate.second;
-
-          // 自定义词典是在词条中
-          if(!lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, slot.dictname(), candidate.second)) {
-            VLOG(3) << __func__ << " escaped by leveldb.";
-            continue;
-          }
-
-          // 从NER取得的数据中包含有未被赋值的命名实体的值
-          setSessionEntityValueByName(candidate.first, candidate.second, session);
-
-          settledown = true;
-          slots_resolved++;
-        }
-      }
-
-      if((!settledown) &&
-          slot.requires() &&
-          (!reply.__isset.textMessage)) { // 还没有解决
-        // 设置反问
-        VLOG(3) << __func__ << " set question: " << slot.question();
-        reply.textMessage = slot.question();
-        reply.__isset.textMessage = true;
-        reply.is_proactive = true;
-        reply.__isset.is_proactive = true;
-        session.set_is_proactive(true);
-        session.set_is_fallback(false);
-        session.set_proactive_slotname(slot.name());
-        session.set_proactive_dictname(slot.dictname());
-      }
-    }
-
-    if(is_resolved_intent_by_session(session, *intent)) { // session is resolve
+    // check session is resolve
+    if(is_resolved_intent_by_session(session, *intent, reply)) {
       session.set_resolved(true);
       session.set_is_proactive(false);
       session.set_is_fallback(false);
       session.clear_proactive_slotname();        // 停止追问
       session.clear_proactive_dictname();        // 停止追问
+      session.clear_proactive_question();        // 停止追问
     }
   } else {
     // can find matched intent
