@@ -856,11 +856,11 @@ bool Bot::chat(const ChatMessage& payload,
 
       vector<pair<string, string> > candidates; // candidates for entities.
       extract_slot_candidates_with_yseq(payload.terms, labels, candidates);
-      VLOG(3) << __func__ << debugstr_for_entities_candidates(candidates);
+      VLOG(3) << __func__ << " entities candidates: " << debugstr_for_entities_candidates(candidates);
 
       // 系统词典
       vector<sysdicts::Entity>::const_iterator ise = builtins.begin();
-      bool hasSysdicts = ise != builtins.end();
+      bool hasSysdicts = (builtins.size() > 0);
 
       for(vector<pair<string, string> >::iterator it = candidates.begin(); it != candidates.end(); it++) {
         bool settledown = false; // 是否解决了一个槽位的值
@@ -883,23 +883,27 @@ bool Bot::chat(const ChatMessage& payload,
         if(settledown)
           continue; // 处理下一个槽位候选
 
-        VLOG(3) << __func__ << " analysis slotname: " << it->first << ", value: " << it->second << " as entity: " << FromProtobufToUtf8DebugString(*entity);
+        VLOG(3) << __func__ << " analysis slotname: " << it->first << ", value: " << it->second << ", hasSysdicts: " << hasSysdicts << " as entity: \n" << FromProtobufToUtf8DebugString(*entity);
 
         // 该槽位没有值并且查找到关联的实体
         if((!settledown) && (entity != 0)) {
           if(entity->builtin()) { // 是系统词典
-            if(hasSysdicts) {
-              if(ise->dictname == it->second) {
-                slotvalue = ise->val;
-                settledown = true;
-                ise++;
+            VLOG(3) << __func__ << " check against sysdicts with: " << FromThriftToUtf8DebugString(&(*ise));
 
-                if(ise == builtins.end())
-                  hasSysdicts = false;
-              }
+            if(hasSysdicts && (ise->dictname == it->second)) {
+              VLOG(3) << __func__ << " resolve slot: " << it->first << " as value: " << ise->val << " successfully.";
+              slotvalue = ise->val;
+              settledown = true;
+              ise++;
+
+              if(ise == builtins.end())
+                hasSysdicts = false;
             }
           } else { // 自定义词典
+            VLOG(3) << __func__ << " check against customdicts";
+
             if(lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, entity->dictname(), it->second)) {
+              VLOG(3) << __func__ << " resolve slot: " << it->first << " as value: " << it->second << " successfully.";
               settledown = true;
               slotvalue = it->second;
             } else {
@@ -913,7 +917,7 @@ bool Bot::chat(const ChatMessage& payload,
 
         // 确定该槽位候选
         if(settledown) {
-          setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
+          setSessionEntityValueByName(it->first, slotvalue, session);
         } else {
           // TODO 没有确定该槽位候选
           VLOG(3) << __func__ << " discard entity candidate, slotname: " << it->first << ", value " << it->second;
