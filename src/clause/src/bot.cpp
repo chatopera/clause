@@ -761,6 +761,32 @@ inline string debugstr_for_entities_candidates(const vector<pair<string, string>
 }
 
 /**
+ * 通过NER和POS信息确定槽位值
+ */
+inline bool get_slotvalue_by_ner_and_pos(const ChatMessage& payload,
+    const string& nerValue,
+    string& slotvalue) {
+
+  if(payload.terms.size() != payload.tags.size())
+    return false;
+
+  size_t len = payload.terms.size();
+  vector<string>::const_iterator tbegin = payload.terms.begin();
+  vector<string>::const_iterator pbegin = payload.tags.begin();
+
+  for(size_t i = 0; i < len ; i++) {
+    if(nerValue == (*(tbegin + i)) && (boost::starts_with((*(pbegin + i)), "n") ||
+                                       boost::starts_with((*(pbegin + i)), "eng"))) {
+      slotvalue = nerValue;
+      return true;
+    }
+  }
+
+  return false;
+}
+
+
+/**
  * 对话接口
  * @return bool 成功设置textMessage或resolve情况下，返回true
  */
@@ -888,16 +914,27 @@ bool Bot::chat(const ChatMessage& payload,
         // 该槽位没有值并且查找到关联的实体
         if((!settledown) && (entity != 0)) {
           if(entity->builtin()) { // 是系统词典
-            VLOG(3) << __func__ << " check against sysdicts with: " << FromThriftToUtf8DebugString(&(*ise));
+            if(hasSysdicts) {
+              VLOG(3) << __func__ << " check against sysdicts with: " << FromThriftToUtf8DebugString(&(*ise));
 
-            if(hasSysdicts && (ise->dictname == it->second)) {
-              VLOG(3) << __func__ << " resolve slot: " << it->first << " as value: " << ise->val << " successfully.";
-              slotvalue = ise->val;
-              settledown = true;
-              ise++;
+              if(ise->dictname == it->second) {
+                VLOG(3) << __func__ << " resolve slot: " << it->first << " as value: " << ise->val << " successfully.";
+                slotvalue = ise->val;
+                settledown = true;
+                ise++;
 
-              if(ise == builtins.end())
-                hasSysdicts = false;
+                if(ise == builtins.end())
+                  hasSysdicts = false;
+              }
+            } else if(!boost::starts_with(it->second, "@")) { // entity是系统词典，但是NER分析出不是系统词典
+              // 当前系统词典分析器没有分析出来相应值
+              // 或者系统词典已经遍历完全，这时利用NER的值
+              // 查找terms，获得NER值的词性
+              if(get_slotvalue_by_ner_and_pos(payload, it->second, slotvalue)) {
+                settledown = true;
+              } else {
+                // 从词性标注数据和NER中没有确定槽位值
+              }
             }
           } else { // 自定义词典
             VLOG(3) << __func__ << " check against customdicts";
@@ -911,6 +948,11 @@ bool Bot::chat(const ChatMessage& payload,
               // TODO 视为不准确，放弃该新词，此处可以进一步校验，识别该词的置信度，从而提升智能水平
               //   continue; // 处理下一个槽位候选
               VLOG(2) << __func__ << " probably new word learns by machine, slotname: \t" << it->first << "\t" << it->second;
+
+              // 查找terms，获得NER值的词性
+              if(get_slotvalue_by_ner_and_pos(payload, it->second, slotvalue)) {
+                settledown = true;
+              }
             }
           }
         }
