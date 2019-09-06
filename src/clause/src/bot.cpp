@@ -628,7 +628,7 @@ inline bool extract_slotvalue_from_utterence_with_triedata(const tsl::htrie_map<
 /**
  * 根据intent定义和session信息确定是否被解决
  */
-inline bool is_resolved_intent_by_session(const intent::TChatSession& session,
+inline bool is_resolved_intent_by_session(intent::TChatSession& session,
     const intent::TIntent& intent,
     ChatMessage& reply) {
   for(const intent::TIntentSlot& slot : intent.slots()) {
@@ -645,16 +645,25 @@ inline bool is_resolved_intent_by_session(const intent::TChatSession& session,
     }
 
     if(!settledown) {
+      // 设置session的追问信息
+      session.set_resolved(false);
+      session.set_is_proactive(true);
+      session.set_is_fallback(false);
+      session.set_proactive_slotname(slot.name());        // 停止追问
+      session.set_proactive_dictname(slot.dictname());        // 停止追问
+      session.set_proactive_question(slot.question());        // 停止追问
+
       // 设置 reply 为追问
-      reply.textMessage = session.proactive_question();
-      reply.__isset.textMessage = true;
+      reply.textMessage = slot.question();
       reply.is_proactive = true;
       reply.is_fallback = false;
+      reply.receiver = session.uid();
+      reply.__isset.textMessage = true;
       reply.__isset.is_proactive = true;
       reply.__isset.is_fallback = true;
+      reply.__isset.receiver = true;
       return false;
     }
-
   }
 
   return true;
@@ -753,7 +762,7 @@ inline string debugstr_for_entities_candidates(const vector<pair<string, string>
 
 /**
  * 对话接口
- * @return bool 功设置textMessage或resolve情况下，返回true
+ * @return bool 成功设置textMessage或resolve情况下，返回true
  */
 bool Bot::chat(const ChatMessage& payload,
                const string& query,
@@ -761,7 +770,6 @@ bool Bot::chat(const ChatMessage& payload,
                intent::TChatSession& session,
                ChatMessage& reply) {
   VLOG(3) << __func__ << " query: " << query;
-  bool result = true; // 成功设置textMessage或resolve情况下，返回true
   intent::TIntent* intent;
 
   for(const intent::TIntent& i : _profile->intents()) {
@@ -813,9 +821,11 @@ bool Bot::chat(const ChatMessage& payload,
           reply.textMessage = session.proactive_question();
           reply.is_proactive = true;
           reply.is_fallback = false;
+          reply.receiver = session.uid();
           reply.__isset.textMessage = true;
           reply.__isset.is_proactive = true;
           reply.__isset.is_fallback = true;
+          reply.__isset.receiver = true;
           return true;
         }
 
@@ -927,10 +937,10 @@ bool Bot::chat(const ChatMessage& payload,
     // can find matched intent
     // should not happen
     VLOG(3) << __func__ << " can find matched intent";
-    result = false;
+    return false;
   }
 
-  return result;
+  return true;
 };
 
 } // namespace clause
