@@ -22,11 +22,12 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 ## 欢迎使用
 
 - [概述](https://github.com/chatopera/clause/wiki/%E6%A6%82%E8%BF%B0)
+- [系统设计与实现](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0)
 - [服务部署](https://github.com/chatopera/clause/wiki/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2)
-- [快速开始](https://github.com/chatopera/clause/wiki/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
-- [API 文档](https://chatopera.github.io/clause)
+- [示例程序](https://github.com/chatopera/clause/wiki/%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F)
 - [开发环境搭建](https://github.com/chatopera/clause/wiki/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
 - [系统集成](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90)
+- [API 文档](https://chatopera.github.io/clause)
 - [FAQ](https://github.com/chatopera/clause/wiki/FAQ)
 
 ## Chatopera 云服务

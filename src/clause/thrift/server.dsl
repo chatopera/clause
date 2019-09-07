@@ -5,6 +5,10 @@
  **************************************************************************/
 
 namespace cpp chatopera.bot.clause
+namespace java com.chatopera.clause
+namespace csharp com.chatopera.clause
+namespace py clause
+namespace go clause
 
 typedef string Timestamp
 
