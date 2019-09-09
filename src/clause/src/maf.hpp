@@ -29,7 +29,6 @@ namespace chatopera {
 namespace bot {
 namespace clause {
 
-
 /**
  * 查询BOT是否引用系统词典
  */
@@ -449,13 +448,11 @@ inline bool getWordsWithPagination(Data& data,
     data.dictwords.push_back(word);
   }
 
-  if(rset->rowsCount() > 0) {
+  if(rset->rowsCount() >= 0) {
     data.__isset.dictwords = true;
-    return true;
-  } else {
-    return false;
   }
 
+  return true;
 };
 
 

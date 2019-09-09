@@ -801,10 +801,10 @@ void ServingHandler::getDictWords(Data& _return, const Data& request) {
       _return.__isset.rc = true;
       _return.__isset.msg = true;
     } else {
-      _return.rc = 0;
-      _return.msg = "请检查chatbotID或dictionary name是否正确";
+      _return.rc = 1;
+      _return.error = "请检查chatbotID或dictionary name是否正确";
       _return.__isset.rc = true;
-      _return.__isset.msg = true;
+      _return.__isset.error = true;
     }
   } catch (sql::SQLException &e) {
     mysql_error(_return, e);
