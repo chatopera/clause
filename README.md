@@ -19,6 +19,12 @@ Clause 是帮助中小型企业快速而低成本的获得好用的语义理解�
 
 Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现企业聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
 
+**Clause 的服务端使用 C++编写，并且发布为 Docker 镜像；同时提供的客户端集成接口支持多种语言，包括 Java、Python、Node.js 等，请参考下面的内容进一步了解。**
+
+## 快速开始
+
+[使用 Python 编程语言快速实现问答机器人](https://github.com/chatopera/clause-py-demo)
+
 ## 欢迎使用
 
 - [概述](https://github.com/chatopera/clause/wiki/%E6%A6%82%E8%BF%B0)
@@ -90,11 +96,22 @@ Chatopera 云服务是面向企业聊天机器人构建的一站式解决方案�
   </a>
 </p>
 
+## 媒体报道
+
+- [CSDN 学院直播：深度学习之智能问答机器人实战](https://edu.csdn.net/huiyiCourse/detail/1068)
+- [我爱自然语言处理：Clause，开源的语义理解服务](http://www.52nlp.cn/clause-oss)
+- [开源中国：语义理解系统 Clause](https://www.oschina.net/p/clause)
+
 ## 特别鸣谢
 
 - [Lexical Analysis of Chinese](https://github.com/baidu/lac): Baidu's open-source lexical analysis tool for Chinese, including word segmentation, part-of-speech tagging & named entity recognition.
 - [CRFsuite](https://github.com/chokkan/crfsuite): a fast implementation of Conditional Random Fields (CRFs)
 - [Xapian](https://xapian.org/): an Open Source Search Engine Library
+
+## 其它
+
+- Chatopera 出版物[《智能问答与深度学习》](https://item.jd.com/12479014.html)
+- [春松客服：开源的智能客服系统](https://github.com/chatopera/cosin)
 
 ## 开源许可协议
 
