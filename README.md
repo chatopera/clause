@@ -23,7 +23,10 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 ## 快速开始
 
-[使用 Python 编程语言快速实现问答机器人](https://github.com/chatopera/clause-py-demo)
+<p align="center">
+  <b>使用 Python 快速实现问答机器人</b><a href="https://github.com/chatopera/clause-py-demo">(链接)</a><br>
+  <img src="https://user-images.githubusercontent.com/3538629/65892122-54ffc480-e3d8-11e9-8f64-c82f25694df5.gif" width="800">
+</p>
 
 ## 欢迎使用
 
