@@ -12,4 +12,4 @@ rootDir=$(cd $baseDir/../..;pwd)
 # main 
 [ -z "${BASH_SOURCE[0]}" -o "${BASH_SOURCE[0]}" = "$0" ] || return
 cd $rootDir
-docker-compose up -d
+docker-compose up $*

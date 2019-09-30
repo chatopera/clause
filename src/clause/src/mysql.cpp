@@ -14,7 +14,7 @@
 
 
 #include "mysql.h"
-
+#include <unistd.h>
 
 namespace chatopera {
 namespace mysql {
@@ -43,7 +43,31 @@ bool MySQL::init() {
   connection_properties["OPT_RECONNECT"] = true;
   connection_properties["OPT_CHARSET_NAME"] = "utf8mb4";
   connection_properties["OPT_SET_CHARSET_NAME"] = "utf8mb4";
-  conn.reset(driver->connect(connection_properties));
+
+  // wait for mysql initialization in 30s
+  unsigned int conn_attempts = 30;
+
+  do {
+    try {
+      conn.reset(driver->connect(connection_properties));
+      break;
+    } catch (sql::SQLException &e) {
+      VLOG(conn_attempts > 1 ? 3 : 2) << "# ERR: SQLException in " << __FILE__;
+      /* Use what() (derived from std::runtime_error) to fetch the error message */
+      VLOG(conn_attempts > 1 ? 3 : 2) << "# ERR: " << e.what();
+      VLOG(conn_attempts > 1 ? 3 : 2) << " (MySQL error code: " << e.getErrorCode();
+      VLOG(conn_attempts > 1 ? 3 : 2) << ", SQLState: " << e.getSQLState() << " )";
+
+      if(conn_attempts > 1) {
+        VLOG(2) << __func__ << " reconnect to MySQL ...";
+      } else {
+        VLOG(2) << __func__ << " abort connect to MySQL, fail to initialize connection.";
+      }
+
+      sleep(1);
+    }
+  } while ((--conn_attempts) > 0);
+
   return conn->isValid();
 };
 
