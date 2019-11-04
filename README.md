@@ -101,6 +101,7 @@ Chatopera 云服务是面向企业聊天机器人构建的一站式解决方案�
 
 ## 媒体报道
 
+- Clause 语义理解系统@COSCon '2019 中国开源年会：[视频](https://v.qq.com/x/page/u3017ka4t6o.html)， [PPT【提取码: 25ni】](https://pan.baidu.com/s/1Z-d6CMtI782TLHRxaklDcw)
 - [CSDN 学院直播：深度学习之智能问答机器人实战(含视频回放)](https://edu.csdn.net/huiyiCourse/detail/1068)
 - [我爱自然语言处理：Clause，开源的语义理解服务](http://www.52nlp.cn/clause-oss)
 - [开源中国：语义理解系统 Clause](https://www.oschina.net/p/clause)
