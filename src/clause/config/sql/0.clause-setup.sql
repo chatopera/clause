@@ -34,6 +34,12 @@ FLUSH TABLES cl_chat_sessions;
 drop table if exists cl_dev_vers;
 FLUSH TABLES cl_dev_vers;
 
+drop table if exists cl_dict_pattern;
+FLUSH TABLES cl_dict_pattern;
+
+drop table if exists cl_patten_checks;
+FLUSH TABLES cl_patten_checks;
+
 drop table if exists cl_dict_words;
 FLUSH TABLES cl_dict_words;
 
@@ -147,6 +153,41 @@ alter table cl_dev_vers
    add unique UNQ_DEV_VERSIONS_CHATBOTID_N_VERSION (chatbotID, version);
 
 /*==============================================================*/
+/* Table: cl_dict_pattern                                       */
+/*==============================================================*/
+create table cl_dict_pattern
+(
+   id                   varchar(32) not null comment '唯一标识',
+   dict_id              varchar(32) comment '词典标识',
+   createdate           timestamp default CURRENT_TIMESTAMP comment '创建日期',
+   updatedate           timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新日期',
+   patterns             text comment '正则表达式模式，支持多个，使用 \001 分隔',
+   standard             varchar(32) comment '正则表达式标准'
+);
+
+alter table cl_dict_pattern comment '词典的正则表达式';
+
+alter table cl_dict_pattern
+   add primary key (id);
+
+/*==============================================================*/
+/* Table: cl_patten_checks                                      */
+/*==============================================================*/
+create table cl_patten_checks
+(
+   id                   varchar(32) not null comment '唯一标识',
+   dict_id              varchar(32) not null comment '关联词典ID',
+   createdate           timestamp default CURRENT_TIMESTAMP,
+   input                text comment '输入文本',
+   output               text comment '输出文本的JSON字符串'
+);
+
+alter table cl_patten_checks comment '正则表达式调试记录';
+
+alter table cl_patten_checks
+   add primary key (id);
+
+/*==============================================================*/
 /* Table: cl_dict_words                                         */
 /*==============================================================*/
 create table cl_dict_words
@@ -178,7 +219,9 @@ create table cl_dicts
    updatedate           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '上次更新日期',
    samples              varchar(200) comment '示例词条',
    builtin              tinyint not null default 0 comment '是否是系统词典',
-   active               tinyint default 1 comment '是否启用，只针对系统词典'
+   active               tinyint default 1 comment '是否启用，只针对系统词典',
+   vendor               varchar(32) comment '发布者',
+   type                 varchar(32) comment '词典类型：词汇表(vocab)，正则表达式(regex)，机器学习(ml)。'
 ) default charset=utf8mb4 collate utf8mb4_general_ci;
 
 alter table cl_dicts comment '词典';
@@ -193,10 +236,10 @@ alter table cl_dicts
 -- Records of cl_dicts
 -- ----------------------------
 BEGIN;
-INSERT INTO `cl_dicts` VALUES ('017CCCA93E9337A66BD5E109D0AD42AA', '@PER', '@BUILTIN', '人名', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '郭德纲;于谦', 1, 1);
-INSERT INTO `cl_dicts` VALUES ('11BDC6794CA48E48F0D20DEED06DA5A1', '@TIME', '@BUILTIN', '时间', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '今天;下午一时', 1, 1);
-INSERT INTO `cl_dicts` VALUES ('3F49212119A70BE7424FBE43D08DC5A1', '@LOC', '@BUILTIN', '地名', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '北京市;东京', 1, 1);
-INSERT INTO `cl_dicts` VALUES ('7ABF83AE0492E2E8BC939307D07DB5A1', '@ORG', '@BUILTIN', '组织机构', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '北京华夏春松科技有限公司', 1, 1);
+INSERT INTO `cl_dicts` VALUES ('017CCCA93E9337A66BD5E109D0AD42AA', '@PER', '@BUILTIN', '人名', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '郭德纲;于谦', 1, 1, "Chatopera", "ml");
+INSERT INTO `cl_dicts` VALUES ('11BDC6794CA48E48F0D20DEED06DA5A1', '@TIME', '@BUILTIN', '时间', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '今天;下午一时', 1, 1, "Chatopera", "ml");
+INSERT INTO `cl_dicts` VALUES ('3F49212119A70BE7424FBE43D08DC5A1', '@LOC', '@BUILTIN', '地名', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '北京市;东京', 1, 1, "Chatopera", "ml");
+INSERT INTO `cl_dicts` VALUES ('7ABF83AE0492E2E8BC939307D07DB5A1', '@ORG', '@BUILTIN', '组织机构', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '北京华夏春松科技有限公司', 1, 1, "Chatopera", "ml");
 COMMIT;
 
 /*==============================================================*/
@@ -300,6 +343,11 @@ alter table cl_intent_slots add constraint FK_REF_INTENT_SLOT_INTENT_ID foreign 
 alter table cl_intent_utters add constraint FK_REF_INTENT_UTTERS_INTENT_ID foreign key (intent_id)
       references cl_intents (id) on delete restrict on update restrict;
 
+alter table cl_dict_pattern add constraint FK_REF_DICT_PATTERN_DICT_ID foreign key (dict_id)
+      references cl_dicts (id) on delete restrict on update restrict;
+
+alter table cl_patten_checks add constraint FK_REF_DICT_PATTERN_CHECKS_DICT_ID foreign key (dict_id)
+      references cl_dicts (id) on delete restrict on update restrict;
 
 -- ----------------------------
 -- Power Design End
