@@ -38,7 +38,7 @@ class DictWord;
 
 class DictPattern;
 
-class DictPatternChecks;
+class DictPatternCheck;
 
 class Dict;
 
@@ -654,31 +654,31 @@ void swap(DictPattern &a, DictPattern &b);
 
 std::ostream& operator<<(std::ostream& out, const DictPattern& obj);
 
-typedef struct _DictPatternChecks__isset {
-  _DictPatternChecks__isset() : id(false), dict_id(false), input(false), output(false), createdate(false) {}
+typedef struct _DictPatternCheck__isset {
+  _DictPatternCheck__isset() : id(false), dict_id(false), input(false), output(false), createdate(false) {}
   bool id :1;
   bool dict_id :1;
   bool input :1;
   bool output :1;
   bool createdate :1;
-} _DictPatternChecks__isset;
+} _DictPatternCheck__isset;
 
-class DictPatternChecks : public virtual ::apache::thrift::TBase {
+class DictPatternCheck : public virtual ::apache::thrift::TBase {
  public:
 
-  DictPatternChecks(const DictPatternChecks&);
-  DictPatternChecks& operator=(const DictPatternChecks&);
-  DictPatternChecks() : id(), dict_id(), input(), output(), createdate() {
+  DictPatternCheck(const DictPatternCheck&);
+  DictPatternCheck& operator=(const DictPatternCheck&);
+  DictPatternCheck() : id(), dict_id(), input(), output(), createdate() {
   }
 
-  virtual ~DictPatternChecks() throw();
+  virtual ~DictPatternCheck() throw();
   std::string id;
   std::string dict_id;
   std::string input;
   std::string output;
   Timestamp createdate;
 
-  _DictPatternChecks__isset __isset;
+  _DictPatternCheck__isset __isset;
 
   void __set_id(const std::string& val);
 
@@ -690,7 +690,7 @@ class DictPatternChecks : public virtual ::apache::thrift::TBase {
 
   void __set_createdate(const Timestamp& val);
 
-  bool operator == (const DictPatternChecks & rhs) const
+  bool operator == (const DictPatternCheck & rhs) const
   {
     if (__isset.id != rhs.__isset.id)
       return false;
@@ -714,11 +714,11 @@ class DictPatternChecks : public virtual ::apache::thrift::TBase {
       return false;
     return true;
   }
-  bool operator != (const DictPatternChecks &rhs) const {
+  bool operator != (const DictPatternCheck &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const DictPatternChecks & ) const;
+  bool operator < (const DictPatternCheck & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -726,9 +726,9 @@ class DictPatternChecks : public virtual ::apache::thrift::TBase {
   virtual void printTo(std::ostream& out) const;
 };
 
-void swap(DictPatternChecks &a, DictPatternChecks &b);
+void swap(DictPatternCheck &a, DictPatternCheck &b);
 
-std::ostream& operator<<(std::ostream& out, const DictPatternChecks& obj);
+std::ostream& operator<<(std::ostream& out, const DictPatternCheck& obj);
 
 typedef struct _Dict__isset {
   _Dict__isset() : name(false), chatbotID(false), builtin(false), active(false), id(false), description(false), samples(false), createdate(false), updatedate(false), referred(false), type(false), vendor(false) {}
@@ -1315,7 +1315,7 @@ void swap(DevelopVersion &a, DevelopVersion &b);
 std::ostream& operator<<(std::ostream& out, const DevelopVersion& obj);
 
 typedef struct _Data__isset {
-  _Data__isset() : rc(false), error(false), msg(false), id(false), chatbotID(false), customdicts(false), sysdicts(false), botsysdicts(false), dictwords(false), customdict(false), sysdict(false), botsysdict(false), dictword(false), intents(false), slots(false), utters(false), intent(false), slot(false), utter(false), devvers(false), provers(false), devver(false), prover(false), sessions(false), messages(false), session(false), message(false), currpage(false), totalpage(false), totalrows(false), pagesize(false), page(false), query(false) {}
+  _Data__isset() : rc(false), error(false), msg(false), id(false), chatbotID(false), customdicts(false), sysdicts(false), botsysdicts(false), dictwords(false), customdict(false), sysdict(false), botsysdict(false), dictword(false), dictpattern(false), patterncheck(false), intents(false), slots(false), utters(false), intent(false), slot(false), utter(false), devvers(false), provers(false), devver(false), prover(false), sessions(false), messages(false), session(false), message(false), currpage(false), totalpage(false), totalrows(false), pagesize(false), page(false), query(false) {}
   bool rc :1;
   bool error :1;
   bool msg :1;
@@ -1329,6 +1329,8 @@ typedef struct _Data__isset {
   bool sysdict :1;
   bool botsysdict :1;
   bool dictword :1;
+  bool dictpattern :1;
+  bool patterncheck :1;
   bool intents :1;
   bool slots :1;
   bool utters :1;
@@ -1373,6 +1375,8 @@ class Data : public virtual ::apache::thrift::TBase {
   SysDict sysdict;
   BotSysdict botsysdict;
   DictWord dictword;
+  DictPattern dictpattern;
+  DictPatternCheck patterncheck;
   std::vector<Intent>  intents;
   std::vector<IntentSlot>  slots;
   std::vector<IntentUtter>  utters;
@@ -1421,6 +1425,10 @@ class Data : public virtual ::apache::thrift::TBase {
   void __set_botsysdict(const BotSysdict& val);
 
   void __set_dictword(const DictWord& val);
+
+  void __set_dictpattern(const DictPattern& val);
+
+  void __set_patterncheck(const DictPatternCheck& val);
 
   void __set_intents(const std::vector<Intent> & val);
 
@@ -1515,6 +1523,14 @@ class Data : public virtual ::apache::thrift::TBase {
     if (__isset.dictword != rhs.__isset.dictword)
       return false;
     else if (__isset.dictword && !(dictword == rhs.dictword))
+      return false;
+    if (__isset.dictpattern != rhs.__isset.dictpattern)
+      return false;
+    else if (__isset.dictpattern && !(dictpattern == rhs.dictpattern))
+      return false;
+    if (__isset.patterncheck != rhs.__isset.patterncheck)
+      return false;
+    else if (__isset.patterncheck && !(patterncheck == rhs.patterncheck))
       return false;
     if (__isset.intents != rhs.__isset.intents)
       return false;

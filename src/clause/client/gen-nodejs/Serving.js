@@ -1747,6 +1747,312 @@ Serving_hasDictWord_result.prototype.write = function(output) {
   return;
 };
 
+var Serving_getDictPattern_args = function(args) {
+  this.request = null;
+  if (args) {
+    if (args.request !== undefined && args.request !== null) {
+      this.request = new ttypes.Data(args.request);
+    }
+  }
+};
+Serving_getDictPattern_args.prototype = {};
+Serving_getDictPattern_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true) {
+    var ret = input.readFieldBegin();
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid) {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.request = new ttypes.Data();
+        this.request.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Serving_getDictPattern_args.prototype.write = function(output) {
+  output.writeStructBegin('Serving_getDictPattern_args');
+  if (this.request !== null && this.request !== undefined) {
+    output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+    this.request.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var Serving_getDictPattern_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = new ttypes.Data(args.success);
+    }
+  }
+};
+Serving_getDictPattern_result.prototype = {};
+Serving_getDictPattern_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true) {
+    var ret = input.readFieldBegin();
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid) {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.Data();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Serving_getDictPattern_result.prototype.write = function(output) {
+  output.writeStructBegin('Serving_getDictPattern_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var Serving_putDictPattern_args = function(args) {
+  this.request = null;
+  if (args) {
+    if (args.request !== undefined && args.request !== null) {
+      this.request = new ttypes.Data(args.request);
+    }
+  }
+};
+Serving_putDictPattern_args.prototype = {};
+Serving_putDictPattern_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true) {
+    var ret = input.readFieldBegin();
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid) {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.request = new ttypes.Data();
+        this.request.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Serving_putDictPattern_args.prototype.write = function(output) {
+  output.writeStructBegin('Serving_putDictPattern_args');
+  if (this.request !== null && this.request !== undefined) {
+    output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+    this.request.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var Serving_putDictPattern_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = new ttypes.Data(args.success);
+    }
+  }
+};
+Serving_putDictPattern_result.prototype = {};
+Serving_putDictPattern_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true) {
+    var ret = input.readFieldBegin();
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid) {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.Data();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Serving_putDictPattern_result.prototype.write = function(output) {
+  output.writeStructBegin('Serving_putDictPattern_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var Serving_debugDictPattern_args = function(args) {
+  this.request = null;
+  if (args) {
+    if (args.request !== undefined && args.request !== null) {
+      this.request = new ttypes.Data(args.request);
+    }
+  }
+};
+Serving_debugDictPattern_args.prototype = {};
+Serving_debugDictPattern_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true) {
+    var ret = input.readFieldBegin();
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid) {
+      case 1:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.request = new ttypes.Data();
+        this.request.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Serving_debugDictPattern_args.prototype.write = function(output) {
+  output.writeStructBegin('Serving_debugDictPattern_args');
+  if (this.request !== null && this.request !== undefined) {
+    output.writeFieldBegin('request', Thrift.Type.STRUCT, 1);
+    this.request.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+var Serving_debugDictPattern_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = new ttypes.Data(args.success);
+    }
+  }
+};
+Serving_debugDictPattern_result.prototype = {};
+Serving_debugDictPattern_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true) {
+    var ret = input.readFieldBegin();
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid) {
+      case 0:
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new ttypes.Data();
+        this.success.read(input);
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+Serving_debugDictPattern_result.prototype.write = function(output) {
+  output.writeStructBegin('Serving_debugDictPattern_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 var Serving_postIntent_args = function(args) {
   this.request = null;
   if (args) {
@@ -5310,6 +5616,183 @@ ServingClient.prototype.recv_hasDictWord = function(input,mtype,rseqid) {
   return callback('hasDictWord failed: unknown result');
 };
 
+ServingClient.prototype.getDictPattern = function(request, callback) {
+  this._seqid = this.new_seqid();
+  if (callback === undefined) {
+    var _defer = Q.defer();
+    this._reqs[this.seqid()] = function(error, result) {
+      if (error) {
+        _defer.reject(error);
+      } else {
+        _defer.resolve(result);
+      }
+    };
+    this.send_getDictPattern(request);
+    return _defer.promise;
+  } else {
+    this._reqs[this.seqid()] = callback;
+    this.send_getDictPattern(request);
+  }
+};
+
+ServingClient.prototype.send_getDictPattern = function(request) {
+  var output = new this.pClass(this.output);
+  var params = {
+    request: request
+  };
+  var args = new Serving_getDictPattern_args(params);
+  try {
+    output.writeMessageBegin('getDictPattern', Thrift.MessageType.CALL, this.seqid());
+    args.write(output);
+    output.writeMessageEnd();
+    return this.output.flush();
+  }
+  catch (e) {
+    delete this._reqs[this.seqid()];
+    if (typeof output.reset === 'function') {
+      output.reset();
+    }
+    throw e;
+  }
+};
+
+ServingClient.prototype.recv_getDictPattern = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new Serving_getDictPattern_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('getDictPattern failed: unknown result');
+};
+
+ServingClient.prototype.putDictPattern = function(request, callback) {
+  this._seqid = this.new_seqid();
+  if (callback === undefined) {
+    var _defer = Q.defer();
+    this._reqs[this.seqid()] = function(error, result) {
+      if (error) {
+        _defer.reject(error);
+      } else {
+        _defer.resolve(result);
+      }
+    };
+    this.send_putDictPattern(request);
+    return _defer.promise;
+  } else {
+    this._reqs[this.seqid()] = callback;
+    this.send_putDictPattern(request);
+  }
+};
+
+ServingClient.prototype.send_putDictPattern = function(request) {
+  var output = new this.pClass(this.output);
+  var params = {
+    request: request
+  };
+  var args = new Serving_putDictPattern_args(params);
+  try {
+    output.writeMessageBegin('putDictPattern', Thrift.MessageType.CALL, this.seqid());
+    args.write(output);
+    output.writeMessageEnd();
+    return this.output.flush();
+  }
+  catch (e) {
+    delete this._reqs[this.seqid()];
+    if (typeof output.reset === 'function') {
+      output.reset();
+    }
+    throw e;
+  }
+};
+
+ServingClient.prototype.recv_putDictPattern = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new Serving_putDictPattern_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('putDictPattern failed: unknown result');
+};
+
+ServingClient.prototype.debugDictPattern = function(request, callback) {
+  this._seqid = this.new_seqid();
+  if (callback === undefined) {
+    var _defer = Q.defer();
+    this._reqs[this.seqid()] = function(error, result) {
+      if (error) {
+        _defer.reject(error);
+      } else {
+        _defer.resolve(result);
+      }
+    };
+    this.send_debugDictPattern(request);
+    return _defer.promise;
+  } else {
+    this._reqs[this.seqid()] = callback;
+    this.send_debugDictPattern(request);
+  }
+};
+
+ServingClient.prototype.send_debugDictPattern = function(request) {
+  var output = new this.pClass(this.output);
+  var params = {
+    request: request
+  };
+  var args = new Serving_debugDictPattern_args(params);
+  try {
+    output.writeMessageBegin('debugDictPattern', Thrift.MessageType.CALL, this.seqid());
+    args.write(output);
+    output.writeMessageEnd();
+    return this.output.flush();
+  }
+  catch (e) {
+    delete this._reqs[this.seqid()];
+    if (typeof output.reset === 'function') {
+      output.reset();
+    }
+    throw e;
+  }
+};
+
+ServingClient.prototype.recv_debugDictPattern = function(input,mtype,rseqid) {
+  var callback = this._reqs[rseqid] || function() {};
+  delete this._reqs[rseqid];
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(input);
+    input.readMessageEnd();
+    return callback(x);
+  }
+  var result = new Serving_debugDictPattern_result();
+  result.read(input);
+  input.readMessageEnd();
+
+  if (null !== result.success) {
+    return callback(null, result.success);
+  }
+  return callback('debugDictPattern failed: unknown result');
+};
+
 ServingClient.prototype.postIntent = function(request, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
@@ -7423,6 +7906,117 @@ ServingProcessor.prototype.process_hasDictWord = function(seqid, input, output) 
       } else {
         result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
         output.writeMessageBegin("hasDictWord", Thrift.MessageType.EXCEPTION, seqid);
+      }
+      result_obj.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
+  }
+};
+ServingProcessor.prototype.process_getDictPattern = function(seqid, input, output) {
+  var args = new Serving_getDictPattern_args();
+  args.read(input);
+  input.readMessageEnd();
+  if (this._handler.getDictPattern.length === 1) {
+    Q.fcall(this._handler.getDictPattern.bind(this._handler),
+      args.request
+    ).then(function(result) {
+      var result_obj = new Serving_getDictPattern_result({success: result});
+      output.writeMessageBegin("getDictPattern", Thrift.MessageType.REPLY, seqid);
+      result_obj.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    }).catch(function (err) {
+      var result;
+      result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+      output.writeMessageBegin("getDictPattern", Thrift.MessageType.EXCEPTION, seqid);
+      result.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
+  } else {
+    this._handler.getDictPattern(args.request, function (err, result) {
+      var result_obj;
+      if ((err === null || typeof err === 'undefined')) {
+        result_obj = new Serving_getDictPattern_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        output.writeMessageBegin("getDictPattern", Thrift.MessageType.REPLY, seqid);
+      } else {
+        result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+        output.writeMessageBegin("getDictPattern", Thrift.MessageType.EXCEPTION, seqid);
+      }
+      result_obj.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
+  }
+};
+ServingProcessor.prototype.process_putDictPattern = function(seqid, input, output) {
+  var args = new Serving_putDictPattern_args();
+  args.read(input);
+  input.readMessageEnd();
+  if (this._handler.putDictPattern.length === 1) {
+    Q.fcall(this._handler.putDictPattern.bind(this._handler),
+      args.request
+    ).then(function(result) {
+      var result_obj = new Serving_putDictPattern_result({success: result});
+      output.writeMessageBegin("putDictPattern", Thrift.MessageType.REPLY, seqid);
+      result_obj.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    }).catch(function (err) {
+      var result;
+      result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+      output.writeMessageBegin("putDictPattern", Thrift.MessageType.EXCEPTION, seqid);
+      result.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
+  } else {
+    this._handler.putDictPattern(args.request, function (err, result) {
+      var result_obj;
+      if ((err === null || typeof err === 'undefined')) {
+        result_obj = new Serving_putDictPattern_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        output.writeMessageBegin("putDictPattern", Thrift.MessageType.REPLY, seqid);
+      } else {
+        result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+        output.writeMessageBegin("putDictPattern", Thrift.MessageType.EXCEPTION, seqid);
+      }
+      result_obj.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
+  }
+};
+ServingProcessor.prototype.process_debugDictPattern = function(seqid, input, output) {
+  var args = new Serving_debugDictPattern_args();
+  args.read(input);
+  input.readMessageEnd();
+  if (this._handler.debugDictPattern.length === 1) {
+    Q.fcall(this._handler.debugDictPattern.bind(this._handler),
+      args.request
+    ).then(function(result) {
+      var result_obj = new Serving_debugDictPattern_result({success: result});
+      output.writeMessageBegin("debugDictPattern", Thrift.MessageType.REPLY, seqid);
+      result_obj.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    }).catch(function (err) {
+      var result;
+      result = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+      output.writeMessageBegin("debugDictPattern", Thrift.MessageType.EXCEPTION, seqid);
+      result.write(output);
+      output.writeMessageEnd();
+      output.flush();
+    });
+  } else {
+    this._handler.debugDictPattern(args.request, function (err, result) {
+      var result_obj;
+      if ((err === null || typeof err === 'undefined')) {
+        result_obj = new Serving_debugDictPattern_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        output.writeMessageBegin("debugDictPattern", Thrift.MessageType.REPLY, seqid);
+      } else {
+        result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
+        output.writeMessageBegin("debugDictPattern", Thrift.MessageType.EXCEPTION, seqid);
       }
       result_obj.write(output);
       output.writeMessageEnd();

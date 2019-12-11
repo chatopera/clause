@@ -68,7 +68,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_libraries(${Boost_LIBRARIES})
 MESSAGE(STATUS "Boost_INCLUDE_DIRS -->" ${Boost_INCLUDE_DIRS})
 MESSAGE(STATUS "Boost_LIBRARIES -->" ${Boost_LIBRARIES})
-# MESSAGE(STATUS "Boost_REGEX_LIBRARY -->" ${Boost_REGEX_LIBRARY})
+MESSAGE(STATUS "Boost_REGEX_LIBRARY -->" ${Boost_REGEX_LIBRARY})
 
 # Linking APR (Apache Portable Runtime)
 find_package(APR REQUIRED)

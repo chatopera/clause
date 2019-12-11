@@ -18,6 +18,12 @@
 
 #include <string>
 #include <vector>
+#include <boost/regex.hpp>
+
+#include "glog/logging.h"
+#include "StringUtils.hpp"
+#include "json/json.h"
+#include "serving/server_types.h"
 
 using namespace std;
 
@@ -25,22 +31,19 @@ namespace chatopera {
 namespace bot {
 namespace clause {
 
-class PatternDict() {
+class PatternRegex {
  public: // constructors
-  PatternDict();
-  ~PatternDict();
+  PatternRegex();
+  ~PatternRegex();
 
-//  private: // members
+ public: // functions
+  static Json::Value search(const DictPattern& pattern, DictPatternCheck& check);
 
-}
+};
 
 } // namespace clause
 } // bot
 } // chatopera
-
-#include "Common/"
-
-
 
 
 

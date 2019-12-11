@@ -2890,6 +2890,155 @@ void ServingHandler::offline(Data& _return, const Data& request) {
 };
 
 /**
+ * 获得正则表达式词典
+ */
+void ServingHandler::getDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  if(request.__isset.customdict &&
+      request.customdict.__isset.chatbotID &&
+      request.customdict.__isset.name) {
+
+    try {
+      // 获得Customdict
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        DictPattern pattern = resolveDictPatternDefinition(stmt, customdict.id);
+        _return.rc = 0;
+        _return.msg = "success";
+        _return.dictpattern = pattern;
+        _return.__isset.rc = true;
+        _return.__isset.msg = true;
+        _return.__isset.dictpattern = true;
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } catch (sql::SQLException &e) {
+      mysql_error(_return, e);
+    } catch (std::runtime_error &e) {
+      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    }
+  } else {
+    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+}
+
+/**
+ * 更新正则表达式词典
+ */
+void ServingHandler::putDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  if(request.__isset.customdict &&
+      request.customdict.__isset.chatbotID &&
+      request.customdict.__isset.name) {
+
+    try {
+      // 获得Customdict
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          DictPattern pattern = updateDictPatternDefinition(stmt, customdict.id, request.dictpattern.patterns);
+
+          _return.rc = 0;
+          _return.msg = "success";
+          _return.dictpattern = pattern;
+          _return.__isset.rc = true;
+          _return.__isset.msg = true;
+          _return.__isset.dictpattern = true;
+        } else {
+          // 非正则表达式词典
+          rc_and_error(_return, 11, "Dict is not as regex type.");
+        }
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } catch (sql::SQLException &e) {
+      mysql_error(_return, e);
+    } catch (std::runtime_error &e) {
+      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    }
+  } else {
+    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+}
+
+/**
+ * 调试正则表达式词典
+ */
+void ServingHandler::debugDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  if(request.__isset.customdict &&
+      request.customdict.__isset.chatbotID &&
+      request.customdict.__isset.name &&
+      request.__isset.patterncheck &&
+      request.patterncheck.__isset.input) {
+
+    try {
+      // 获得Customdict
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          DictPattern pattern = resolveDictPatternDefinition(stmt, customdict.id);
+
+          // 调试pattern
+          DictPatternCheck patterncheck = request.patterncheck;
+          PatternRegex::search(pattern, patterncheck);
+
+          _return.rc = 0;
+          _return.msg = "success";
+          _return.dictpattern = pattern;
+          _return.patterncheck = patterncheck;
+          _return.__isset.rc = true;
+          _return.__isset.msg = true;
+          _return.__isset.dictpattern = true;
+          _return.__isset.patterncheck = true;
+        } else {
+          // 非正则表达式词典
+          rc_and_error(_return, 11, "Dict is not as regex type.");
+        }
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } catch (sql::SQLException &e) {
+      mysql_error(_return, e);
+    } catch (std::runtime_error &e) {
+      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    }
+  } else {
+    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+}
+
+/**
  * Error Handler
  * https://gitlab.chatopera.com/chatopera/chatopera.bot/issues/212#note_2269
  */

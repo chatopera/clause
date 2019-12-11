@@ -101,7 +101,7 @@ struct DictPattern {
 /**
  * 正则表达词典的验证
  */
-struct DictPatternChecks {
+struct DictPatternCheck {
     1: optional string id;
     2: optional string dict_id;
     3: optional string input;
@@ -221,31 +221,33 @@ struct Data {
     11: optional SysDict sysdict;          // 系统词典
     12: optional BotSysdict botsysdict;    // 系统词典关联
     13: optional DictWord dictword;        // 词条
+    14: optional DictPattern dictpattern;  // 正则表达式词典
+    15: optional DictPatternCheck patterncheck; // 正则表达式词典调试
 
     // 意图管理
-    14: optional list<Intent> intents;
-    15: optional list<IntentSlot> slots;
-    16: optional list<IntentUtter> utters;
-    17: optional Intent intent;           // 意图
-    18: optional IntentSlot slot;         // 槽位
-    19: optional IntentUtter utter;       // 说法
+    16: optional list<Intent> intents;
+    17: optional list<IntentSlot> slots;
+    18: optional list<IntentUtter> utters;
+    19: optional Intent intent;           // 意图
+    20: optional IntentSlot slot;         // 槽位
+    21: optional IntentUtter utter;       // 说法
     // 版本
-    20: optional list<DevelopVersion> devvers;
-    21: optional list<ProdVersion> provers;
-    22: optional DevelopVersion devver;   // 调试版本
-    23: optional ProdVersion prover;      // 上线版本
+    22: optional list<DevelopVersion> devvers;
+    23: optional list<ProdVersion> provers;
+    24: optional DevelopVersion devver;   // 调试版本
+    25: optional ProdVersion prover;      // 上线版本
     // 聊天管理
-    24: optional list<ChatSession> sessions;
-    25: optional list<ChatMessage> messages;
-    26: optional ChatSession session;     // 会话
-    27: optional ChatMessage message;     // 聊天消息
+    26: optional list<ChatSession> sessions;
+    27: optional list<ChatMessage> messages;
+    28: optional ChatSession session;     // 会话
+    29: optional ChatMessage message;     // 聊天消息
     // 分页信息
-    28: optional i32 currpage;            // 当前页
-    29: optional i32 totalpage;           // 全部页面
-    30: optional i32 totalrows;           // 全部数据条数
-    31: optional i32 pagesize;            // 每页数据条数
-    32: optional i32 page;                // 页面索引
-    33: optional string query;            // 查询条件
+    30: optional i32 currpage;            // 当前页
+    31: optional i32 totalpage;           // 全部页面
+    32: optional i32 totalrows;           // 全部数据条数
+    33: optional i32 pagesize;            // 每页数据条数
+    34: optional i32 page;                // 页面索引
+    35: optional string query;            // 查询条件
 }
 
 /**
@@ -277,6 +279,11 @@ service Serving {
     Data getDictWords(1: Data request);   // 获得词条列表
     Data delDictWord(1: Data request);    // 删除词条
     Data hasDictWord(1: Data request);    // 检测一个词条的标准词是否唯一
+
+    // 正则表达式词典管理
+    Data getDictPattern(1: Data request);   // 获得正则表达式词典定义
+    Data putDictPattern(1: Data request);   // 更新正则表达式词典
+    Data debugDictPattern(1: Data request); // 调试正则表达式
 
     /**
      * 意图

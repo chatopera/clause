@@ -1147,7 +1147,7 @@ inline DictPattern resolveDictPatternDefinition(const boost::scoped_ptr<sql::Sta
     const string& dict_id) {
   DictPattern pattern;
   stringstream sql;
-  sql << "SELECT id, dict_id, createdate, updatedate, standard FROM cl_dict_pattern WHERE dict_id = '";
+  sql << "SELECT id, dict_id, createdate, updatedate, patterns, standard FROM cl_dict_pattern WHERE dict_id = '";
   sql << dict_id << "' ORDER BY createdate DESC limit 0,1";
 
   VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
@@ -1198,6 +1198,34 @@ inline DictPattern resolveDictPatternDefinition(const boost::scoped_ptr<sql::Sta
     pattern.__isset.dict_id = true;
     pattern.__isset.standard = true;
   }
+
+  return pattern;
+}
+
+// 更新正则表达式定义
+inline DictPattern updateDictPatternDefinition(const boost::scoped_ptr<sql::Statement>& stmt,
+    const string& dict_id,
+    const vector<string>& patterns) {
+  DictPattern pattern = resolveDictPatternDefinition(stmt, dict_id);
+  pattern.updatedate = GetCurrentTimestampFormatted();
+  pattern.__isset.updatedate = true;
+  pattern.patterns = patterns;
+  pattern.__isset.patterns = true;
+
+  // 开始更新
+  stringstream sql;
+  sql.str("");
+
+  sql << "UPDATE cl_dict_pattern SET "
+      << "patterns = '"
+      << boost::algorithm::join(pattern.patterns, "\001")  << "',"
+      << "updatedate='"
+      << pattern.updatedate << "'"
+      << " WHERE dict_id = '"
+      << dict_id << "'";
+
+  VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+  stmt->executeUpdate(sql.str());
 
   return pattern;
 }
