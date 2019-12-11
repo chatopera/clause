@@ -87,6 +87,29 @@ struct DictWord {
 }
 
 /**
+ * 正则词典的定义
+ */
+struct DictPattern {
+    1: optional string id;
+    2: optional string dict_id;
+    3: optional list<string> patterns;
+    4: optional string standard;
+    5: optional Timestamp createdate;
+    6: optional Timestamp updatedate;
+}
+
+/**
+ * 正则表达词典的验证
+ */
+struct DictPatternChecks {
+    1: optional string id;
+    2: optional string dict_id;
+    3: optional string input;
+    4: optional string output;
+    5: optional Timestamp createdate;
+}
+
+/**
  * 词典
  */
 struct Dict {
@@ -100,6 +123,8 @@ struct Dict {
     8: optional Timestamp createdate;
     9: optional Timestamp updatedate;
     10: optional bool referred;        // 是否被引用，和系统词典相关
+    11: optional string type;          // 类型：vocab, regex, ml
+    12: optional string vendor;        // 发布者
 }
 
 /**

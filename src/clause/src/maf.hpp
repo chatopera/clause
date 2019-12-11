@@ -30,6 +30,24 @@ namespace bot {
 namespace clause {
 
 /**
+ * 检查词典类型是否合规
+ */
+inline bool validateDictType(const string type) {
+  if(type.empty()) {
+    return false;
+  } else if(type == CL_DICT_TYPE_PATTERN) {
+    return true;
+  } else if(type == CL_DICT_TYPE_VOCAB) {
+    return true;
+  } else if(type == CL_DICT_TYPE_ML) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+/**
  * 查询BOT是否引用系统词典
  */
 inline bool getBotSysdictByDictIdAndChatbotID(BotSysdict& botSysdict,
@@ -69,7 +87,7 @@ inline bool getDictDetailByChatbotIDAndName(T& dict,
 
   // 获得详情
   sql << "SELECT id, name, chatbotID, description,"
-      << " createdate, updatedate, samples";
+      << " createdate, updatedate, samples, type, vendor";
 
   if(isBuiltin) {
     sql << ", builtin, active";
@@ -89,12 +107,16 @@ inline bool getDictDetailByChatbotIDAndName(T& dict,
     dict.createdate = rset->getString("createdate");
     dict.updatedate = rset->getString("updatedate");
     dict.description = rset->getString("description");
+    dict.type = rset->getString("type");
+    dict.vendor = rset->getString("vendor");
     dict.__isset.id = true;
     dict.__isset.name = true;
     dict.__isset.description = true;
     dict.__isset.chatbotID = true;
     dict.__isset.createdate = true;
     dict.__isset.updatedate = true;
+    dict.__isset.type = true;
+    dict.__isset.vendor = true;
 
     if(isBuiltin) {
       // 系统字典
@@ -178,6 +200,7 @@ inline bool getDictsWithPagination(Data& data,
   sql.str("");
   sql << "SELECT D.id as did, D.name as dname, D.chatbotID as dchatbotid,"
       << " D.description as ddescription, D.active as dactive, D.samples as dsamples, "
+      << " D.type as dtype, D.vendor as dvendor, "
       << " D.createdate as dcreatedate, D.updatedate as dupdatedate";
 
   if((!chatbotID.empty()) && isBuiltin) {
@@ -220,6 +243,8 @@ inline bool getDictsWithPagination(Data& data,
       sysdict.updatedate = rset->getString("dupdatedate");
       sysdict.active = rset->getBoolean("dactive");
       sysdict.samples = rset->getString("dsamples");
+      sysdict.type = rset->getString("dtype");
+      sysdict.vendor = rset->getString("dvendor");
 
       if(!chatbotID.empty()) {
         std::string referred(rset->getString("bid"));
@@ -234,6 +259,8 @@ inline bool getDictsWithPagination(Data& data,
       sysdict.__isset.description = true;
       sysdict.__isset.createdate = true;
       sysdict.__isset.updatedate = true;
+      sysdict.__isset.type = true;
+      sysdict.__isset.vendor = true;
       data.sysdicts.push_back(sysdict);
     }
 
@@ -249,12 +276,16 @@ inline bool getDictsWithPagination(Data& data,
       customdict.description = rset->getString("ddescription");
       customdict.createdate = rset->getString("dcreatedate");
       customdict.updatedate = rset->getString("dupdatedate");
+      customdict.type = rset->getString("dtype");
+      customdict.vendor = rset->getString("dvendor");
       customdict.__isset.id = true;
       customdict.__isset.name = true;
       customdict.__isset.chatbotID = true;
       customdict.__isset.description = true;
       customdict.__isset.createdate = true;
       customdict.__isset.updatedate = true;
+      customdict.__isset.type = true;
+      customdict.__isset.vendor = true;
       data.customdicts.push_back(customdict);
     }
 
@@ -1104,6 +1135,73 @@ inline bool isExistDictwordByCustomdictIdAndWord(const boost::scoped_ptr<sql::St
   cset->next();
   return cset->getInt(1) == 1;
 }
+
+/* --------------------------------
+ * 正则表达式相关
+ * --------------------------------/
+
+/**
+ * 创建和正则表达式词典关联的正则表达式定义
+ */
+inline DictPattern resolveDictPatternDefinition(const boost::scoped_ptr<sql::Statement>& stmt,
+    const string& dict_id) {
+  DictPattern pattern;
+  stringstream sql;
+  sql << "SELECT id, dict_id, createdate, updatedate, standard FROM cl_dict_pattern WHERE dict_id = '";
+  sql << dict_id << "' ORDER BY createdate DESC limit 0,1";
+
+  VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+  boost::scoped_ptr< sql::ResultSet > rset(stmt->executeQuery(sql.str()));
+
+  VLOG(3) << __func__ << " row count: " << rset->rowsCount();
+
+  if(rset->rowsCount() == 1) {
+    rset->next();
+    pattern.id = rset->getString("id");
+    pattern.createdate = rset->getString("createdate");
+    pattern.updatedate = rset->getString("updatedate");
+    pattern.standard = rset->getString("standard");
+    pattern.dict_id = dict_id;
+    string patterns = rset->getString("patterns");
+
+    if(!patterns.empty()) {
+      SplitString(patterns, '\001', &pattern.patterns);
+
+      if(pattern.patterns.size() > 0) {
+        pattern.__isset.patterns = true;
+      }
+    }
+
+    pattern.__isset.id = true;
+    pattern.__isset.createdate = true;
+    pattern.__isset.updatedate = true;
+    pattern.__isset.standard = true;
+    pattern.__isset.dict_id = true;
+  } else {
+    // create dict pattern
+    std::string uuid = generate_uuid();
+    std::string createdate = GetCurrentTimestampFormatted();
+    sql.str("");
+    sql << "INSERT INTO cl_dict_pattern(id, dict_id, createdate, updatedate, standard) VALUES ('";
+    sql << uuid << "', '" << dict_id << "', '" << createdate << "', '" << createdate << "', '" << CL_DICT_PATTERN_STANDARD << "')";
+
+    VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+    stmt->execute(sql.str());
+    pattern.id = uuid;
+    pattern.createdate = createdate;
+    pattern.updatedate = createdate;
+    pattern.dict_id = dict_id;
+    pattern.standard = CL_DICT_PATTERN_STANDARD;
+    pattern.__isset.id = true;
+    pattern.__isset.createdate = true;
+    pattern.__isset.updatedate = true;
+    pattern.__isset.dict_id = true;
+    pattern.__isset.standard = true;
+  }
+
+  return pattern;
+}
+
 
 
 } // namespace clause

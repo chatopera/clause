@@ -36,6 +36,10 @@ class ChatSession;
 
 class DictWord;
 
+class DictPattern;
+
+class DictPatternChecks;
+
 class Dict;
 
 class Intent;
@@ -566,8 +570,168 @@ void swap(DictWord &a, DictWord &b);
 
 std::ostream& operator<<(std::ostream& out, const DictWord& obj);
 
+typedef struct _DictPattern__isset {
+  _DictPattern__isset() : id(false), dict_id(false), patterns(false), standard(false), createdate(false), updatedate(false) {}
+  bool id :1;
+  bool dict_id :1;
+  bool patterns :1;
+  bool standard :1;
+  bool createdate :1;
+  bool updatedate :1;
+} _DictPattern__isset;
+
+class DictPattern : public virtual ::apache::thrift::TBase {
+ public:
+
+  DictPattern(const DictPattern&);
+  DictPattern& operator=(const DictPattern&);
+  DictPattern() : id(), dict_id(), standard(), createdate(), updatedate() {
+  }
+
+  virtual ~DictPattern() throw();
+  std::string id;
+  std::string dict_id;
+  std::vector<std::string>  patterns;
+  std::string standard;
+  Timestamp createdate;
+  Timestamp updatedate;
+
+  _DictPattern__isset __isset;
+
+  void __set_id(const std::string& val);
+
+  void __set_dict_id(const std::string& val);
+
+  void __set_patterns(const std::vector<std::string> & val);
+
+  void __set_standard(const std::string& val);
+
+  void __set_createdate(const Timestamp& val);
+
+  void __set_updatedate(const Timestamp& val);
+
+  bool operator == (const DictPattern & rhs) const
+  {
+    if (__isset.id != rhs.__isset.id)
+      return false;
+    else if (__isset.id && !(id == rhs.id))
+      return false;
+    if (__isset.dict_id != rhs.__isset.dict_id)
+      return false;
+    else if (__isset.dict_id && !(dict_id == rhs.dict_id))
+      return false;
+    if (__isset.patterns != rhs.__isset.patterns)
+      return false;
+    else if (__isset.patterns && !(patterns == rhs.patterns))
+      return false;
+    if (__isset.standard != rhs.__isset.standard)
+      return false;
+    else if (__isset.standard && !(standard == rhs.standard))
+      return false;
+    if (__isset.createdate != rhs.__isset.createdate)
+      return false;
+    else if (__isset.createdate && !(createdate == rhs.createdate))
+      return false;
+    if (__isset.updatedate != rhs.__isset.updatedate)
+      return false;
+    else if (__isset.updatedate && !(updatedate == rhs.updatedate))
+      return false;
+    return true;
+  }
+  bool operator != (const DictPattern &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DictPattern & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DictPattern &a, DictPattern &b);
+
+std::ostream& operator<<(std::ostream& out, const DictPattern& obj);
+
+typedef struct _DictPatternChecks__isset {
+  _DictPatternChecks__isset() : id(false), dict_id(false), input(false), output(false), createdate(false) {}
+  bool id :1;
+  bool dict_id :1;
+  bool input :1;
+  bool output :1;
+  bool createdate :1;
+} _DictPatternChecks__isset;
+
+class DictPatternChecks : public virtual ::apache::thrift::TBase {
+ public:
+
+  DictPatternChecks(const DictPatternChecks&);
+  DictPatternChecks& operator=(const DictPatternChecks&);
+  DictPatternChecks() : id(), dict_id(), input(), output(), createdate() {
+  }
+
+  virtual ~DictPatternChecks() throw();
+  std::string id;
+  std::string dict_id;
+  std::string input;
+  std::string output;
+  Timestamp createdate;
+
+  _DictPatternChecks__isset __isset;
+
+  void __set_id(const std::string& val);
+
+  void __set_dict_id(const std::string& val);
+
+  void __set_input(const std::string& val);
+
+  void __set_output(const std::string& val);
+
+  void __set_createdate(const Timestamp& val);
+
+  bool operator == (const DictPatternChecks & rhs) const
+  {
+    if (__isset.id != rhs.__isset.id)
+      return false;
+    else if (__isset.id && !(id == rhs.id))
+      return false;
+    if (__isset.dict_id != rhs.__isset.dict_id)
+      return false;
+    else if (__isset.dict_id && !(dict_id == rhs.dict_id))
+      return false;
+    if (__isset.input != rhs.__isset.input)
+      return false;
+    else if (__isset.input && !(input == rhs.input))
+      return false;
+    if (__isset.output != rhs.__isset.output)
+      return false;
+    else if (__isset.output && !(output == rhs.output))
+      return false;
+    if (__isset.createdate != rhs.__isset.createdate)
+      return false;
+    else if (__isset.createdate && !(createdate == rhs.createdate))
+      return false;
+    return true;
+  }
+  bool operator != (const DictPatternChecks &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const DictPatternChecks & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(DictPatternChecks &a, DictPatternChecks &b);
+
+std::ostream& operator<<(std::ostream& out, const DictPatternChecks& obj);
+
 typedef struct _Dict__isset {
-  _Dict__isset() : name(false), chatbotID(false), builtin(false), active(false), id(false), description(false), samples(false), createdate(false), updatedate(false), referred(false) {}
+  _Dict__isset() : name(false), chatbotID(false), builtin(false), active(false), id(false), description(false), samples(false), createdate(false), updatedate(false), referred(false), type(false), vendor(false) {}
   bool name :1;
   bool chatbotID :1;
   bool builtin :1;
@@ -578,6 +742,8 @@ typedef struct _Dict__isset {
   bool createdate :1;
   bool updatedate :1;
   bool referred :1;
+  bool type :1;
+  bool vendor :1;
 } _Dict__isset;
 
 class Dict : public virtual ::apache::thrift::TBase {
@@ -585,7 +751,7 @@ class Dict : public virtual ::apache::thrift::TBase {
 
   Dict(const Dict&);
   Dict& operator=(const Dict&);
-  Dict() : name(), chatbotID(), builtin(0), active(0), id(), description(), samples(), createdate(), updatedate(), referred(0) {
+  Dict() : name(), chatbotID(), builtin(0), active(0), id(), description(), samples(), createdate(), updatedate(), referred(0), type(), vendor() {
   }
 
   virtual ~Dict() throw();
@@ -599,6 +765,8 @@ class Dict : public virtual ::apache::thrift::TBase {
   Timestamp createdate;
   Timestamp updatedate;
   bool referred;
+  std::string type;
+  std::string vendor;
 
   _Dict__isset __isset;
 
@@ -621,6 +789,10 @@ class Dict : public virtual ::apache::thrift::TBase {
   void __set_updatedate(const Timestamp& val);
 
   void __set_referred(const bool val);
+
+  void __set_type(const std::string& val);
+
+  void __set_vendor(const std::string& val);
 
   bool operator == (const Dict & rhs) const
   {
@@ -663,6 +835,14 @@ class Dict : public virtual ::apache::thrift::TBase {
     if (__isset.referred != rhs.__isset.referred)
       return false;
     else if (__isset.referred && !(referred == rhs.referred))
+      return false;
+    if (__isset.type != rhs.__isset.type)
+      return false;
+    else if (__isset.type && !(type == rhs.type))
+      return false;
+    if (__isset.vendor != rhs.__isset.vendor)
+      return false;
+    else if (__isset.vendor && !(vendor == rhs.vendor))
       return false;
     return true;
   }

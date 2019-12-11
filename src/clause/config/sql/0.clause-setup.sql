@@ -220,7 +220,7 @@ create table cl_dicts
    samples              varchar(200) comment '示例词条',
    builtin              tinyint not null default 0 comment '是否是系统词典',
    active               tinyint default 1 comment '是否启用，只针对系统词典',
-   vendor               varchar(32) comment '发布者',
+   vendor               varchar(32) comment '发布者', /* 目前属于保留字段，代表词典的发布者，系统词典的发布者为“Chatopera” */
    type                 varchar(32) comment '词典类型：词汇表(vocab)，正则表达式(regex)，机器学习(ml)。'
 ) default charset=utf8mb4 collate utf8mb4_general_ci;
 

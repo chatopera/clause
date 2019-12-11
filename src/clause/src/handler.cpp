@@ -162,19 +162,23 @@ void ServingHandler::postCustomDict(Data& _return, const Data& request) {
 
   if(request.__isset.customdict &&
       request.customdict.__isset.name &&
+      request.customdict.__isset.type &&
       request.customdict.__isset.chatbotID) {
-    try {
-      VLOG(3) << __func__ << " customdict create name " << request.customdict.name;
+    // 检查词典类型是否合法
+    if(validateDictType(request.customdict.type)) {
       CustomDict customdict;
+
       string id = generate_uuid();
       customdict.createdate = GetCurrentTimestampFormatted();
       customdict.updatedate = customdict.createdate;
       customdict.chatbotID = request.customdict.chatbotID;
       customdict.name = request.customdict.name;
+      customdict.type = request.customdict.type;
       customdict.__isset.createdate = true;
       customdict.__isset.updatedate = true;
       customdict.__isset.chatbotID = true;
       customdict.__isset.name = true;
+      customdict.__isset.type = true;
 
       if(request.customdict.__isset.description) {
         customdict.description = request.customdict.description;
@@ -186,47 +190,68 @@ void ServingHandler::postCustomDict(Data& _return, const Data& request) {
         customdict.__isset.samples = true;
       }
 
-      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
-      sql.str("");
-      sql << "INSERT INTO cl_dicts(id, name, chatbotID, createdate, updatedate";
+      try {
+        VLOG(3) << __func__ << " customdict create name " << request.customdict.name << ", dict type " << request.customdict.type;
+        boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+        sql.str("");
+        sql << "INSERT INTO cl_dicts(id, name, chatbotID, createdate, updatedate, type";
 
-      if(request.customdict.__isset.description) {
-        sql << ", description";
+        if(request.customdict.__isset.description) {
+          sql << ", description";
+        }
+
+        if(request.customdict.__isset.samples) {
+          sql << ", samples";
+        }
+
+        if(request.customdict.__isset.vendor) {
+          sql << ", vendor";
+        }
+
+        sql << ") VALUES ('";
+        sql << id << "','" << request.customdict.name << "','";
+        sql << request.customdict.chatbotID << "', '" << customdict.createdate;
+        sql << "', '" << customdict.updatedate;
+        sql << "', '" << customdict.type;
+
+        if(request.customdict.__isset.description) {
+          sql << "', '" << request.customdict.description;
+        }
+
+        if(request.customdict.__isset.samples) {
+          sql << "', '" << request.customdict.samples;
+        }
+
+        if(request.customdict.__isset.vendor) {
+          sql << "', '" << request.customdict.vendor;
+        }
+
+        sql << "')";
+
+        VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+        stmt->execute(sql.str());
+
+        /**
+         * 正则表达式词典，创建唯一对应的表达式定义
+         */
+        if(request.customdict.type == CL_DICT_TYPE_PATTERN) {
+          resolveDictPatternDefinition(stmt, id);
+        }
+
+        VLOG(3) << __func__ << " create new record id " << id;
+        _return.rc = 0;
+        _return.customdict = customdict;
+        _return.__isset.rc = true;
+        _return.__isset.customdict = true;
+      } catch (sql::SQLException &e) {
+        mysql_error(_return, e);
+      } catch (std::runtime_error &e) {
+        VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+        VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+        rc_and_error(_return, 3, "ERR: Duplicate entry.");
       }
-
-      if(request.customdict.__isset.samples) {
-        sql << ", samples";
-      }
-
-      sql << ") VALUES ('";
-      sql << id << "','" << request.customdict.name << "','";
-      sql << request.customdict.chatbotID << "', '" << customdict.createdate;
-      sql << "', '" << customdict.updatedate;
-
-      if(request.customdict.__isset.description) {
-        sql << "', '" << request.customdict.description;
-      }
-
-      if(request.customdict.__isset.samples) {
-        sql << "', '" << request.customdict.samples;
-      }
-
-      sql << "')";
-
-      VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
-      stmt->execute(sql.str());
-
-      VLOG(3) << __func__ << " create new record id " << id;
-      _return.rc = 0;
-      _return.customdict = customdict;
-      _return.__isset.rc = true;
-      _return.__isset.customdict = true;
-    } catch (sql::SQLException &e) {
-      mysql_error(_return, e);
-    } catch (std::runtime_error &e) {
-      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
-      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
-      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    } else {
+      rc_and_error(_return, 4, "Invalid dict type, required 'regex', 'vocab' or 'ml'.");
     }
   } else {
     rc_and_error(_return, 1, "Invalid params, customdict obj is required.");
@@ -371,14 +396,27 @@ void ServingHandler::delCustomDict(Data& _return, const Data& request) {
           return;
         }
 
-        // delete all dictwords
-        VLOG(3) << __func__ << " delete dictwords in customdict.";
-        sql.str("");
-        sql << "DELETE FROM cl_dict_words where dict_id = '";
-        sql << dict.id << "'";
+        // 根据词典类型删除资源
+        if(dict.type == CL_DICT_TYPE_PATTERN) {
+          // 删除正则表达式
+          VLOG(3) << __func__ << " delete dict patterns in customdict.";
+          sql.str("");
+          sql << "DELETE FROM cl_dict_pattern where dict_id = '";
+          sql << dict.id << "'";
 
-        VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
-        stmt->execute(sql.str());
+          VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+          stmt->execute(sql.str());
+        } else if(dict.type == CL_DICT_TYPE_VOCAB) {
+          // 删除词条
+          // delete all dictwords
+          VLOG(3) << __func__ << " delete dictwords in customdict.";
+          sql.str("");
+          sql << "DELETE FROM cl_dict_words where dict_id = '";
+          sql << dict.id << "'";
+
+          VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+          stmt->execute(sql.str());
+        }
 
         // finally, delete customdict
         sql.str("");
