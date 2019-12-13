@@ -1315,7 +1315,7 @@ void swap(DevelopVersion &a, DevelopVersion &b);
 std::ostream& operator<<(std::ostream& out, const DevelopVersion& obj);
 
 typedef struct _Data__isset {
-  _Data__isset() : rc(false), error(false), msg(false), id(false), chatbotID(false), customdicts(false), sysdicts(false), botsysdicts(false), dictwords(false), customdict(false), sysdict(false), botsysdict(false), dictword(false), dictpattern(false), patterncheck(false), intents(false), slots(false), utters(false), intent(false), slot(false), utter(false), devvers(false), provers(false), devver(false), prover(false), sessions(false), messages(false), session(false), message(false), currpage(false), totalpage(false), totalrows(false), pagesize(false), page(false), query(false) {}
+  _Data__isset() : rc(false), error(false), msg(false), id(false), chatbotID(false), customdicts(false), sysdicts(false), botsysdicts(false), dictwords(false), customdict(false), sysdict(false), botsysdict(false), dictword(false), dictpattern(false), patterncheck(false), patternchecks(false), intents(false), slots(false), utters(false), intent(false), slot(false), utter(false), devvers(false), provers(false), devver(false), prover(false), sessions(false), messages(false), session(false), message(false), currpage(false), totalpage(false), totalrows(false), pagesize(false), page(false), query(false) {}
   bool rc :1;
   bool error :1;
   bool msg :1;
@@ -1331,6 +1331,7 @@ typedef struct _Data__isset {
   bool dictword :1;
   bool dictpattern :1;
   bool patterncheck :1;
+  bool patternchecks :1;
   bool intents :1;
   bool slots :1;
   bool utters :1;
@@ -1377,6 +1378,7 @@ class Data : public virtual ::apache::thrift::TBase {
   DictWord dictword;
   DictPattern dictpattern;
   DictPatternCheck patterncheck;
+  std::vector<DictPatternCheck>  patternchecks;
   std::vector<Intent>  intents;
   std::vector<IntentSlot>  slots;
   std::vector<IntentUtter>  utters;
@@ -1429,6 +1431,8 @@ class Data : public virtual ::apache::thrift::TBase {
   void __set_dictpattern(const DictPattern& val);
 
   void __set_patterncheck(const DictPatternCheck& val);
+
+  void __set_patternchecks(const std::vector<DictPatternCheck> & val);
 
   void __set_intents(const std::vector<Intent> & val);
 
@@ -1531,6 +1535,10 @@ class Data : public virtual ::apache::thrift::TBase {
     if (__isset.patterncheck != rhs.__isset.patterncheck)
       return false;
     else if (__isset.patterncheck && !(patterncheck == rhs.patterncheck))
+      return false;
+    if (__isset.patternchecks != rhs.__isset.patternchecks)
+      return false;
+    else if (__isset.patternchecks && !(patternchecks == rhs.patternchecks))
       return false;
     if (__isset.intents != rhs.__isset.intents)
       return false;

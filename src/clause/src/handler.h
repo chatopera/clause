@@ -116,7 +116,8 @@ class ServingHandler : virtual public ServingIf {
   // 正则表达式词典
   void getDictPattern(Data& _return, const Data& request);
   void putDictPattern(Data& _return, const Data& request);
-  void debugDictPattern(Data& _return, const Data& request);
+  void checkDictPattern(Data& _return, const Data& request);
+  void checkHistoryDictPattern(Data& _return, const Data& request);
 
   /**
    * 意图

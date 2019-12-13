@@ -14,6 +14,8 @@
 
 #include "pattern.h"
 
+#include "maf.hpp"
+
 using namespace chatopera::utils;
 using namespace std;
 

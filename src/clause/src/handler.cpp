@@ -2984,7 +2984,7 @@ void ServingHandler::putDictPattern(Data& _return, const Data& request) {
 /**
  * 调试正则表达式词典
  */
-void ServingHandler::debugDictPattern(Data& _return, const Data& request) {
+void ServingHandler::checkDictPattern(Data& _return, const Data& request) {
   VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
 
   if(request.__isset.customdict &&
@@ -3007,7 +3007,13 @@ void ServingHandler::debugDictPattern(Data& _return, const Data& request) {
 
           // 调试pattern
           DictPatternCheck patterncheck = request.patterncheck;
+          patterncheck.dict_id = customdict.id;
+          patterncheck.__isset.dict_id = true;
+
           PatternRegex::search(pattern, patterncheck);
+
+          // 保存调试结果到数据库
+          savePatternDictCheckResult(stmt, patterncheck);
 
           _return.rc = 0;
           _return.msg = "success";
@@ -3037,6 +3043,65 @@ void ServingHandler::debugDictPattern(Data& _return, const Data& request) {
 
   VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
 }
+
+/**
+ * 获得正则表达式词典调试历史
+ */
+void ServingHandler::checkHistoryDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  try {
+    if(request.__isset.customdict  &&
+        request.customdict.__isset.chatbotID &&
+        request.customdict.__isset.name) {
+      // pagination info
+      int pagesize = request.__isset.pagesize ? request.pagesize : 20;
+      // page begins with 1 and default is 1.
+      int page = request.__isset.page ? request.page : 1;
+
+      if(page <= 0) // redefine any invalid value as 1.
+        page = 1;
+
+      //  获得词典
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          if(getDictPatternChecksWithPagination(_return, stmt, customdict.id, pagesize, page)) {
+            _return.rc = 0;
+            _return.__isset.rc = true;
+          } else {
+            rc_and_error(_return, 6, "Error when finding slots.");
+            return;
+          }
+        } else {
+          // 非正则表达式词典
+          rc_and_error(_return, 11, "Dict is not as regex type.");
+        }
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } else {
+      rc_and_error(_return, 1, "Invalid params, customdict is required.");
+      return;
+    }
+  } catch (sql::SQLException &e) {
+    mysql_error(_return, e);
+    return;
+  } catch (std::runtime_error &e) {
+    VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+    VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+    rc_and_error(_return, 3, "ERR: Duplicate entry.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+};
+
+
 
 /**
  * Error Handler

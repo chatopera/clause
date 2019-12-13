@@ -1230,6 +1230,93 @@ inline DictPattern updateDictPatternDefinition(const boost::scoped_ptr<sql::Stat
   return resolveDictPatternDefinition(stmt, dict_id);
 }
 
+// 保存正则表达式检查
+inline void savePatternDictCheckResult(const boost::scoped_ptr<sql::Statement>& stmt, DictPatternCheck& check) {
+  check.id = generate_uuid();
+  check.createdate = GetCurrentTimestampFormatted();
+  check.__isset.id = true;
+  check.__isset.createdate = true;
+
+  if(check.__isset.input && check.__isset.output && check.__isset.dict_id) {
+    stringstream sql;
+    sql << "INSERT INTO cl_patten_checks(id, dict_id, createdate, input, output) VALUES ('"
+        << check.id << "', '" << check.dict_id << "', '" << check.createdate << "', '"
+        << check.input << "', '" << check.output << "')";
+    VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+    stmt->execute(sql.str());
+  } else {
+    VLOG(3) << __func__ << " invalid check data, input, output and dict_id are required.";
+  }
+}
+
+/**
+ * 查询正则表达式词典列表
+ */
+inline bool getDictPatternChecksWithPagination(Data& data,
+    const boost::scoped_ptr<sql::Statement>& stmt,
+    const string dict_id,
+    const int pagesize,
+    const int page) {
+
+  if(dict_id.empty()) {
+    VLOG(3) << __func__ << " dict_id should not be empty or null.";
+    return false;
+  }
+
+  stringstream sql;
+  // retrieve pagination info
+  sql.str("");
+  sql << "SELECT COUNT(*) FROM cl_patten_checks";
+  sql << " WHERE dict_id = '" << dict_id << "'";
+
+  VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+  boost::scoped_ptr< sql::ResultSet > cset(stmt->executeQuery(sql.str()));
+  cset->next();
+  data.totalrows = cset->getInt(1);
+  data.currpage = page;
+  data.pagesize = pagesize;
+  data.totalpage = ceil((double)data.totalrows / pagesize);
+
+  data.__isset.totalrows = true;
+  data.__isset.currpage = true;
+  data.__isset.pagesize = true;
+  data.__isset.totalpage = true;
+
+  // get rows
+  sql.str("");
+  sql << "SELECT id, input, output, createdate"
+      << " FROM cl_patten_checks"
+      << " WHERE dict_id = '" << dict_id << "'";
+
+  sql << " ORDER BY createdate DESC";
+  sql << " LIMIT " << pagesize * (page - 1) << ", " << pagesize;
+
+  VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+  boost::scoped_ptr< sql::ResultSet > rset(stmt->executeQuery(sql.str()));
+
+  VLOG(3) << __func__ << " row count: " << rset->rowsCount();
+
+  while(rset->next()) {
+    DictPatternCheck check;
+    check.id = rset->getString("id");
+    check.input = rset->getString("input");
+    check.output = rset->getString("output");
+    check.createdate = rset->getString("createdate");
+    check.__isset.id = true;
+    check.__isset.input = true;
+    check.__isset.output = true;
+    check.__isset.createdate = true;
+    data.patternchecks.push_back(check);
+  }
+
+  if(rset->rowsCount() > 0) {
+    data.__isset.patternchecks = true;
+  }
+
+  return true;
+};
+
+
 
 
 } // namespace clause

@@ -223,31 +223,32 @@ struct Data {
     13: optional DictWord dictword;        // 词条
     14: optional DictPattern dictpattern;  // 正则表达式词典
     15: optional DictPatternCheck patterncheck; // 正则表达式词典调试
+    16: optional list<DictPatternCheck> patternchecks; // 正则表达式词典调试历史记录
 
     // 意图管理
-    16: optional list<Intent> intents;
-    17: optional list<IntentSlot> slots;
-    18: optional list<IntentUtter> utters;
-    19: optional Intent intent;           // 意图
-    20: optional IntentSlot slot;         // 槽位
-    21: optional IntentUtter utter;       // 说法
+    17: optional list<Intent> intents;
+    18: optional list<IntentSlot> slots;
+    19: optional list<IntentUtter> utters;
+    20: optional Intent intent;           // 意图
+    21: optional IntentSlot slot;         // 槽位
+    22: optional IntentUtter utter;       // 说法
     // 版本
-    22: optional list<DevelopVersion> devvers;
-    23: optional list<ProdVersion> provers;
-    24: optional DevelopVersion devver;   // 调试版本
-    25: optional ProdVersion prover;      // 上线版本
+    23: optional list<DevelopVersion> devvers;
+    24: optional list<ProdVersion> provers;
+    25: optional DevelopVersion devver;   // 调试版本
+    26: optional ProdVersion prover;      // 上线版本
     // 聊天管理
-    26: optional list<ChatSession> sessions;
-    27: optional list<ChatMessage> messages;
-    28: optional ChatSession session;     // 会话
-    29: optional ChatMessage message;     // 聊天消息
+    27: optional list<ChatSession> sessions;
+    28: optional list<ChatMessage> messages;
+    29: optional ChatSession session;     // 会话
+    30: optional ChatMessage message;     // 聊天消息
     // 分页信息
-    30: optional i32 currpage;            // 当前页
-    31: optional i32 totalpage;           // 全部页面
-    32: optional i32 totalrows;           // 全部数据条数
-    33: optional i32 pagesize;            // 每页数据条数
-    34: optional i32 page;                // 页面索引
-    35: optional string query;            // 查询条件
+    31: optional i32 currpage;            // 当前页
+    32: optional i32 totalpage;           // 全部页面
+    33: optional i32 totalrows;           // 全部数据条数
+    34: optional i32 pagesize;            // 每页数据条数
+    35: optional i32 page;                // 页面索引
+    36: optional string query;            // 查询条件
 }
 
 /**
@@ -283,7 +284,8 @@ service Serving {
     // 正则表达式词典管理
     Data getDictPattern(1: Data request);   // 获得正则表达式词典定义
     Data putDictPattern(1: Data request);   // 更新正则表达式词典
-    Data debugDictPattern(1: Data request); // 调试正则表达式
+    Data checkDictPattern(1: Data request); // 调试正则表达式
+    Data checkHistoryDictPattern(1: Data request); // 调整正则表达式历史记录
 
     /**
      * 意图
