@@ -26,7 +26,7 @@ namespace chatopera {
 namespace utils {
 
 /**
- * 打印
+ * 打印矩阵
  */
 template<class T>
 inline string get2DStringVectorMatrixDebuggingStr(const vector<vector<T> >& matrix) {
@@ -42,6 +42,22 @@ inline string get2DStringVectorMatrixDebuggingStr(const vector<vector<T> >& matr
 
   return ss.str();
 }
+
+/**
+ * 打印数组
+ */
+template<class T>
+inline string getStringVectorDebuggingStr(const vector<T >& array) {
+  stringstream ss;
+
+  for ( int i = 0; i < array.size(); i++ ) {
+    ss << array[i] << '\t';
+  }
+
+  return ss.str();
+}
+
+
 
 } // namespace utils
 } // namespace chatopera

@@ -30,6 +30,7 @@ Bot::~Bot() {
   delete _dictwords_triedb;
   delete _dictwords_leveldb;
   delete _similarity;
+  delete _pattern_dicts;
   // Jieba分词
   delete _tokenizer;
   // crfsuite tagger
@@ -129,6 +130,20 @@ bool Bot::init(const string& chatbotID,
     VLOG(3) << __func__ << " loaded profile: \n" << FromProtobufToUtf8DebugString(*_profile);
     VLOG(3) << __func__ << " profile successfully.";
 
+
+    // 初始化正则表达式词典
+    _pattern_dicts = new std::vector<pair<string, intent::TDict> >();
+
+    for(const intent::TDict& dict : _profile->dicts()) {
+      if(dict.type() != CL_DICT_TYPE_PATTERN)
+        continue;
+
+      if(dict.has_dictpattern())
+        _pattern_dicts->push_back(std::make_pair(dict.name(), dict));
+    }
+
+    VLOG(3) << __func__ << " loaded pattern dict size: " << _pattern_dicts->size();
+
     // 获得所有引用的系统词典
     VLOG(3) << __func__ << " sysdicts ...";
     _referred_sysdicts = new std::vector<string>();
@@ -177,7 +192,7 @@ void Bot::tokenize(const string& query, std::vector<pair<string, string> >& toke
  * 从xapian数据库中找回候选集并进行比较，得到最匹配的作为意图
  */
 bool Bot::classify(const std::vector<pair<string, string> >& query,
-                   const string& intent_name) {
+                   const string& intentName) {
   _recall->reopen();
   // Start an enquire session.
   Xapian::Enquire enquire(*_recall);
@@ -231,12 +246,12 @@ bool Bot::classify(const std::vector<pair<string, string> >& query,
       VLOG(3) << __func__ << " intent: " << score.first << " score: " << score.second;
 
       if(score.second >= FLAGS_intent_classify_threshold) {
-        intent_name = score.first;
+        intentName = score.first;
         break;
       }
     }
 
-    if(!intent_name.empty()) {
+    if(!intentName.empty()) {
       return true;
     }
 
@@ -718,6 +733,10 @@ inline bool setSessionEntityValueByName(const string& entityName,
   return true;
 };
 
+std::vector<pair<string, intent::TDict> >* Bot::getPatternDicts() const {
+  return _pattern_dicts;
+}
+
 /**
  * 获得引用的系统词典列表
  */
@@ -733,6 +752,42 @@ bool Bot::hasReferredSysdict(const string& dictname) {
   return it != _referred_sysdicts->end();
 };
 
+/**
+ * 是否使用了正则表达式词典
+ */
+bool Bot::hasRelatedPatternDict(const string& dictname, const string& intentName) {
+  VLOG(3) << __func__ << " intentName: " << intentName  << ", dictname: " << dictname;
+
+  if(intentName.empty()) {
+    // 还没有确定意图
+    for(const intent::TIntent& i : _profile->intents()) {
+      for(const intent::TIntentSlot& slot : i.slots()) {
+        VLOG(3) << "dictname: " << slot.dictname();
+
+        if(slot.dictname() == dictname) {
+          return true;
+        }
+      }
+    }
+  } else {
+    // 已经确定了意图
+    for(const intent::TIntent& i : _profile->intents()) {
+      if(i.name() == intentName) {
+        for(const intent::TIntentSlot& slot : i.slots()) {
+          VLOG(3) << "dictname: " << slot.dictname();
+
+          if(slot.dictname() == dictname) {
+            return true;
+          }
+        }
+
+        break;
+      }
+    }
+  }
+
+  return false;
+}
 
 /**
  * 请求系统词典前增加被引用的列表信息
@@ -785,6 +840,20 @@ inline bool get_slotvalue_by_ner_and_pos(const ChatMessage& payload,
   return false;
 }
 
+/**
+ * 检查指定的字典名是否属于正则表达式词典
+ */
+inline bool is_dictname_belongto_patterndicts(const vector<pair<string, intent::TDict> >& pattern_dicts, const string& dictname) {
+  for(vector<pair<string, intent::TDict> >::const_iterator it = pattern_dicts.begin(); it !=  pattern_dicts.end(); it++) {
+    if(it->first == dictname) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+
 
 /**
  * 对话接口
@@ -793,6 +862,7 @@ inline bool get_slotvalue_by_ner_and_pos(const ChatMessage& payload,
 bool Bot::chat(const ChatMessage& payload,
                const string& query,
                const vector<sysdicts::Entity>& builtins,
+               const std::vector<PatternDictMatch>& patternDictMatches,
                intent::TChatSession& session,
                ChatMessage& reply) {
   VLOG(3) << __func__ << " query: " << query;
@@ -834,6 +904,18 @@ bool Bot::chat(const ChatMessage& payload,
               break;
             }
           }
+        } else if(is_dictname_belongto_patterndicts(*_pattern_dicts, session.proactive_dictname())) {
+          // 该词典属于正则表达式词典
+          VLOG(3) << __func__ << " proactive_dictname belongto patterndicts: " <<  session.proactive_dictname();
+
+          for(const PatternDictMatch& pdm : patternDictMatches) {
+            if(session.proactive_dictname() == pdm.dictname ) {
+              slotvalue = pdm.val;
+              settledown = true;
+              break;
+            }
+          }
+
         } else if(extract_slotvalue_from_utterence_with_triedata(*_dictwords_triedb,
                   payload.textMessage,
                   session.proactive_dictname(),
@@ -939,7 +1021,17 @@ bool Bot::chat(const ChatMessage& payload,
           } else { // 自定义词典
             VLOG(3) << __func__ << " check against customdicts";
 
-            if(lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, entity->dictname(), it->second)) {
+            if(boost::starts_with(it->second, "#")) {
+              // 属于正则表达式词典
+              for(const PatternDictMatch& pdm : patternDictMatches) {
+                if(it->second == ("#" + pdm.dictname)) {
+                  settledown = true;
+                  slotvalue = pdm.val;
+                  break;
+                }
+              }
+            } else if(lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, entity->dictname(), it->second)) {
+              // 基于词表的词典
               VLOG(3) << __func__ << " resolve slot: " << it->first << " as value: " << it->second << " successfully.";
               settledown = true;
               slotvalue = it->second;

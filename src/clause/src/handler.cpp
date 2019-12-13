@@ -15,6 +15,7 @@
 #include "gflags/gflags.h"
 #include "TimeUtils.hpp"
 #include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 #include "intent.pb.h"
 #include "maf.hpp"
 #include "raf.hpp"
@@ -2578,9 +2579,9 @@ void ServingHandler::chat(Data& _return, const Data& request) {
       request.__isset.session &&
       request.session.__isset.id) {
     try {
-      /**
+      /****************************************************
        * 获得session信息
-       */
+       ****************************************************/
       intent::TChatSession session;
 
       if(getSessionFromRedisById(*_redis, request.session.id, session)) {
@@ -2612,9 +2613,51 @@ void ServingHandler::chat(Data& _return, const Data& request) {
             return;
           }
 
+          /****************************************************
+           * BOT，查询条件和返回值初始化
+           ****************************************************/
+
           // 赋值BOT
           const Bot& bot =  *((isDevBranch ? _bots_dev : _bots_pro)[session.chatbotid()]);
-          sysdicts::Data syswords; // 系统词典的词条信息
+          // 应用query改写后的查询条件
+          string query(request.message.textMessage);
+          // 系统词典的词条信息
+          sysdicts::Data syswords;
+          // 回复内容
+          ChatMessage reply; // 回复
+
+
+          /****************************************************
+           * Query改写：使用正则表达式词典
+           ****************************************************/
+          std::vector<PatternDictMatch> pattern_dict_matches;
+
+          for(const std::pair<string, intent::TDict>& dpp : (*bot.getPatternDicts())) {
+            VLOG(3) << __func__ << " [query-rewrite] pattern dict name: " << dpp.first;
+            intent::TDictPattern* tdp = &dpp.second.dictpattern();
+
+            for(const std::string dp : tdp->patterns()) {
+              VLOG(3) << __func__ << " [query-rewrite] pattern dict name: " << dpp.first << ", pattern: " << dp;
+
+              PatternDictMatch pdm;
+
+              if(PatternRegex::match(dp, query, pdm)) {
+                // 匹配上值，根据 profile里是否使用该词典决定是否改写
+                if(bot.hasRelatedPatternDict(dpp.first, session.intent_name())) {
+                  replace_first(query, pdm.val, "#" + dpp.first);
+                  pdm.dictname = dpp.second.name();
+                  pdm.dict_id = dpp.second.id();
+                  pattern_dict_matches.push_back(pdm);
+                }
+              }
+            }
+          }
+
+          VLOG(3) << __func__ << " [query-rewrite] post query rewrite by pattern dicts: " << query;
+
+          /****************************************************
+           * Query改写：使用系统词典
+           ****************************************************/
 
           /**
            * 获得系统词典分析
@@ -2649,22 +2692,25 @@ void ServingHandler::chat(Data& _return, const Data& request) {
           }
 
           // 使用系统词典进行 query 改写
-          string query(request.message.textMessage);
-
           for(const sysdicts::Entity entity : syswords.entities) {
             if(bot.hasReferredSysdict(entity.dictname)) {
-              VLOG(3) << __func__ << " detect referred sysdict: " << entity.dictname << ", value: " << entity.val << ", slotname: " << entity.slotname;
+              VLOG(3) << __func__ << " [query-rewrite] detect referred sysdict: " << entity.dictname << ", value: " << entity.val << ", slotname: " << entity.slotname;
               replace_first(query, entity.val, entity.dictname);
             } else {
-              VLOG(3) << __func__ << " discard unreferred sysdict word: " << entity.dictname << ", value: " << entity.val;
+              VLOG(3) << __func__ << " [query-rewrite] discard unreferred sysdict word: " << entity.dictname << ", value: " << entity.val;
             }
           }
 
+          VLOG(3) << __func__ << " [query-rewrite] post query rewrite by sysdicts: " << query;
+
           VLOG(3) << __func__ << " post query rewrite: " << query;
 
-          ChatMessage reply; // 回复
           reply.receiver = session.uid();
           reply.__isset.receiver = true;
+
+          /****************************************************
+           * 中文分词
+           ****************************************************/
 
           std::vector<pair<string, string> > tokens;
           bot.tokenize(query, tokens);
@@ -2681,6 +2727,9 @@ void ServingHandler::chat(Data& _return, const Data& request) {
             request.message.terms.push_back(token.first);
             request.message.tags.push_back(token.second);
           }
+
+          // 查看中文分词结果
+          VLOG(3) << __func__ << " [tokenizer] results: \n\t" << getStringVectorDebuggingStr(request.message.terms) << "\n\t" << getStringVectorDebuggingStr(request.message.tags);
 
           // 检查是否有意图
           if(session.intent_name().empty()) {
@@ -2721,6 +2770,7 @@ void ServingHandler::chat(Data& _return, const Data& request) {
           if(bot.chat(request.message,
                       query,
                       syswords.entities,
+                      pattern_dict_matches,
                       session,
                       reply)) {
             // 查看最新session信息

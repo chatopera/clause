@@ -43,8 +43,6 @@
 #define CL_BOT_PRO_STATUS_ONLINE "online"
 #define CL_BOT_PRO_STATUS_OFFLINE "offline"
 
-
-
 // tags from https://github.com/baidu/lac
 #define CL_SYSDICT_LABEL_LOC "LOC"
 #define CL_SYSDICT_DICT_LOC "@LOC"

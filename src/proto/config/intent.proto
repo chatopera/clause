@@ -81,10 +81,11 @@ message TDictWord {
 message TDictPattern {
     string id = 1;
     string dict_id = 2;
-    repeated string patterns = 3;
-    string standard = 4;
-    string createdate = 5;
-    string updatedate = 6;
+    string dictname = 3;
+    repeated string patterns = 4;
+    string standard = 5;
+    string createdate = 6;
+    string updatedate = 7;
 }
 
 /**

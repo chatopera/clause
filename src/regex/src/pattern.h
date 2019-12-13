@@ -36,11 +36,12 @@ namespace clause {
  */
 struct PatternDictMatch {
   string source;   // 原始输入
+  string dictname; // 正则表达式词典名字
+  string dict_id;  // 正则表达式词典ID
   string val;      // 匹配值
   int    begin;    // 开始
   int    end;      // 结尾
   string regex;    // 匹配的表达式
-  string dict_id;  // 正则表达式词典ID
 };
 
 class PatternRegex {
