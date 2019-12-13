@@ -42,22 +42,22 @@ Trainer::Trainer() {
    * 初始化系统词典信息
    */
   vector<string> dict;
-  predefined_dicts.clear();
+  PREDEFINED_DICTS.clear();
   // 时间
   dict.push_back("@TIME");
-  predefined_dicts["@TIME"] = dict;
+  PREDEFINED_DICTS["@TIME"] = dict;
   // 组织机构
   dict.clear();
   dict.push_back("@ORG");
-  predefined_dicts["@ORG"] = dict;
+  PREDEFINED_DICTS["@ORG"] = dict;
   // 地点
   dict.clear();
   dict.push_back("@LOC");
-  predefined_dicts["@LOC"] = dict;
+  PREDEFINED_DICTS["@LOC"] = dict;
   // 人名
   dict.clear();
   dict.push_back("@PER");
-  predefined_dicts["@PER"] = dict;
+  PREDEFINED_DICTS["@PER"] = dict;
 };
 
 Trainer::~Trainer() {
@@ -154,11 +154,33 @@ inline bool validate_profile(const Profile& profile) {
 }
 
 /**
+ * 输出正则表达式词表到分词器
+ */
+inline void writeCustomizedPatternDictWords(const string& customdictfile, const string& dictname) {
+  VLOG(3) << __func__ << " customdictfile: " << customdictfile << ", term: " << dictname;
+  // open file
+  ofstream f(customdictfile, ios::app);
+
+  if(!f.is_open()) {
+    VLOG(2) << __func__ << " warn: can not find lex-customized.lex";
+    return;
+  }
+
+  stringstream ss;
+  ss << CL_DICT_PATTERN_PREFIX << dictname; // 正则表达式词表使用 # 作为前缀
+  ss << " 50000 gregex"; // 词性gregex代表正则表达式词典词汇
+  // 输出到词典
+  VLOG(4) << __func__ << " word record: " << ss.str();
+  f << ss.str() << endl;
+  f.close();
+}
+
+/**
  * 输出词表数据到分词器
  */
-inline void writeCustomizedDictWords(const string& customdictfile,
-                                     const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TDictWord >& dictwords,
-                                     const std::vector<std::string>& vocab) {
+inline void writeCustomizedVocabDictWords(const string& customdictfile,
+    const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TDictWord >& dictwords,
+    const std::vector<std::string>& vocab) {
   VLOG(3) << __func__ << " customdictfile: " << customdictfile;
 
   // open file
@@ -262,19 +284,29 @@ void Trainer::train(const string payload) {
   // #TODO 拷贝失败发生error导致服务crash，需要优化
   copyDirectoryRecursively(tokenizer_dict_default, dictdir);
 
-  const std::map<std::string, std::vector<std::string> > dicts; // dictid and its words
+  // 基于词汇表的词典，dictid and its words
+  const std::map<std::string, std::vector<std::string> > vocab_dicts;
+
+  // 基于正则表达式的词典
+  const std::map<std::string, TDictPattern> pattern_dicts;
 
   for(const TDict& dict : profile.dicts()) {
     VLOG(3) << "profile dict: " << dict.name();
 
-    // 自定义词典并且词汇数量大于0
-    if((!dict.builtin()) && dict.dictwords_size() > 0 ) {
+    // 自定义词典: 基于词表类型词汇数量大于0
+    if((!dict.builtin())) {
+      if((dict.type() == CL_DICT_TYPE_VOCAB) && dict.dictwords_size() > 0) {
+        VLOG(3) << "vocab dict: " << dict.name() << ", dict size: " << dict.dictwords_size();
+        std::vector<std::string> words;
+        writeCustomizedVocabDictWords(customdictfile, dict.dictwords(), words);
 
-      std::vector<std::string> words;
-      writeCustomizedDictWords(customdictfile, dict.dictwords(), words);
-
-      if(words.size() > 0) {
-        dicts[dict.name()] = words;
+        if(words.size() > 0) {
+          vocab_dicts[dict.name()] = words;
+        }
+      } else if ((dict.type() == CL_DICT_TYPE_PATTERN) && dict.has_dictpattern()) {
+        VLOG(3) << "regex dict: " << dict.name() << ", dict patterns size: " << dict.dictpattern().patterns_size();
+        writeCustomizedPatternDictWords(customdictfile, dict.name());
+        pattern_dicts[dict.name()] = dict.dictpattern();
       }
     }
   }
@@ -298,8 +330,9 @@ void Trainer::train(const string payload) {
   Augmented augmented;
   SampleGenerator::generateTemplates(*tokenizer,
                                      profile.intents(),
-                                     predefined_dicts,
-                                     dicts,
+                                     PREDEFINED_DICTS,
+                                     vocab_dicts,
+                                     pattern_dicts,
                                      augmented);
   VLOG(3) << __func__ << "done with generateTemplates";
 
@@ -401,6 +434,10 @@ void Trainer::train(const string payload) {
   leveldb::WriteBatch batch;
 
   for(const TDict& tdict : profile.dicts()) {
+    // 只检查词表词典
+    if(tdict.type() != CL_DICT_TYPE_VOCAB)
+      continue;
+
     for(const TDictWord& dictword : tdict.dictwords()) {
       if(!dictword.word().empty()) {
         dictwords[dictword.word().c_str()].insert(tdict.name());

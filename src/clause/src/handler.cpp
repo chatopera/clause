@@ -2198,38 +2198,66 @@ void ServingHandler::train(Data& _return, const Data& request) {
           tdict->set_name(customdict.name);
           tdict->set_chatbotid(customdict.chatbotID);
           tdict->set_builtin(false);
+          tdict->set_type(customdict.type);
+          tdict->set_vendor(customdict.vendor);
           customdicts_size++;
 
-          Data params;
-          params.chatbotID = customdict.chatbotID;
-          params.__isset.chatbotID = true;
-          params.customdict.name = customdict.name;
-          params.customdict.__isset.name = true;
-          size_t customdict_words_count = 0;
+          if(customdict.type == CL_DICT_TYPE_VOCAB) {
+            // 词表类型的词典
+            Data params;
+            params.chatbotID = customdict.chatbotID;
+            params.__isset.chatbotID = true;
+            params.customdict.name = customdict.name;
+            params.customdict.__isset.name = true;
+            size_t customdict_words_count = 0;
 
-          // 获得每个词典的词条
-          if(getWordsWithPagination(context,
-                                    stmt,
-                                    params,
-                                    CL_CUSTOMWORD_MAX_NUMBER,
-                                    1,
-                                    "")) {
-            if(context.__isset.dictwords) {
-              for(const DictWord& dictword : context.dictwords) {
-                // 创建词典词条
-                chatopera::bot::intent::TDictWord* tdictword = tdict->add_dictwords();
-                tdictword->set_word(dictword.word);
-                tdictword->set_dict_id(customdict.id);
-                tdictword->set_synonyms(dictword.synonyms);
-                dictwords_size++;
-                customdict_words_count++;
+            // 获得每个词典的词条
+            if(getWordsWithPagination(context,
+                                      stmt,
+                                      params,
+                                      CL_CUSTOMWORD_MAX_NUMBER,
+                                      1,
+                                      "")) {
+              if(context.__isset.dictwords) {
+                for(const DictWord& dictword : context.dictwords) {
+                  // 创建词典词条
+                  chatopera::bot::intent::TDictWord* tdictword = tdict->add_dictwords();
+                  tdictword->set_word(dictword.word);
+                  tdictword->set_dict_id(customdict.id);
+                  tdictword->set_synonyms(dictword.synonyms);
+                  dictwords_size++;
+                  customdict_words_count++;
+                }
               }
             }
-          }
 
-          // 自定义词典的词条为0
-          if(customdict_words_count == 0) {
-            rc_and_error(_return, 22, "无法开始训练，包含有词典数为0的自定义词典。");
+            // 自定义词典的词条为0
+            if(customdict_words_count == 0) {
+              rc_and_error(_return, 22, "无法开始训练，包含有词典数为0的自定义词典。");
+              return;
+            }
+          } else if(customdict.type == CL_DICT_TYPE_PATTERN) {
+            // 正则表达式类型词典
+            DictPattern dictpattern = resolveDictPatternDefinition(stmt, customdict.id);
+
+            if(dictpattern.__isset.patterns) {
+              // 已经设置了pattern
+              tdict->mutable_dictpattern()->set_id(dictpattern.id);
+              tdict->mutable_dictpattern()->set_dict_id(customdict.id);
+              tdict->mutable_dictpattern()->set_standard(dictpattern.standard);
+              tdict->mutable_dictpattern()->set_createdate(dictpattern.createdate);
+              tdict->mutable_dictpattern()->set_updatedate(dictpattern.updatedate);
+
+              for(vector<string>::iterator it = dictpattern.patterns.begin(); it != dictpattern.patterns.end(); it++ ) {
+                tdict->mutable_dictpattern()->add_patterns()->assign(*it);
+              }
+            } else {
+              // 训练失败，含有未设置的正则表达式词典
+              rc_and_error(_return, 24, "无法开始训练，存在还未定义表达式的正则表达式词典。");
+            }
+          } else {
+            VLOG(2) << __func__ << " unexpected custom dict type with dict_id: " << customdict.id ;
+            rc_and_error(_return, 23, "无法开始训练，有不合法的自定义词典类型。");
             return;
           }
         }

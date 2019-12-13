@@ -76,20 +76,46 @@ message TDictWord {
 }
 
 /**
+ * 正则表达式词典
+ */
+message TDictPattern {
+    string id = 1;
+    string dict_id = 2;
+    repeated string patterns = 3;
+    string standard = 4;
+    string createdate = 5;
+    string updatedate = 6;
+}
+
+/**
+ * 正则表达式词典检查结果
+ */
+message TDictPatternCheck {
+    string id = 1;
+    string dict_id = 2;
+    string input = 3;
+    string output = 4;
+    string createdate = 5;
+}
+
+/**
  * 词典
  */
 message TDict {
     string id = 1;
     string name = 2;
-    string chatbotID = 4;
-    bool builtin = 5;           // 是否是系统词典
-    bool active = 6;            // 是否活跃，和系统词典相关
-    bool referred = 7;          // 是否被引用，和系统词典相关
-    repeated TDictWord dictwords = 8 ; // 词汇表
-    string description = 9;
-    string samples = 10;        
-    string createdate = 11;
-    string updatedate = 12;
+    string chatbotID = 3;
+    string type = 4;
+    string vendor = 5;
+    bool builtin = 6;           // 是否是系统词典
+    bool active = 7;            // 是否活跃，和系统词典相关
+    bool referred = 8;          // 是否被引用，和系统词典相关
+    repeated TDictWord dictwords = 9 ; // 词汇表
+    TDictPattern dictpattern = 10;     // 正则表达式定义
+    string description = 11;  
+    string samples = 12;        
+    string createdate = 13;
+    string updatedate = 14;
 }
 
 /**

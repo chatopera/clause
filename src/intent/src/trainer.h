@@ -33,6 +33,7 @@
 #include "glog/logging.h"
 #include "intent.pb.h"
 #include "basictypes.h"
+#include "marcos.h"
 #include "samples.h"
 #include "publisher.h"
 
@@ -63,7 +64,7 @@ class Trainer {
   const string tokenizer_dict_default; // tokenizer dict data template
   std::map<std::string, cppjieba::Jieba* >* tokenizers;
   BrokerPublisher* publisher;
-  map<string, vector<string> > predefined_dicts; // 系统词典
+  map<string, vector<string> > PREDEFINED_DICTS; // 系统词典
 };
 
 } // namespace intent
