@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 #include <boost/regex.hpp>
+#include <sstream>
 
 #include "glog/logging.h"
 #include "StringUtils.hpp"

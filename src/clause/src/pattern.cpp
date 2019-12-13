@@ -41,24 +41,24 @@ Json::Value PatternRegex::search(const DictPattern& pattern, DictPatternCheck& c
     root["rc"] = 2;
     root["error"] = "Error, empty input.";
   } else {
-    const char *s =  check.input.c_str();
+    const char *target =  check.input.c_str();
 
     for(vector<string>::const_iterator it = pattern.patterns.begin(); it != pattern.patterns.end(); it++) {
-      VLOG(3) << __func__ << " pattern:" << *it;
-      boost::regex expr{*it};
+      VLOG(3) << __func__ << " process: " << *it;
+      boost::regex expr(*it, boost::regex::perl);
       boost::cmatch results;
-      bool r = boost::regex_search(s, results, expr);
+      bool r = boost::regex_search(target, results, expr);
 
       if(r) {
         //如果匹配成功
-        VLOG(3) << __func__ << " search [" << *it  << "], matched: " << results[0];
+        VLOG(3) << __func__ << " pattern " << *it  << ", matched: " << results[0];
 
         for(boost::cmatch::iterator it2 = results.begin(); it2 != results.end(); ++it2) {
           Json::Value matched;
           //       指向子串对应首位置        指向子串对应尾位置          子串内容
           matched["val"] = it2->str();
-          matched["begin"] = (int)(it2->first - s);
-          matched["end"] = (int)(it2->second - s);
+          matched["begin"] = (int)(it2->first - target);
+          matched["end"] = (int)(it2->second - target);
           matched["regex"] = *it;
           data.append(matched);
           break;

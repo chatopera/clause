@@ -1227,7 +1227,7 @@ inline DictPattern updateDictPatternDefinition(const boost::scoped_ptr<sql::Stat
   VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
   stmt->executeUpdate(sql.str());
 
-  return pattern;
+  return resolveDictPatternDefinition(stmt, dict_id);
 }
 
 

@@ -6,6 +6,9 @@
 
 #include "gtest/gtest.h"
 #include "glog/logging.h"
+#include <iostream>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -103,14 +106,14 @@ TEST(ClauseTest, RegexSearch2) {
   EXPECT_TRUE(true) << "done.";
 }
 
-
 /**
  * https://theboostcpplibraries.com/boost.regex
+ * Raw String
  */
 TEST(ClauseTest, RegexSearch3) {
   LOG(INFO) << "RegexSearch3";
   const char *s = "看到111 222";
-  boost::regex expr{"\\d+"};
+  boost::regex expr(R"(\d+)", boost::regex::perl);
   boost::cmatch what;
 
   bool r = boost::regex_search(s, what, expr);
