@@ -178,6 +178,37 @@ inline void writeCustomizedPatternDictWords(const string& customdictfile, const 
 /**
  * 输出词表数据到分词器
  */
+inline void writePredefinedDictWords(const string& customdictfile,
+                                     const map<string, vector<string> >& predefined_dicts) {
+  VLOG(3) << __func__ << " customdictfile: " << customdictfile;
+
+  // open file
+  ofstream f(customdictfile, ios::app);
+
+  if(!f.is_open()) {
+    VLOG(2) << __func__ << " warn: can not find lex-customized.lex";
+    return;
+  }
+
+  stringstream ss;
+
+  for(map<string, vector<string> >::const_iterator it = predefined_dicts.begin(); it != predefined_dicts.end(); ++it) {
+    // v.push_back(it->first);
+    VLOG(4) << __func__ << " insert: word " << it->first;
+    ss.str("");
+    ss << it->first;
+    ss << " 50000 gb"; // 词性gb代表Chatopera中的自定义词汇, b stands for builtin
+    // 输出到词典
+    f << ss.str() << endl;
+  }
+
+  f.close();
+}
+
+
+/**
+ * 输出词表数据到分词器
+ */
 inline void writeCustomizedVocabDictWords(const string& customdictfile,
     const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TDictWord >& dictwords,
     const std::vector<std::string>& vocab) {
@@ -194,7 +225,7 @@ inline void writeCustomizedVocabDictWords(const string& customdictfile,
   stringstream ss;
 
   for(const TDictWord& word : dictwords) {
-    VLOG(4) << __func__ << " warn: word " << word.word() << ", synonyms: " << word.synonyms();
+    VLOG(4) << __func__ << " insert: word " << word.word() << ", synonyms: " << word.synonyms();
     ss.str("");
     ss << word.word();
     ss << " 50000 g"; // 词性g代表Chatopera中的自定义词汇
@@ -283,6 +314,9 @@ void Trainer::train(const string payload) {
   // 创建词表文件
   // #TODO 拷贝失败发生error导致服务crash，需要优化
   copyDirectoryRecursively(tokenizer_dict_default, dictdir);
+
+  // 输出预置词典到词表
+  writePredefinedDictWords(customdictfile, PREDEFINED_DICTS);
 
   // 基于词汇表的词典，dictid and its words
   const std::map<std::string, std::vector<std::string> > vocab_dicts;
