@@ -1153,8 +1153,6 @@ inline DictPattern resolveDictPatternDefinition(const boost::scoped_ptr<sql::Sta
   VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
   boost::scoped_ptr< sql::ResultSet > rset(stmt->executeQuery(sql.str()));
 
-  VLOG(3) << __func__ << " row count: " << rset->rowsCount();
-
   if(rset->rowsCount() == 1) {
     rset->next();
     pattern.id = rset->getString("id");

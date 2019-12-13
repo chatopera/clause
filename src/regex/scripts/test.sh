@@ -22,7 +22,7 @@ if [ ! -d $BUILDDIR ]; then
     $rootDir/admin/generator.sh
 fi
 
-cd $BUILDDIR/src/clause
+cd $BUILDDIR/src/regex
 make
 
 if [ ! $? -eq 0 ]; then
@@ -34,14 +34,14 @@ fi
 if [[ $# -eq 0 ]]; then
     echo "None pass in testcase, set as default."
     set -x
-    ./clause_test --gtest_filter=ClauseTest.INIT
+    ./regex_test --gtest_filter=RegexTest.INIT
 elif [[ $# -eq 1 ]]; then
     echo "Pass-in test:" $1
     set -x
     if [[ "$1" = "ALL" ]]; then
-        ./clause_test
+        ./regex_test
     else
-        ./clause_test --gtest_filter=ClauseTest.$1
+        ./regex_test --gtest_filter=RegexTest.$1
     fi
 else 
     echo "Usage: $0 [TESTCASE_NAME|ALL]"

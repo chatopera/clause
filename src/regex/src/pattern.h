@@ -24,7 +24,6 @@
 #include "glog/logging.h"
 #include "StringUtils.hpp"
 #include "json/json.h"
-#include "serving/server_types.h"
 
 using namespace std;
 
@@ -32,14 +31,25 @@ namespace chatopera {
 namespace bot {
 namespace clause {
 
+/**
+ * 表达式匹配的内容
+ */
+struct PatternDictMatch {
+  string source;   // 原始输入
+  string val;      // 匹配值
+  int    begin;    // 开始
+  int    end;      // 结尾
+  string regex;    // 匹配的表达式
+  string dict_id;  // 正则表达式词典ID
+};
+
 class PatternRegex {
  public: // constructors
   PatternRegex();
   ~PatternRegex();
 
  public: // functions
-  static Json::Value search(const DictPattern& pattern, DictPatternCheck& check);
-
+  static bool match(const string& pattern, const string& source, PatternDictMatch& pdm);
 };
 
 } // namespace clause

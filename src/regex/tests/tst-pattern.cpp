@@ -14,7 +14,7 @@ using namespace std;
 
 #include <boost/regex.hpp>
 
-TEST(ClauseTest, INIT) {
+TEST(RegexTest, INIT) {
   LOG(INFO) << "INIT";
   EXPECT_TRUE(true) << "Not done.";
 }
@@ -24,7 +24,7 @@ TEST(ClauseTest, INIT) {
  * https://blog.csdn.net/freeking101/article/details/54729274
  * regex_match只验证是否完全匹配
  */
-TEST(ClauseTest, RegexMatch) {
+TEST(RegexTest, RegexMatch) {
   LOG(INFO) << "RegexMatch";
 
   //( 1 )   ((  3  )  2 )((  5 )4)(    6    )
@@ -58,7 +58,7 @@ TEST(ClauseTest, RegexMatch) {
  * https://blog.csdn.net/freeking101/article/details/54729274
  * 从一大串字符串里找出匹配的一小段字符串（比如从网页文件里找超链接），这时就要使用regex_search
  */
-TEST(ClauseTest, RegexSearch) {
+TEST(RegexTest, RegexSearch) {
   LOG(INFO) << "RegexSearch";
 
   //( 1 )   ((  3  )  2 )((  5 )4)(    6    )
@@ -91,7 +91,7 @@ TEST(ClauseTest, RegexSearch) {
 /**
  * https://theboostcpplibraries.com/boost.regex
  */
-TEST(ClauseTest, RegexSearch2) {
+TEST(RegexTest, RegexSearch2) {
   LOG(INFO) << "RegexSearch2";
 
   std::string s = "Boost Libraries";
@@ -110,7 +110,7 @@ TEST(ClauseTest, RegexSearch2) {
  * https://theboostcpplibraries.com/boost.regex
  * Raw String
  */
-TEST(ClauseTest, RegexSearch3) {
+TEST(RegexTest, RegexSearch3) {
   LOG(INFO) << "RegexSearch3";
   const char *s = "看到111 222";
   boost::regex expr(R"(\d+)", boost::regex::perl);

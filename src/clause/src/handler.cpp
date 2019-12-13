@@ -2982,6 +2982,49 @@ void ServingHandler::putDictPattern(Data& _return, const Data& request) {
 }
 
 /**
+ * 根据pattern搜索
+ */
+inline void searchMatchWithPatternDict(const DictPattern& pattern, DictPatternCheck& check) {
+  Json::Value root;
+  Json::Value data(Json::arrayValue);
+
+  if((!pattern.__isset.patterns) || (pattern.patterns.size() == 0)) {
+    root["rc"] = 1;
+    root["error"] = "Error, none Patterns.";
+  } else if((!check.__isset.input) || check.input.empty()) {
+    root["rc"] = 2;
+    root["error"] = "Error, empty input.";
+  } else {
+    for(vector<string>::const_iterator it = pattern.patterns.begin(); it != pattern.patterns.end(); it++) {
+      VLOG(3) << __func__ << " process: " << *it;
+      PatternDictMatch pdm;
+      pdm.dict_id = pattern.dict_id;
+
+      if(PatternRegex::match(*it, check.input, pdm)) {
+        Json::Value matched;
+        matched["val"] = pdm.val;
+        matched["begin"] = pdm.begin;
+        matched["end"] = pdm.end;
+        matched["regex"] = *it;
+        // 只匹配一个结果
+        data.append(matched);
+        VLOG(3) << __func__ << " dict id: " << pdm.dict_id << ", input: "
+                << check.input << ", matched val: " << pdm.val
+                << ", range [" << pdm.begin << "," << pdm.end << "], regex: " << pdm.regex;
+        break;
+      };
+    }
+
+    root["rc"] = 0;
+    root["data"] = data;
+  }
+
+  Json::FastWriter fastWriter;
+  check.output = fastWriter.write(root);
+  check.__isset.output = true;
+}
+
+/**
  * 调试正则表达式词典
  */
 void ServingHandler::checkDictPattern(Data& _return, const Data& request) {
@@ -3010,7 +3053,7 @@ void ServingHandler::checkDictPattern(Data& _return, const Data& request) {
           patterncheck.dict_id = customdict.id;
           patterncheck.__isset.dict_id = true;
 
-          PatternRegex::search(pattern, patterncheck);
+          searchMatchWithPatternDict(pattern, patterncheck);
 
           // 保存调试结果到数据库
           savePatternDictCheckResult(stmt, patterncheck);

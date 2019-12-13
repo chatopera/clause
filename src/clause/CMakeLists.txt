@@ -18,7 +18,6 @@ add_executable(clause_server main.cpp
                         src/subscriber.cpp
                         src/publisher.cpp
                         src/bot.cpp
-                        src/pattern.cpp
                         src/sysdicts/client.cpp
                         src/sysdicts/serving/server_constants.cpp
                         src/sysdicts/serving/server_types.cpp
@@ -38,19 +37,7 @@ target_include_directories(clause_server PRIVATE
 set_property(TARGET clause_server APPEND_STRING PROPERTY 
     LINK_FLAGS " -pthread")
 target_link_libraries(clause_server jieba tsl_hat_trie
-                            ner distance redis proto sep 
+                            ner distance redis proto sep regex
                             ${3rd_libs})
 target_link_libraries(clause_server ${ACTIVEMQCPP_LIBRARIES}
     ${APR_LIBRARY} ssl crypto dl)
-
-# Testcases
-enable_testing()
-add_executable(clause_test tests/testsuite.cpp
-                            tests/tst-pattern.cpp)
-set_property(TARGET clause_test APPEND_STRING PROPERTY 
-   LINK_FLAGS " -pthread")
-target_include_directories(clause_test PUBLIC 
-                    ${CMAKE_CURRENT_SOURCE_DIR}
-                    ${GTEST_INCLUDE_DIR})
-target_link_libraries(clause_test ${GTEST_LIBRARY} proto)
-target_link_libraries(clause_test ssl crypto dl)
