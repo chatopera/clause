@@ -110,6 +110,26 @@ class ServingHandler : virtual public ServingIf {
     printf("hasDictWord\n");
   }
 
+  void getDictPattern(Data& _return, const Data& request) {
+    // Your implementation goes here
+    printf("getDictPattern\n");
+  }
+
+  void putDictPattern(Data& _return, const Data& request) {
+    // Your implementation goes here
+    printf("putDictPattern\n");
+  }
+
+  void checkDictPattern(Data& _return, const Data& request) {
+    // Your implementation goes here
+    printf("checkDictPattern\n");
+  }
+
+  void checkHistoryDictPattern(Data& _return, const Data& request) {
+    // Your implementation goes here
+    printf("checkHistoryDictPattern\n");
+  }
+
   /**
    * 意图
    * 

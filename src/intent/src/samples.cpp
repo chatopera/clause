@@ -44,9 +44,9 @@ inline void isClLegalIdChar(const string& ch) {
 /**
  * 根据槽位名称返回词典
  */
-inline bool getDictnameBySlotname(const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TIntentSlot >& slots,
-                                  const string& slotname,
-                                  string& dictname) {
+inline bool getDictBySlotname(const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TIntentSlot >& slots,
+                              const string& slotname,
+                              string& dictname) {
 
   for(const TIntentSlot& slot : slots) {
     VLOG(4) << __func__ << " " << slot.name();
@@ -135,7 +135,7 @@ inline void parseTemplateTokens(const TIntentUtter& utter,
       string slotname = ss.str();
       string dictname;  // add dict name
 
-      if(getDictnameBySlotname(slots, slotname, dictname)) {
+      if(getDictBySlotname(slots, slotname, dictname)) {
         // create slot token
         SampleTemplate::Token* token = tpl->add_tokens();
         token->set_slotname(slotname);
@@ -149,6 +149,8 @@ inline void parseTemplateTokens(const TIntentUtter& utter,
         }
       } else {
         // can not find dict
+        // TODO 此处需要优化，因为可能是由typo造成的错误，需要返回给前端修正，停止training，发送异常到MQ
+        // 或者弹出一个提示，但是继续训练
         VLOG(2) << __func__ << " WARN: can not find slotname " << slotname << "'s dict in slots, so ignore it.";
         SampleTemplate::Token* token = tpl->add_tokens();
         token->set_val(slotname);
@@ -379,15 +381,17 @@ inline void patch_tokens_n_poss(const cppjieba::Jieba& tokenizer,
   }
 }
 
+
 /**
  * 从模版中扩展槽位，增强samples集合
  */
 inline void extendEntitiesForSlotInSample(const cppjieba::Jieba& tokenizer,
     const SampleTemplate& tpl,
     const std::map<std::string, std::vector<string> >& predefined_dicts,
-    const std::map<std::string, std::vector<string> >& dicts,
+    const std::map<std::string, std::vector<string> >& vocab_dicts,
+    const std::map<std::string, TDictPattern>& pattern_dicts,
     const Augmented::IntentTrainingSample& its) {
-  VLOG(3) << __func__ << " utterance: " << tpl.utterance();
+  VLOG(3) << __func__ << " SampleTemplate: " << FromProtobufToUtf8DebugString(tpl);
 
   size_t slots_num = 0; // 槽位数
   vector<pair<string/*slotname*/, string/*dictid*/> > sequence;
@@ -401,11 +405,29 @@ inline void extendEntitiesForSlotInSample(const cppjieba::Jieba& tokenizer,
       VLOG(3) << __func__ << " push " << token.slotname()
               << ": " << token.dictname();
       sequence.push_back(std::make_pair(token.slotname(), token.dictname()));
-      all.push_back(boost::starts_with(token.dictname(), "@") ? predefined_dicts[token.dictname()] : dicts[token.dictname()]);
+
+      // 判断词典类型
+      if(boost::starts_with(token.dictname(), "@")) {
+        // 系统词典
+        all.push_back(predefined_dicts[token.dictname()]);
+      } else if(vocab_dicts.find(token.dictname()) != vocab_dicts.end()) {
+        // 词表词典
+        all.push_back(vocab_dicts[token.dictname()]);
+      } else if(pattern_dicts.find(token.dictname()) != pattern_dicts.end()) {
+        // 正则表达式词典
+        vector<string> pd;
+        pd.push_back("#" + token.dictname());
+        all.push_back(pd);
+      } else {
+        // 未获得该词典
+        VLOG(2) << __func__ << " WARN can not determine dict type with dictname " << token.dictname();
+      }
     }
   }
 
   VLOG(3) << __func__ << " has slot number: " << slots_num;
+  // a tongs of logs, should better comment it after testing against minimal dataset.
+  //   VLOG(3) << __func__ << " all extend tokens: \n" << get2DStringVectorMatrixDebuggingStr(all);
 
   vector<vector<string> > extended = chatopera::utils::cart_product(all);
 
@@ -434,7 +456,8 @@ inline void extendEntitiesForSlotInSample(const cppjieba::Jieba& tokenizer,
 void SampleGenerator::generateTemplates(const cppjieba::Jieba& tokenizer,
                                         const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TIntent >& intents,
                                         const std::map<std::string, std::vector<string> >& predefined_dicts,
-                                        const std::map<std::string, std::vector<string> >& dicts,
+                                        const std::map<std::string, std::vector<string> >& vocab_dicts,
+                                        const std::map<std::string, TDictPattern>& pattern_dicts,
                                         Augmented& augmented
                                        ) {
   for(const TIntent& intent : intents) { // 意图
@@ -451,7 +474,7 @@ void SampleGenerator::generateTemplates(const cppjieba::Jieba& tokenizer,
       // 使用template生成增强数据
       if(tpl.hasslot()) {
         VLOG(3) << __func__ << " has slot, extend the entities.";
-        extendEntitiesForSlotInSample(tokenizer, tpl, predefined_dicts, dicts, *its);
+        extendEntitiesForSlotInSample(tokenizer, tpl, predefined_dicts, vocab_dicts, pattern_dicts, *its);
         VLOG(3) << __func__ << " done " << tpl.utterance();
       } else {
         VLOG(3) << __func__ << " dont have slot: " << tpl.utterance();
@@ -540,7 +563,7 @@ inline bool appendNerTrainingData(const Augmented::Sample& sample, ofstream& f) 
    */
 
   while(mv_feature_window(length, curr, pre2, pre1, post1, post2)) {
-    // VLOG(3) << "[appendNerTrainingDatas] length: " << length << "curr: " << curr
+    // VLOG(3) << __func__ << " length: " << length << "curr: " << curr
     //         << ", pre2: " << pre2 << ", pre1: " << pre1
     //         << ", post1: " << post1 << ", post2: " << post2;
     f << *(label + curr) << "\t";

@@ -30,6 +30,7 @@ Bot::~Bot() {
   delete _dictwords_triedb;
   delete _dictwords_leveldb;
   delete _similarity;
+  delete _pattern_dicts;
   // Jieba分词
   delete _tokenizer;
   // crfsuite tagger
@@ -129,6 +130,20 @@ bool Bot::init(const string& chatbotID,
     VLOG(3) << __func__ << " loaded profile: \n" << FromProtobufToUtf8DebugString(*_profile);
     VLOG(3) << __func__ << " profile successfully.";
 
+
+    // 初始化正则表达式词典
+    _pattern_dicts = new std::vector<pair<string, intent::TDict> >();
+
+    for(const intent::TDict& dict : _profile->dicts()) {
+      if(dict.type() != CL_DICT_TYPE_PATTERN)
+        continue;
+
+      if(dict.has_dictpattern())
+        _pattern_dicts->push_back(std::make_pair(dict.name(), dict));
+    }
+
+    VLOG(3) << __func__ << " loaded pattern dict size: " << _pattern_dicts->size();
+
     // 获得所有引用的系统词典
     VLOG(3) << __func__ << " sysdicts ...";
     _referred_sysdicts = new std::vector<string>();
@@ -177,7 +192,7 @@ void Bot::tokenize(const string& query, std::vector<pair<string, string> >& toke
  * 从xapian数据库中找回候选集并进行比较，得到最匹配的作为意图
  */
 bool Bot::classify(const std::vector<pair<string, string> >& query,
-                   const string& intent_name) {
+                   const string& intentName) {
   _recall->reopen();
   // Start an enquire session.
   Xapian::Enquire enquire(*_recall);
@@ -231,12 +246,12 @@ bool Bot::classify(const std::vector<pair<string, string> >& query,
       VLOG(3) << __func__ << " intent: " << score.first << " score: " << score.second;
 
       if(score.second >= FLAGS_intent_classify_threshold) {
-        intent_name = score.first;
+        intentName = score.first;
         break;
       }
     }
 
-    if(!intent_name.empty()) {
+    if(!intentName.empty()) {
       return true;
     }
 
@@ -718,6 +733,10 @@ inline bool setSessionEntityValueByName(const string& entityName,
   return true;
 };
 
+std::vector<pair<string, intent::TDict> >* Bot::getPatternDicts() const {
+  return _pattern_dicts;
+}
+
 /**
  * 获得引用的系统词典列表
  */
@@ -733,6 +752,38 @@ bool Bot::hasReferredSysdict(const string& dictname) {
   return it != _referred_sysdicts->end();
 };
 
+/**
+ * 是否使用了正则表达式词典
+ */
+bool Bot::hasRelatedPatternDict(const string& dictname, const string& intentName) {
+  VLOG(3) << __func__ << " intentName: " << intentName  << ", dictname: " << dictname;
+
+  if(intentName.empty()) {
+    // 还没有确定意图
+    for(const intent::TIntent& i : _profile->intents()) {
+      for(const intent::TIntentSlot& slot : i.slots()) {
+        if(slot.dictname() == dictname) {
+          return true;
+        }
+      }
+    }
+  } else {
+    // 已经确定了意图
+    for(const intent::TIntent& i : _profile->intents()) {
+      if(i.name() == intentName) {
+        for(const intent::TIntentSlot& slot : i.slots()) {
+          if(slot.dictname() == dictname) {
+            return true;
+          }
+        }
+
+        break;
+      }
+    }
+  }
+
+  return false;
+}
 
 /**
  * 请求系统词典前增加被引用的列表信息
@@ -785,6 +836,20 @@ inline bool get_slotvalue_by_ner_and_pos(const ChatMessage& payload,
   return false;
 }
 
+/**
+ * 检查指定的字典名是否属于正则表达式词典
+ */
+inline bool is_dictname_belongto_patterndicts(const vector<pair<string, intent::TDict> >& pattern_dicts, const string& dictname) {
+  for(vector<pair<string, intent::TDict> >::const_iterator it = pattern_dicts.begin(); it !=  pattern_dicts.end(); it++) {
+    if(it->first == dictname) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+
 
 /**
  * 对话接口
@@ -793,6 +858,7 @@ inline bool get_slotvalue_by_ner_and_pos(const ChatMessage& payload,
 bool Bot::chat(const ChatMessage& payload,
                const string& query,
                const vector<sysdicts::Entity>& builtins,
+               const std::vector<PatternDictMatch>& patternDictMatches,
                intent::TChatSession& session,
                ChatMessage& reply) {
   VLOG(3) << __func__ << " query: " << query;
@@ -823,14 +889,32 @@ bool Bot::chat(const ChatMessage& payload,
         return false;
       } else {
         string slotvalue;
+        // TODO 已经赋过的值过滤
+        // 此处有不严谨的地方，因为后面对未得到值的命名实体遍历时跳过这些值
+        // 但是偶然情况下，两个命名实体的值可能是一样的
+        // 最坏的情况是做多次的追问，体验比较勉强
+        std::set<string> bypassValues;
 
         if(boost::starts_with(session.proactive_dictname(), "@")) { // 处理系统词典
           for(const sysdicts::Entity& se : builtins) {
             if(se.dictname == session.proactive_dictname()) {
               // 查找到
-              VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
               settledown = true;
               slotvalue = se.val;
+              VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
+              bypassValues.insert(se.val);
+              break;
+            }
+          }
+        } else if(is_dictname_belongto_patterndicts(*_pattern_dicts, session.proactive_dictname())) {
+          // 该词典属于正则表达式词典
+          VLOG(3) << __func__ << " proactive_dictname belongto patterndicts: " <<  session.proactive_dictname();
+
+          for(const PatternDictMatch& pdm : patternDictMatches) {
+            if(session.proactive_dictname() == pdm.dictname ) {
+              slotvalue = pdm.val;
+              settledown = true;
+              bypassValues.insert(pdm.val);
               break;
             }
           }
@@ -838,11 +922,69 @@ bool Bot::chat(const ChatMessage& payload,
                   payload.textMessage,
                   session.proactive_dictname(),
                   slotvalue)) {
-          // 查找到
+          // 从用户词表词典中查找到命名实体值
           VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
           settledown = true;
-        } else {
-          // 未查找到，继续追问, session信息不变
+        }
+
+        if(settledown) {
+          // set session entity
+          setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
+          session.set_is_proactive(false);           // 停止追问
+          session.clear_proactive_slotname();        // 停止追问
+          session.clear_proactive_dictname();        // 停止追问
+          session.clear_proactive_question();        // 停止追问
+        }
+
+        /**
+         * 查找其它槽位信息
+         */
+        // 在本次对话中，用户也说的了其他的槽位的值，在NER中能识别出来
+        // 但是这也加入了判断错误的风险，所以忽略对反问时，其他槽位的识别
+        // 查找还没有确定值的命名实体
+        for(const intent::TChatSession::Entity& ie : session.entities()) {
+          string extras_slotvalue;
+
+          if(ie.val().empty()) {
+            // 该槽位值还没有确定
+            if(boost::starts_with(ie.dictname(), "@")) {
+              // 系统词典
+              for(const sysdicts::Entity& se : builtins) {
+                if((se.dictname == ie.dictname()) && (bypassValues.find(se.val) == bypassValues.end())) {
+                  // 查找到
+                  VLOG(3) << __func__ << " slotname " << ie.name() << " : " << se.val;
+                  setSessionEntityValueByName(ie.name(), se.val, session);
+                  bypassValues.insert(se.val);
+                  break;
+                }
+              }
+            } else if(is_dictname_belongto_patterndicts(*_pattern_dicts, ie.dictname())) {
+              // 正则表达式词典
+              for(const PatternDictMatch& pdm : patternDictMatches) {
+                if((ie.dictname() == pdm.dictname) && (bypassValues.find(pdm.val) == bypassValues.end())) {
+                  // 查找到
+                  VLOG(3) << __func__ << " slotname " << ie.name() << " : " << pdm.val;
+                  setSessionEntityValueByName(ie.name(), pdm.val, session);
+                  bypassValues.insert(pdm.val);
+                  break;
+                }
+              }
+            } else if(extract_slotvalue_from_utterence_with_triedata(*_dictwords_triedb,
+                      payload.textMessage,
+                      ie.dictname(),
+                      extras_slotvalue)) {
+              // 查询用户词表词典
+              if(bypassValues.find(extras_slotvalue) == bypassValues.end()) {
+                setSessionEntityValueByName(ie.name(), extras_slotvalue, session);
+                bypassValues.insert(extras_slotvalue);
+                VLOG(3) << __func__ << " slotname " << ie.name() << " : " << extras_slotvalue;
+              }
+            }
+          }
+        }
+
+        // 未查找到，继续追问, session信息不变
+        if(!settledown) {
           VLOG(3) << __func__ << " not found value for proactive slot " <<  session.proactive_slotname();
           reply.textMessage = session.proactive_question();
           reply.is_proactive = true;
@@ -853,18 +995,6 @@ bool Bot::chat(const ChatMessage& payload,
           reply.__isset.is_fallback = true;
           reply.__isset.receiver = true;
           return true;
-        }
-
-        if(settledown) {
-          // set session entity
-          setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
-          session.set_is_proactive(false);           // 停止追问
-          session.clear_proactive_slotname();        // 停止追问
-          session.clear_proactive_dictname();        // 停止追问
-          session.clear_proactive_question();        // 停止追问
-
-          // TODO 在本次对话中，用户也说的了其他的槽位的值，在NER中能识别出来
-          // 但是这也加入了判断错误的风险，所以忽略对反问时，其他槽位的识别。
         }
       }
     } else { // 不是追问，是在意图识别中带有槽位信息
@@ -939,7 +1069,17 @@ bool Bot::chat(const ChatMessage& payload,
           } else { // 自定义词典
             VLOG(3) << __func__ << " check against customdicts";
 
-            if(lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, entity->dictname(), it->second)) {
+            if(boost::starts_with(it->second, "#")) {
+              // 属于正则表达式词典
+              for(const PatternDictMatch& pdm : patternDictMatches) {
+                if(it->second == ("#" + pdm.dictname)) {
+                  settledown = true;
+                  slotvalue = pdm.val;
+                  break;
+                }
+              }
+            } else if(lookup_word_by_dictname_in_leveldb(*_dictwords_leveldb, entity->dictname(), it->second)) {
+              // 基于词表的词典
               VLOG(3) << __func__ << " resolve slot: " << it->first << " as value: " << it->second << " successfully.";
               settledown = true;
               slotvalue = it->second;

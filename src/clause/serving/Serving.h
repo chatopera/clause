@@ -44,6 +44,10 @@ class ServingIf {
   virtual void getDictWords(Data& _return, const Data& request) = 0;
   virtual void delDictWord(Data& _return, const Data& request) = 0;
   virtual void hasDictWord(Data& _return, const Data& request) = 0;
+  virtual void getDictPattern(Data& _return, const Data& request) = 0;
+  virtual void putDictPattern(Data& _return, const Data& request) = 0;
+  virtual void checkDictPattern(Data& _return, const Data& request) = 0;
+  virtual void checkHistoryDictPattern(Data& _return, const Data& request) = 0;
 
   /**
    * 意图
@@ -159,6 +163,18 @@ class ServingNull : virtual public ServingIf {
     return;
   }
   void hasDictWord(Data& /* _return */, const Data& /* request */) {
+    return;
+  }
+  void getDictPattern(Data& /* _return */, const Data& /* request */) {
+    return;
+  }
+  void putDictPattern(Data& /* _return */, const Data& /* request */) {
+    return;
+  }
+  void checkDictPattern(Data& /* _return */, const Data& /* request */) {
+    return;
+  }
+  void checkHistoryDictPattern(Data& /* _return */, const Data& /* request */) {
     return;
   }
   void postIntent(Data& /* _return */, const Data& /* request */) {
@@ -2001,6 +2017,422 @@ class Serving_hasDictWord_presult {
   Data* success;
 
   _Serving_hasDictWord_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _Serving_getDictPattern_args__isset {
+  _Serving_getDictPattern_args__isset() : request(false) {}
+  bool request :1;
+} _Serving_getDictPattern_args__isset;
+
+class Serving_getDictPattern_args {
+ public:
+
+  Serving_getDictPattern_args(const Serving_getDictPattern_args&);
+  Serving_getDictPattern_args& operator=(const Serving_getDictPattern_args&);
+  Serving_getDictPattern_args() {
+  }
+
+  virtual ~Serving_getDictPattern_args() throw();
+  Data request;
+
+  _Serving_getDictPattern_args__isset __isset;
+
+  void __set_request(const Data& val);
+
+  bool operator == (const Serving_getDictPattern_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_getDictPattern_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_getDictPattern_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class Serving_getDictPattern_pargs {
+ public:
+
+
+  virtual ~Serving_getDictPattern_pargs() throw();
+  const Data* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_getDictPattern_result__isset {
+  _Serving_getDictPattern_result__isset() : success(false) {}
+  bool success :1;
+} _Serving_getDictPattern_result__isset;
+
+class Serving_getDictPattern_result {
+ public:
+
+  Serving_getDictPattern_result(const Serving_getDictPattern_result&);
+  Serving_getDictPattern_result& operator=(const Serving_getDictPattern_result&);
+  Serving_getDictPattern_result() {
+  }
+
+  virtual ~Serving_getDictPattern_result() throw();
+  Data success;
+
+  _Serving_getDictPattern_result__isset __isset;
+
+  void __set_success(const Data& val);
+
+  bool operator == (const Serving_getDictPattern_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_getDictPattern_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_getDictPattern_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_getDictPattern_presult__isset {
+  _Serving_getDictPattern_presult__isset() : success(false) {}
+  bool success :1;
+} _Serving_getDictPattern_presult__isset;
+
+class Serving_getDictPattern_presult {
+ public:
+
+
+  virtual ~Serving_getDictPattern_presult() throw();
+  Data* success;
+
+  _Serving_getDictPattern_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _Serving_putDictPattern_args__isset {
+  _Serving_putDictPattern_args__isset() : request(false) {}
+  bool request :1;
+} _Serving_putDictPattern_args__isset;
+
+class Serving_putDictPattern_args {
+ public:
+
+  Serving_putDictPattern_args(const Serving_putDictPattern_args&);
+  Serving_putDictPattern_args& operator=(const Serving_putDictPattern_args&);
+  Serving_putDictPattern_args() {
+  }
+
+  virtual ~Serving_putDictPattern_args() throw();
+  Data request;
+
+  _Serving_putDictPattern_args__isset __isset;
+
+  void __set_request(const Data& val);
+
+  bool operator == (const Serving_putDictPattern_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_putDictPattern_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_putDictPattern_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class Serving_putDictPattern_pargs {
+ public:
+
+
+  virtual ~Serving_putDictPattern_pargs() throw();
+  const Data* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_putDictPattern_result__isset {
+  _Serving_putDictPattern_result__isset() : success(false) {}
+  bool success :1;
+} _Serving_putDictPattern_result__isset;
+
+class Serving_putDictPattern_result {
+ public:
+
+  Serving_putDictPattern_result(const Serving_putDictPattern_result&);
+  Serving_putDictPattern_result& operator=(const Serving_putDictPattern_result&);
+  Serving_putDictPattern_result() {
+  }
+
+  virtual ~Serving_putDictPattern_result() throw();
+  Data success;
+
+  _Serving_putDictPattern_result__isset __isset;
+
+  void __set_success(const Data& val);
+
+  bool operator == (const Serving_putDictPattern_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_putDictPattern_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_putDictPattern_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_putDictPattern_presult__isset {
+  _Serving_putDictPattern_presult__isset() : success(false) {}
+  bool success :1;
+} _Serving_putDictPattern_presult__isset;
+
+class Serving_putDictPattern_presult {
+ public:
+
+
+  virtual ~Serving_putDictPattern_presult() throw();
+  Data* success;
+
+  _Serving_putDictPattern_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _Serving_checkDictPattern_args__isset {
+  _Serving_checkDictPattern_args__isset() : request(false) {}
+  bool request :1;
+} _Serving_checkDictPattern_args__isset;
+
+class Serving_checkDictPattern_args {
+ public:
+
+  Serving_checkDictPattern_args(const Serving_checkDictPattern_args&);
+  Serving_checkDictPattern_args& operator=(const Serving_checkDictPattern_args&);
+  Serving_checkDictPattern_args() {
+  }
+
+  virtual ~Serving_checkDictPattern_args() throw();
+  Data request;
+
+  _Serving_checkDictPattern_args__isset __isset;
+
+  void __set_request(const Data& val);
+
+  bool operator == (const Serving_checkDictPattern_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_checkDictPattern_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_checkDictPattern_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class Serving_checkDictPattern_pargs {
+ public:
+
+
+  virtual ~Serving_checkDictPattern_pargs() throw();
+  const Data* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_checkDictPattern_result__isset {
+  _Serving_checkDictPattern_result__isset() : success(false) {}
+  bool success :1;
+} _Serving_checkDictPattern_result__isset;
+
+class Serving_checkDictPattern_result {
+ public:
+
+  Serving_checkDictPattern_result(const Serving_checkDictPattern_result&);
+  Serving_checkDictPattern_result& operator=(const Serving_checkDictPattern_result&);
+  Serving_checkDictPattern_result() {
+  }
+
+  virtual ~Serving_checkDictPattern_result() throw();
+  Data success;
+
+  _Serving_checkDictPattern_result__isset __isset;
+
+  void __set_success(const Data& val);
+
+  bool operator == (const Serving_checkDictPattern_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_checkDictPattern_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_checkDictPattern_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_checkDictPattern_presult__isset {
+  _Serving_checkDictPattern_presult__isset() : success(false) {}
+  bool success :1;
+} _Serving_checkDictPattern_presult__isset;
+
+class Serving_checkDictPattern_presult {
+ public:
+
+
+  virtual ~Serving_checkDictPattern_presult() throw();
+  Data* success;
+
+  _Serving_checkDictPattern_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _Serving_checkHistoryDictPattern_args__isset {
+  _Serving_checkHistoryDictPattern_args__isset() : request(false) {}
+  bool request :1;
+} _Serving_checkHistoryDictPattern_args__isset;
+
+class Serving_checkHistoryDictPattern_args {
+ public:
+
+  Serving_checkHistoryDictPattern_args(const Serving_checkHistoryDictPattern_args&);
+  Serving_checkHistoryDictPattern_args& operator=(const Serving_checkHistoryDictPattern_args&);
+  Serving_checkHistoryDictPattern_args() {
+  }
+
+  virtual ~Serving_checkHistoryDictPattern_args() throw();
+  Data request;
+
+  _Serving_checkHistoryDictPattern_args__isset __isset;
+
+  void __set_request(const Data& val);
+
+  bool operator == (const Serving_checkHistoryDictPattern_args & rhs) const
+  {
+    if (!(request == rhs.request))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_checkHistoryDictPattern_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_checkHistoryDictPattern_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class Serving_checkHistoryDictPattern_pargs {
+ public:
+
+
+  virtual ~Serving_checkHistoryDictPattern_pargs() throw();
+  const Data* request;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_checkHistoryDictPattern_result__isset {
+  _Serving_checkHistoryDictPattern_result__isset() : success(false) {}
+  bool success :1;
+} _Serving_checkHistoryDictPattern_result__isset;
+
+class Serving_checkHistoryDictPattern_result {
+ public:
+
+  Serving_checkHistoryDictPattern_result(const Serving_checkHistoryDictPattern_result&);
+  Serving_checkHistoryDictPattern_result& operator=(const Serving_checkHistoryDictPattern_result&);
+  Serving_checkHistoryDictPattern_result() {
+  }
+
+  virtual ~Serving_checkHistoryDictPattern_result() throw();
+  Data success;
+
+  _Serving_checkHistoryDictPattern_result__isset __isset;
+
+  void __set_success(const Data& val);
+
+  bool operator == (const Serving_checkHistoryDictPattern_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const Serving_checkHistoryDictPattern_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Serving_checkHistoryDictPattern_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _Serving_checkHistoryDictPattern_presult__isset {
+  _Serving_checkHistoryDictPattern_presult__isset() : success(false) {}
+  bool success :1;
+} _Serving_checkHistoryDictPattern_presult__isset;
+
+class Serving_checkHistoryDictPattern_presult {
+ public:
+
+
+  virtual ~Serving_checkHistoryDictPattern_presult() throw();
+  Data* success;
+
+  _Serving_checkHistoryDictPattern_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -4682,6 +5114,18 @@ class ServingClient : virtual public ServingIf {
   void hasDictWord(Data& _return, const Data& request);
   void send_hasDictWord(const Data& request);
   void recv_hasDictWord(Data& _return);
+  void getDictPattern(Data& _return, const Data& request);
+  void send_getDictPattern(const Data& request);
+  void recv_getDictPattern(Data& _return);
+  void putDictPattern(Data& _return, const Data& request);
+  void send_putDictPattern(const Data& request);
+  void recv_putDictPattern(Data& _return);
+  void checkDictPattern(Data& _return, const Data& request);
+  void send_checkDictPattern(const Data& request);
+  void recv_checkDictPattern(Data& _return);
+  void checkHistoryDictPattern(Data& _return, const Data& request);
+  void send_checkHistoryDictPattern(const Data& request);
+  void recv_checkHistoryDictPattern(Data& _return);
   void postIntent(Data& _return, const Data& request);
   void send_postIntent(const Data& request);
   void recv_postIntent(Data& _return);
@@ -4789,6 +5233,10 @@ class ServingProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_getDictWords(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_delDictWord(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_hasDictWord(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getDictPattern(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_putDictPattern(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_checkDictPattern(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_checkHistoryDictPattern(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_postIntent(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_putIntent(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getIntents(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
@@ -4834,6 +5282,10 @@ class ServingProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["getDictWords"] = &ServingProcessor::process_getDictWords;
     processMap_["delDictWord"] = &ServingProcessor::process_delDictWord;
     processMap_["hasDictWord"] = &ServingProcessor::process_hasDictWord;
+    processMap_["getDictPattern"] = &ServingProcessor::process_getDictPattern;
+    processMap_["putDictPattern"] = &ServingProcessor::process_putDictPattern;
+    processMap_["checkDictPattern"] = &ServingProcessor::process_checkDictPattern;
+    processMap_["checkHistoryDictPattern"] = &ServingProcessor::process_checkHistoryDictPattern;
     processMap_["postIntent"] = &ServingProcessor::process_postIntent;
     processMap_["putIntent"] = &ServingProcessor::process_putIntent;
     processMap_["getIntents"] = &ServingProcessor::process_getIntents;
@@ -5054,6 +5506,46 @@ class ServingMultiface : virtual public ServingIf {
       ifaces_[i]->hasDictWord(_return, request);
     }
     ifaces_[i]->hasDictWord(_return, request);
+    return;
+  }
+
+  void getDictPattern(Data& _return, const Data& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getDictPattern(_return, request);
+    }
+    ifaces_[i]->getDictPattern(_return, request);
+    return;
+  }
+
+  void putDictPattern(Data& _return, const Data& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->putDictPattern(_return, request);
+    }
+    ifaces_[i]->putDictPattern(_return, request);
+    return;
+  }
+
+  void checkDictPattern(Data& _return, const Data& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->checkDictPattern(_return, request);
+    }
+    ifaces_[i]->checkDictPattern(_return, request);
+    return;
+  }
+
+  void checkHistoryDictPattern(Data& _return, const Data& request) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->checkHistoryDictPattern(_return, request);
+    }
+    ifaces_[i]->checkHistoryDictPattern(_return, request);
     return;
   }
 
@@ -5388,6 +5880,18 @@ class ServingConcurrentClient : virtual public ServingIf {
   void hasDictWord(Data& _return, const Data& request);
   int32_t send_hasDictWord(const Data& request);
   void recv_hasDictWord(Data& _return, const int32_t seqid);
+  void getDictPattern(Data& _return, const Data& request);
+  int32_t send_getDictPattern(const Data& request);
+  void recv_getDictPattern(Data& _return, const int32_t seqid);
+  void putDictPattern(Data& _return, const Data& request);
+  int32_t send_putDictPattern(const Data& request);
+  void recv_putDictPattern(Data& _return, const int32_t seqid);
+  void checkDictPattern(Data& _return, const Data& request);
+  int32_t send_checkDictPattern(const Data& request);
+  void recv_checkDictPattern(Data& _return, const int32_t seqid);
+  void checkHistoryDictPattern(Data& _return, const Data& request);
+  int32_t send_checkHistoryDictPattern(const Data& request);
+  void recv_checkHistoryDictPattern(Data& _return, const int32_t seqid);
   void postIntent(Data& _return, const Data& request);
   int32_t send_postIntent(const Data& request);
   void recv_postIntent(Data& _return, const int32_t seqid);

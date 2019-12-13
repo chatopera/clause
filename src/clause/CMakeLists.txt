@@ -37,7 +37,7 @@ target_include_directories(clause_server PRIVATE
 set_property(TARGET clause_server APPEND_STRING PROPERTY 
     LINK_FLAGS " -pthread")
 target_link_libraries(clause_server jieba tsl_hat_trie
-                            ner distance redis proto sep 
+                            ner distance redis proto sep regex
                             ${3rd_libs})
 target_link_libraries(clause_server ${ACTIVEMQCPP_LIBRARIES}
     ${APR_LIBRARY} ssl crypto dl)

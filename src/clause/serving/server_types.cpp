@@ -1358,6 +1358,412 @@ void DictWord::printTo(std::ostream& out) const {
 }
 
 
+DictPattern::~DictPattern() throw() {
+}
+
+
+void DictPattern::__set_id(const std::string& val) {
+  this->id = val;
+__isset.id = true;
+}
+
+void DictPattern::__set_dict_id(const std::string& val) {
+  this->dict_id = val;
+__isset.dict_id = true;
+}
+
+void DictPattern::__set_patterns(const std::vector<std::string> & val) {
+  this->patterns = val;
+__isset.patterns = true;
+}
+
+void DictPattern::__set_standard(const std::string& val) {
+  this->standard = val;
+__isset.standard = true;
+}
+
+void DictPattern::__set_createdate(const Timestamp& val) {
+  this->createdate = val;
+__isset.createdate = true;
+}
+
+void DictPattern::__set_updatedate(const Timestamp& val) {
+  this->updatedate = val;
+__isset.updatedate = true;
+}
+std::ostream& operator<<(std::ostream& out, const DictPattern& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+uint32_t DictPattern::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->dict_id);
+          this->__isset.dict_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->patterns.clear();
+            uint32_t _size28;
+            ::apache::thrift::protocol::TType _etype31;
+            xfer += iprot->readListBegin(_etype31, _size28);
+            this->patterns.resize(_size28);
+            uint32_t _i32;
+            for (_i32 = 0; _i32 < _size28; ++_i32)
+            {
+              xfer += iprot->readString(this->patterns[_i32]);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.patterns = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->standard);
+          this->__isset.standard = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->createdate);
+          this->__isset.createdate = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 6:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->updatedate);
+          this->__isset.updatedate = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DictPattern::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DictPattern");
+
+  if (this->__isset.id) {
+    xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->id);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.dict_id) {
+    xfer += oprot->writeFieldBegin("dict_id", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->dict_id);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.patterns) {
+    xfer += oprot->writeFieldBegin("patterns", ::apache::thrift::protocol::T_LIST, 3);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->patterns.size()));
+      std::vector<std::string> ::const_iterator _iter33;
+      for (_iter33 = this->patterns.begin(); _iter33 != this->patterns.end(); ++_iter33)
+      {
+        xfer += oprot->writeString((*_iter33));
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.standard) {
+    xfer += oprot->writeFieldBegin("standard", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->standard);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.createdate) {
+    xfer += oprot->writeFieldBegin("createdate", ::apache::thrift::protocol::T_STRING, 5);
+    xfer += oprot->writeString(this->createdate);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.updatedate) {
+    xfer += oprot->writeFieldBegin("updatedate", ::apache::thrift::protocol::T_STRING, 6);
+    xfer += oprot->writeString(this->updatedate);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DictPattern &a, DictPattern &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.dict_id, b.dict_id);
+  swap(a.patterns, b.patterns);
+  swap(a.standard, b.standard);
+  swap(a.createdate, b.createdate);
+  swap(a.updatedate, b.updatedate);
+  swap(a.__isset, b.__isset);
+}
+
+DictPattern::DictPattern(const DictPattern& other34) {
+  id = other34.id;
+  dict_id = other34.dict_id;
+  patterns = other34.patterns;
+  standard = other34.standard;
+  createdate = other34.createdate;
+  updatedate = other34.updatedate;
+  __isset = other34.__isset;
+}
+DictPattern& DictPattern::operator=(const DictPattern& other35) {
+  id = other35.id;
+  dict_id = other35.dict_id;
+  patterns = other35.patterns;
+  standard = other35.standard;
+  createdate = other35.createdate;
+  updatedate = other35.updatedate;
+  __isset = other35.__isset;
+  return *this;
+}
+void DictPattern::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DictPattern(";
+  out << "id="; (__isset.id ? (out << to_string(id)) : (out << "<null>"));
+  out << ", " << "dict_id="; (__isset.dict_id ? (out << to_string(dict_id)) : (out << "<null>"));
+  out << ", " << "patterns="; (__isset.patterns ? (out << to_string(patterns)) : (out << "<null>"));
+  out << ", " << "standard="; (__isset.standard ? (out << to_string(standard)) : (out << "<null>"));
+  out << ", " << "createdate="; (__isset.createdate ? (out << to_string(createdate)) : (out << "<null>"));
+  out << ", " << "updatedate="; (__isset.updatedate ? (out << to_string(updatedate)) : (out << "<null>"));
+  out << ")";
+}
+
+
+DictPatternCheck::~DictPatternCheck() throw() {
+}
+
+
+void DictPatternCheck::__set_id(const std::string& val) {
+  this->id = val;
+__isset.id = true;
+}
+
+void DictPatternCheck::__set_dict_id(const std::string& val) {
+  this->dict_id = val;
+__isset.dict_id = true;
+}
+
+void DictPatternCheck::__set_input(const std::string& val) {
+  this->input = val;
+__isset.input = true;
+}
+
+void DictPatternCheck::__set_output(const std::string& val) {
+  this->output = val;
+__isset.output = true;
+}
+
+void DictPatternCheck::__set_createdate(const Timestamp& val) {
+  this->createdate = val;
+__isset.createdate = true;
+}
+std::ostream& operator<<(std::ostream& out, const DictPatternCheck& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
+
+uint32_t DictPatternCheck::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  ::apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->id);
+          this->__isset.id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->dict_id);
+          this->__isset.dict_id = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->input);
+          this->__isset.input = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->output);
+          this->__isset.output = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->createdate);
+          this->__isset.createdate = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t DictPatternCheck::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  ::apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("DictPatternCheck");
+
+  if (this->__isset.id) {
+    xfer += oprot->writeFieldBegin("id", ::apache::thrift::protocol::T_STRING, 1);
+    xfer += oprot->writeString(this->id);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.dict_id) {
+    xfer += oprot->writeFieldBegin("dict_id", ::apache::thrift::protocol::T_STRING, 2);
+    xfer += oprot->writeString(this->dict_id);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.input) {
+    xfer += oprot->writeFieldBegin("input", ::apache::thrift::protocol::T_STRING, 3);
+    xfer += oprot->writeString(this->input);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.output) {
+    xfer += oprot->writeFieldBegin("output", ::apache::thrift::protocol::T_STRING, 4);
+    xfer += oprot->writeString(this->output);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.createdate) {
+    xfer += oprot->writeFieldBegin("createdate", ::apache::thrift::protocol::T_STRING, 5);
+    xfer += oprot->writeString(this->createdate);
+    xfer += oprot->writeFieldEnd();
+  }
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(DictPatternCheck &a, DictPatternCheck &b) {
+  using ::std::swap;
+  swap(a.id, b.id);
+  swap(a.dict_id, b.dict_id);
+  swap(a.input, b.input);
+  swap(a.output, b.output);
+  swap(a.createdate, b.createdate);
+  swap(a.__isset, b.__isset);
+}
+
+DictPatternCheck::DictPatternCheck(const DictPatternCheck& other36) {
+  id = other36.id;
+  dict_id = other36.dict_id;
+  input = other36.input;
+  output = other36.output;
+  createdate = other36.createdate;
+  __isset = other36.__isset;
+}
+DictPatternCheck& DictPatternCheck::operator=(const DictPatternCheck& other37) {
+  id = other37.id;
+  dict_id = other37.dict_id;
+  input = other37.input;
+  output = other37.output;
+  createdate = other37.createdate;
+  __isset = other37.__isset;
+  return *this;
+}
+void DictPatternCheck::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "DictPatternCheck(";
+  out << "id="; (__isset.id ? (out << to_string(id)) : (out << "<null>"));
+  out << ", " << "dict_id="; (__isset.dict_id ? (out << to_string(dict_id)) : (out << "<null>"));
+  out << ", " << "input="; (__isset.input ? (out << to_string(input)) : (out << "<null>"));
+  out << ", " << "output="; (__isset.output ? (out << to_string(output)) : (out << "<null>"));
+  out << ", " << "createdate="; (__isset.createdate ? (out << to_string(createdate)) : (out << "<null>"));
+  out << ")";
+}
+
+
 Dict::~Dict() throw() {
 }
 
@@ -1410,6 +1816,16 @@ __isset.updatedate = true;
 void Dict::__set_referred(const bool val) {
   this->referred = val;
 __isset.referred = true;
+}
+
+void Dict::__set_type(const std::string& val) {
+  this->type = val;
+__isset.type = true;
+}
+
+void Dict::__set_vendor(const std::string& val) {
+  this->vendor = val;
+__isset.vendor = true;
 }
 std::ostream& operator<<(std::ostream& out, const Dict& obj)
 {
@@ -1519,6 +1935,22 @@ uint32_t Dict::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->type);
+          this->__isset.type = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->vendor);
+          this->__isset.vendor = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -1586,6 +2018,16 @@ uint32_t Dict::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeBool(this->referred);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.type) {
+    xfer += oprot->writeFieldBegin("type", ::apache::thrift::protocol::T_STRING, 11);
+    xfer += oprot->writeString(this->type);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.vendor) {
+    xfer += oprot->writeFieldBegin("vendor", ::apache::thrift::protocol::T_STRING, 12);
+    xfer += oprot->writeString(this->vendor);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -1603,34 +2045,40 @@ void swap(Dict &a, Dict &b) {
   swap(a.createdate, b.createdate);
   swap(a.updatedate, b.updatedate);
   swap(a.referred, b.referred);
+  swap(a.type, b.type);
+  swap(a.vendor, b.vendor);
   swap(a.__isset, b.__isset);
 }
 
-Dict::Dict(const Dict& other28) {
-  name = other28.name;
-  chatbotID = other28.chatbotID;
-  builtin = other28.builtin;
-  active = other28.active;
-  id = other28.id;
-  description = other28.description;
-  samples = other28.samples;
-  createdate = other28.createdate;
-  updatedate = other28.updatedate;
-  referred = other28.referred;
-  __isset = other28.__isset;
+Dict::Dict(const Dict& other38) {
+  name = other38.name;
+  chatbotID = other38.chatbotID;
+  builtin = other38.builtin;
+  active = other38.active;
+  id = other38.id;
+  description = other38.description;
+  samples = other38.samples;
+  createdate = other38.createdate;
+  updatedate = other38.updatedate;
+  referred = other38.referred;
+  type = other38.type;
+  vendor = other38.vendor;
+  __isset = other38.__isset;
 }
-Dict& Dict::operator=(const Dict& other29) {
-  name = other29.name;
-  chatbotID = other29.chatbotID;
-  builtin = other29.builtin;
-  active = other29.active;
-  id = other29.id;
-  description = other29.description;
-  samples = other29.samples;
-  createdate = other29.createdate;
-  updatedate = other29.updatedate;
-  referred = other29.referred;
-  __isset = other29.__isset;
+Dict& Dict::operator=(const Dict& other39) {
+  name = other39.name;
+  chatbotID = other39.chatbotID;
+  builtin = other39.builtin;
+  active = other39.active;
+  id = other39.id;
+  description = other39.description;
+  samples = other39.samples;
+  createdate = other39.createdate;
+  updatedate = other39.updatedate;
+  referred = other39.referred;
+  type = other39.type;
+  vendor = other39.vendor;
+  __isset = other39.__isset;
   return *this;
 }
 void Dict::printTo(std::ostream& out) const {
@@ -1646,6 +2094,8 @@ void Dict::printTo(std::ostream& out) const {
   out << ", " << "createdate="; (__isset.createdate ? (out << to_string(createdate)) : (out << "<null>"));
   out << ", " << "updatedate="; (__isset.updatedate ? (out << to_string(updatedate)) : (out << "<null>"));
   out << ", " << "referred="; (__isset.referred ? (out << to_string(referred)) : (out << "<null>"));
+  out << ", " << "type="; (__isset.type ? (out << to_string(type)) : (out << "<null>"));
+  out << ", " << "vendor="; (__isset.vendor ? (out << to_string(vendor)) : (out << "<null>"));
   out << ")";
 }
 
@@ -1822,23 +2272,23 @@ void swap(Intent &a, Intent &b) {
   swap(a.__isset, b.__isset);
 }
 
-Intent::Intent(const Intent& other30) {
-  chatbotID = other30.chatbotID;
-  name = other30.name;
-  id = other30.id;
-  description = other30.description;
-  createdate = other30.createdate;
-  updatedate = other30.updatedate;
-  __isset = other30.__isset;
+Intent::Intent(const Intent& other40) {
+  chatbotID = other40.chatbotID;
+  name = other40.name;
+  id = other40.id;
+  description = other40.description;
+  createdate = other40.createdate;
+  updatedate = other40.updatedate;
+  __isset = other40.__isset;
 }
-Intent& Intent::operator=(const Intent& other31) {
-  chatbotID = other31.chatbotID;
-  name = other31.name;
-  id = other31.id;
-  description = other31.description;
-  createdate = other31.createdate;
-  updatedate = other31.updatedate;
-  __isset = other31.__isset;
+Intent& Intent::operator=(const Intent& other41) {
+  chatbotID = other41.chatbotID;
+  name = other41.name;
+  id = other41.id;
+  description = other41.description;
+  createdate = other41.createdate;
+  updatedate = other41.updatedate;
+  __isset = other41.__isset;
   return *this;
 }
 void Intent::printTo(std::ostream& out) const {
@@ -2083,29 +2533,29 @@ void swap(IntentSlot &a, IntentSlot &b) {
   swap(a.__isset, b.__isset);
 }
 
-IntentSlot::IntentSlot(const IntentSlot& other32) {
-  intent_id = other32.intent_id;
-  name = other32.name;
-  dict_id = other32.dict_id;
-  requires = other32.requires;
-  id = other32.id;
-  createdate = other32.createdate;
-  updatedate = other32.updatedate;
-  question = other32.question;
-  dict = other32.dict;
-  __isset = other32.__isset;
+IntentSlot::IntentSlot(const IntentSlot& other42) {
+  intent_id = other42.intent_id;
+  name = other42.name;
+  dict_id = other42.dict_id;
+  requires = other42.requires;
+  id = other42.id;
+  createdate = other42.createdate;
+  updatedate = other42.updatedate;
+  question = other42.question;
+  dict = other42.dict;
+  __isset = other42.__isset;
 }
-IntentSlot& IntentSlot::operator=(const IntentSlot& other33) {
-  intent_id = other33.intent_id;
-  name = other33.name;
-  dict_id = other33.dict_id;
-  requires = other33.requires;
-  id = other33.id;
-  createdate = other33.createdate;
-  updatedate = other33.updatedate;
-  question = other33.question;
-  dict = other33.dict;
-  __isset = other33.__isset;
+IntentSlot& IntentSlot::operator=(const IntentSlot& other43) {
+  intent_id = other43.intent_id;
+  name = other43.name;
+  dict_id = other43.dict_id;
+  requires = other43.requires;
+  id = other43.id;
+  createdate = other43.createdate;
+  updatedate = other43.updatedate;
+  question = other43.question;
+  dict = other43.dict;
+  __isset = other43.__isset;
   return *this;
 }
 void IntentSlot::printTo(std::ostream& out) const {
@@ -2277,21 +2727,21 @@ void swap(IntentUtter &a, IntentUtter &b) {
   swap(a.__isset, b.__isset);
 }
 
-IntentUtter::IntentUtter(const IntentUtter& other34) {
-  intent_id = other34.intent_id;
-  utterance = other34.utterance;
-  id = other34.id;
-  createdate = other34.createdate;
-  updatedate = other34.updatedate;
-  __isset = other34.__isset;
+IntentUtter::IntentUtter(const IntentUtter& other44) {
+  intent_id = other44.intent_id;
+  utterance = other44.utterance;
+  id = other44.id;
+  createdate = other44.createdate;
+  updatedate = other44.updatedate;
+  __isset = other44.__isset;
 }
-IntentUtter& IntentUtter::operator=(const IntentUtter& other35) {
-  intent_id = other35.intent_id;
-  utterance = other35.utterance;
-  id = other35.id;
-  createdate = other35.createdate;
-  updatedate = other35.updatedate;
-  __isset = other35.__isset;
+IntentUtter& IntentUtter::operator=(const IntentUtter& other45) {
+  intent_id = other45.intent_id;
+  utterance = other45.utterance;
+  id = other45.id;
+  createdate = other45.createdate;
+  updatedate = other45.updatedate;
+  __isset = other45.__isset;
   return *this;
 }
 void IntentUtter::printTo(std::ostream& out) const {
@@ -2516,27 +2966,27 @@ void swap(ProdVersion &a, ProdVersion &b) {
   swap(a.__isset, b.__isset);
 }
 
-ProdVersion::ProdVersion(const ProdVersion& other36) {
-  chatbotID = other36.chatbotID;
-  version = other36.version;
-  active = other36.active;
-  latest = other36.latest;
-  id = other36.id;
-  operated = other36.operated;
-  notes = other36.notes;
-  createdate = other36.createdate;
-  __isset = other36.__isset;
+ProdVersion::ProdVersion(const ProdVersion& other46) {
+  chatbotID = other46.chatbotID;
+  version = other46.version;
+  active = other46.active;
+  latest = other46.latest;
+  id = other46.id;
+  operated = other46.operated;
+  notes = other46.notes;
+  createdate = other46.createdate;
+  __isset = other46.__isset;
 }
-ProdVersion& ProdVersion::operator=(const ProdVersion& other37) {
-  chatbotID = other37.chatbotID;
-  version = other37.version;
-  active = other37.active;
-  latest = other37.latest;
-  id = other37.id;
-  operated = other37.operated;
-  notes = other37.notes;
-  createdate = other37.createdate;
-  __isset = other37.__isset;
+ProdVersion& ProdVersion::operator=(const ProdVersion& other47) {
+  chatbotID = other47.chatbotID;
+  version = other47.version;
+  active = other47.active;
+  latest = other47.latest;
+  id = other47.id;
+  operated = other47.operated;
+  notes = other47.notes;
+  createdate = other47.createdate;
+  __isset = other47.__isset;
   return *this;
 }
 void ProdVersion::printTo(std::ostream& out) const {
@@ -2726,23 +3176,23 @@ void swap(DevelopVersion &a, DevelopVersion &b) {
   swap(a.__isset, b.__isset);
 }
 
-DevelopVersion::DevelopVersion(const DevelopVersion& other38) {
-  chatbotID = other38.chatbotID;
-  version = other38.version;
-  published = other38.published;
-  id = other38.id;
-  createdate = other38.createdate;
-  operated = other38.operated;
-  __isset = other38.__isset;
+DevelopVersion::DevelopVersion(const DevelopVersion& other48) {
+  chatbotID = other48.chatbotID;
+  version = other48.version;
+  published = other48.published;
+  id = other48.id;
+  createdate = other48.createdate;
+  operated = other48.operated;
+  __isset = other48.__isset;
 }
-DevelopVersion& DevelopVersion::operator=(const DevelopVersion& other39) {
-  chatbotID = other39.chatbotID;
-  version = other39.version;
-  published = other39.published;
-  id = other39.id;
-  createdate = other39.createdate;
-  operated = other39.operated;
-  __isset = other39.__isset;
+DevelopVersion& DevelopVersion::operator=(const DevelopVersion& other49) {
+  chatbotID = other49.chatbotID;
+  version = other49.version;
+  published = other49.published;
+  id = other49.id;
+  createdate = other49.createdate;
+  operated = other49.operated;
+  __isset = other49.__isset;
   return *this;
 }
 void DevelopVersion::printTo(std::ostream& out) const {
@@ -2825,6 +3275,21 @@ __isset.botsysdict = true;
 void Data::__set_dictword(const DictWord& val) {
   this->dictword = val;
 __isset.dictword = true;
+}
+
+void Data::__set_dictpattern(const DictPattern& val) {
+  this->dictpattern = val;
+__isset.dictpattern = true;
+}
+
+void Data::__set_patterncheck(const DictPatternCheck& val) {
+  this->patterncheck = val;
+__isset.patterncheck = true;
+}
+
+void Data::__set_patternchecks(const std::vector<DictPatternCheck> & val) {
+  this->patternchecks = val;
+__isset.patternchecks = true;
 }
 
 void Data::__set_intents(const std::vector<Intent> & val) {
@@ -2998,14 +3463,14 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->customdicts.clear();
-            uint32_t _size40;
-            ::apache::thrift::protocol::TType _etype43;
-            xfer += iprot->readListBegin(_etype43, _size40);
-            this->customdicts.resize(_size40);
-            uint32_t _i44;
-            for (_i44 = 0; _i44 < _size40; ++_i44)
+            uint32_t _size50;
+            ::apache::thrift::protocol::TType _etype53;
+            xfer += iprot->readListBegin(_etype53, _size50);
+            this->customdicts.resize(_size50);
+            uint32_t _i54;
+            for (_i54 = 0; _i54 < _size50; ++_i54)
             {
-              xfer += this->customdicts[_i44].read(iprot);
+              xfer += this->customdicts[_i54].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3018,14 +3483,14 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->sysdicts.clear();
-            uint32_t _size45;
-            ::apache::thrift::protocol::TType _etype48;
-            xfer += iprot->readListBegin(_etype48, _size45);
-            this->sysdicts.resize(_size45);
-            uint32_t _i49;
-            for (_i49 = 0; _i49 < _size45; ++_i49)
+            uint32_t _size55;
+            ::apache::thrift::protocol::TType _etype58;
+            xfer += iprot->readListBegin(_etype58, _size55);
+            this->sysdicts.resize(_size55);
+            uint32_t _i59;
+            for (_i59 = 0; _i59 < _size55; ++_i59)
             {
-              xfer += this->sysdicts[_i49].read(iprot);
+              xfer += this->sysdicts[_i59].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3038,14 +3503,14 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->botsysdicts.clear();
-            uint32_t _size50;
-            ::apache::thrift::protocol::TType _etype53;
-            xfer += iprot->readListBegin(_etype53, _size50);
-            this->botsysdicts.resize(_size50);
-            uint32_t _i54;
-            for (_i54 = 0; _i54 < _size50; ++_i54)
+            uint32_t _size60;
+            ::apache::thrift::protocol::TType _etype63;
+            xfer += iprot->readListBegin(_etype63, _size60);
+            this->botsysdicts.resize(_size60);
+            uint32_t _i64;
+            for (_i64 = 0; _i64 < _size60; ++_i64)
             {
-              xfer += this->botsysdicts[_i54].read(iprot);
+              xfer += this->botsysdicts[_i64].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3058,14 +3523,14 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->dictwords.clear();
-            uint32_t _size55;
-            ::apache::thrift::protocol::TType _etype58;
-            xfer += iprot->readListBegin(_etype58, _size55);
-            this->dictwords.resize(_size55);
-            uint32_t _i59;
-            for (_i59 = 0; _i59 < _size55; ++_i59)
+            uint32_t _size65;
+            ::apache::thrift::protocol::TType _etype68;
+            xfer += iprot->readListBegin(_etype68, _size65);
+            this->dictwords.resize(_size65);
+            uint32_t _i69;
+            for (_i69 = 0; _i69 < _size65; ++_i69)
             {
-              xfer += this->dictwords[_i59].read(iprot);
+              xfer += this->dictwords[_i69].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3107,17 +3572,53 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
         }
         break;
       case 14:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->dictpattern.read(iprot);
+          this->__isset.dictpattern = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 15:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->patterncheck.read(iprot);
+          this->__isset.patterncheck = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 16:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->patternchecks.clear();
+            uint32_t _size70;
+            ::apache::thrift::protocol::TType _etype73;
+            xfer += iprot->readListBegin(_etype73, _size70);
+            this->patternchecks.resize(_size70);
+            uint32_t _i74;
+            for (_i74 = 0; _i74 < _size70; ++_i74)
+            {
+              xfer += this->patternchecks[_i74].read(iprot);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.patternchecks = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 17:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->intents.clear();
-            uint32_t _size60;
-            ::apache::thrift::protocol::TType _etype63;
-            xfer += iprot->readListBegin(_etype63, _size60);
-            this->intents.resize(_size60);
-            uint32_t _i64;
-            for (_i64 = 0; _i64 < _size60; ++_i64)
+            uint32_t _size75;
+            ::apache::thrift::protocol::TType _etype78;
+            xfer += iprot->readListBegin(_etype78, _size75);
+            this->intents.resize(_size75);
+            uint32_t _i79;
+            for (_i79 = 0; _i79 < _size75; ++_i79)
             {
-              xfer += this->intents[_i64].read(iprot);
+              xfer += this->intents[_i79].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3126,18 +3627,18 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 15:
+      case 18:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->slots.clear();
-            uint32_t _size65;
-            ::apache::thrift::protocol::TType _etype68;
-            xfer += iprot->readListBegin(_etype68, _size65);
-            this->slots.resize(_size65);
-            uint32_t _i69;
-            for (_i69 = 0; _i69 < _size65; ++_i69)
+            uint32_t _size80;
+            ::apache::thrift::protocol::TType _etype83;
+            xfer += iprot->readListBegin(_etype83, _size80);
+            this->slots.resize(_size80);
+            uint32_t _i84;
+            for (_i84 = 0; _i84 < _size80; ++_i84)
             {
-              xfer += this->slots[_i69].read(iprot);
+              xfer += this->slots[_i84].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3146,18 +3647,18 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 16:
+      case 19:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->utters.clear();
-            uint32_t _size70;
-            ::apache::thrift::protocol::TType _etype73;
-            xfer += iprot->readListBegin(_etype73, _size70);
-            this->utters.resize(_size70);
-            uint32_t _i74;
-            for (_i74 = 0; _i74 < _size70; ++_i74)
+            uint32_t _size85;
+            ::apache::thrift::protocol::TType _etype88;
+            xfer += iprot->readListBegin(_etype88, _size85);
+            this->utters.resize(_size85);
+            uint32_t _i89;
+            for (_i89 = 0; _i89 < _size85; ++_i89)
             {
-              xfer += this->utters[_i74].read(iprot);
+              xfer += this->utters[_i89].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3166,7 +3667,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 17:
+      case 20:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->intent.read(iprot);
           this->__isset.intent = true;
@@ -3174,7 +3675,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 18:
+      case 21:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->slot.read(iprot);
           this->__isset.slot = true;
@@ -3182,7 +3683,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 19:
+      case 22:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->utter.read(iprot);
           this->__isset.utter = true;
@@ -3190,18 +3691,18 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 20:
+      case 23:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->devvers.clear();
-            uint32_t _size75;
-            ::apache::thrift::protocol::TType _etype78;
-            xfer += iprot->readListBegin(_etype78, _size75);
-            this->devvers.resize(_size75);
-            uint32_t _i79;
-            for (_i79 = 0; _i79 < _size75; ++_i79)
+            uint32_t _size90;
+            ::apache::thrift::protocol::TType _etype93;
+            xfer += iprot->readListBegin(_etype93, _size90);
+            this->devvers.resize(_size90);
+            uint32_t _i94;
+            for (_i94 = 0; _i94 < _size90; ++_i94)
             {
-              xfer += this->devvers[_i79].read(iprot);
+              xfer += this->devvers[_i94].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3210,18 +3711,18 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 21:
+      case 24:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->provers.clear();
-            uint32_t _size80;
-            ::apache::thrift::protocol::TType _etype83;
-            xfer += iprot->readListBegin(_etype83, _size80);
-            this->provers.resize(_size80);
-            uint32_t _i84;
-            for (_i84 = 0; _i84 < _size80; ++_i84)
+            uint32_t _size95;
+            ::apache::thrift::protocol::TType _etype98;
+            xfer += iprot->readListBegin(_etype98, _size95);
+            this->provers.resize(_size95);
+            uint32_t _i99;
+            for (_i99 = 0; _i99 < _size95; ++_i99)
             {
-              xfer += this->provers[_i84].read(iprot);
+              xfer += this->provers[_i99].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3230,7 +3731,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 22:
+      case 25:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->devver.read(iprot);
           this->__isset.devver = true;
@@ -3238,7 +3739,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 23:
+      case 26:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->prover.read(iprot);
           this->__isset.prover = true;
@@ -3246,18 +3747,18 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 24:
+      case 27:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->sessions.clear();
-            uint32_t _size85;
-            ::apache::thrift::protocol::TType _etype88;
-            xfer += iprot->readListBegin(_etype88, _size85);
-            this->sessions.resize(_size85);
-            uint32_t _i89;
-            for (_i89 = 0; _i89 < _size85; ++_i89)
+            uint32_t _size100;
+            ::apache::thrift::protocol::TType _etype103;
+            xfer += iprot->readListBegin(_etype103, _size100);
+            this->sessions.resize(_size100);
+            uint32_t _i104;
+            for (_i104 = 0; _i104 < _size100; ++_i104)
             {
-              xfer += this->sessions[_i89].read(iprot);
+              xfer += this->sessions[_i104].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3266,18 +3767,18 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 25:
+      case 28:
         if (ftype == ::apache::thrift::protocol::T_LIST) {
           {
             this->messages.clear();
-            uint32_t _size90;
-            ::apache::thrift::protocol::TType _etype93;
-            xfer += iprot->readListBegin(_etype93, _size90);
-            this->messages.resize(_size90);
-            uint32_t _i94;
-            for (_i94 = 0; _i94 < _size90; ++_i94)
+            uint32_t _size105;
+            ::apache::thrift::protocol::TType _etype108;
+            xfer += iprot->readListBegin(_etype108, _size105);
+            this->messages.resize(_size105);
+            uint32_t _i109;
+            for (_i109 = 0; _i109 < _size105; ++_i109)
             {
-              xfer += this->messages[_i94].read(iprot);
+              xfer += this->messages[_i109].read(iprot);
             }
             xfer += iprot->readListEnd();
           }
@@ -3286,7 +3787,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 26:
+      case 29:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->session.read(iprot);
           this->__isset.session = true;
@@ -3294,7 +3795,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 27:
+      case 30:
         if (ftype == ::apache::thrift::protocol::T_STRUCT) {
           xfer += this->message.read(iprot);
           this->__isset.message = true;
@@ -3302,7 +3803,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 28:
+      case 31:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->currpage);
           this->__isset.currpage = true;
@@ -3310,7 +3811,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 29:
+      case 32:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->totalpage);
           this->__isset.totalpage = true;
@@ -3318,7 +3819,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 30:
+      case 33:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->totalrows);
           this->__isset.totalrows = true;
@@ -3326,7 +3827,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 31:
+      case 34:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->pagesize);
           this->__isset.pagesize = true;
@@ -3334,7 +3835,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 32:
+      case 35:
         if (ftype == ::apache::thrift::protocol::T_I32) {
           xfer += iprot->readI32(this->page);
           this->__isset.page = true;
@@ -3342,7 +3843,7 @@ uint32_t Data::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 33:
+      case 36:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->query);
           this->__isset.query = true;
@@ -3396,10 +3897,10 @@ uint32_t Data::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeFieldBegin("customdicts", ::apache::thrift::protocol::T_LIST, 6);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->customdicts.size()));
-      std::vector<CustomDict> ::const_iterator _iter95;
-      for (_iter95 = this->customdicts.begin(); _iter95 != this->customdicts.end(); ++_iter95)
+      std::vector<CustomDict> ::const_iterator _iter110;
+      for (_iter110 = this->customdicts.begin(); _iter110 != this->customdicts.end(); ++_iter110)
       {
-        xfer += (*_iter95).write(oprot);
+        xfer += (*_iter110).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
@@ -3409,10 +3910,10 @@ uint32_t Data::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeFieldBegin("sysdicts", ::apache::thrift::protocol::T_LIST, 7);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->sysdicts.size()));
-      std::vector<SysDict> ::const_iterator _iter96;
-      for (_iter96 = this->sysdicts.begin(); _iter96 != this->sysdicts.end(); ++_iter96)
+      std::vector<SysDict> ::const_iterator _iter111;
+      for (_iter111 = this->sysdicts.begin(); _iter111 != this->sysdicts.end(); ++_iter111)
       {
-        xfer += (*_iter96).write(oprot);
+        xfer += (*_iter111).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
@@ -3422,10 +3923,10 @@ uint32_t Data::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeFieldBegin("botsysdicts", ::apache::thrift::protocol::T_LIST, 8);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->botsysdicts.size()));
-      std::vector<BotSysdict> ::const_iterator _iter97;
-      for (_iter97 = this->botsysdicts.begin(); _iter97 != this->botsysdicts.end(); ++_iter97)
+      std::vector<BotSysdict> ::const_iterator _iter112;
+      for (_iter112 = this->botsysdicts.begin(); _iter112 != this->botsysdicts.end(); ++_iter112)
       {
-        xfer += (*_iter97).write(oprot);
+        xfer += (*_iter112).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
@@ -3435,10 +3936,10 @@ uint32_t Data::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeFieldBegin("dictwords", ::apache::thrift::protocol::T_LIST, 9);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->dictwords.size()));
-      std::vector<DictWord> ::const_iterator _iter98;
-      for (_iter98 = this->dictwords.begin(); _iter98 != this->dictwords.end(); ++_iter98)
+      std::vector<DictWord> ::const_iterator _iter113;
+      for (_iter113 = this->dictwords.begin(); _iter113 != this->dictwords.end(); ++_iter113)
       {
-        xfer += (*_iter98).write(oprot);
+        xfer += (*_iter113).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
@@ -3464,159 +3965,182 @@ uint32_t Data::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += this->dictword.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.dictpattern) {
+    xfer += oprot->writeFieldBegin("dictpattern", ::apache::thrift::protocol::T_STRUCT, 14);
+    xfer += this->dictpattern.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.patterncheck) {
+    xfer += oprot->writeFieldBegin("patterncheck", ::apache::thrift::protocol::T_STRUCT, 15);
+    xfer += this->patterncheck.write(oprot);
+    xfer += oprot->writeFieldEnd();
+  }
+  if (this->__isset.patternchecks) {
+    xfer += oprot->writeFieldBegin("patternchecks", ::apache::thrift::protocol::T_LIST, 16);
+    {
+      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->patternchecks.size()));
+      std::vector<DictPatternCheck> ::const_iterator _iter114;
+      for (_iter114 = this->patternchecks.begin(); _iter114 != this->patternchecks.end(); ++_iter114)
+      {
+        xfer += (*_iter114).write(oprot);
+      }
+      xfer += oprot->writeListEnd();
+    }
+    xfer += oprot->writeFieldEnd();
+  }
   if (this->__isset.intents) {
-    xfer += oprot->writeFieldBegin("intents", ::apache::thrift::protocol::T_LIST, 14);
+    xfer += oprot->writeFieldBegin("intents", ::apache::thrift::protocol::T_LIST, 17);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->intents.size()));
-      std::vector<Intent> ::const_iterator _iter99;
-      for (_iter99 = this->intents.begin(); _iter99 != this->intents.end(); ++_iter99)
+      std::vector<Intent> ::const_iterator _iter115;
+      for (_iter115 = this->intents.begin(); _iter115 != this->intents.end(); ++_iter115)
       {
-        xfer += (*_iter99).write(oprot);
+        xfer += (*_iter115).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.slots) {
-    xfer += oprot->writeFieldBegin("slots", ::apache::thrift::protocol::T_LIST, 15);
+    xfer += oprot->writeFieldBegin("slots", ::apache::thrift::protocol::T_LIST, 18);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->slots.size()));
-      std::vector<IntentSlot> ::const_iterator _iter100;
-      for (_iter100 = this->slots.begin(); _iter100 != this->slots.end(); ++_iter100)
+      std::vector<IntentSlot> ::const_iterator _iter116;
+      for (_iter116 = this->slots.begin(); _iter116 != this->slots.end(); ++_iter116)
       {
-        xfer += (*_iter100).write(oprot);
+        xfer += (*_iter116).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.utters) {
-    xfer += oprot->writeFieldBegin("utters", ::apache::thrift::protocol::T_LIST, 16);
+    xfer += oprot->writeFieldBegin("utters", ::apache::thrift::protocol::T_LIST, 19);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->utters.size()));
-      std::vector<IntentUtter> ::const_iterator _iter101;
-      for (_iter101 = this->utters.begin(); _iter101 != this->utters.end(); ++_iter101)
+      std::vector<IntentUtter> ::const_iterator _iter117;
+      for (_iter117 = this->utters.begin(); _iter117 != this->utters.end(); ++_iter117)
       {
-        xfer += (*_iter101).write(oprot);
+        xfer += (*_iter117).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.intent) {
-    xfer += oprot->writeFieldBegin("intent", ::apache::thrift::protocol::T_STRUCT, 17);
+    xfer += oprot->writeFieldBegin("intent", ::apache::thrift::protocol::T_STRUCT, 20);
     xfer += this->intent.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.slot) {
-    xfer += oprot->writeFieldBegin("slot", ::apache::thrift::protocol::T_STRUCT, 18);
+    xfer += oprot->writeFieldBegin("slot", ::apache::thrift::protocol::T_STRUCT, 21);
     xfer += this->slot.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.utter) {
-    xfer += oprot->writeFieldBegin("utter", ::apache::thrift::protocol::T_STRUCT, 19);
+    xfer += oprot->writeFieldBegin("utter", ::apache::thrift::protocol::T_STRUCT, 22);
     xfer += this->utter.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.devvers) {
-    xfer += oprot->writeFieldBegin("devvers", ::apache::thrift::protocol::T_LIST, 20);
+    xfer += oprot->writeFieldBegin("devvers", ::apache::thrift::protocol::T_LIST, 23);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->devvers.size()));
-      std::vector<DevelopVersion> ::const_iterator _iter102;
-      for (_iter102 = this->devvers.begin(); _iter102 != this->devvers.end(); ++_iter102)
+      std::vector<DevelopVersion> ::const_iterator _iter118;
+      for (_iter118 = this->devvers.begin(); _iter118 != this->devvers.end(); ++_iter118)
       {
-        xfer += (*_iter102).write(oprot);
+        xfer += (*_iter118).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.provers) {
-    xfer += oprot->writeFieldBegin("provers", ::apache::thrift::protocol::T_LIST, 21);
+    xfer += oprot->writeFieldBegin("provers", ::apache::thrift::protocol::T_LIST, 24);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->provers.size()));
-      std::vector<ProdVersion> ::const_iterator _iter103;
-      for (_iter103 = this->provers.begin(); _iter103 != this->provers.end(); ++_iter103)
+      std::vector<ProdVersion> ::const_iterator _iter119;
+      for (_iter119 = this->provers.begin(); _iter119 != this->provers.end(); ++_iter119)
       {
-        xfer += (*_iter103).write(oprot);
+        xfer += (*_iter119).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.devver) {
-    xfer += oprot->writeFieldBegin("devver", ::apache::thrift::protocol::T_STRUCT, 22);
+    xfer += oprot->writeFieldBegin("devver", ::apache::thrift::protocol::T_STRUCT, 25);
     xfer += this->devver.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.prover) {
-    xfer += oprot->writeFieldBegin("prover", ::apache::thrift::protocol::T_STRUCT, 23);
+    xfer += oprot->writeFieldBegin("prover", ::apache::thrift::protocol::T_STRUCT, 26);
     xfer += this->prover.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.sessions) {
-    xfer += oprot->writeFieldBegin("sessions", ::apache::thrift::protocol::T_LIST, 24);
+    xfer += oprot->writeFieldBegin("sessions", ::apache::thrift::protocol::T_LIST, 27);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->sessions.size()));
-      std::vector<ChatSession> ::const_iterator _iter104;
-      for (_iter104 = this->sessions.begin(); _iter104 != this->sessions.end(); ++_iter104)
+      std::vector<ChatSession> ::const_iterator _iter120;
+      for (_iter120 = this->sessions.begin(); _iter120 != this->sessions.end(); ++_iter120)
       {
-        xfer += (*_iter104).write(oprot);
+        xfer += (*_iter120).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.messages) {
-    xfer += oprot->writeFieldBegin("messages", ::apache::thrift::protocol::T_LIST, 25);
+    xfer += oprot->writeFieldBegin("messages", ::apache::thrift::protocol::T_LIST, 28);
     {
       xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, static_cast<uint32_t>(this->messages.size()));
-      std::vector<ChatMessage> ::const_iterator _iter105;
-      for (_iter105 = this->messages.begin(); _iter105 != this->messages.end(); ++_iter105)
+      std::vector<ChatMessage> ::const_iterator _iter121;
+      for (_iter121 = this->messages.begin(); _iter121 != this->messages.end(); ++_iter121)
       {
-        xfer += (*_iter105).write(oprot);
+        xfer += (*_iter121).write(oprot);
       }
       xfer += oprot->writeListEnd();
     }
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.session) {
-    xfer += oprot->writeFieldBegin("session", ::apache::thrift::protocol::T_STRUCT, 26);
+    xfer += oprot->writeFieldBegin("session", ::apache::thrift::protocol::T_STRUCT, 29);
     xfer += this->session.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.message) {
-    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRUCT, 27);
+    xfer += oprot->writeFieldBegin("message", ::apache::thrift::protocol::T_STRUCT, 30);
     xfer += this->message.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.currpage) {
-    xfer += oprot->writeFieldBegin("currpage", ::apache::thrift::protocol::T_I32, 28);
+    xfer += oprot->writeFieldBegin("currpage", ::apache::thrift::protocol::T_I32, 31);
     xfer += oprot->writeI32(this->currpage);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.totalpage) {
-    xfer += oprot->writeFieldBegin("totalpage", ::apache::thrift::protocol::T_I32, 29);
+    xfer += oprot->writeFieldBegin("totalpage", ::apache::thrift::protocol::T_I32, 32);
     xfer += oprot->writeI32(this->totalpage);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.totalrows) {
-    xfer += oprot->writeFieldBegin("totalrows", ::apache::thrift::protocol::T_I32, 30);
+    xfer += oprot->writeFieldBegin("totalrows", ::apache::thrift::protocol::T_I32, 33);
     xfer += oprot->writeI32(this->totalrows);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.pagesize) {
-    xfer += oprot->writeFieldBegin("pagesize", ::apache::thrift::protocol::T_I32, 31);
+    xfer += oprot->writeFieldBegin("pagesize", ::apache::thrift::protocol::T_I32, 34);
     xfer += oprot->writeI32(this->pagesize);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.page) {
-    xfer += oprot->writeFieldBegin("page", ::apache::thrift::protocol::T_I32, 32);
+    xfer += oprot->writeFieldBegin("page", ::apache::thrift::protocol::T_I32, 35);
     xfer += oprot->writeI32(this->page);
     xfer += oprot->writeFieldEnd();
   }
   if (this->__isset.query) {
-    xfer += oprot->writeFieldBegin("query", ::apache::thrift::protocol::T_STRING, 33);
+    xfer += oprot->writeFieldBegin("query", ::apache::thrift::protocol::T_STRING, 36);
     xfer += oprot->writeString(this->query);
     xfer += oprot->writeFieldEnd();
   }
@@ -3640,6 +4164,9 @@ void swap(Data &a, Data &b) {
   swap(a.sysdict, b.sysdict);
   swap(a.botsysdict, b.botsysdict);
   swap(a.dictword, b.dictword);
+  swap(a.dictpattern, b.dictpattern);
+  swap(a.patterncheck, b.patterncheck);
+  swap(a.patternchecks, b.patternchecks);
   swap(a.intents, b.intents);
   swap(a.slots, b.slots);
   swap(a.utters, b.utters);
@@ -3663,77 +4190,83 @@ void swap(Data &a, Data &b) {
   swap(a.__isset, b.__isset);
 }
 
-Data::Data(const Data& other106) {
-  rc = other106.rc;
-  error = other106.error;
-  msg = other106.msg;
-  id = other106.id;
-  chatbotID = other106.chatbotID;
-  customdicts = other106.customdicts;
-  sysdicts = other106.sysdicts;
-  botsysdicts = other106.botsysdicts;
-  dictwords = other106.dictwords;
-  customdict = other106.customdict;
-  sysdict = other106.sysdict;
-  botsysdict = other106.botsysdict;
-  dictword = other106.dictword;
-  intents = other106.intents;
-  slots = other106.slots;
-  utters = other106.utters;
-  intent = other106.intent;
-  slot = other106.slot;
-  utter = other106.utter;
-  devvers = other106.devvers;
-  provers = other106.provers;
-  devver = other106.devver;
-  prover = other106.prover;
-  sessions = other106.sessions;
-  messages = other106.messages;
-  session = other106.session;
-  message = other106.message;
-  currpage = other106.currpage;
-  totalpage = other106.totalpage;
-  totalrows = other106.totalrows;
-  pagesize = other106.pagesize;
-  page = other106.page;
-  query = other106.query;
-  __isset = other106.__isset;
+Data::Data(const Data& other122) {
+  rc = other122.rc;
+  error = other122.error;
+  msg = other122.msg;
+  id = other122.id;
+  chatbotID = other122.chatbotID;
+  customdicts = other122.customdicts;
+  sysdicts = other122.sysdicts;
+  botsysdicts = other122.botsysdicts;
+  dictwords = other122.dictwords;
+  customdict = other122.customdict;
+  sysdict = other122.sysdict;
+  botsysdict = other122.botsysdict;
+  dictword = other122.dictword;
+  dictpattern = other122.dictpattern;
+  patterncheck = other122.patterncheck;
+  patternchecks = other122.patternchecks;
+  intents = other122.intents;
+  slots = other122.slots;
+  utters = other122.utters;
+  intent = other122.intent;
+  slot = other122.slot;
+  utter = other122.utter;
+  devvers = other122.devvers;
+  provers = other122.provers;
+  devver = other122.devver;
+  prover = other122.prover;
+  sessions = other122.sessions;
+  messages = other122.messages;
+  session = other122.session;
+  message = other122.message;
+  currpage = other122.currpage;
+  totalpage = other122.totalpage;
+  totalrows = other122.totalrows;
+  pagesize = other122.pagesize;
+  page = other122.page;
+  query = other122.query;
+  __isset = other122.__isset;
 }
-Data& Data::operator=(const Data& other107) {
-  rc = other107.rc;
-  error = other107.error;
-  msg = other107.msg;
-  id = other107.id;
-  chatbotID = other107.chatbotID;
-  customdicts = other107.customdicts;
-  sysdicts = other107.sysdicts;
-  botsysdicts = other107.botsysdicts;
-  dictwords = other107.dictwords;
-  customdict = other107.customdict;
-  sysdict = other107.sysdict;
-  botsysdict = other107.botsysdict;
-  dictword = other107.dictword;
-  intents = other107.intents;
-  slots = other107.slots;
-  utters = other107.utters;
-  intent = other107.intent;
-  slot = other107.slot;
-  utter = other107.utter;
-  devvers = other107.devvers;
-  provers = other107.provers;
-  devver = other107.devver;
-  prover = other107.prover;
-  sessions = other107.sessions;
-  messages = other107.messages;
-  session = other107.session;
-  message = other107.message;
-  currpage = other107.currpage;
-  totalpage = other107.totalpage;
-  totalrows = other107.totalrows;
-  pagesize = other107.pagesize;
-  page = other107.page;
-  query = other107.query;
-  __isset = other107.__isset;
+Data& Data::operator=(const Data& other123) {
+  rc = other123.rc;
+  error = other123.error;
+  msg = other123.msg;
+  id = other123.id;
+  chatbotID = other123.chatbotID;
+  customdicts = other123.customdicts;
+  sysdicts = other123.sysdicts;
+  botsysdicts = other123.botsysdicts;
+  dictwords = other123.dictwords;
+  customdict = other123.customdict;
+  sysdict = other123.sysdict;
+  botsysdict = other123.botsysdict;
+  dictword = other123.dictword;
+  dictpattern = other123.dictpattern;
+  patterncheck = other123.patterncheck;
+  patternchecks = other123.patternchecks;
+  intents = other123.intents;
+  slots = other123.slots;
+  utters = other123.utters;
+  intent = other123.intent;
+  slot = other123.slot;
+  utter = other123.utter;
+  devvers = other123.devvers;
+  provers = other123.provers;
+  devver = other123.devver;
+  prover = other123.prover;
+  sessions = other123.sessions;
+  messages = other123.messages;
+  session = other123.session;
+  message = other123.message;
+  currpage = other123.currpage;
+  totalpage = other123.totalpage;
+  totalrows = other123.totalrows;
+  pagesize = other123.pagesize;
+  page = other123.page;
+  query = other123.query;
+  __isset = other123.__isset;
   return *this;
 }
 void Data::printTo(std::ostream& out) const {
@@ -3752,6 +4285,9 @@ void Data::printTo(std::ostream& out) const {
   out << ", " << "sysdict="; (__isset.sysdict ? (out << to_string(sysdict)) : (out << "<null>"));
   out << ", " << "botsysdict="; (__isset.botsysdict ? (out << to_string(botsysdict)) : (out << "<null>"));
   out << ", " << "dictword="; (__isset.dictword ? (out << to_string(dictword)) : (out << "<null>"));
+  out << ", " << "dictpattern="; (__isset.dictpattern ? (out << to_string(dictpattern)) : (out << "<null>"));
+  out << ", " << "patterncheck="; (__isset.patterncheck ? (out << to_string(patterncheck)) : (out << "<null>"));
+  out << ", " << "patternchecks="; (__isset.patternchecks ? (out << to_string(patternchecks)) : (out << "<null>"));
   out << ", " << "intents="; (__isset.intents ? (out << to_string(intents)) : (out << "<null>"));
   out << ", " << "slots="; (__isset.slots ? (out << to_string(slots)) : (out << "<null>"));
   out << ", " << "utters="; (__isset.utters ? (out << to_string(utters)) : (out << "<null>"));

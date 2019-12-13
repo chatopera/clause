@@ -48,7 +48,6 @@ DEFINE_string(workarea, "../../../../var/trainer/workarea", "Generated and captu
 DEFINE_string(data, "../../../../var/trainer/data", "Prebuilt data, templates, dicts etc.");
 DEFINE_double(intent_classify_threshold, 0.9, "Threshold for classify intent.");
 
-
 using namespace std;
 using namespace ::chatopera::bot::clause;
 using namespace ::apache::thrift;

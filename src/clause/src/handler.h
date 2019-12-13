@@ -44,6 +44,7 @@
 #include "subscriber.h" // activemq subscription
 #include "publisher.h"  // activemq publish
 #include "bot.h"        // bot instance
+#include "pattern.h"    // regex utils
 
 #include "emoji.h"
 #include "punctuations.h"
@@ -112,6 +113,11 @@ class ServingHandler : virtual public ServingIf {
   void mySysdicts(Data& _return, const Data& request);
   // 标准词是否已经包含在自定义词典中
   void hasDictWord(Data& _return, const Data& request);
+  // 正则表达式词典
+  void getDictPattern(Data& _return, const Data& request);
+  void putDictPattern(Data& _return, const Data& request);
+  void checkDictPattern(Data& _return, const Data& request);
+  void checkHistoryDictPattern(Data& _return, const Data& request);
 
   /**
    * 意图

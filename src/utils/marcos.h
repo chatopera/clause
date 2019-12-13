@@ -26,6 +26,19 @@
 #define CL_BOT_BRANCH_DEV "dev"
 #define CL_BOT_BRANCH_PRO "pro"
 
+/**
+ * 词典类型
+ */
+// 正则表达式
+#define CL_DICT_TYPE_PATTERN "regex"
+// 机器学习
+#define CL_DICT_TYPE_ML      "ml"
+// 词汇表
+#define CL_DICT_TYPE_VOCAB   "vocab"
+// 正则表达式词典
+#define CL_DICT_PATTERN_STANDARD "PCRE"
+// 分词器中，正则表达式term前缀
+#define CL_DICT_PATTERN_PREFIX  "#"
 
 #define CL_BOT_PRO_STATUS_ONLINE "online"
 #define CL_BOT_PRO_STATUS_OFFLINE "offline"

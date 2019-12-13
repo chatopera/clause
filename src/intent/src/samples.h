@@ -26,6 +26,7 @@
 
 #include "basictypes.h"
 #include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 #include "MathUtils.hpp"
 #include "intent.pb.h"
 #include "cppjieba/Jieba.hpp"
@@ -46,7 +47,8 @@ class SampleGenerator {
   static void generateTemplates(const cppjieba::Jieba& tokenizer,
                                 const ::google::protobuf::RepeatedPtrField< ::chatopera::bot::intent::TIntent >& intents,
                                 const std::map<std::string, std::vector<string> >& predefined_dicts,
-                                const std::map<std::string, std::vector<string> >& dicts,
+                                const std::map<std::string, std::vector<string> >& vocab_dicts,
+                                const std::map<std::string, TDictPattern>& pattern_dicts,
                                 Augmented& augmented);
 
   static bool generateCrfSuiteTraingData(const Augmented& augmented,

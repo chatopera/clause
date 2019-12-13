@@ -15,6 +15,7 @@
 #include "gflags/gflags.h"
 #include "TimeUtils.hpp"
 #include "StringUtils.hpp"
+#include "VectorUtils.hpp"
 #include "intent.pb.h"
 #include "maf.hpp"
 #include "raf.hpp"
@@ -162,19 +163,23 @@ void ServingHandler::postCustomDict(Data& _return, const Data& request) {
 
   if(request.__isset.customdict &&
       request.customdict.__isset.name &&
+      request.customdict.__isset.type &&
       request.customdict.__isset.chatbotID) {
-    try {
-      VLOG(3) << __func__ << " customdict create name " << request.customdict.name;
+    // 检查词典类型是否合法
+    if(validateDictType(request.customdict.type)) {
       CustomDict customdict;
+
       string id = generate_uuid();
       customdict.createdate = GetCurrentTimestampFormatted();
       customdict.updatedate = customdict.createdate;
       customdict.chatbotID = request.customdict.chatbotID;
       customdict.name = request.customdict.name;
+      customdict.type = request.customdict.type;
       customdict.__isset.createdate = true;
       customdict.__isset.updatedate = true;
       customdict.__isset.chatbotID = true;
       customdict.__isset.name = true;
+      customdict.__isset.type = true;
 
       if(request.customdict.__isset.description) {
         customdict.description = request.customdict.description;
@@ -186,47 +191,68 @@ void ServingHandler::postCustomDict(Data& _return, const Data& request) {
         customdict.__isset.samples = true;
       }
 
-      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
-      sql.str("");
-      sql << "INSERT INTO cl_dicts(id, name, chatbotID, createdate, updatedate";
+      try {
+        VLOG(3) << __func__ << " customdict create name " << request.customdict.name << ", dict type " << request.customdict.type;
+        boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+        sql.str("");
+        sql << "INSERT INTO cl_dicts(id, name, chatbotID, createdate, updatedate, type";
 
-      if(request.customdict.__isset.description) {
-        sql << ", description";
+        if(request.customdict.__isset.description) {
+          sql << ", description";
+        }
+
+        if(request.customdict.__isset.samples) {
+          sql << ", samples";
+        }
+
+        if(request.customdict.__isset.vendor) {
+          sql << ", vendor";
+        }
+
+        sql << ") VALUES ('";
+        sql << id << "','" << request.customdict.name << "','";
+        sql << request.customdict.chatbotID << "', '" << customdict.createdate;
+        sql << "', '" << customdict.updatedate;
+        sql << "', '" << customdict.type;
+
+        if(request.customdict.__isset.description) {
+          sql << "', '" << request.customdict.description;
+        }
+
+        if(request.customdict.__isset.samples) {
+          sql << "', '" << request.customdict.samples;
+        }
+
+        if(request.customdict.__isset.vendor) {
+          sql << "', '" << request.customdict.vendor;
+        }
+
+        sql << "')";
+
+        VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+        stmt->execute(sql.str());
+
+        /**
+         * 正则表达式词典，创建唯一对应的表达式定义
+         */
+        if(request.customdict.type == CL_DICT_TYPE_PATTERN) {
+          resolveDictPatternDefinition(stmt, id);
+        }
+
+        VLOG(3) << __func__ << " create new record id " << id;
+        _return.rc = 0;
+        _return.customdict = customdict;
+        _return.__isset.rc = true;
+        _return.__isset.customdict = true;
+      } catch (sql::SQLException &e) {
+        mysql_error(_return, e);
+      } catch (std::runtime_error &e) {
+        VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+        VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+        rc_and_error(_return, 3, "ERR: Duplicate entry.");
       }
-
-      if(request.customdict.__isset.samples) {
-        sql << ", samples";
-      }
-
-      sql << ") VALUES ('";
-      sql << id << "','" << request.customdict.name << "','";
-      sql << request.customdict.chatbotID << "', '" << customdict.createdate;
-      sql << "', '" << customdict.updatedate;
-
-      if(request.customdict.__isset.description) {
-        sql << "', '" << request.customdict.description;
-      }
-
-      if(request.customdict.__isset.samples) {
-        sql << "', '" << request.customdict.samples;
-      }
-
-      sql << "')";
-
-      VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
-      stmt->execute(sql.str());
-
-      VLOG(3) << __func__ << " create new record id " << id;
-      _return.rc = 0;
-      _return.customdict = customdict;
-      _return.__isset.rc = true;
-      _return.__isset.customdict = true;
-    } catch (sql::SQLException &e) {
-      mysql_error(_return, e);
-    } catch (std::runtime_error &e) {
-      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
-      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
-      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    } else {
+      rc_and_error(_return, 4, "Invalid dict type, required 'regex', 'vocab' or 'ml'.");
     }
   } else {
     rc_and_error(_return, 1, "Invalid params, customdict obj is required.");
@@ -371,14 +397,27 @@ void ServingHandler::delCustomDict(Data& _return, const Data& request) {
           return;
         }
 
-        // delete all dictwords
-        VLOG(3) << __func__ << " delete dictwords in customdict.";
-        sql.str("");
-        sql << "DELETE FROM cl_dict_words where dict_id = '";
-        sql << dict.id << "'";
+        // 根据词典类型删除资源
+        if(dict.type == CL_DICT_TYPE_PATTERN) {
+          // 删除正则表达式
+          VLOG(3) << __func__ << " delete dict patterns in customdict.";
+          sql.str("");
+          sql << "DELETE FROM cl_dict_pattern where dict_id = '";
+          sql << dict.id << "'";
 
-        VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
-        stmt->execute(sql.str());
+          VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+          stmt->execute(sql.str());
+        } else if(dict.type == CL_DICT_TYPE_VOCAB) {
+          // 删除词条
+          // delete all dictwords
+          VLOG(3) << __func__ << " delete dictwords in customdict.";
+          sql.str("");
+          sql << "DELETE FROM cl_dict_words where dict_id = '";
+          sql << dict.id << "'";
+
+          VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+          stmt->execute(sql.str());
+        }
 
         // finally, delete customdict
         sql.str("");
@@ -2160,38 +2199,66 @@ void ServingHandler::train(Data& _return, const Data& request) {
           tdict->set_name(customdict.name);
           tdict->set_chatbotid(customdict.chatbotID);
           tdict->set_builtin(false);
+          tdict->set_type(customdict.type);
+          tdict->set_vendor(customdict.vendor);
           customdicts_size++;
 
-          Data params;
-          params.chatbotID = customdict.chatbotID;
-          params.__isset.chatbotID = true;
-          params.customdict.name = customdict.name;
-          params.customdict.__isset.name = true;
-          size_t customdict_words_count = 0;
+          if(customdict.type == CL_DICT_TYPE_VOCAB) {
+            // 词表类型的词典
+            Data params;
+            params.chatbotID = customdict.chatbotID;
+            params.__isset.chatbotID = true;
+            params.customdict.name = customdict.name;
+            params.customdict.__isset.name = true;
+            size_t customdict_words_count = 0;
 
-          // 获得每个词典的词条
-          if(getWordsWithPagination(context,
-                                    stmt,
-                                    params,
-                                    CL_CUSTOMWORD_MAX_NUMBER,
-                                    1,
-                                    "")) {
-            if(context.__isset.dictwords) {
-              for(const DictWord& dictword : context.dictwords) {
-                // 创建词典词条
-                chatopera::bot::intent::TDictWord* tdictword = tdict->add_dictwords();
-                tdictword->set_word(dictword.word);
-                tdictword->set_dict_id(customdict.id);
-                tdictword->set_synonyms(dictword.synonyms);
-                dictwords_size++;
-                customdict_words_count++;
+            // 获得每个词典的词条
+            if(getWordsWithPagination(context,
+                                      stmt,
+                                      params,
+                                      CL_CUSTOMWORD_MAX_NUMBER,
+                                      1,
+                                      "")) {
+              if(context.__isset.dictwords) {
+                for(const DictWord& dictword : context.dictwords) {
+                  // 创建词典词条
+                  chatopera::bot::intent::TDictWord* tdictword = tdict->add_dictwords();
+                  tdictword->set_word(dictword.word);
+                  tdictword->set_dict_id(customdict.id);
+                  tdictword->set_synonyms(dictword.synonyms);
+                  dictwords_size++;
+                  customdict_words_count++;
+                }
               }
             }
-          }
 
-          // 自定义词典的词条为0
-          if(customdict_words_count == 0) {
-            rc_and_error(_return, 22, "无法开始训练，包含有词典数为0的自定义词典。");
+            // 自定义词典的词条为0
+            if(customdict_words_count == 0) {
+              rc_and_error(_return, 22, "无法开始训练，包含有词典数为0的自定义词典。");
+              return;
+            }
+          } else if(customdict.type == CL_DICT_TYPE_PATTERN) {
+            // 正则表达式类型词典
+            DictPattern dictpattern = resolveDictPatternDefinition(stmt, customdict.id);
+
+            if(dictpattern.__isset.patterns) {
+              // 已经设置了pattern
+              tdict->mutable_dictpattern()->set_id(dictpattern.id);
+              tdict->mutable_dictpattern()->set_dict_id(customdict.id);
+              tdict->mutable_dictpattern()->set_standard(dictpattern.standard);
+              tdict->mutable_dictpattern()->set_createdate(dictpattern.createdate);
+              tdict->mutable_dictpattern()->set_updatedate(dictpattern.updatedate);
+
+              for(vector<string>::iterator it = dictpattern.patterns.begin(); it != dictpattern.patterns.end(); it++ ) {
+                tdict->mutable_dictpattern()->add_patterns()->assign(*it);
+              }
+            } else {
+              // 训练失败，含有未设置的正则表达式词典
+              rc_and_error(_return, 24, "无法开始训练，存在还未定义表达式的正则表达式词典。");
+            }
+          } else {
+            VLOG(2) << __func__ << " unexpected custom dict type with dict_id: " << customdict.id ;
+            rc_and_error(_return, 23, "无法开始训练，有不合法的自定义词典类型。");
             return;
           }
         }
@@ -2512,9 +2579,9 @@ void ServingHandler::chat(Data& _return, const Data& request) {
       request.__isset.session &&
       request.session.__isset.id) {
     try {
-      /**
+      /****************************************************
        * 获得session信息
-       */
+       ****************************************************/
       intent::TChatSession session;
 
       if(getSessionFromRedisById(*_redis, request.session.id, session)) {
@@ -2546,9 +2613,51 @@ void ServingHandler::chat(Data& _return, const Data& request) {
             return;
           }
 
+          /****************************************************
+           * BOT，查询条件和返回值初始化
+           ****************************************************/
+
           // 赋值BOT
           const Bot& bot =  *((isDevBranch ? _bots_dev : _bots_pro)[session.chatbotid()]);
-          sysdicts::Data syswords; // 系统词典的词条信息
+          // 应用query改写后的查询条件
+          string query(request.message.textMessage);
+          // 系统词典的词条信息
+          sysdicts::Data syswords;
+          // 回复内容
+          ChatMessage reply; // 回复
+
+
+          /****************************************************
+           * Query改写：使用正则表达式词典
+           ****************************************************/
+          std::vector<PatternDictMatch> pattern_dict_matches;
+
+          for(const std::pair<string, intent::TDict>& dpp : (*bot.getPatternDicts())) {
+            VLOG(3) << __func__ << " [query-rewrite] pattern dict name: " << dpp.first;
+            intent::TDictPattern* tdp = &dpp.second.dictpattern();
+
+            for(const std::string dp : tdp->patterns()) {
+              VLOG(3) << __func__ << " [query-rewrite] pattern dict name: " << dpp.first << ", pattern: " << dp;
+
+              PatternDictMatch pdm;
+
+              if(PatternRegex::match(dp, query, pdm)) {
+                // 匹配上值，根据 profile里是否使用该词典决定是否改写
+                if(bot.hasRelatedPatternDict(dpp.first, session.intent_name())) {
+                  replace_first(query, pdm.val, "#" + dpp.first);
+                  pdm.dictname = dpp.second.name();
+                  pdm.dict_id = dpp.second.id();
+                  pattern_dict_matches.push_back(pdm);
+                }
+              }
+            }
+          }
+
+          VLOG(3) << __func__ << " [query-rewrite] post query rewrite by pattern dicts: " << query;
+
+          /****************************************************
+           * Query改写：使用系统词典
+           ****************************************************/
 
           /**
            * 获得系统词典分析
@@ -2583,22 +2692,25 @@ void ServingHandler::chat(Data& _return, const Data& request) {
           }
 
           // 使用系统词典进行 query 改写
-          string query(request.message.textMessage);
-
           for(const sysdicts::Entity entity : syswords.entities) {
             if(bot.hasReferredSysdict(entity.dictname)) {
-              VLOG(3) << __func__ << " detect referred sysdict: " << entity.dictname << ", value: " << entity.val << ", slotname: " << entity.slotname;
+              VLOG(3) << __func__ << " [query-rewrite] detect referred sysdict: " << entity.dictname << ", value: " << entity.val << ", slotname: " << entity.slotname;
               replace_first(query, entity.val, entity.dictname);
             } else {
-              VLOG(3) << __func__ << " discard unreferred sysdict word: " << entity.dictname << ", value: " << entity.val;
+              VLOG(3) << __func__ << " [query-rewrite] discard unreferred sysdict word: " << entity.dictname << ", value: " << entity.val;
             }
           }
 
+          VLOG(3) << __func__ << " [query-rewrite] post query rewrite by sysdicts: " << query;
+
           VLOG(3) << __func__ << " post query rewrite: " << query;
 
-          ChatMessage reply; // 回复
           reply.receiver = session.uid();
           reply.__isset.receiver = true;
+
+          /****************************************************
+           * 中文分词
+           ****************************************************/
 
           std::vector<pair<string, string> > tokens;
           bot.tokenize(query, tokens);
@@ -2615,6 +2727,9 @@ void ServingHandler::chat(Data& _return, const Data& request) {
             request.message.terms.push_back(token.first);
             request.message.tags.push_back(token.second);
           }
+
+          // 查看中文分词结果
+          VLOG(3) << __func__ << " [tokenizer] results: \n\t" << getStringVectorDebuggingStr(request.message.terms) << "\n\t" << getStringVectorDebuggingStr(request.message.tags);
 
           // 检查是否有意图
           if(session.intent_name().empty()) {
@@ -2655,6 +2770,7 @@ void ServingHandler::chat(Data& _return, const Data& request) {
           if(bot.chat(request.message,
                       query,
                       syswords.entities,
+                      pattern_dict_matches,
                       session,
                       reply)) {
             // 查看最新session信息
@@ -2850,6 +2966,263 @@ void ServingHandler::offline(Data& _return, const Data& request) {
   VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
   VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
 };
+
+/**
+ * 获得正则表达式词典
+ */
+void ServingHandler::getDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  if(request.__isset.customdict &&
+      request.customdict.__isset.chatbotID &&
+      request.customdict.__isset.name) {
+
+    try {
+      // 获得Customdict
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        DictPattern pattern = resolveDictPatternDefinition(stmt, customdict.id);
+        _return.rc = 0;
+        _return.msg = "success";
+        _return.dictpattern = pattern;
+        _return.__isset.rc = true;
+        _return.__isset.msg = true;
+        _return.__isset.dictpattern = true;
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } catch (sql::SQLException &e) {
+      mysql_error(_return, e);
+    } catch (std::runtime_error &e) {
+      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    }
+  } else {
+    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+}
+
+/**
+ * 更新正则表达式词典
+ */
+void ServingHandler::putDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  if(request.__isset.customdict &&
+      request.customdict.__isset.chatbotID &&
+      request.customdict.__isset.name) {
+
+    try {
+      // 获得Customdict
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          DictPattern pattern = updateDictPatternDefinition(stmt, customdict.id, request.dictpattern.patterns);
+
+          _return.rc = 0;
+          _return.msg = "success";
+          _return.dictpattern = pattern;
+          _return.__isset.rc = true;
+          _return.__isset.msg = true;
+          _return.__isset.dictpattern = true;
+        } else {
+          // 非正则表达式词典
+          rc_and_error(_return, 11, "Dict is not as regex type.");
+        }
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } catch (sql::SQLException &e) {
+      mysql_error(_return, e);
+    } catch (std::runtime_error &e) {
+      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    }
+  } else {
+    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+}
+
+/**
+ * 根据pattern搜索
+ */
+inline void searchMatchWithPatternDict(const DictPattern& pattern, DictPatternCheck& check) {
+  Json::Value root;
+  Json::Value data(Json::arrayValue);
+
+  if((!pattern.__isset.patterns) || (pattern.patterns.size() == 0)) {
+    root["rc"] = 1;
+    root["error"] = "Error, none Patterns.";
+  } else if((!check.__isset.input) || check.input.empty()) {
+    root["rc"] = 2;
+    root["error"] = "Error, empty input.";
+  } else {
+    for(vector<string>::const_iterator it = pattern.patterns.begin(); it != pattern.patterns.end(); it++) {
+      VLOG(3) << __func__ << " process: " << *it;
+      PatternDictMatch pdm;
+      pdm.dict_id = pattern.dict_id;
+
+      if(PatternRegex::match(*it, check.input, pdm)) {
+        Json::Value matched;
+        matched["val"] = pdm.val;
+        matched["begin"] = pdm.begin;
+        matched["end"] = pdm.end;
+        matched["regex"] = *it;
+        // 只匹配一个结果
+        data.append(matched);
+        VLOG(3) << __func__ << " dict id: " << pdm.dict_id << ", input: "
+                << check.input << ", matched val: " << pdm.val
+                << ", range [" << pdm.begin << "," << pdm.end << "], regex: " << pdm.regex;
+        break;
+      };
+    }
+
+    root["rc"] = 0;
+    root["data"] = data;
+  }
+
+  Json::FastWriter fastWriter;
+  check.output = fastWriter.write(root);
+  check.__isset.output = true;
+}
+
+/**
+ * 调试正则表达式词典
+ */
+void ServingHandler::checkDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  if(request.__isset.customdict &&
+      request.customdict.__isset.chatbotID &&
+      request.customdict.__isset.name &&
+      request.__isset.patterncheck &&
+      request.patterncheck.__isset.input) {
+
+    try {
+      // 获得Customdict
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          DictPattern pattern = resolveDictPatternDefinition(stmt, customdict.id);
+
+          // 调试pattern
+          DictPatternCheck patterncheck = request.patterncheck;
+          patterncheck.dict_id = customdict.id;
+          patterncheck.__isset.dict_id = true;
+
+          searchMatchWithPatternDict(pattern, patterncheck);
+
+          // 保存调试结果到数据库
+          savePatternDictCheckResult(stmt, patterncheck);
+
+          _return.rc = 0;
+          _return.msg = "success";
+          _return.dictpattern = pattern;
+          _return.patterncheck = patterncheck;
+          _return.__isset.rc = true;
+          _return.__isset.msg = true;
+          _return.__isset.dictpattern = true;
+          _return.__isset.patterncheck = true;
+        } else {
+          // 非正则表达式词典
+          rc_and_error(_return, 11, "Dict is not as regex type.");
+        }
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } catch (sql::SQLException &e) {
+      mysql_error(_return, e);
+    } catch (std::runtime_error &e) {
+      VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+      VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 3, "ERR: Duplicate entry.");
+    }
+  } else {
+    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+}
+
+/**
+ * 获得正则表达式词典调试历史
+ */
+void ServingHandler::checkHistoryDictPattern(Data& _return, const Data& request) {
+  VLOG(3) << __func__ << " request: " << FromThriftToUtf8DebugString(&request);
+
+  try {
+    if(request.__isset.customdict  &&
+        request.customdict.__isset.chatbotID &&
+        request.customdict.__isset.name) {
+      // pagination info
+      int pagesize = request.__isset.pagesize ? request.pagesize : 20;
+      // page begins with 1 and default is 1.
+      int page = request.__isset.page ? request.page : 1;
+
+      if(page <= 0) // redefine any invalid value as 1.
+        page = 1;
+
+      //  获得词典
+      CustomDict customdict;
+      boost::scoped_ptr<sql::Statement> stmt(_mysql->conn->createStatement());
+
+      if(getDictDetailByChatbotIDAndName(customdict, stmt,
+                                         request.customdict.chatbotID,
+                                         request.customdict.name
+                                        )) {
+        if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          if(getDictPatternChecksWithPagination(_return, stmt, customdict.id, pagesize, page)) {
+            _return.rc = 0;
+            _return.__isset.rc = true;
+          } else {
+            rc_and_error(_return, 6, "Error when finding slots.");
+            return;
+          }
+        } else {
+          // 非正则表达式词典
+          rc_and_error(_return, 11, "Dict is not as regex type.");
+        }
+      } else {
+        rc_and_error(_return, 4, "Record not exist.");
+      }
+    } else {
+      rc_and_error(_return, 1, "Invalid params, customdict is required.");
+      return;
+    }
+  } catch (sql::SQLException &e) {
+    mysql_error(_return, e);
+    return;
+  } catch (std::runtime_error &e) {
+    VLOG(2) << __func__ << " # ERR: runtime_error in " << __FILE__;
+    VLOG(2) << __func__ << " # ERR: " << e.what() << endl;
+    rc_and_error(_return, 3, "ERR: Duplicate entry.");
+  }
+
+  VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
+};
+
+
 
 /**
  * Error Handler
