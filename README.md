@@ -15,9 +15,27 @@ Chatopera Language Understanding Service，Chatopera 语义理解服务
   </a>
 </p>
 
-Clause 是帮助中小型企业快速而低成本的获得好用的语义理解服务的系统。
+Clause 是帮助企业快速而低成本的获得好用的语义理解服务的系统，让机器更理解人。
 
 Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现企业聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
+
+## 功能
+
+- 支持多机器人管理，每个机器人可创建多个意图(Intent)
+
+- 自定义词典（CustomDict），支持词表形式及正则表达式形式
+
+- 自定义意图（Intent），槽位（Slot）和说法（Utterance）
+
+- 开箱即用的系统词典（人名、地名、组织机构名和时间等）
+
+- 支持聊天机器人调试分支和上线分支
+
+- 支持会话周期管理
+
+- 服务端为微服务，C++实现；客户端使用 RPC 协议连接进行集成，支持多种语言 SDK
+
+- 服务端可做集群，支持大规模高并发访问
 
 **Clause 的服务端使用 C++编写，并且发布为 Docker 镜像；同时提供的客户端集成接口支持多种语言，包括 Java、Python、Node.js 等，请参考下面的内容进一步了解。**
 
@@ -36,7 +54,7 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 - [示例程序](https://github.com/chatopera/clause/wiki/%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F)
 - [开发环境搭建](https://github.com/chatopera/clause/wiki/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
 - [系统集成](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90)
-- [API 文档](https://chatopera.github.io/clause)
+- [API 文档](https://github.com/chatopera/clause/wiki/API%E6%96%87%E6%A1%A3)
 - [FAQ](https://github.com/chatopera/clause/wiki/FAQ)
 
 ## Chatopera 云服务
