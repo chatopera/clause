@@ -113,16 +113,23 @@ Chatopera 云服务是面向企业聊天机器人构建的一站式解决方案�
 <p align="center">
   <b>Chatopera云服务</b><br>
   <a href="https://bot.chatopera.com" target="_blank">
-      <img src="https://user-images.githubusercontent.com/3538629/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
+      <img src="//user-images.githubusercontent.com/3538629/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
   </a>
 </p>
 
+## 社区活动
+
+| 时间       | 活动                                                                          | 链接                                                                                                                      | 时长   | 概述                                |
+| ---------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------ | ----------------------------------- |
+| 2019-12-14 | [Microsoft AI Bootscamp(2019)](https://github.com/huan/microsoft-ai-bootcamp) | [回放](https://www.bilibili.com/video/av80153181?p=3)                                                                     | 40mins | 基本使用介绍+支持正则表达式词典     |
+| 2019-11-03 | [COSCon '2019 中国开源年会](https://www.bagevent.com/event/5744455)           | [回放](https://v.qq.com/x/page/u3017ka4t6o.html)， [PPT【提取码: 25ni】](https://pan.baidu.com/s/1Z-d6CMtI782TLHRxaklDcw) | 40mins | 基本使用介绍+支持读取文件训练机器人 |
+| 2019-09-26 | CSDN 学院直播：深度学习之智能问答机器人实战                                   | [回放](https://edu.csdn.net/huiyiCourse/detail/1068)                                                                      | 60mins | 基本使用介绍                        |
+
 ## 媒体报道
 
-- Clause 语义理解系统@COSCon '2019 中国开源年会：[视频](https://v.qq.com/x/page/u3017ka4t6o.html)， [PPT【提取码: 25ni】](https://pan.baidu.com/s/1Z-d6CMtI782TLHRxaklDcw)
-- [CSDN 学院直播：深度学习之智能问答机器人实战(含视频回放)](https://edu.csdn.net/huiyiCourse/detail/1068)
-- [我爱自然语言处理：Clause，开源的语义理解服务](http://www.52nlp.cn/clause-oss)
 - [开源中国：语义理解系统 Clause](https://www.oschina.net/p/clause)
+
+- [我爱自然语言处理：](http://www.52nlp.cn/clause-oss)
 
 ## 特别鸣谢
 
