@@ -1044,7 +1044,7 @@ void ServingHandler::myDicts(Data& _return, const Data& request) {
     try {
       // 查询自定义词典
       sql.str("");
-      sql << "SELECT name FROM cl_dicts where chatbotID = '";
+      sql << "SELECT name, type FROM cl_dicts where chatbotID = '";
       sql << request.chatbotID << "'";
 
       VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
@@ -1053,7 +1053,9 @@ void ServingHandler::myDicts(Data& _return, const Data& request) {
       while(rset->next()) {
         CustomDict customdict;
         customdict.name = rset->getString("name");
+        customdict.type = rset->getString("type");
         customdict.__isset.name = true;
+        customdict.__isset.type = true;
         _return.customdicts.push_back(customdict);
       }
 
