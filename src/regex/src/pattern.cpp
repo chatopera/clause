@@ -57,6 +57,7 @@ bool PatternRegex::match(const string& pattern, const string& source, PatternDic
 
 /**
  * 检查表达式是否符合PCRE规范
+ * https://www.boost.org/doc/libs/1_34_0/libs/regex/doc/bad_expression.html
  */
 bool PatternRegex::checkBoostPcreGrammar(const string& pattern, string& error_msg) {
   try {
