@@ -51,6 +51,7 @@ class PatternRegex {
 
  public: // functions
   static bool match(const string& pattern, const string& source, PatternDictMatch& pdm);
+  static bool checkBoostPcreGrammar(const string& pattern, string& error_msg);
 };
 
 } // namespace clause

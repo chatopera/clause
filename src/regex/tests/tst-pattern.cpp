@@ -130,3 +130,32 @@ TEST(RegexTest, RegexSearch3) {
   EXPECT_TRUE(true) << "done.";
 }
 
+TEST(RegexTest, RegexSearch4) {
+  LOG(INFO) << "RegexSearch4";
+  const char *s = "看到1111111";
+
+  try {
+    boost::regex expr("[0-9\-()（）]{7,18}", boost::regex::perl);
+  } catch (boost::regex_error &e) {
+    VLOG(3) << __func__ << " # ERR: regex_error in " << __FILE__;
+    VLOG(3) << __func__ << " # ERR: " << e.what() << endl;
+  }
+
+
+//   boost::cmatch what;
+
+//   bool r = boost::regex_search(s, what, expr);
+
+//   if(r) { //如果匹配成功
+//     // LOG(INFO) << "searched:" << mat[0] << endl;
+//     //显示所有子串
+//     for(boost::cmatch::iterator itr = what.begin(); itr != what.end(); ++itr) {
+//       //       指向子串对应首位置        指向子串对应尾位置          子串内容
+//       LOG(INFO) << itr->first - s << ' ' << itr->second - s << ' ' << *itr << endl;
+//     }
+//   }
+
+  EXPECT_TRUE(true) << "done.";
+}
+
+

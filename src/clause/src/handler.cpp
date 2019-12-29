@@ -3020,7 +3020,10 @@ void ServingHandler::putDictPattern(Data& _return, const Data& request) {
 
   if(request.__isset.customdict &&
       request.customdict.__isset.chatbotID &&
-      request.customdict.__isset.name) {
+      request.customdict.__isset.name &&
+      request.__isset.dictpattern &&
+      request.dictpattern.__isset.patterns &&
+      (request.dictpattern.patterns.size() > 0)) {
 
     try {
       // 获得Customdict
@@ -3032,6 +3035,11 @@ void ServingHandler::putDictPattern(Data& _return, const Data& request) {
                                          request.customdict.name
                                         )) {
         if(customdict.type == CL_DICT_TYPE_PATTERN) {
+          // 验证表达式合法性
+          for(vector<string>::const_iterator it = request.dictpattern.patterns.begin(); it != request.dictpattern.patterns.end(); it++) {
+            boost::regex expr(*it, boost::regex::perl);
+          }
+
           DictPattern pattern = updateDictPatternDefinition(stmt, customdict.id, request.dictpattern.patterns);
 
           _return.rc = 0;
@@ -3047,6 +3055,10 @@ void ServingHandler::putDictPattern(Data& _return, const Data& request) {
       } else {
         rc_and_error(_return, 4, "Record not exist.");
       }
+    } catch (boost::regex_error &e) {
+      VLOG(3) << __func__ << " # ERR: regex_error in " << __FILE__;
+      VLOG(3) << __func__ << " # ERR: " << e.what() << endl;
+      rc_and_error(_return, 12, e.what());
     } catch (sql::SQLException &e) {
       mysql_error(_return, e);
     } catch (std::runtime_error &e) {
@@ -3055,7 +3067,7 @@ void ServingHandler::putDictPattern(Data& _return, const Data& request) {
       rc_and_error(_return, 3, "ERR: Duplicate entry.");
     }
   } else {
-    rc_and_error(_return, 10, "Invalid params, chatbotID and prover are required.");
+    rc_and_error(_return, 10, "Invalid params, chatbotID, customdict and dictpattern are required.");
   }
 
   VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);

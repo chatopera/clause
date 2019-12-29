@@ -55,6 +55,21 @@ bool PatternRegex::match(const string& pattern, const string& source, PatternDic
   return false;
 };
 
+/**
+ * 检查表达式是否符合PCRE规范
+ */
+bool PatternRegex::checkBoostPcreGrammar(const string& pattern, string& error_msg) {
+  try {
+    boost::regex expr(pattern, boost::regex::perl);
+    return true;
+  } catch (boost::regex_error &e) {
+    VLOG(3) << __func__ << " # ERR: regex_error in " << __FILE__;
+    VLOG(3) << __func__ << " # ERR: " << e.what() << endl;
+    error_msg = e.what();
+    return false;
+  }
+};
+
 } // namespace clause
 } // namespace bot
 } // namespace chatopera

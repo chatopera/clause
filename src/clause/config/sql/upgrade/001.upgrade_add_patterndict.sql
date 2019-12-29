@@ -1,16 +1,16 @@
--------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
 -- Author       Hai Liang Wang
 -- Created      2019-12-14_10:14:50
 -- File         /Users/hain/chatopera/clause/src/clause/config/sql/upgrade/001.upgrade_add_patterndict.sql
 -- Purpose      Enable pattern dict features
 -- Copyright © 2019, Chatopera Inc. <https://www.chatopera.com>, All Rights Reserved
--------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
 -- Modification History
 --
 -- 14/12/19  Hai Liang Wang 
 --      A comprehensive description of the changes. The description may use as 
 --      many lines as needed.
--------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------
 
 -- ----------------------------
 -- Add Columns
