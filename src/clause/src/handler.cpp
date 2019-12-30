@@ -399,8 +399,17 @@ void ServingHandler::delCustomDict(Data& _return, const Data& request) {
 
         // 根据词典类型删除资源
         if(dict.type == CL_DICT_TYPE_PATTERN) {
+          // 删除表达式验证历史记录
+          VLOG(3) << __func__ << " delete pattern checks for pattern dict.";
+          sql.str("");
+          sql << "DELETE FROM cl_patten_checks where dict_id = '";
+          sql << dict.id << "'";
+
+          VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+          stmt->execute(sql.str());
+
           // 删除正则表达式
-          VLOG(3) << __func__ << " delete dict patterns in customdict.";
+          VLOG(3) << __func__ << " delete patterns for pattern dict.";
           sql.str("");
           sql << "DELETE FROM cl_dict_pattern where dict_id = '";
           sql << dict.id << "'";
