@@ -2269,7 +2269,7 @@ void ServingHandler::train(Data& _return, const Data& request) {
             }
           } else {
             VLOG(2) << __func__ << " unexpected custom dict type with dict_id: " << customdict.id ;
-            rc_and_error(_return, 23, "无法开始训练，有不合法的自定义词典类型。");
+            rc_and_error(_return, 26, "无法开始训练，有不合法的自定义词典类型。");
             return;
           }
         }
@@ -2322,7 +2322,7 @@ void ServingHandler::train(Data& _return, const Data& request) {
 
         if(utters_size == 0) { // 没有说法，无法训练模型
           VLOG(3) << __func__ << " no utterance detected in chatbot " << request.chatbotID;
-          rc_and_error(_return, 21, "无法开始训练，确定该机器人的意图说法数量大于1");
+          rc_and_error(_return, 25, "无法开始训练，确定该机器人的意图【" + intent.name + "】说法数量大于1");
           return;
         }
 
