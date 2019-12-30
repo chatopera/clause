@@ -2307,9 +2307,14 @@ void ServingHandler::train(Data& _return, const Data& request) {
 
           // 获得意图说法
           if(getUttersWithPagination(context, stmt, intent.id,
-                                     CL_UTTER_MAX_NUMBER_PERINTENT, 1) &&
-              context.__isset.utters &&
-              context.utters.size() > 0) {
+                                     CL_UTTER_MAX_NUMBER_PERINTENT, 1)
+            ) {
+            if((!context.__isset.utters) || (context.utters.size() == 0)) {
+              VLOG(3) << __func__ << " no utterance detected in chatbot " << request.chatbotID;
+              rc_and_error(_return, 25, "无法开始训练，确定该机器人的意图【" + intent.name + "】说法数量大于0");
+              return;
+            }
+
             for(const IntentUtter& utter : context.utters) {
               chatopera::bot::intent::TIntentUtter* tutter = tintent->add_utters();
               tutter->set_id(utter.id);
@@ -2318,12 +2323,6 @@ void ServingHandler::train(Data& _return, const Data& request) {
               utters_size++;
             }
           }
-        }
-
-        if(utters_size == 0) { // 没有说法，无法训练模型
-          VLOG(3) << __func__ << " no utterance detected in chatbot " << request.chatbotID;
-          rc_and_error(_return, 25, "无法开始训练，确定该机器人的意图【" + intent.name + "】说法数量大于1");
-          return;
         }
 
         // 发送训练任务
@@ -2345,7 +2344,7 @@ void ServingHandler::train(Data& _return, const Data& request) {
       } else {
         // 没有意图，不进行训练，更新BOT状态，指定未进行训练的原因
         VLOG(3) << __func__ << " no intent detected in chatbot " << request.chatbotID;
-        rc_and_error(_return, 21, "无法开始训练，确定该机器人的意图数量大于1");
+        rc_and_error(_return, 21, "无法开始训练，确定该机器人的意图数量大于0");
         // #TODO 设置BUILD状态：失败 （目前忽略失败后更新Build状态）
         // _redis->set(rkey_chatbot_build(request.chatbotID), CL_CHATBOT_BUILD_FAIL);
       }
