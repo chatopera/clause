@@ -74,6 +74,27 @@ inline bool getBotSysdictByDictIdAndChatbotID(BotSysdict& botSysdict,
 }
 
 /**
+ * 检查一个系统词典是否被机器人槽位引用
+ */
+inline bool checkSysdictIsUsedInSlot(const boost::scoped_ptr<sql::Statement>& stmt,
+                                     const string& dictId,
+                                     const string& chatbotID) {
+  stringstream sql;
+  sql << "SELECT id from cl_intent_slots WHERE dict_id = '";
+  sql << dictId << "' and chatbotID ='" << chatbotID << "'";
+
+  VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+  boost::scoped_ptr< sql::ResultSet > rset(stmt->executeQuery(sql.str()));
+
+  if(rset->rowsCount() > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+/**
  * 查询自定义词典对id的信息
  */
 template <typename T>

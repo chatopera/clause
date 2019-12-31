@@ -731,7 +731,7 @@ void swap(DictPatternCheck &a, DictPatternCheck &b);
 std::ostream& operator<<(std::ostream& out, const DictPatternCheck& obj);
 
 typedef struct _Dict__isset {
-  _Dict__isset() : name(false), chatbotID(false), builtin(false), active(false), id(false), description(false), samples(false), createdate(false), updatedate(false), referred(false), type(false), vendor(false) {}
+  _Dict__isset() : name(false), chatbotID(false), builtin(false), active(false), id(false), description(false), samples(false), createdate(false), updatedate(false), referred(false), type(false), vendor(false), used(false) {}
   bool name :1;
   bool chatbotID :1;
   bool builtin :1;
@@ -744,6 +744,7 @@ typedef struct _Dict__isset {
   bool referred :1;
   bool type :1;
   bool vendor :1;
+  bool used :1;
 } _Dict__isset;
 
 class Dict : public virtual ::apache::thrift::TBase {
@@ -751,7 +752,7 @@ class Dict : public virtual ::apache::thrift::TBase {
 
   Dict(const Dict&);
   Dict& operator=(const Dict&);
-  Dict() : name(), chatbotID(), builtin(0), active(0), id(), description(), samples(), createdate(), updatedate(), referred(0), type(), vendor() {
+  Dict() : name(), chatbotID(), builtin(0), active(0), id(), description(), samples(), createdate(), updatedate(), referred(0), type(), vendor(), used(0) {
   }
 
   virtual ~Dict() throw();
@@ -767,6 +768,7 @@ class Dict : public virtual ::apache::thrift::TBase {
   bool referred;
   std::string type;
   std::string vendor;
+  bool used;
 
   _Dict__isset __isset;
 
@@ -793,6 +795,8 @@ class Dict : public virtual ::apache::thrift::TBase {
   void __set_type(const std::string& val);
 
   void __set_vendor(const std::string& val);
+
+  void __set_used(const bool val);
 
   bool operator == (const Dict & rhs) const
   {
@@ -843,6 +847,10 @@ class Dict : public virtual ::apache::thrift::TBase {
     if (__isset.vendor != rhs.__isset.vendor)
       return false;
     else if (__isset.vendor && !(vendor == rhs.vendor))
+      return false;
+    if (__isset.used != rhs.__isset.used)
+      return false;
+    else if (__isset.used && !(used == rhs.used))
       return false;
     return true;
   }

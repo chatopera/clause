@@ -1150,6 +1150,7 @@ var Dict = module.exports.Dict = function(args) {
   this.referred = null;
   this.type = null;
   this.vendor = null;
+  this.used = null;
   if (args) {
     if (args.name !== undefined && args.name !== null) {
       this.name = args.name;
@@ -1186,6 +1187,9 @@ var Dict = module.exports.Dict = function(args) {
     }
     if (args.vendor !== undefined && args.vendor !== null) {
       this.vendor = args.vendor;
+    }
+    if (args.used !== undefined && args.used !== null) {
+      this.used = args.used;
     }
   }
 };
@@ -1284,6 +1288,13 @@ Dict.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 13:
+      if (ftype == Thrift.Type.BOOL) {
+        this.used = input.readBool();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -1353,6 +1364,11 @@ Dict.prototype.write = function(output) {
   if (this.vendor !== null && this.vendor !== undefined) {
     output.writeFieldBegin('vendor', Thrift.Type.STRING, 12);
     output.writeString(this.vendor);
+    output.writeFieldEnd();
+  }
+  if (this.used !== null && this.used !== undefined) {
+    output.writeFieldBegin('used', Thrift.Type.BOOL, 13);
+    output.writeBool(this.used);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

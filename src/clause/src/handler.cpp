@@ -992,7 +992,7 @@ void ServingHandler::mySysdicts(Data& _return, const Data& request) {
 
       // 查询系统词典
       sql.str("");
-      sql << "SELECT D.name as dname, D.description as"
+      sql << "SELECT D.id as did, D.name as dname, D.description as"
           << " ddescription, D.createdate as dcreatedate, "
           << " D.updatedate as dupdatedate, D.samples as dsamples  FROM cl_dicts D"
           << " LEFT OUTER JOIN cl_bot_sysdict B ON B.dict_id = D.id "
@@ -1017,6 +1017,11 @@ void ServingHandler::mySysdicts(Data& _return, const Data& request) {
         sysdict.__isset.updatedate = true;
         sysdict.__isset.referred = true;
         sysdict.__isset.builtin = true;
+
+        // 检测该词典是否被该机器人的槽位使用
+        sysdict.used = checkSysdictIsUsedInSlot(stmt, rset->getString("did"), request.chatbotID);
+        sysdict.__isset.used = true;
+
         _return.sysdicts.push_back(sysdict);
         _return.__isset.sysdicts = true;
       }

@@ -1827,6 +1827,11 @@ void Dict::__set_vendor(const std::string& val) {
   this->vendor = val;
 __isset.vendor = true;
 }
+
+void Dict::__set_used(const bool val) {
+  this->used = val;
+__isset.used = true;
+}
 std::ostream& operator<<(std::ostream& out, const Dict& obj)
 {
   obj.printTo(out);
@@ -1951,6 +1956,14 @@ uint32_t Dict::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 13:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->used);
+          this->__isset.used = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -2028,6 +2041,11 @@ uint32_t Dict::write(::apache::thrift::protocol::TProtocol* oprot) const {
     xfer += oprot->writeString(this->vendor);
     xfer += oprot->writeFieldEnd();
   }
+  if (this->__isset.used) {
+    xfer += oprot->writeFieldBegin("used", ::apache::thrift::protocol::T_BOOL, 13);
+    xfer += oprot->writeBool(this->used);
+    xfer += oprot->writeFieldEnd();
+  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -2047,6 +2065,7 @@ void swap(Dict &a, Dict &b) {
   swap(a.referred, b.referred);
   swap(a.type, b.type);
   swap(a.vendor, b.vendor);
+  swap(a.used, b.used);
   swap(a.__isset, b.__isset);
 }
 
@@ -2063,6 +2082,7 @@ Dict::Dict(const Dict& other38) {
   referred = other38.referred;
   type = other38.type;
   vendor = other38.vendor;
+  used = other38.used;
   __isset = other38.__isset;
 }
 Dict& Dict::operator=(const Dict& other39) {
@@ -2078,6 +2098,7 @@ Dict& Dict::operator=(const Dict& other39) {
   referred = other39.referred;
   type = other39.type;
   vendor = other39.vendor;
+  used = other39.used;
   __isset = other39.__isset;
   return *this;
 }
@@ -2096,6 +2117,7 @@ void Dict::printTo(std::ostream& out) const {
   out << ", " << "referred="; (__isset.referred ? (out << to_string(referred)) : (out << "<null>"));
   out << ", " << "type="; (__isset.type ? (out << to_string(type)) : (out << "<null>"));
   out << ", " << "vendor="; (__isset.vendor ? (out << to_string(vendor)) : (out << "<null>"));
+  out << ", " << "used="; (__isset.used ? (out << to_string(used)) : (out << "<null>"));
   out << ")";
 }
 

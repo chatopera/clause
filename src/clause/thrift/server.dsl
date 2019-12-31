@@ -116,7 +116,7 @@ struct Dict {
     1: optional string name;
     2: optional string chatbotID;
     3: optional bool builtin;          // 是否是系统词典
-    4: optional bool active;           // 是否活跃，和系统词典相关
+    4: optional bool active;           // 系统词典相关:是否活跃
     5: optional string id;
     6: optional string description;
     7: optional string samples;        
@@ -125,6 +125,7 @@ struct Dict {
     10: optional bool referred;        // 是否被引用，和系统词典相关
     11: optional string type;          // 类型：vocab, regex, ml
     12: optional string vendor;        // 发布者
+    13: optional bool used;            // 系统词典相关:该词典是否被机器人的槽位使用
 }
 
 /**
