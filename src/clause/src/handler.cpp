@@ -2266,6 +2266,7 @@ void ServingHandler::train(Data& _return, const Data& request) {
             } else {
               // 训练失败，含有未设置的正则表达式词典
               rc_and_error(_return, 24, "无法开始训练，存在还未定义表达式的正则表达式词典。");
+              return;
             }
           } else {
             VLOG(2) << __func__ << " unexpected custom dict type with dict_id: " << customdict.id ;
@@ -2345,6 +2346,7 @@ void ServingHandler::train(Data& _return, const Data& request) {
         // 没有意图，不进行训练，更新BOT状态，指定未进行训练的原因
         VLOG(3) << __func__ << " no intent detected in chatbot " << request.chatbotID;
         rc_and_error(_return, 21, "无法开始训练，确定该机器人的意图数量大于0");
+        return;
         // #TODO 设置BUILD状态：失败 （目前忽略失败后更新Build状态）
         // _redis->set(rkey_chatbot_build(request.chatbotID), CL_CHATBOT_BUILD_FAIL);
       }
