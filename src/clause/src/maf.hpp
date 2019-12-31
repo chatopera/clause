@@ -80,13 +80,14 @@ inline bool checkSysdictIsUsedInSlot(const boost::scoped_ptr<sql::Statement>& st
                                      const string& dictId,
                                      const string& chatbotID) {
   stringstream sql;
-  sql << "SELECT id from cl_intent_slots WHERE dict_id = '";
+  sql << "SELECT COUNT(id) from cl_intent_slots WHERE dict_id = '";
   sql << dictId << "' and chatbotID ='" << chatbotID << "'";
 
   VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
-  boost::scoped_ptr< sql::ResultSet > rset(stmt->executeQuery(sql.str()));
+  boost::scoped_ptr< sql::ResultSet > cset(stmt->executeQuery(sql.str()));
+  cset->next();
 
-  if(rset->rowsCount() > 0) {
+  if(cset->getInt(1) > 0) {
     return true;
   } else {
     return false;
@@ -271,6 +272,12 @@ inline bool getDictsWithPagination(Data& data,
         std::string referred(rset->getString("bid"));
         sysdict.referred = referred.empty() ? false : true;
         sysdict.__isset.referred = true;
+
+        if(sysdict.referred) {
+          // 该系统词典被机器人引用，检查是否具体被某槽位引用
+          sysdict.used = checkSysdictIsUsedInSlot(stmt, sysdict.id, chatbotID);
+          sysdict.__isset.used = true;
+        }
       }
 
       sysdict.__isset.samples = true;
