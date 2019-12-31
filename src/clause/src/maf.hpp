@@ -80,14 +80,44 @@ inline bool checkSysdictIsUsedInSlot(const boost::scoped_ptr<sql::Statement>& st
                                      const string& dictId,
                                      const string& chatbotID) {
   stringstream sql;
-  sql << "SELECT COUNT(id) from cl_intent_slots WHERE dict_id = '";
-  sql << dictId << "' and chatbotID ='" << chatbotID << "'";
+  // 获得该Chatbot的IntentIds
+  sql << "SELECT id FROM cl_intents WHERE chatbotID = '" << chatbotID << "'";
 
+  VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
+  boost::scoped_ptr< sql::ResultSet > rset(stmt->executeQuery(sql.str()));
+
+  VLOG(3) << __func__ << " row count: " << rset->rowsCount();
+
+  if(rset->rowsCount() == 0) {
+    // 该机器人没有意图
+    return false;
+  }
+
+  vector<string> intentIds;
+
+  while(rset->next()) {
+    intentIds.push_back(rset->getString("id"));
+  }
+
+  sql.str("");
+  sql << "SELECT COUNT(id) FROM cl_intent_slots WHERE dict_id = '" << dictId << "'"
+      << " AND intent_id IN (";
+
+  for(vector<string>::iterator it = intentIds.begin(); it != intentIds.end(); it++) {
+    sql << "'" << *it << "'";
+
+    if((it + 1) != intentIds.end()) {
+      sql << ",";
+    }
+  }
+
+  sql << ")";
   VLOG(3) << __func__ << " execute SQL: \n---\n" << sql.str() << "\n---";
   boost::scoped_ptr< sql::ResultSet > cset(stmt->executeQuery(sql.str()));
   cset->next();
 
   if(cset->getInt(1) > 0) {
+    // 该机器人有槽位使用该系统词典
     return true;
   } else {
     return false;

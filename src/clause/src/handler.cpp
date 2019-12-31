@@ -3251,8 +3251,6 @@ void ServingHandler::checkHistoryDictPattern(Data& _return, const Data& request)
   VLOG(3) << __func__ << " response: " << FromThriftToUtf8DebugString(&_return);
 };
 
-
-
 /**
  * Error Handler
  * https://gitlab.chatopera.com/chatopera/chatopera.bot/issues/212#note_2269
