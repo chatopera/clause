@@ -58,6 +58,10 @@ Trainer::Trainer() {
   dict.clear();
   dict.push_back("@PER");
   PREDEFINED_DICTS["@PER"] = dict;
+  // 任意字符串
+  dict.clear();
+  dict.push_back("@ANY");
+  PREDEFINED_DICTS["@ANY"] = dict;
 };
 
 Trainer::~Trainer() {

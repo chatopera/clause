@@ -37,11 +37,17 @@
 #define CL_DICT_TYPE_VOCAB   "vocab"
 // 正则表达式词典
 #define CL_DICT_PATTERN_STANDARD "PCRE"
+// 任意字符串
+#define CL_DICT_TYPE_ANY     "any"
+
 // 分词器中，正则表达式term前缀
 #define CL_DICT_PATTERN_PREFIX  "#"
 
 #define CL_BOT_PRO_STATUS_ONLINE "online"
 #define CL_BOT_PRO_STATUS_OFFLINE "offline"
+
+#define CL_SYSDICT_LABEL_ANY "ANY"
+#define CL_SYSDICT_DICT_ANY "@ANY"
 
 // tags from https://github.com/baidu/lac
 #define CL_SYSDICT_LABEL_LOC "LOC"

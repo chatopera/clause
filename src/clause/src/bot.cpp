@@ -895,7 +895,11 @@ bool Bot::chat(const ChatMessage& payload,
         // 最坏的情况是做多次的追问，体验比较勉强
         std::set<string> bypassValues;
 
-        if(boost::starts_with(session.proactive_dictname(), "@")) { // 处理系统词典
+        if(session.proactive_dictname() == CL_SYSDICT_DICT_ANY) {
+          // @ANY 匹配任何字符串
+          slotvalue = payload.textMessage;
+          settledown = true;
+        } else if(boost::starts_with(session.proactive_dictname(), "@")) { // 处理系统词典
           for(const sysdicts::Entity& se : builtins) {
             if(se.dictname == session.proactive_dictname()) {
               // 查找到
@@ -930,10 +934,6 @@ bool Bot::chat(const ChatMessage& payload,
         if(settledown) {
           // set session entity
           setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
-          session.set_is_proactive(false);           // 停止追问
-          session.clear_proactive_slotname();        // 停止追问
-          session.clear_proactive_dictname();        // 停止追问
-          session.clear_proactive_question();        // 停止追问
         }
 
         /**
@@ -942,49 +942,56 @@ bool Bot::chat(const ChatMessage& payload,
         // 在本次对话中，用户也说的了其他的槽位的值，在NER中能识别出来
         // 但是这也加入了判断错误的风险，所以忽略对反问时，其他槽位的识别
         // 查找还没有确定值的命名实体
-        for(const intent::TChatSession::Entity& ie : session.entities()) {
-          string extras_slotvalue;
+        if(session.proactive_dictname() != CL_SYSDICT_DICT_ANY) {
+          for(const intent::TChatSession::Entity& ie : session.entities()) {
+            string extras_slotvalue;
 
-          if(ie.val().empty()) {
-            // 该槽位值还没有确定
-            if(boost::starts_with(ie.dictname(), "@")) {
-              // 系统词典
-              for(const sysdicts::Entity& se : builtins) {
-                if((se.dictname == ie.dictname()) && (bypassValues.find(se.val) == bypassValues.end())) {
-                  // 查找到
-                  VLOG(3) << __func__ << " slotname " << ie.name() << " : " << se.val;
-                  setSessionEntityValueByName(ie.name(), se.val, session);
-                  bypassValues.insert(se.val);
-                  break;
+            if(ie.val().empty()) {
+              // 该槽位值还没有确定
+              if(boost::starts_with(ie.dictname(), "@")) {
+                // 系统词典
+                for(const sysdicts::Entity& se : builtins) {
+                  if((se.dictname == ie.dictname()) && (bypassValues.find(se.val) == bypassValues.end())) {
+                    // 查找到
+                    VLOG(3) << __func__ << " slotname " << ie.name() << " : " << se.val;
+                    setSessionEntityValueByName(ie.name(), se.val, session);
+                    bypassValues.insert(se.val);
+                    break;
+                  }
                 }
-              }
-            } else if(is_dictname_belongto_patterndicts(*_pattern_dicts, ie.dictname())) {
-              // 正则表达式词典
-              for(const PatternDictMatch& pdm : patternDictMatches) {
-                if((ie.dictname() == pdm.dictname) && (bypassValues.find(pdm.val) == bypassValues.end())) {
-                  // 查找到
-                  VLOG(3) << __func__ << " slotname " << ie.name() << " : " << pdm.val;
-                  setSessionEntityValueByName(ie.name(), pdm.val, session);
-                  bypassValues.insert(pdm.val);
-                  break;
+              } else if(is_dictname_belongto_patterndicts(*_pattern_dicts, ie.dictname())) {
+                // 正则表达式词典
+                for(const PatternDictMatch& pdm : patternDictMatches) {
+                  if((ie.dictname() == pdm.dictname) && (bypassValues.find(pdm.val) == bypassValues.end())) {
+                    // 查找到
+                    VLOG(3) << __func__ << " slotname " << ie.name() << " : " << pdm.val;
+                    setSessionEntityValueByName(ie.name(), pdm.val, session);
+                    bypassValues.insert(pdm.val);
+                    break;
+                  }
                 }
-              }
-            } else if(extract_slotvalue_from_utterence_with_triedata(*_dictwords_triedb,
-                      payload.textMessage,
-                      ie.dictname(),
-                      extras_slotvalue)) {
-              // 查询用户词表词典
-              if(bypassValues.find(extras_slotvalue) == bypassValues.end()) {
-                setSessionEntityValueByName(ie.name(), extras_slotvalue, session);
-                bypassValues.insert(extras_slotvalue);
-                VLOG(3) << __func__ << " slotname " << ie.name() << " : " << extras_slotvalue;
+              } else if(extract_slotvalue_from_utterence_with_triedata(*_dictwords_triedb,
+                        payload.textMessage,
+                        ie.dictname(),
+                        extras_slotvalue)) {
+                // 查询用户词表词典
+                if(bypassValues.find(extras_slotvalue) == bypassValues.end()) {
+                  setSessionEntityValueByName(ie.name(), extras_slotvalue, session);
+                  bypassValues.insert(extras_slotvalue);
+                  VLOG(3) << __func__ << " slotname " << ie.name() << " : " << extras_slotvalue;
+                }
               }
             }
           }
         }
 
         // 未查找到，继续追问, session信息不变
-        if(!settledown) {
+        if(settledown) {
+          session.set_is_proactive(false);           // 停止追问
+          session.clear_proactive_slotname();        // 停止追问
+          session.clear_proactive_dictname();        // 停止追问
+          session.clear_proactive_question();        // 停止追问
+        } else {
           VLOG(3) << __func__ << " not found value for proactive slot " <<  session.proactive_slotname();
           reply.textMessage = session.proactive_question();
           reply.is_proactive = true;
