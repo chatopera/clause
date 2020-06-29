@@ -18,7 +18,7 @@ which sudo
 if [ $? -eq 0 ]; then
     SUDO_CMD=sudo
 fi
-cd /opt && $SUDO_CMD wget -O $MVNNAME https://www-us.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
+cd /opt && $SUDO_CMD wget -O $MVNNAME https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
 $SUDO_CMD tar xzf $MVNNAME
 $SUDO_CMD mv apache-maven-* maven
 $SUDO_CMD rm $MVNNAME
