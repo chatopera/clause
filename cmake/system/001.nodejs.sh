@@ -5,8 +5,7 @@
 
 # constants
 baseDir=$(cd `dirname "$0"`;pwd)
-#NODEPKG=https://nodejs.org/dist/v8.16.0/node-v8.16.0-linux-x64.tar.xz
-NODEPKG=https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz
+NODEPKG=https://nodejs.org/download/release/v10.21.0/node-v10.21.0-linux-x64.tar.gz
 SUDO_CMD=""
 INSTALLDIR=/opt/node
 
