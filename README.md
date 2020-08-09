@@ -144,7 +144,7 @@ Chatopera 云服务是面向企业聊天机器人构建的一站式解决方案�
 
 ## 开源许可协议
 
-Copyright (2019) <a href="https://www.chatopera.com/" target="_blank">北京华夏春松科技有限公司</a>
+Copyright (2019-2020) <a href="https://www.chatopera.com/" target="_blank">北京华夏春松科技有限公司</a>
 
 [Apache License Version 2.0](https://github.com/chatopera/clause/blob/master/LICENSE)
 
