@@ -2,7 +2,7 @@
 
 <p align="center">
   <b>Clause项目QQ交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64315364-6a095380-cfe4-11e9-8bf6-f15ce6e26e0a.png" width="200">
+  <img src="https://static-public.chatopera.com/assets/images/64315364-6a095380-cfe4-11e9-8bf6-f15ce6e26e0a.png" width="200">
 </p>
 
 # Clause
@@ -11,7 +11,7 @@ Chatopera Language Understanding Service，Chatopera 语义理解服务
 
 <p align="center">
   <a href="https://github.com/chatopera/clause" target="_blank">
-      <img src="https://user-images.githubusercontent.com/3538629/64316956-e4d46d80-cfe8-11e9-8342-ec8a250074bf.png" width="800">
+      <img src="https://static-public.chatopera.com/assets/images/64316956-e4d46d80-cfe8-11e9-8342-ec8a250074bf.png" width="800">
   </a>
 </p>
 
@@ -43,7 +43,7 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 <p align="center">
   <b>使用 Python 快速实现问答机器人</b><a href="https://github.com/chatopera/clause-py-demo">(链接)</a><br>
-  <img src="https://user-images.githubusercontent.com/3538629/65892122-54ffc480-e3d8-11e9-8f64-c82f25694df5.gif" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/65892122-54ffc480-e3d8-11e9-8f64-c82f25694df5.gif" width="800">
 </p>
 
 ## 欢迎使用
@@ -63,47 +63,47 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
 
 <p align="center">
   <b>自定义词典</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530072-da92d600-d33e-11e9-8656-01c26caff4f9.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530072-da92d600-d33e-11e9-8656-01c26caff4f9.png" width="800">
 </p>
 
 <p align="center">
   <b>自定义词条</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530091-e41c3e00-d33e-11e9-9704-c07a2a02b84e.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530091-e41c3e00-d33e-11e9-9704-c07a2a02b84e.png" width="800">
 </p>
 
 <p align="center">
   <b>创建意图</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530169-12018280-d33f-11e9-93b4-9db881cf4dd5.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530169-12018280-d33f-11e9-93b4-9db881cf4dd5.png" width="800">
 </p>
 
 <p align="center">
   <b>添加说法和槽位</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530187-20e83500-d33f-11e9-87ec-a0241e3dac4d.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530187-20e83500-d33f-11e9-87ec-a0241e3dac4d.png" width="800">
 </p>
 
 <p align="center">
   <b>训练模型</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530235-33626e80-d33f-11e9-8d07-fa3ae417fd5d.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530235-33626e80-d33f-11e9-8d07-fa3ae417fd5d.png" width="800">
 </p>
 
 <p align="center">
   <b>测试对话</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530253-3d846d00-d33f-11e9-81ea-86e6d47020d8.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530253-3d846d00-d33f-11e9-81ea-86e6d47020d8.png" width="800">
 </p>
 
 <p align="center">
   <b>机器人画像</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530312-6442a380-d33f-11e9-869c-85fb6a835a97.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530312-6442a380-d33f-11e9-869c-85fb6a835a97.png" width="800">
 </p>
 
 <p align="center">
   <b>系统集成</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530281-4ecd7980-d33f-11e9-8def-c53251f30138.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530281-4ecd7980-d33f-11e9-8def-c53251f30138.png" width="800">
 </p>
 
 <p align="center">
   <b>聊天历史</b><br>
-  <img src="https://user-images.githubusercontent.com/3538629/64530295-5856e180-d33f-11e9-94d4-db50481b2d8e.png" width="800">
+  <img src="https://static-public.chatopera.com/assets/images/64530295-5856e180-d33f-11e9-94d4-db50481b2d8e.png" width="800">
 </p>
 
 ## 立即使用
@@ -113,7 +113,7 @@ Chatopera 云服务是面向企业聊天机器人构建的一站式解决方案�
 <p align="center">
   <b>Chatopera云服务</b><br>
   <a href="https://bot.chatopera.com" target="_blank">
-      <img src="//user-images.githubusercontent.com/3538629/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
+      <img src="https://static-public.chatopera.com/assets/images/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
   </a>
 </p>
 
@@ -150,5 +150,5 @@ Copyright (2019-2020) <a href="https://www.chatopera.com/" target="_blank">北�
 
 [![chatoper banner][co-banner-image]][co-url]
 
-[co-banner-image]: https://user-images.githubusercontent.com/3538629/42383104-da925942-8168-11e8-8195-868d5fcec170.png
+[co-banner-image]: https://static-public.chatopera.com/assets/images/42383104-da925942-8168-11e8-8195-868d5fcec170.png
 [co-url]: https://www.chatopera.com
