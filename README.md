@@ -108,7 +108,7 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
 
 ## 立即使用
 
-Chatopera 云服务是面向企业聊天机器人构建的一站式解决方案。
+[Chatopera 云服务](https://bot.chatopera.com/dashboard) 是面向企业聊天机器人构建的一站式解决方案。
 
 <p align="center">
   <b>Chatopera云服务</b><br>
