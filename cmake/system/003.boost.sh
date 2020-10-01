@@ -37,12 +37,6 @@ $SUDO_CMD dpkg -P libboost-all-dev libboost-dev libboost-test-dev
 $SUDO_CMD rm -rf $ROOR_INSTALL_DIR/lib/libboost_*
 $SUDO_CMD rm -rf $ROOR_INSTALL_DIR/include/boost
 
-# Execute the action
-$SUDO_CMD apt-get update && $SUDO_CMD apt-get -y install \
-    build-essential g++ gcc mpi-default-dev libicu-dev python-dev \
-    python3-dev libbz2-dev zlib1g-dev \
-    libicu-dev zip unzip wget
-
 #----------------------------------------------------------
 # Installing Boost
 #----------------------------------------------------------

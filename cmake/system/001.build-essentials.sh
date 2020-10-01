@@ -18,7 +18,10 @@ fi
 
 $SUDO_CMD apt-get install --reinstall -y \
     build-essential g++ gcc git astyle gdb \
-    cmake autoconf automake libtool libtool-bin
+    cmake autoconf automake libtool libtool-bin \
+    mpi-default-dev libicu-dev python-dev \
+    python3-dev libbz2-dev zlib1g-dev \
+    zip unzip wget
 
 set -x
 if [ -f /usr/local/bin/gcc ]; then
