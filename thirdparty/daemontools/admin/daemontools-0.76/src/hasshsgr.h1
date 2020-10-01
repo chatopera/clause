@@ -1,3 +1,0 @@
-/* Public domain. */
-
-/* sysdep: -shortsetgroups */

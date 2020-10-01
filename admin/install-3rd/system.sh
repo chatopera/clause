@@ -23,7 +23,7 @@ cd $ROOR_INSTALL_DIR/cmake/system
 
 for x in `find . -name "*.sh"|sort`; do
     echo "[install] run" $x " ..."
-    $x
+    $SUDO_CMD $x
     if [ ! $? -eq 0 ]; then
         echo "Failed result with" $x 
         exit 1

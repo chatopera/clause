@@ -5,7 +5,8 @@
 
 # constants
 baseDir=$(cd `dirname "$0"`;pwd)
-NODEPKG=https://nodejs.org/download/release/v10.21.0/node-v10.21.0-linux-x64.tar.gz
+# NODE LATEST https://nodejs.org/download/release/latest-v10.x/
+NODEPKG=https://nodejs.org/download/release/latest-v10.x/node-v10.22.1-linux-x64.tar.gz
 SUDO_CMD=""
 INSTALLDIR=/opt/node
 

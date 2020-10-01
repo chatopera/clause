@@ -31,5 +31,5 @@ cp -rf $SRCDIR $OPTDIR; cd $OPTDIR
 mkdir  release
 cd  release
 cmake  ../
-make
+make -j${nproc}
 $SUDO_CMD make install
