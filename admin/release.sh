@@ -77,6 +77,10 @@ $SUDO_CMD rm -rf $tmpdir/var/mysql/data/*
 mkdir $tmpdir/var/local
 cp -rf var/local/data $tmpdir/var/local/data
 mkdir -p $tmpdir/var/local/workarea
+tee $tmpdir/var/local/workarea/.gitignore <<-'EOF'
+*
+!.gitignore
+EOF
 
 ## copy clause mysql database init script
 mkdir -p $tmpdir/src/clause/config
