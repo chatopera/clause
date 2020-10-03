@@ -22,7 +22,9 @@ echo "[WARN] wait for 10 seconds before clean up all data, be sure of what you a
 sleep 10
 set -x
 docker-compose stop
+docker-compose rm --force
 
 $SUDO_CMD rm -rf var/activemq/data/*
 $SUDO_CMD rm -rf var/mysql/data/*
 $SUDO_CMD rm -rf var/redis/data/*
+

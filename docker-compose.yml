@@ -58,7 +58,7 @@ services:
       - "${SYSDICTS_PORT:-8066}:8066"
     environment:
       - GLOG_logtostderr=1
-      - GLOG_v=3
+      - GLOG_v=2
       - FLAGS_server_port=8066
       - FLAGS_server_threads=20
       - FLAGS_lac_conf_dir=/app/data/lac/conf
