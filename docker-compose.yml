@@ -2,7 +2,7 @@ version: "3"
 services:
   ## Computing Nodes
   clause:
-    image: "chatopera/clause:develop"
+    image: "chatopera/clause:${CLAUSE_BUILD:-develop}"
     restart: always
     ports:
       - "${CLAUSE_PORT:-8056}:8056"
@@ -33,7 +33,7 @@ services:
       - activemq
 
   intent:
-    image: "chatopera/intent:develop"
+    image: "chatopera/intent:${CLAUSE_BUILD:-develop}"
     restart: always
     ports:
       - "${INTENT_PORT:-8063}:8063"
@@ -52,7 +52,7 @@ services:
       - activemq
 
   sysdicts:
-    image: "chatopera/sysdicts:develop"
+    image: "chatopera/sysdicts:${CLAUSE_BUILD:-develop}"
     restart: always
     ports:
       - "${SYSDICTS_PORT:-8066}:8066"
