@@ -26,7 +26,7 @@ if [ "$#" -ne 3 ]; then
 else
     # do some checks
     $baseDir/../precompile.sh
-    source $baseDir/../localrc
+    source $rootDir/.env
 
     echo "start application ..."
     # set -x

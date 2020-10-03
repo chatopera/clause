@@ -11,9 +11,10 @@ buildDir=$baseDir/../build/debug
 
 # main
 [ -z "${BASH_SOURCE[0]}" -o "${BASH_SOURCE[0]}" = "$0" ] || return
-if [ ! -f $baseDir/localrc ]; then
-    cp $baseDir/localrc.sample $baseDir/localrc
-    echo "[WARN] Check localrc in " $baseDir/localrc
+if [ ! -f $baseDir/../.env ]; then
+    cp $baseDir/../sample.env $baseDir/../.env
+    echo "[WARN] Check .env in " $baseDir/..
+    exit 1
 fi
 
 if [ ! -d $buildDir ]; then
