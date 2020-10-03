@@ -1,7 +1,7 @@
 [![Docker Layers](https://images.microbadger.com/badges/image/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image layers") [![Docker Version](https://images.microbadger.com/badges/version/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image version") [![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Commit](https://images.microbadger.com/badges/commit/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image CommitID")
 
 <p align="center">
-  <b>Clause项目QQ交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
+  <b>Clause QQ 交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
   <img src="https://static-public.chatopera.com/assets/images/64315364-6a095380-cfe4-11e9-8bf6-f15ce6e26e0a.png" width="200">
 </p>
 
@@ -15,9 +15,11 @@ Chatopera Language Understanding Service，Chatopera 语义理解服务
   </a>
 </p>
 
-Clause 是帮助企业快速而低成本的获得好用的语义理解服务的系统，让机器更理解人。
+Clause 帮助聊天机器人开发商、开发者快速而低成本的获得开源的语义理解系统。
 
-Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现企业聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
+Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
+
+利用 Clause 可快速实现聊天机器人服务，通过自然语言的人机交互形式完成数据收集和数据处理。
 
 ## 功能
 
@@ -59,7 +61,17 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 ## Chatopera 云服务
 
-Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。[Chatopera 云服务](https://bot.chatopera.com/)提供基于搜索、规则和机器学习的对话解决方案，可用于企业定制满足自身业务需求的聊天机器人，同时 [Chatopera 云服务](https://bot.chatopera.com/)通过计费、支付和发票等方法降低了企业获取这样一个解决方案的成本，是企业更快的专注于设计对话、调试聊天机器人，更快的投入使用。 **以下图片来自于 Chatopera 云服务的意图识别模块，其底层 API 使用 Clause 服务。**
+Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。
+
+[https://bot.chatopera.com/](https://bot.chatopera.com/)
+
+[Chatopera 云服务](https://bot.chatopera.com)是一站式实现聊天机器人的云服务，按接口调用次数计费。Chatopera 云服务是 [Chatopera 机器人平台](https://docs.chatopera.com/products/chatbot-platform/index.html)的软件即服务实例。在云计算基础上，Chatopera 云服务属于**聊天机器人即服务**的云服务。
+
+Chatopera 机器人平台包括知识库、多轮对话、意图识别和语音识别等组件，标准化聊天机器人开发，支持企业 OA 智能问答、HR 智能问答、智能客服和网络营销等场景。企业 IT 部门、业务部门借助 Chatopera 云服务快速让聊天机器人上线！
+
+<details>
+<summary>展开查看 Chatopera 云服务的产品截图</summary>
+<p>
 
 <p align="center">
   <b>自定义词典</b><br>
@@ -106,18 +118,17 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
   <img src="https://static-public.chatopera.com/assets/images/64530295-5856e180-d33f-11e9-94d4-db50481b2d8e.png" width="800">
 </p>
 
-## 立即使用
-
-[Chatopera 云服务](https://bot.chatopera.com/dashboard) 是面向企业聊天机器人构建的一站式解决方案。
-
 <p align="center">
-  <b>Chatopera云服务</b><br>
+  <b>立即使用</b><br>
   <a href="https://bot.chatopera.com" target="_blank">
       <img src="https://static-public.chatopera.com/assets/images/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
   </a>
 </p>
 
-## 社区活动
+</p>
+</details>
+
+## 主题演讲
 
 | 时间       | 活动                                                                          | 链接                                                                                                                      | 时长   | 概述                                |
 | ---------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------ | ----------------------------------- |
@@ -137,7 +148,7 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
 - [CRFsuite](https://github.com/chokkan/crfsuite): a fast implementation of Conditional Random Fields (CRFs)
 - [Xapian](https://xapian.org/): an Open Source Search Engine Library
 
-## 其它
+## 机器学习 & 自然语言处理入门指南
 
 - Chatopera 出版物[《智能问答与深度学习》](https://item.jd.com/12479014.html)
 - [春松客服：开源的智能客服系统](https://github.com/chatopera/cosin)
