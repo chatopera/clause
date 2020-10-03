@@ -61,10 +61,14 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 ## Chatopera 云服务
 
-Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。[Chatopera 云服务](https://bot.chatopera.com/)提供基于搜索、规则和机器学习的对话解决方案，可用于企业定制满足自身业务需求的聊天机器人，同时 [Chatopera 云服务](https://bot.chatopera.com/)通过计费、支付和发票等方法降低了企业获取这样一个解决方案的成本，是企业更快的专注于设计对话、调试聊天机器人，更快的投入使用。
+Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。
+
+[Chatopera 云服务](https://bot.chatopera.com)（https://bot.chatopera.com）是一站式实现聊天机器人的云服务，按接口调用次数计费。Chatopera 云服务是 [Chatopera 机器人平台](https://docs.chatopera.com/products/chatbot-platform/index.html)的软件即服务实例。在云计算基础上，Chatopera 云服务属于**聊天机器人即服务**的云服务。
+
+Chatopera 机器人平台包括知识库、多轮对话、意图识别和语音识别等组件，标准化聊天机器人开发，支持企业 OA 智能问答、HR 智能问答、智能客服和网络营销等场景。企业 IT 部门、业务部门借助 Chatopera 云服务快速让聊天机器人上线！
 
 <details>
-<summary>以下图片来自于 Chatopera 云服务</summary>
+<summary>展开查看 Chatopera 云服务的产品截图</summary>
 <p>
 
 <p align="center">
@@ -118,7 +122,6 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
       <img src="https://static-public.chatopera.com/assets/images/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
   </a>
 </p>
-[Chatopera 云服务](https://bot.chatopera.com/dashboard) 让聊天机器人上线！
 
 </p>
 </details>
