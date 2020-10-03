@@ -1,7 +1,7 @@
 [![Docker Layers](https://images.microbadger.com/badges/image/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image layers") [![Docker Version](https://images.microbadger.com/badges/version/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image version") [![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Commit](https://images.microbadger.com/badges/commit/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image CommitID")
 
 <p align="center">
-  <b>Clause项目QQ交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
+  <b>Clause QQ 交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
   <img src="https://static-public.chatopera.com/assets/images/64315364-6a095380-cfe4-11e9-8bf6-f15ce6e26e0a.png" width="200">
 </p>
 
@@ -15,9 +15,11 @@ Chatopera Language Understanding Service，Chatopera 语义理解服务
   </a>
 </p>
 
-Clause 是帮助企业快速而低成本的获得好用的语义理解服务的系统，让机器更理解人。
+Clause 帮助聊天机器人开发商、开发者快速而低成本的获得开源的语义理解系统。
 
 Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现企业聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
+
+利用 Clause 可快速实现聊天机器人服务，通过自然语言的人机交互形式完成数据收集和数据处理。
 
 ## 功能
 
@@ -137,7 +139,7 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
 - [CRFsuite](https://github.com/chokkan/crfsuite): a fast implementation of Conditional Random Fields (CRFs)
 - [Xapian](https://xapian.org/): an Open Source Search Engine Library
 
-## 其它
+## 机器学习 & 自然语言处理入门指南
 
 - Chatopera 出版物[《智能问答与深度学习》](https://item.jd.com/12479014.html)
 - [春松客服：开源的智能客服系统](https://github.com/chatopera/cosin)
