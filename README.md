@@ -61,7 +61,11 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 ## Chatopera 云服务
 
-Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。[Chatopera 云服务](https://bot.chatopera.com/)提供基于搜索、规则和机器学习的对话解决方案，可用于企业定制满足自身业务需求的聊天机器人，同时 [Chatopera 云服务](https://bot.chatopera.com/)通过计费、支付和发票等方法降低了企业获取这样一个解决方案的成本，是企业更快的专注于设计对话、调试聊天机器人，更快的投入使用。 **以下图片来自于 Chatopera 云服务的意图识别模块，其底层 API 使用 Clause 服务。**
+Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。[Chatopera 云服务](https://bot.chatopera.com/)提供基于搜索、规则和机器学习的对话解决方案，可用于企业定制满足自身业务需求的聊天机器人，同时 [Chatopera 云服务](https://bot.chatopera.com/)通过计费、支付和发票等方法降低了企业获取这样一个解决方案的成本，是企业更快的专注于设计对话、调试聊天机器人，更快的投入使用。
+
+<details>
+<summary>以下图片来自于 Chatopera 云服务</summary>
+<p>
 
 <p align="center">
   <b>自定义词典</b><br>
@@ -84,8 +88,18 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
 </p>
 
 <p align="center">
+  <b>训练模型</b><br>
+  <img src="https://static-public.chatopera.com/assets/images/64530235-33626e80-d33f-11e9-8d07-fa3ae417fd5d.png" width="800">
+</p>
+
+<p align="center">
   <b>测试对话</b><br>
   <img src="https://static-public.chatopera.com/assets/images/64530253-3d846d00-d33f-11e9-81ea-86e6d47020d8.png" width="800">
+</p>
+
+<p align="center">
+  <b>机器人画像</b><br>
+  <img src="https://static-public.chatopera.com/assets/images/64530312-6442a380-d33f-11e9-869c-85fb6a835a97.png" width="800">
 </p>
 
 <p align="center">
@@ -104,8 +118,10 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
       <img src="https://static-public.chatopera.com/assets/images/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
   </a>
 </p>
-
 [Chatopera 云服务](https://bot.chatopera.com/dashboard) 让聊天机器人上线！
+
+</p>
+</details>
 
 ## 主题演讲
 
