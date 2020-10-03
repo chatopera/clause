@@ -84,18 +84,8 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
 </p>
 
 <p align="center">
-  <b>训练模型</b><br>
-  <img src="https://static-public.chatopera.com/assets/images/64530235-33626e80-d33f-11e9-8d07-fa3ae417fd5d.png" width="800">
-</p>
-
-<p align="center">
   <b>测试对话</b><br>
   <img src="https://static-public.chatopera.com/assets/images/64530253-3d846d00-d33f-11e9-81ea-86e6d47020d8.png" width="800">
-</p>
-
-<p align="center">
-  <b>机器人画像</b><br>
-  <img src="https://static-public.chatopera.com/assets/images/64530312-6442a380-d33f-11e9-869c-85fb6a835a97.png" width="800">
 </p>
 
 <p align="center">
@@ -108,16 +98,14 @@ Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个�
   <img src="https://static-public.chatopera.com/assets/images/64530295-5856e180-d33f-11e9-94d4-db50481b2d8e.png" width="800">
 </p>
 
-## 立即使用
-
-[Chatopera 云服务](https://bot.chatopera.com/dashboard) 是面向企业聊天机器人构建的一站式解决方案。
-
 <p align="center">
-  <b>Chatopera云服务</b><br>
+  <b>立即使用</b><br>
   <a href="https://bot.chatopera.com" target="_blank">
       <img src="https://static-public.chatopera.com/assets/images/64531083-3199aa80-d341-11e9-86cd-3a3ed860b14b.png" width="800">
   </a>
 </p>
+
+[Chatopera 云服务](https://bot.chatopera.com/dashboard) 让聊天机器人上线！
 
 ## 主题演讲
 
