@@ -5,7 +5,7 @@
 
 # constants
 baseDir=$(cd `dirname "$0"`;pwd)
-rootDir=$(cd $baseDir/../..;pwd)
+rootDir=$(cd $baseDir/..;pwd)
 
 # functions
 
