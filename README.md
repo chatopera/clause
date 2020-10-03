@@ -17,7 +17,7 @@ Chatopera Language Understanding Service，Chatopera 语义理解服务
 
 Clause 帮助聊天机器人开发商、开发者快速而低成本的获得开源的语义理解系统。
 
-Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现企业聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
+Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软件的方式实现的，Clause 为实现聊天机器人提供强大的大脑，包括客服、智能问答和自动流程服务。Clause 利用深度学习，自然语言处理和搜索引擎技术，让机器更加理解人。
 
 利用 Clause 可快速实现聊天机器人服务，通过自然语言的人机交互形式完成数据收集和数据处理。
 
@@ -63,7 +63,9 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 Clause 同时也是 [Chatopera 云服务](https://bot.chatopera.com/)的一个基础模块。
 
-[Chatopera 云服务](https://bot.chatopera.com)（https://bot.chatopera.com）是一站式实现聊天机器人的云服务，按接口调用次数计费。Chatopera 云服务是 [Chatopera 机器人平台](https://docs.chatopera.com/products/chatbot-platform/index.html)的软件即服务实例。在云计算基础上，Chatopera 云服务属于**聊天机器人即服务**的云服务。
+[https://bot.chatopera.com/](https://bot.chatopera.com/)
+
+[Chatopera 云服务](https://bot.chatopera.com)是一站式实现聊天机器人的云服务，按接口调用次数计费。Chatopera 云服务是 [Chatopera 机器人平台](https://docs.chatopera.com/products/chatbot-platform/index.html)的软件即服务实例。在云计算基础上，Chatopera 云服务属于**聊天机器人即服务**的云服务。
 
 Chatopera 机器人平台包括知识库、多轮对话、意图识别和语音识别等组件，标准化聊天机器人开发，支持企业 OA 智能问答、HR 智能问答、智能客服和网络营销等场景。企业 IT 部门、业务部门借助 Chatopera 云服务快速让聊天机器人上线！
 
