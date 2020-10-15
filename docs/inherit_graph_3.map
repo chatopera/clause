@@ -1,4 +1,4 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1BrokerSubscriber.html" title="chatopera::bot::clause\l::BrokerSubscriber" alt="" coords="176,5,329,44"/>
-<area shape="rect" id="node3" href="$classchatopera_1_1bot_1_1intent_1_1BrokerSubscriber.html" title="chatopera::bot::intent\l::BrokerSubscriber" alt="" coords="179,68,326,107"/>
+<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1BrokerSubscriber.html" title="chatopera::bot::clause\l::BrokerSubscriber" alt="" coords="184,5,349,47"/>
+<area shape="rect" id="node3" href="$classchatopera_1_1bot_1_1intent_1_1BrokerSubscriber.html" title="chatopera::bot::intent\l::BrokerSubscriber" alt="" coords="186,71,347,112"/>
 </map>

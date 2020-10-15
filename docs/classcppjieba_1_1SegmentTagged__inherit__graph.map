@@ -1,5 +1,5 @@
 <map id="cppjieba::SegmentTagged" name="cppjieba::SegmentTagged">
-<area shape="rect" id="node3" href="$classcppjieba_1_1MixSegment.html" title="cppjieba::MixSegment" alt="" coords="5,152,158,177"/>
-<area shape="rect" id="node4" href="$classcppjieba_1_1MPSegment.html" title="cppjieba::MPSegment" alt="" coords="182,152,333,177"/>
-<area shape="rect" id="node2" href="$classcppjieba_1_1SegmentBase.html" title="cppjieba::SegmentBase" alt="" coords="89,5,251,31"/>
+<area shape="rect" id="node3" href="$classcppjieba_1_1MixSegment.html" title="cppjieba::MixSegment" alt="" coords="5,155,168,181"/>
+<area shape="rect" id="node4" href="$classcppjieba_1_1MPSegment.html" title="cppjieba::MPSegment" alt="" coords="193,155,354,181"/>
+<area shape="rect" id="node2" href="$classcppjieba_1_1SegmentBase.html" title="cppjieba::SegmentBase" alt="" coords="93,5,267,32"/>
 </map>

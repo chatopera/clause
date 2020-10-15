@@ -1,4 +1,4 @@
 <map id="chatopera::bot::crfsuite::version" name="chatopera::bot::crfsuite::version">
-<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#abc14f0901689dc0652ed7bf13e101690" title="chatopera::bot::clause\l::ServingHandler::getSession" alt="" coords="259,5,453,44"/>
-<area shape="rect" id="node3" href="$classtsl_1_1detail__array__hash_1_1array__hash.html#a38c0aaa4e4ec5ec5a210057ee9329e68" title="tsl::detail_array_hash\l::array_hash\&lt; CharT, void,\l Hash, KeyEqual, StoreNullTerminator,\l KeySizeT, IndexSizeT, GrowthPolicy \&gt;::erase" alt="" coords="210,68,502,133"/>
+<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#abc14f0901689dc0652ed7bf13e101690" title="chatopera::bot::clause\l::ServingHandler::getSession" alt="" coords="274,5,481,47"/>
+<area shape="rect" id="node3" href="$classtsl_1_1detail__array__hash_1_1array__hash.html#a38c0aaa4e4ec5ec5a210057ee9329e68" title="tsl::detail_array_hash\l::array_hash\&lt; CharT, void,\l Hash, KeyEqual, StoreNullTerminator,\l KeySizeT, IndexSizeT, GrowthPolicy \&gt;::erase" alt="" coords="224,71,531,141"/>
 </map>

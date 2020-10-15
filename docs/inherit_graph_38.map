@@ -1,3 +1,9 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$structcppjieba_1_1TextRankExtractor_1_1__Word.html" title="cppjieba::TextRankExtractor\l::_Word" alt="" coords="5,5,193,44"/>
+<area shape="rect" id="node1" href="$classcppjieba_1_1SegmentBase.html" title="cppjieba::SegmentBase" alt="" coords="5,81,180,108"/>
+<area shape="rect" id="node2" href="$classcppjieba_1_1FullSegment.html" title="cppjieba::FullSegment" alt="" coords="240,5,403,32"/>
+<area shape="rect" id="node3" href="$classcppjieba_1_1HMMSegment.html" title="cppjieba::HMMSegment" alt="" coords="234,56,409,83"/>
+<area shape="rect" id="node4" href="$classcppjieba_1_1QuerySegment.html" title="cppjieba::QuerySegment" alt="" coords="231,107,411,133"/>
+<area shape="rect" id="node5" href="$classcppjieba_1_1SegmentTagged.html" title="cppjieba::SegmentTagged" alt="" coords="228,157,415,184"/>
+<area shape="rect" id="node6" href="$classcppjieba_1_1MixSegment.html" title="cppjieba::MixSegment" alt="" coords="463,132,625,159"/>
+<area shape="rect" id="node7" href="$classcppjieba_1_1MPSegment.html" title="cppjieba::MPSegment" alt="" coords="463,183,625,209"/>
 </map>

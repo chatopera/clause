@@ -1,5 +1,3 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node2" href="$structtsl_1_1detail__array__hash_1_1is__iterator.html" title="tsl::detail_array_hash\l::is_iterator\&lt; T, typename \&gt;" alt="" coords="135,5,318,44"/>
-<area shape="rect" id="node3" href="$structtsl_1_1detail__htrie__hash_1_1is__iterator.html" title="tsl::detail_htrie_hash\l::is_iterator\&lt; T, typename \&gt;" alt="" coords="135,68,318,107"/>
-<area shape="rect" id="node4" href="$structtsl_1_1detail__htrie__hash_1_1is__related.html" title="tsl::detail_htrie_hash\l::is_related\&lt; T, U \&gt;" alt="" coords="155,131,299,169"/>
+<area shape="rect" id="node1" href="$classtsl_1_1detail__array__hash_1_1array__bucket_1_1array__bucket__iterator.html" title="tsl::detail_array_hash\l::array_bucket\&lt; CharT,\l T, KeyEqual, KeySizeT,\l StoreNullTerminator \&gt;::\larray_bucket_iterator\&lt; IsConst \&gt;" alt="" coords="5,5,241,91"/>
 </map>

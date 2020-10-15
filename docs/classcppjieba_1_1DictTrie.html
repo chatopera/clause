@@ -3,8 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
 <title>Clause: cppjieba::DictTrie类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -12,6 +11,9 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,19 +33,44 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.8.13 -->
+<!-- 制作者 Doxygen 1.8.11 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="inherits.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,7 +102,7 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public 类型</h2></td></tr>
-<tr class="memitem:a0ce0cb6b6f152cee1f4d00619471feea"><td class="memItemLeft" align="right" valign="top"><a id="a0ce0cb6b6f152cee1f4d00619471feea"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>UserWordWeightOption</b> { <b>WordWeightMin</b>, 
+<tr class="memitem:a0ce0cb6b6f152cee1f4d00619471feea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ce0cb6b6f152cee1f4d00619471feea"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>UserWordWeightOption</b> { <b>WordWeightMin</b>, 
 <b>WordWeightMedian</b>, 
 <b>WordWeightMax</b>
  }</td></tr>
@@ -83,40 +110,40 @@ Public 类型</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a6029cb8cbca94985081fd985ede555eb"><td class="memItemLeft" align="right" valign="top"><a id="a6029cb8cbca94985081fd985ede555eb"></a>
+<tr class="memitem:a6029cb8cbca94985081fd985ede555eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6029cb8cbca94985081fd985ede555eb"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>DictTrie</b> (const string &amp;dict_path, const string &amp;user_dict_paths=&quot;&quot;, UserWordWeightOption user_word_weight_opt=WordWeightMedian)</td></tr>
 <tr class="separator:a6029cb8cbca94985081fd985ede555eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3683f2dde3c207e68376ef9b1b1cc5f"><td class="memItemLeft" align="right" valign="top"><a id="ae3683f2dde3c207e68376ef9b1b1cc5f"></a>
+<tr class="memitem:ae3683f2dde3c207e68376ef9b1b1cc5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3683f2dde3c207e68376ef9b1b1cc5f"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>InsertUserWord</b> (const string &amp;word, const string &amp;tag=UNKNOWN_TAG)</td></tr>
 <tr class="separator:ae3683f2dde3c207e68376ef9b1b1cc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bca8eaeded0e645714e53ba0d3d65eb"><td class="memItemLeft" align="right" valign="top"><a id="a8bca8eaeded0e645714e53ba0d3d65eb"></a>
+<tr class="memitem:a8bca8eaeded0e645714e53ba0d3d65eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8bca8eaeded0e645714e53ba0d3d65eb"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>InsertUserWord</b> (const string &amp;word, int freq, const string &amp;tag=UNKNOWN_TAG)</td></tr>
 <tr class="separator:a8bca8eaeded0e645714e53ba0d3d65eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7441ca7ca89b615ca51f24ec750d6100"><td class="memItemLeft" align="right" valign="top"><a id="a7441ca7ca89b615ca51f24ec750d6100"></a>
-const <a class="el" href="structcppjieba_1_1DictUnit.html">DictUnit</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (RuneStrArray::const_iterator begin, RuneStrArray::const_iterator end) const</td></tr>
-<tr class="separator:a7441ca7ca89b615ca51f24ec750d6100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2021bab35f3c280ec75478eb44d71246"><td class="memItemLeft" align="right" valign="top"><a id="a2021bab35f3c280ec75478eb44d71246"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (RuneStrArray::const_iterator begin, RuneStrArray::const_iterator end, vector&lt; struct <a class="el" href="structcppjieba_1_1Dag.html">Dag</a> &gt; &amp;res, size_t max_word_len=MAX_WORD_LENGTH) const</td></tr>
-<tr class="separator:a2021bab35f3c280ec75478eb44d71246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7f92533f7cb86b084fa4aaadad18b50"><td class="memItemLeft" align="right" valign="top"><a id="aa7f92533f7cb86b084fa4aaadad18b50"></a>
+<tr class="memitem:ac04896e70e949bd693949dec6820979f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac04896e70e949bd693949dec6820979f"></a>
+const <a class="el" href="structcppjieba_1_1DictUnit.html">DictUnit</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (RuneStrArray::const_iterator begin, RuneStrArray::const_iterator end) const </td></tr>
+<tr class="separator:ac04896e70e949bd693949dec6820979f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48cae1f6489df70a873714d1cbb3da10"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48cae1f6489df70a873714d1cbb3da10"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (RuneStrArray::const_iterator begin, RuneStrArray::const_iterator end, vector&lt; struct <a class="el" href="structcppjieba_1_1Dag.html">Dag</a> &gt; &amp;res, size_t max_word_len=MAX_WORD_LENGTH) const </td></tr>
+<tr class="separator:a48cae1f6489df70a873714d1cbb3da10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7f92533f7cb86b084fa4aaadad18b50"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7f92533f7cb86b084fa4aaadad18b50"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Find</b> (const string &amp;word)</td></tr>
 <tr class="separator:aa7f92533f7cb86b084fa4aaadad18b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acec350beeac2213a989fdb058414278f"><td class="memItemLeft" align="right" valign="top"><a id="acec350beeac2213a989fdb058414278f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsUserDictSingleChineseWord</b> (const Rune &amp;word) const</td></tr>
-<tr class="separator:acec350beeac2213a989fdb058414278f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa15960b27913ab77e293cb0ab446a85e"><td class="memItemLeft" align="right" valign="top"><a id="aa15960b27913ab77e293cb0ab446a85e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMinWeight</b> () const</td></tr>
-<tr class="separator:aa15960b27913ab77e293cb0ab446a85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c113583ca5578fbcfaea2ce26aa6b87"><td class="memItemLeft" align="right" valign="top"><a id="a0c113583ca5578fbcfaea2ce26aa6b87"></a>
+<tr class="memitem:ab30d93027c134bcb8507e77114d0b7d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab30d93027c134bcb8507e77114d0b7d4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsUserDictSingleChineseWord</b> (const Rune &amp;word) const </td></tr>
+<tr class="separator:ab30d93027c134bcb8507e77114d0b7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ed0698cb9945d99c3d940c222921bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9ed0698cb9945d99c3d940c222921bc"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMinWeight</b> () const </td></tr>
+<tr class="separator:ac9ed0698cb9945d99c3d940c222921bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c113583ca5578fbcfaea2ce26aa6b87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c113583ca5578fbcfaea2ce26aa6b87"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>InserUserDictNode</b> (const string &amp;line)</td></tr>
 <tr class="separator:a0c113583ca5578fbcfaea2ce26aa6b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8aa508b6b3c89c5e0ed26f88bf9f27f"><td class="memItemLeft" align="right" valign="top"><a id="ac8aa508b6b3c89c5e0ed26f88bf9f27f"></a>
+<tr class="memitem:ac8aa508b6b3c89c5e0ed26f88bf9f27f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8aa508b6b3c89c5e0ed26f88bf9f27f"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (const vector&lt; string &gt; &amp;buf)</td></tr>
 <tr class="separator:ac8aa508b6b3c89c5e0ed26f88bf9f27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24ddbdb4cb83751075bba220b63d9044"><td class="memItemLeft" align="right" valign="top"><a id="a24ddbdb4cb83751075bba220b63d9044"></a>
+<tr class="memitem:a24ddbdb4cb83751075bba220b63d9044"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24ddbdb4cb83751075bba220b63d9044"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (const set&lt; string &gt; &amp;buf)</td></tr>
 <tr class="separator:a24ddbdb4cb83751075bba220b63d9044"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56abc311af81c4d24c193b06397c23ab"><td class="memItemLeft" align="right" valign="top"><a id="a56abc311af81c4d24c193b06397c23ab"></a>
+<tr class="memitem:a56abc311af81c4d24c193b06397c23ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56abc311af81c4d24c193b06397c23ab"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (const string &amp;filePaths)</td></tr>
 <tr class="separator:a56abc311af81c4d24c193b06397c23ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -126,7 +153,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LoadUserDict</b> (con
 </div><!-- contents -->
 <address class="footer">
     <small>
-        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+        &nbsp; Copyright (c) (2019-2020) &nbsp;<a href="https://www.chatopera.com">
             北京华夏春松科技有限公司
         </a>. All Rights Reserved
         &nbsp;

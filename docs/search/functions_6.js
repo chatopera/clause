@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['generatecrfsuitetraingdata',['generateCrfSuiteTraingData',['../classchatopera_1_1bot_1_1intent_1_1SampleGenerator.html#acaa4f9fd48b26eeb5c43067844d1fd66',1,'chatopera::bot::intent::SampleGenerator']]],
+  ['generatecrfsuitetraingdata',['generateCrfSuiteTraingData',['../classchatopera_1_1bot_1_1intent_1_1SampleGenerator.html#ad698b4ef21d22bcf493768a653293032',1,'chatopera::bot::intent::SampleGenerator']]],
   ['get',['get',['../classchatopera_1_1bot_1_1crfsuite_1_1Trainer.html#a74ba4064ce086a43070e0a96147e111d',1,'chatopera::bot::crfsuite::Trainer']]],
   ['getbuildver',['getBuildver',['../classchatopera_1_1bot_1_1clause_1_1Bot.html#a6abc44f970a46ff153ec362a57645876',1,'chatopera::bot::clause::Bot']]],
   ['getcustomdict',['getCustomDict',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#a2d8e6b7cb78f51d330c1a74bb83a41bb',1,'chatopera::bot::clause::ServingHandler']]],
   ['getcustomdicts',['getCustomDicts',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#a6bcd7251a945348f9042fc5981fd37f8',1,'chatopera::bot::clause::ServingHandler']]],
+  ['getdictpattern',['getDictPattern',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#aa89158d0a796f11ff28ee14365a84388',1,'chatopera::bot::clause::ServingHandler']]],
   ['getdictwords',['getDictWords',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#af721beb21f277db990d93d6d0ad48b9e',1,'chatopera::bot::clause::ServingHandler']]],
   ['getinstance',['getInstance',['../classchatopera_1_1redis_1_1Redis.html#abe63ac184a1ed829c0a6de92d825cd8e',1,'chatopera::redis::Redis']]],
   ['getintent',['getIntent',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#a953cc4b5f5e4ef3b642a32228f9e23f3',1,'chatopera::bot::clause::ServingHandler']]],

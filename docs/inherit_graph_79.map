@@ -1,3 +1,3 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$classtsl_1_1htrie__set.html" title="tsl::htrie_set\&lt; CharT,\l Hash, KeySizeT \&gt;" alt="" coords="5,5,149,44"/>
+<area shape="rect" id="node1" href="$classtsl_1_1htrie__map.html" title="tsl::htrie_map\&lt; char,\l set\&lt; string \&gt; \&gt;" alt="" coords="5,5,163,47"/>
 </map>

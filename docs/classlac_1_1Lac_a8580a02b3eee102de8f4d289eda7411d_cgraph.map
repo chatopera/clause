@@ -1,7 +1,0 @@
-<map id="lac::Lac::create_buff" name="lac::Lac::create_buff">
-<area shape="rect" id="node2" href="$classlac_1_1Lac.html#a2064190d6847363a998b3944bbf597b0" title="destroy_buff, destroy therad variables " alt="" coords="215,33,363,59"/>
-<area shape="rect" id="node5" href="$classlac_1_1MainTagger.html#aaa97ebbdb66dd685dbfc3210db64ec2d" title="create_buff, initialize therad variables associated with MainTagger " alt="" coords="195,83,384,108"/>
-<area shape="rect" id="node6" href="$classlac_1_1CustomizationTagger.html#aae6031d5402686318221b6174e433b24" title="create_buff, initialize therad variables associated with CustomizationTagger " alt="" coords="204,132,375,171"/>
-<area shape="rect" id="node3" href="$classlac_1_1MainTagger.html#a055be558244048c3180d287bbaf667e6" title="destroy_buff, destroy therad variables associated with CustomizationTagger " alt="" coords="432,5,628,31"/>
-<area shape="rect" id="node4" href="$classlac_1_1CustomizationTagger.html#a1d03241a9d94049e250f12448cd5e62a" title="destroy_buff, destroy therad variables associated with CustomizationTagger " alt="" coords="444,55,615,93"/>
-</map>

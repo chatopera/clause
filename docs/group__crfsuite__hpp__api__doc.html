@@ -3,8 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.13"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
 <title>Clause: Data structures</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -12,6 +11,9 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,19 +33,36 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- 制作者 Doxygen 1.8.13 -->
+<!-- 制作者 Doxygen 1.8.11 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'搜索');
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript">
-$(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
-});
-</script>
-<div id="main-nav"></div>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li class="current"><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="namespaces.html"><span>命名空间</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -80,9 +99,9 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 类型定义</h2></td></tr>
-<tr class="memitem:ga1e1aaf17a4b48230ffae9abd505ab4d0"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classchatopera_1_1bot_1_1crfsuite_1_1Attribute.html">Attribute</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crfsuite__hpp__api__doc.html#ga1e1aaf17a4b48230ffae9abd505ab4d0">chatopera::bot::crfsuite::Item</a></td></tr>
+<tr class="memitem:ga1e1aaf17a4b48230ffae9abd505ab4d0"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; Attribute &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crfsuite__hpp__api__doc.html#ga1e1aaf17a4b48230ffae9abd505ab4d0">chatopera::bot::crfsuite::Item</a></td></tr>
 <tr class="separator:ga1e1aaf17a4b48230ffae9abd505ab4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga34f58d96010025b06e985a6710fbfd05"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="group__crfsuite__hpp__api__doc.html#ga1e1aaf17a4b48230ffae9abd505ab4d0">Item</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crfsuite__hpp__api__doc.html#ga34f58d96010025b06e985a6710fbfd05">chatopera::bot::crfsuite::ItemSequence</a></td></tr>
+<tr class="memitem:ga34f58d96010025b06e985a6710fbfd05"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; Item &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crfsuite__hpp__api__doc.html#ga34f58d96010025b06e985a6710fbfd05">chatopera::bot::crfsuite::ItemSequence</a></td></tr>
 <tr class="separator:ga34f58d96010025b06e985a6710fbfd05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf82774957c9896d38894cddd592aa061"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crfsuite__hpp__api__doc.html#gaf82774957c9896d38894cddd592aa061">chatopera::bot::crfsuite::StringList</a></td></tr>
 <tr class="separator:gaf82774957c9896d38894cddd592aa061"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,14 +113,12 @@ $(function() {
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <h2 class="groupheader">类型定义说明</h2>
-<a id="ga1e1aaf17a4b48230ffae9abd505ab4d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1e1aaf17a4b48230ffae9abd505ab4d0">&#9670;&nbsp;</a></span>Item</h2>
-
+<a class="anchor" id="ga1e1aaf17a4b48230ffae9abd505ab4d0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;<a class="el" href="classchatopera_1_1bot_1_1crfsuite_1_1Attribute.html">Attribute</a>&gt; <a class="el" href="group__crfsuite__hpp__api__doc.html#ga1e1aaf17a4b48230ffae9abd505ab4d0">chatopera::bot::crfsuite::Item</a></td>
+          <td class="memname">typedef std::vector&lt;Attribute&gt; <a class="el" href="group__crfsuite__hpp__api__doc.html#ga1e1aaf17a4b48230ffae9abd505ab4d0">chatopera::bot::crfsuite::Item</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -109,14 +126,12 @@ $(function() {
 
 </div>
 </div>
-<a id="ga34f58d96010025b06e985a6710fbfd05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga34f58d96010025b06e985a6710fbfd05">&#9670;&nbsp;</a></span>ItemSequence</h2>
-
+<a class="anchor" id="ga34f58d96010025b06e985a6710fbfd05"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;<a class="el" href="group__crfsuite__hpp__api__doc.html#ga1e1aaf17a4b48230ffae9abd505ab4d0">Item</a>&gt; <a class="el" href="group__crfsuite__hpp__api__doc.html#ga34f58d96010025b06e985a6710fbfd05">chatopera::bot::crfsuite::ItemSequence</a></td>
+          <td class="memname">typedef std::vector&lt;Item&gt; <a class="el" href="group__crfsuite__hpp__api__doc.html#ga34f58d96010025b06e985a6710fbfd05">chatopera::bot::crfsuite::ItemSequence</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -124,9 +139,7 @@ $(function() {
 
 </div>
 </div>
-<a id="gaf82774957c9896d38894cddd592aa061"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf82774957c9896d38894cddd592aa061">&#9670;&nbsp;</a></span>StringList</h2>
-
+<a class="anchor" id="gaf82774957c9896d38894cddd592aa061"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -140,9 +153,7 @@ $(function() {
 </div>
 </div>
 <h2 class="groupheader">函数说明</h2>
-<a id="gaa8ef1fab26ec65f18b7e34e6edac5ef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa8ef1fab26ec65f18b7e34e6edac5ef5">&#9670;&nbsp;</a></span>version()</h2>
-
+<a class="anchor" id="gaa8ef1fab26ec65f18b7e34e6edac5ef5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -155,22 +166,24 @@ $(function() {
       </table>
 </div><div class="memdoc">
 <p>Obtain the version number of the library. </p><dl class="section return"><dt>返回</dt><dd>std::string The version string. </dd></dl>
-<div class="dynheader">
+
+<p><div class="dynheader">
 这是这个函数的调用关系图:</div>
 <div class="dyncontent">
 <div class="center"><img src="group__crfsuite__hpp__api__doc_gaa8ef1fab26ec65f18b7e34e6edac5ef5_icgraph.png" border="0" usemap="#group__crfsuite__hpp__api__doc_gaa8ef1fab26ec65f18b7e34e6edac5ef5_icgraph" alt=""/></div>
 <map name="group__crfsuite__hpp__api__doc_gaa8ef1fab26ec65f18b7e34e6edac5ef5_icgraph" id="group__crfsuite__hpp__api__doc_gaa8ef1fab26ec65f18b7e34e6edac5ef5_icgraph">
-<area shape="rect" id="node2" href="classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#abc14f0901689dc0652ed7bf13e101690" title="chatopera::bot::clause\l::ServingHandler::getSession" alt="" coords="259,5,453,44"/>
-<area shape="rect" id="node3" href="classtsl_1_1detail__array__hash_1_1array__hash.html#a38c0aaa4e4ec5ec5a210057ee9329e68" title="tsl::detail_array_hash\l::array_hash\&lt; CharT, void,\l Hash, KeyEqual, StoreNullTerminator,\l KeySizeT, IndexSizeT, GrowthPolicy \&gt;::erase" alt="" coords="210,68,502,133"/>
+<area shape="rect" id="node2" href="classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#abc14f0901689dc0652ed7bf13e101690" title="chatopera::bot::clause\l::ServingHandler::getSession" alt="" coords="274,5,481,47"/>
+<area shape="rect" id="node3" href="classtsl_1_1detail__array__hash_1_1array__hash.html#a38c0aaa4e4ec5ec5a210057ee9329e68" title="tsl::detail_array_hash\l::array_hash\&lt; CharT, void,\l Hash, KeyEqual, StoreNullTerminator,\l KeySizeT, IndexSizeT, GrowthPolicy \&gt;::erase" alt="" coords="224,71,531,141"/>
 </map>
 </div>
+</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <address class="footer">
     <small>
-        &nbsp; Copyright (c) 2019 &nbsp;<a href="https://www.chatopera.com">
+        &nbsp; Copyright (c) (2019-2020) &nbsp;<a href="https://www.chatopera.com">
             北京华夏春松科技有限公司
         </a>. All Rights Reserved
         &nbsp;

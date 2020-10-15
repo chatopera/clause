@@ -12,6 +12,7 @@ var searchData=
   ['prover',['prover',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#a6896e5441cc4385e14a830e00d35cccf',1,'chatopera::bot::clause::ServingHandler']]],
   ['publish',['publish',['../classchatopera_1_1bot_1_1clause_1_1BrokerPublisher.html#a65a774c0ae9ae8c839ecd5cb9aebc6d6',1,'chatopera::bot::clause::BrokerPublisher::publish()'],['../classchatopera_1_1bot_1_1intent_1_1BrokerPublisher.html#adaad6c9abf77871007fb1bd3d15c667d',1,'chatopera::bot::intent::BrokerPublisher::publish()']]],
   ['putcustomdict',['putCustomDict',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#ad2d5dbcc38b16549bf07992a32347dfb',1,'chatopera::bot::clause::ServingHandler']]],
+  ['putdictpattern',['putDictPattern',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#af775867207bca015710f10099efdb57b',1,'chatopera::bot::clause::ServingHandler']]],
   ['putdictword',['putDictWord',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#afbe754517a940e501e708bca7b25a4ad',1,'chatopera::bot::clause::ServingHandler']]],
   ['putintent',['putIntent',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#a4667c1b8a1c2d1751939074e25be09fe',1,'chatopera::bot::clause::ServingHandler']]],
   ['putsession',['putSession',['../classchatopera_1_1bot_1_1clause_1_1ServingHandler.html#a5489f4e72ee369cb7634d76ca262a6e2',1,'chatopera::bot::clause::ServingHandler']]],

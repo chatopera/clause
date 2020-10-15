@@ -1,8 +1,8 @@
 <map id="cppjieba::SegmentBase" name="cppjieba::SegmentBase">
-<area shape="rect" id="node2" href="$classcppjieba_1_1FullSegment.html" title="cppjieba::FullSegment" alt="" coords="227,5,380,31"/>
-<area shape="rect" id="node3" href="$classcppjieba_1_1HMMSegment.html" title="cppjieba::HMMSegment" alt="" coords="221,55,385,80"/>
-<area shape="rect" id="node4" href="$classcppjieba_1_1QuerySegment.html" title="cppjieba::QuerySegment" alt="" coords="219,104,387,129"/>
-<area shape="rect" id="node5" href="$classcppjieba_1_1SegmentTagged.html" title="cppjieba::SegmentTagged" alt="" coords="216,153,391,179"/>
-<area shape="rect" id="node6" href="$classcppjieba_1_1MixSegment.html" title="cppjieba::MixSegment" alt="" coords="439,128,592,153"/>
-<area shape="rect" id="node7" href="$classcppjieba_1_1MPSegment.html" title="cppjieba::MPSegment" alt="" coords="439,177,591,203"/>
+<area shape="rect" id="node2" href="$classcppjieba_1_1FullSegment.html" title="cppjieba::FullSegment" alt="" coords="240,5,403,32"/>
+<area shape="rect" id="node3" href="$classcppjieba_1_1HMMSegment.html" title="cppjieba::HMMSegment" alt="" coords="234,56,409,83"/>
+<area shape="rect" id="node4" href="$classcppjieba_1_1QuerySegment.html" title="cppjieba::QuerySegment" alt="" coords="231,107,411,133"/>
+<area shape="rect" id="node5" href="$classcppjieba_1_1SegmentTagged.html" title="cppjieba::SegmentTagged" alt="" coords="228,157,415,184"/>
+<area shape="rect" id="node6" href="$classcppjieba_1_1MixSegment.html" title="cppjieba::MixSegment" alt="" coords="463,132,625,159"/>
+<area shape="rect" id="node7" href="$classcppjieba_1_1MPSegment.html" title="cppjieba::MPSegment" alt="" coords="463,183,625,209"/>
 </map>

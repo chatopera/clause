@@ -1,3 +1,3 @@
 <map id="tsl::htrie_map::erase_prefix" name="tsl::htrie_map::erase_prefix">
-<area shape="rect" id="node2" href="$classtsl_1_1htrie__map.html#ad3e6af6e817a9de1cae296c4c67b811d" title="tsl::htrie_map\&lt; char,\l string \&gt;::erase_prefix_ks" alt="" coords="195,5,366,44"/>
+<area shape="rect" id="node2" href="$classtsl_1_1htrie__map.html#ad3e6af6e817a9de1cae296c4c67b811d" title="tsl::htrie_map\&lt; char,\l set\&lt; string \&gt; \&gt;::erase\l_prefix_ks" alt="" coords="208,5,379,61"/>
 </map>

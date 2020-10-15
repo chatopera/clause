@@ -1,3 +1,5 @@
 <map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$classchatopera_1_1bot_1_1crfsuite_1_1Tagger.html" title="chatopera::bot::crfsuite\l::Tagger" alt="" coords="5,5,162,44"/>
+<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1ServingHandler.html" title="chatopera::bot::clause\l::ServingHandler" alt="" coords="135,5,301,47"/>
+<area shape="rect" id="node3" href="$classchatopera_1_1bot_1_1intent_1_1ServingHandler.html" title="chatopera::bot::intent\l::ServingHandler" alt="" coords="137,71,299,112"/>
+<area shape="rect" id="node4" href="$classchatopera_1_1bot_1_1sysdicts_1_1ServingHandler.html" title="chatopera::bot::sysdicts\l::ServingHandler" alt="" coords="131,136,305,177"/>
 </map>

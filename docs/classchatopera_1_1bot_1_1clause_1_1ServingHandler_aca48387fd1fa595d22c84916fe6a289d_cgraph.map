@@ -1,12 +1,12 @@
 <map id="chatopera::bot::clause::ServingHandler::chat" name="chatopera::bot::clause::ServingHandler::chat">
-<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#acaf0f1a187326e8dd710312a5e355b63" title="chatopera::bot::clause\l::Bot::getReferredSysdicts" alt="" coords="243,5,419,44"/>
-<area shape="rect" id="node3" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a26fa057078ab957aeba9e7f2e9007e54" title="chatopera::bot::clause\l::Bot::patchSysdictsRequestEntities" alt="" coords="215,68,447,107"/>
-<area shape="rect" id="node4" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a44fd6620f9e66ecb84e828f28a4eead0" title="chatopera::bot::clause\l::Bot::hasReferredSysdict" alt="" coords="245,131,418,169"/>
-<area shape="rect" id="node5" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#afbd479b4e3bfcd7d7dbb3c57e70efaa8" title="chatopera::bot::clause\l::Bot::classify" alt="" coords="255,193,408,232"/>
-<area shape="rect" id="node9" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#ab29f978285789e0ed70bea1f8c3f68d8" title="chatopera::bot::clause\l::Bot::setSessionEntitiesByIntentName" alt="" coords="207,256,456,295"/>
-<area shape="rect" id="node10" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a2c14a0282abf64792cec277b35642533" title="chatopera::bot::clause\l::Bot::chat" alt="" coords="255,319,408,357"/>
-<area shape="rect" id="node6" href="$classchatopera_1_1bot_1_1distance_1_1Similarity.html#afb947df36791d54700d518bb82acad55" title="chatopera::bot::distance\l::Similarity::sort" alt="" coords="504,131,668,169"/>
-<area shape="rect" id="node7" href="$classtsl_1_1htrie__map.html#a8a7b42ce9e54fcbd0bff739bb052fda3" title="tsl::htrie_map::longest\l_prefix" alt="" coords="510,193,662,232"/>
-<area shape="rect" id="node8" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a862e742559aa4e6aa5efb32920120fd2" title="chatopera::bot::clause\l::Bot::session" alt="" coords="510,256,662,295"/>
-<area shape="rect" id="node11" href="$classchatopera_1_1bot_1_1crfsuite_1_1Tagger.html#a0808b117ae2ce996d4eefd218f21f1b5" title="chatopera::bot::crfsuite\l::Tagger::tag" alt="" coords="508,319,664,357"/>
+<area shape="rect" id="node2" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a958baf70bf5e5b0154b1e05921084bd1" title="chatopera::bot::clause\l::Bot::hasRelatedPatternDict" alt="" coords="253,5,454,47"/>
+<area shape="rect" id="node3" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#acaf0f1a187326e8dd710312a5e355b63" title="chatopera::bot::clause\l::Bot::getReferredSysdicts" alt="" coords="260,71,447,112"/>
+<area shape="rect" id="node4" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a26fa057078ab957aeba9e7f2e9007e54" title="chatopera::bot::clause\l::Bot::patchSysdictsRequestEntities" alt="" coords="230,136,477,177"/>
+<area shape="rect" id="node5" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a44fd6620f9e66ecb84e828f28a4eead0" title="chatopera::bot::clause\l::Bot::hasReferredSysdict" alt="" coords="262,201,445,243"/>
+<area shape="rect" id="node6" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#ae14a676de0f22f567b016da72c1a5bbb" title="chatopera::bot::clause\l::Bot::classify" alt="" coords="271,267,436,308"/>
+<area shape="rect" id="node9" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#ab29f978285789e0ed70bea1f8c3f68d8" title="chatopera::bot::clause\l::Bot::setSessionEntitiesByIntentName" alt="" coords="219,332,488,373"/>
+<area shape="rect" id="node10" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a72083ff4fc8199e0f4690622a8e493bf" title="chatopera::bot::clause\l::Bot::chat" alt="" coords="271,397,436,439"/>
+<area shape="rect" id="node7" href="$classchatopera_1_1bot_1_1distance_1_1Similarity.html#afb947df36791d54700d518bb82acad55" title="chatopera::bot::distance\l::Similarity::sort" alt="" coords="536,267,715,308"/>
+<area shape="rect" id="node8" href="$classchatopera_1_1bot_1_1clause_1_1Bot.html#a862e742559aa4e6aa5efb32920120fd2" title="chatopera::bot::clause\l::Bot::session" alt="" coords="543,332,708,373"/>
+<area shape="rect" id="node11" href="$classchatopera_1_1bot_1_1crfsuite_1_1Tagger.html#a0808b117ae2ce996d4eefd218f21f1b5" title="chatopera::bot::crfsuite\l::Tagger::tag" alt="" coords="540,397,711,439"/>
 </map>
