@@ -1,6 +1,8 @@
 #! /bin/bash 
 #####################################################
 # Relase new packages to dist branch with osc files
+# https://github.com/chatopera/clause/issues/25
+# https://github.com/chatopera/clause/tree/dist
 #####################################################
 
 # constants
