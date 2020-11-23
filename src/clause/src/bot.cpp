@@ -717,13 +717,13 @@ bool Bot::setSessionEntitiesByIntentName(const string& intentName,
 /**
  * 在session中，通过entity的name设置value
  */
-inline bool setSessionEntityValueByName(const string& entityName,
-                                        const string& entityValue,
-                                        intent::TChatSession& session) {
+inline bool setSessionSlotValueByName(const string& slotName,
+                                      const string& entityValue,
+                                      intent::TChatSession& session) {
   bool result = false;
 
   for(intent::TChatSession::Entity& entity : *session.mutable_entities()) {
-    if(entity.name() == entityName) {
+    if(entity.name() == slotName) {
       entity.set_val(entityValue);
       result = true;
       break;
@@ -929,11 +929,12 @@ bool Bot::chat(const ChatMessage& payload,
           // 从用户词表词典中查找到命名实体值
           VLOG(3) << __func__ << " proactive_slotname " << session.proactive_slotname() << " : " << slotvalue;
           settledown = true;
+          bypassValues.insert(slotvalue);
         }
 
         if(settledown) {
           // set session entity
-          setSessionEntityValueByName(session.proactive_slotname(), slotvalue, session);
+          setSessionSlotValueByName(session.proactive_slotname(), slotvalue, session);
         }
 
         /**
@@ -954,7 +955,7 @@ bool Bot::chat(const ChatMessage& payload,
                   if((se.dictname == ie.dictname()) && (bypassValues.find(se.val) == bypassValues.end())) {
                     // 查找到
                     VLOG(3) << __func__ << " slotname " << ie.name() << " : " << se.val;
-                    setSessionEntityValueByName(ie.name(), se.val, session);
+                    setSessionSlotValueByName(ie.name(), se.val, session);
                     bypassValues.insert(se.val);
                     break;
                   }
@@ -965,7 +966,7 @@ bool Bot::chat(const ChatMessage& payload,
                   if((ie.dictname() == pdm.dictname) && (bypassValues.find(pdm.val) == bypassValues.end())) {
                     // 查找到
                     VLOG(3) << __func__ << " slotname " << ie.name() << " : " << pdm.val;
-                    setSessionEntityValueByName(ie.name(), pdm.val, session);
+                    setSessionSlotValueByName(ie.name(), pdm.val, session);
                     bypassValues.insert(pdm.val);
                     break;
                   }
@@ -976,7 +977,7 @@ bool Bot::chat(const ChatMessage& payload,
                         extras_slotvalue)) {
                 // 查询用户词表词典
                 if(bypassValues.find(extras_slotvalue) == bypassValues.end()) {
-                  setSessionEntityValueByName(ie.name(), extras_slotvalue, session);
+                  setSessionSlotValueByName(ie.name(), extras_slotvalue, session);
                   bypassValues.insert(extras_slotvalue);
                   VLOG(3) << __func__ << " slotname " << ie.name() << " : " << extras_slotvalue;
                 }
@@ -1106,7 +1107,7 @@ bool Bot::chat(const ChatMessage& payload,
 
         // 确定该槽位候选
         if(settledown) {
-          setSessionEntityValueByName(it->first, slotvalue, session);
+          setSessionSlotValueByName(it->first, slotvalue, session);
         } else {
           // TODO 没有确定该槽位候选
           VLOG(3) << __func__ << " discard entity candidate, slotname: " << it->first << ", value " << it->second;
