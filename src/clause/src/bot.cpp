@@ -1029,7 +1029,7 @@ bool Bot::chat(const ChatMessage& payload,
       for(vector<pair<string, string> >::iterator it = candidates.begin(); it != candidates.end(); it++) {
         bool settledown = false; // 是否解决了一个槽位的值
         string slotvalue;
-        const intent::TChatSession::Entity* entity;
+        intent::TChatSession::Entity* entity = NULL;
 
         // 检查该槽位是否有值
         for(const intent::TChatSession::Entity& ie : session.entities()) {
@@ -1047,11 +1047,12 @@ bool Bot::chat(const ChatMessage& payload,
         if(settledown)
           continue; // 处理下一个槽位候选
 
-        VLOG(3) << __func__ << " analysis slotname: " << it->first << ", value: " << it->second << ", hasSysdicts: " << hasSysdicts << " as entity: \n" << FromProtobufToUtf8DebugString(*entity);
+        VLOG(3) << __func__ << " analysis slotname: " << it->first << ", value: " << it->second << ", hasSysdicts: " << hasSysdicts;
 
         // 该槽位没有值并且查找到关联的实体
-        if((!settledown) && (entity != 0)) {
+        if((!settledown) && (entity != NULL)) {
           if(entity->builtin()) { // 是系统词典
+
             if(hasSysdicts) {
               VLOG(3) << __func__ << " check against sysdicts with: " << FromThriftToUtf8DebugString(&(*ise));
 
