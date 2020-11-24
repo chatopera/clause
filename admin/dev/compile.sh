@@ -22,7 +22,7 @@ if [ "$#" -ne 2 ]; then
 else
     # do some checks
     $rootDir/admin/precompile.sh
-    source $rootDir/.env
+    source $baseDir/../localrc
 
     set -x
     PROJECT_DIR=$1

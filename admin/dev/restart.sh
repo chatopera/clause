@@ -26,7 +26,7 @@ if [ "$#" -ne 3 ]; then
 else
     # do some checks
     $baseDir/../precompile.sh
-    source $rootDir/.env
+    source $baseDir/../localrc
 
     set -x
     PROJECT_DIR=$1
