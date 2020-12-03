@@ -1,10 +1,5 @@
 [![Docker Layers](https://images.microbadger.com/badges/image/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image layers") [![Docker Version](https://images.microbadger.com/badges/version/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image version") [![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Commit](https://images.microbadger.com/badges/commit/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image CommitID")
 
-<p align="center">
-  <b>Clause QQ 交流群：809987971， <a href="https://jq.qq.com/?_wv=1027&k=5JpEvBZ" target="_blank">点击链接加入群聊</a></b><br>
-  <img src="https://static-public.chatopera.com/assets/images/64315364-6a095380-cfe4-11e9-8bf6-f15ce6e26e0a.png" width="200">
-</p>
-
 # Clause
 
 Chatopera Language Understanding Service，Chatopera 语义理解服务
@@ -135,6 +130,13 @@ Chatopera 机器人平台包括知识库、多轮对话、意图识别和语音�
 | 2019-12-14 | [Microsoft AI Bootscamp(2019)](https://github.com/huan/microsoft-ai-bootcamp) | [回放](https://www.bilibili.com/video/av80153181?p=3)                                                                     | 40mins | 基本使用介绍+支持正则表达式词典     |
 | 2019-11-03 | [COSCon '2019 中国开源年会](https://www.bagevent.com/event/5744455)           | [回放](https://v.qq.com/x/page/u3017ka4t6o.html)， [PPT【提取码: 25ni】](https://pan.baidu.com/s/1Z-d6CMtI782TLHRxaklDcw) | 40mins | 基本使用介绍+支持读取文件训练机器人 |
 | 2019-09-26 | CSDN 学院直播：深度学习之智能问答机器人实战                                   | [回放](https://edu.csdn.net/huiyiCourse/detail/1068)                                                                      | 60mins | 基本使用介绍                        |
+
+## 用户交流群
+
+<p align="center">
+  <b>在 Chatopera 客户群中也包括其他用户，请不要发送敏感信息。讨论与 Chatopera 产品和服务相关的事宜</b><br>
+<img src="https://static-public.chatopera.com/assets/images/Chatopera_wecom_customer_group_qr.png" width="600">
+</p>
 
 ## 媒体报道
 
