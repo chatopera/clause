@@ -1,24 +1,14 @@
-[![Docker Layers](https://images.microbadger.com/badges/image/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image layers") [![Docker Version](https://images.microbadger.com/badges/version/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image version") [![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Commit](https://images.microbadger.com/badges/commit/chatopera/clause:develop.svg)](https://microbadger.com/images/chatopera/clause:develop "Image CommitID")
+<div align=right>
 
-# 自然语言处理推荐入门&工具书
+[主页](https://github.com/chatopera/clause)　|　[Chatopera 云服务](https://bot.chatopera.com/)　|　[开发者文档](https://github.com/chatopera/clause/wiki)　|　[博客专栏](https://chatopera.blog.csdn.net/)
 
-本书由 [Clause](https://github.com/chatopera/clause) 作者参与著作。
-
-<p align="center">
-  <b>快速购书<a href="https://item.jd.com/12479014.html" target="_blank">链接</a></b><br>
-  <a href="https://item.jd.com/12479014.html" target="_blank">
-  <img src="https://user-images.githubusercontent.com/3538629/48657619-bcd24880-ea6e-11e8-8c4e-8bcb00761942.png" width="400">      
-  </a>
-</p>
-
-[《智能问答与深度学习》](https://item.jd.com/12479014.html) 这本书是服务于准备入门机器学习和自然语言处理的学生和软件工程师的，在理论上介绍了很多原理、算法，同时也提供很多示例程序增加实践性，这些程序被汇总到示例程序代码库，这些程序主要是帮助大家理解原理和算法的，欢迎大家下载和执行。代码库的地址是：
-
-[https://github.com/l11x0m7/book-of-qna-code](https://github.com/l11x0m7/book-of-qna-code)
-
+</div>
 
 # Clause
 
-Chatopera Language Understanding Service，Chatopera 语义理解服务
+[![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/)
+
+Chatopera 语义理解服务 / Chatopera Language Understanding Service
 
 <p align="center">
   <a href="https://github.com/chatopera/clause" target="_blank">
@@ -166,10 +156,20 @@ Chatopera 机器人平台包括知识库、多轮对话、意图识别和语音�
 - [CRFsuite](https://github.com/chokkan/crfsuite): a fast implementation of Conditional Random Fields (CRFs)
 - [Xapian](https://xapian.org/): an Open Source Search Engine Library
 
-## 机器学习 & 自然语言处理入门指南
+# 自然语言处理推荐入门&工具书
 
-- Chatopera 出版物[《智能问答与深度学习》](https://item.jd.com/12479014.html)
-- [春松客服：开源的智能客服系统](https://github.com/chatopera/cosin)
+机器学习 & 自然语言处理入门指南，本书由 [Clause](https://github.com/chatopera/clause) 作者参与著作。
+
+<p align="center">
+  <b>快速购书<a href="https://item.jd.com/12479014.html" target="_blank">链接</a></b><br>
+  <a href="https://search.jd.com/Search?keyword=%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0&enc=utf-8&wq=%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0" target="_blank">
+  <img src="https://user-images.githubusercontent.com/3538629/48657619-bcd24880-ea6e-11e8-8c4e-8bcb00761942.png" width="400">      
+  </a>
+</p>
+
+[《智能问答与深度学习》](https://item.jd.com/12479014.html) 这本书是服务于准备入门机器学习和自然语言处理的学生和软件工程师的，在理论上介绍了很多原理、算法，同时也提供很多示例程序增加实践性，这些程序被汇总到示例程序代码库，这些程序主要是帮助大家理解原理和算法的，欢迎大家下载和执行。代码库的地址是：
+
+[https://github.com/l11x0m7/book-of-qna-code](https://github.com/l11x0m7/book-of-qna-code)
 
 ## 开源许可协议
 
