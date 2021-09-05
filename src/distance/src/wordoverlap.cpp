@@ -37,7 +37,7 @@ double WordOverlap::score(const vector<string>& lhs, const vector<string>& rhs) 
   std::set_intersection(lhs.begin(), lhs.end(),
                         rhs.begin(), rhs.end(),
                         std::back_inserter(intersection));
-  return size_lhs >= size_rhs ? ((double)intersection.size() / (double) size_rhs) : ((double) intersection.size() / (double) size_lhs);
+  return size_lhs >= size_rhs ? ((double)intersection.size() / (double) size_lhs) : ((double) intersection.size() / (double) size_rhs);
 };
 
 double WordOverlap::score(const set<string>& lhs, const set<string>& rhs) {
