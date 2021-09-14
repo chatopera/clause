@@ -1,6 +1,6 @@
 <div align=right>
 
-[主页](https://github.com/chatopera/clause)　|　[Chatopera 云服务](https://bot.chatopera.com/)　|　[开发者文档](https://github.com/chatopera/clause/wiki)　|　[博客专栏](https://chatopera.blog.csdn.net/)
+[主页](https://github.com/chatopera/clause)　|　[Chatopera 云服务](https://docs.chatopera.com/)　|　[开发者文档](https://github.com/chatopera/clause/wiki)　|　[博客专栏](https://chatopera.blog.csdn.net/)
 
 </div>
 
@@ -12,7 +12,7 @@ In Chatopera, we believe Chatbots are the next application platform, with Chatop
 
 # 重要提示
 
-本代码库不再维护，所有的对智能对话机器人的支持将通过 [Chatopera 云服务](https://bot.chatopera.com) 提供，面向企业和开发者使用，资费或私有部署，查看[文档](https://docs.chatopera.com/products/chatbot-platform/billing.html)。
+本代码库不再维护，所有的对智能对话机器人的支持将通过 [Chatopera 云服务](https://docs.chatopera.com) 提供，面向企业和开发者使用，资费或私有部署，查看[文档](https://docs.chatopera.com/products/chatbot-platform/contract/index.html)。
 
 Chatopera 相信，聊天机器人是下一代应用发布平台，未来“聊天即服务”。通过云服务的方式，Chatopera 可以有更快的迭代速度，获得企业和智能对话应用开发者的反馈，以及让 Chatopera 有更好的经济回报以保证更良性的循环。
 
