@@ -12,7 +12,7 @@ JDKNAME=java-1.8.0-amazon-corretto-jdk.deb
 [ -z "${BASH_SOURCE[0]}" -o "${BASH_SOURCE[0]}" = "$0" ] || return
 apt-get update && apt-get install -y --no-install-recommends publicsuffix ca-certificates wget java-common
 cd /tmp
-wget --no-check-certificate -O $JDKNAME https://static-public.chatopera.com/vendors/java/java-1.8.0-amazon-corretto-jdk_8.212.04-2_amd64.deb
+wget --no-check-certificate -O $JDKNAME http://cdndownload2.chatopera.com/installation/clause/java-1.8.0-amazon-corretto-jdk_8.212.04-2_amd64.deb
 dpkg --install $JDKNAME
 rm -rf $JDKNAME
 java -version

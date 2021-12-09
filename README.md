@@ -4,17 +4,19 @@
 
 </div>
 
+# 重要提示
+
+本代码库不再升级，所有的对智能对话机器人的支持将通过 [Chatopera 云服务](https://docs.chatopera.com) 提供，面向企业和开发者使用，资费或私有部署，查看[文档](https://docs.chatopera.com/products/chatbot-platform/contract/index.html)。
+
+目前，[Clause](https://github.com/chatopera/clause) 依然是可以用的，参考 [WIKI 文档](https://github.com/chatopera/clause/wiki)进行部署和搭建开发环境。
+
 !!! Be cautious.
 
 !!! This repo is retired, all good works are now delivering with [Chatopera Cloud Service](https://bot.chatopera.com/), a more sophisticated way to deliver good softwares for Enterprises and Developers.
 
 In Chatopera, we believe Chatbots are the next application platform, with Chatopera Cloud Service, we get better development cycle for feedbacks and engagements with Enterprises and Developers. Please stick with Chatopera by using [Chatopera Cloud Service](https://bot.chatopera.com/).
 
-# 重要提示
-
-本代码库不再维护，所有的对智能对话机器人的支持将通过 [Chatopera 云服务](https://docs.chatopera.com) 提供，面向企业和开发者使用，资费或私有部署，查看[文档](https://docs.chatopera.com/products/chatbot-platform/contract/index.html)。
-
-Chatopera 相信，聊天机器人是下一代应用发布平台，未来“聊天即服务”。通过云服务的方式，Chatopera 可以有更快的迭代速度，获得企业和智能对话应用开发者的反馈，以及让 Chatopera 有更好的经济回报以保证更良性的循环。
+---
 
 # Clause
 

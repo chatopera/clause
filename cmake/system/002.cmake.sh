@@ -30,7 +30,7 @@ wget -qO - https://apt.kitware.com/keys/kitware-archive-latest.asc |
 
 $SUDO_CMD apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main'
 $SUDO_CMD apt-get update
-$SUDO_CMD apt-get install cmake
+$SUDO_CMD apt-get install -yy cmake
 cmake -version
 
 if [ $? -eq 0 ]; then

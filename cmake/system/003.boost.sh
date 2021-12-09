@@ -55,7 +55,7 @@ cd $OPTDIR
  
 # Download source code
 #$SUDO_CMD wget http://sourceforge.net/projects/boost/files/boost/$BOOST_VERSION_PATH_SUFFIX/boost_$BOOST_VERSION.zip
-$SUDO_CMD wget https://static-public.chatopera.com/vendors/lib/boost/boost_$BOOST_VERSION.zip
+$SUDO_CMD wget http://cdndownload2.chatopera.com/installation/clause/boost_$BOOST_VERSION.zip
 
 # Extract archive
 $SUDO_CMD unzip -qq boost_$BOOST_VERSION.zip
