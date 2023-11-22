@@ -56,7 +56,7 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
 
 在 Chatopera 证书商店的产品页面购买证书：
 
-下单地址：https://store.chatopera.com/product/clause001
+下单地址：[https://store.chatopera.com/product/clause001](https://store.chatopera.com/product/clause001)
 
 ![img](https://cdndownload2.chatopera.com/store/imgs/clause_purc_20231122114514.png)
 
