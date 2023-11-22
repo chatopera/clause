@@ -4,23 +4,7 @@
 
 </div>
 
-# 重要提示
-
-本代码库不再升级，所有的对智能对话机器人的支持将通过 [Chatopera 云服务](https://docs.chatopera.com) 提供，面向企业和开发者使用，资费或私有部署，查看[文档](https://docs.chatopera.com/products/chatbot-platform/contract/index.html)。
-
-目前，[Clause](https://github.com/chatopera/clause) 依然是可以用的，参考 [WIKI 文档](https://github.com/chatopera/clause/wiki)进行部署和搭建开发环境。
-
-!!! Be cautious.
-
-!!! This repo is retired, all good works are now delivering with [Chatopera Cloud Service](https://bot.chatopera.com/), a more sophisticated way to deliver good softwares for Enterprises and Developers.
-
-In Chatopera, we believe Chatbots are the next application platform, with Chatopera Cloud Service, we get better development cycle for feedbacks and engagements with Enterprises and Developers. Please stick with Chatopera by using [Chatopera Cloud Service](https://bot.chatopera.com/).
-
----
-
 # Clause
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/) [![Docker Stars](https://img.shields.io/docker/stars/chatopera/clause.svg)](https://hub.docker.com/r/chatopera/clause/)
 
 Chatopera 语义理解服务 / Chatopera Language Understanding Service
 
@@ -63,11 +47,89 @@ Clause 是 Chatopera 团队自主研发及使用其他商业友好的开源软�
   <img src="https://static-public.chatopera.com/assets/images/65892122-54ffc480-e3d8-11e9-8f64-c82f25694df5.gif" width="800">
 </p>
 
+
+## Docker 安装和部署
+
+### 下载 Docker 镜像
+
+#### 1/3 购买证书
+
+在 Chatopera 证书商店的产品页面购买证书：
+
+下单地址：https://store.chatopera.com/product/clause001
+
+![img](https://cdndownload2.chatopera.com/store/imgs/clause_purc_20231122114514.png)
+
+#### 2/3 下载文件
+
+在 Chatopera 证书商店的证书详情页面，得到证书标识。
+证书标识是一个字符串，比如：`FOO123`。
+
+文件的下载地址为：
+
+https://store.chatopera.com/dl/`${LICENSE_ID}`.gz
+
+
+将 `${LICENSE_ID}` 替换为您的证书标识。假设上一步得到的证书标识为：`FOO123`，那么 URL 下载地址就是：
+
+`https://store.chatopera.com/dl/FOO123.gz`
+
+
+```
+wget --no-check-certificate https://store.chatopera.com/dl/FOO123.gz -O clause001.tar.gz
+tar xzfv clause001.tar.gz        # 进行解压
+./activemq.docker.5143.tgz       # 解压得到的文件
+./clause.docker.c24ffc1.tgz      # 解压得到的文件
+./intent.docker.c24ffc1.tgz      # 解压得到的文件
+./mysql.docker.57.tgz            # 解压得到的文件
+./README.md                      # 解压得到的文件
+./redis.docker.505.tgz           # 解压得到的文件
+./sysdicts.docker.c24ffc1.tgz    # 解压得到的文件
+```
+
+下载后的文件是一个压缩包，格式为 `tar.gz`，该文件使用 `7zip` 或 `WinRAR` 等流行的解压工具都可以打开。
+
+除了使用 `wget` 形式下载，还可以通过浏览器打开 URL 下载。
+
+复制以上脚本，到[项目官方地址](https://github.com/chatopera/clause)。
+
+#### 3/3 加载镜像
+
+得到上述的各 `*.tgz` 文件后，在命令行终端执行命令：
+
+```
+docker load < ./activemq.docker.5143.tgz
+docker load < ./clause.docker.c24ffc1.tgz
+docker load < ./intent.docker.c24ffc1.tgz
+docker load < ./mysql.docker.57.tgz
+docker load < ./redis.docker.505.tgz
+docker load < ./sysdicts.docker.c24ffc1.tgz
+```
+
+执行后，镜像文件就被加载到了 `docker images` 中。
+
+使用命令验证，执行 `docker images`，确定出现：
+
+```
+clause/clause:develop
+clause/intent:develop
+clause/sysdicts:develop
+chatopera/activemq:5.14.3
+chatopera/mysql:5.7
+chatopera/redis:5.0.5
+```
+
+### 启动服务
+
+使用文档：
+
+* [GitHub Wiki](https://github.com/chatopera/clause/wiki/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2)
+* [(备份地址) Gitee Wiki](https://gitee.com/chatopera/clause/wikis/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2)
+
 ## 欢迎使用
 
 - [概述](https://github.com/chatopera/clause/wiki/%E6%A6%82%E8%BF%B0)
 - [系统设计与实现](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0)
-- [服务部署](https://github.com/chatopera/clause/wiki/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2)
 - [示例程序](https://github.com/chatopera/clause/wiki/%E7%A4%BA%E4%BE%8B%E7%A8%8B%E5%BA%8F)
 - [开发环境搭建](https://github.com/chatopera/clause/wiki/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA)
 - [系统集成](https://github.com/chatopera/clause/wiki/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90)
